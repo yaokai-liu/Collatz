@@ -1,0 +1,126 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{color,xcolor}
+\usepackage{fontspec}
+\usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
+% \DeclareMathSizes{10}{10}{5}{5}\linespread{1.2}
+\usepackage{hyperref}
+\hypersetup{
+    final,                   % Include links even if document is in 'draft' mode.
+    hidelinks,               % Prevent boxes from being drawn around links in some viewers.
+    breaklinks=true,         % Allow line breaks in the middle of links
+    colorlinks=true,
+    linkcolor=black,         % TOC, links to labeled equations and environments
+    urlcolor=black!30!blue,  % URLS including links in references  
+    anchorcolor=blue,        % I'm not sure what this does.
+    citecolor=black!30!blue, % In-line citations  
+}
+\usepackage[
+    noabbrev,   % E.g., "Figure" instead of "Fig."
+    capitalise, % E.g., "Figure" instead of "figure"
+    nameinlink  % Make "Figure 1" linked instead of just "1".
+]{cleveref}
+\usepackage{cancel}
+\newtheoremstyle{sltheorem}
+                {}          % Space above
+                {}          % Space below
+                {\slshape} 	% Body font
+                {}          % Indent amount
+                {\bfseries} % Head font
+                {.}         % Punctuation after head
+                { }         % Space after theorem head
+                {}          % Theorem head spec
+% Enable the new "sltheorem" theorem style.
+\theoremstyle{sltheorem}
+\makeatletter
+\def\@endtheorem{\endtrivlist}
+\makeatother
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{proposition}{Proposition}
+\newtheorem*{remark}{Remark}
+\newcommand{\CollatzSeries}[2]{\Gamma({#1};{#2})}
+\setmainfont{Times New Roman}
+\everymath{\displaystyle}
+
+\begin{document}
+\begin{definition}[Collatz Series and Collatz Accumulation]
+	Given an odd number $a$, denote $\CollatzSeries{a}{k}$ and a series of odd number $\left\{a_{_k}\right\}_{k = 0}^{\infty}$ with $a_0 = a$, $\CollatzSeries{a}{0} = 0$ and
+	\[ 3a_{_k} + 1 = a_{_{k + 1}} \cdot 2^{\CollatzSeries{a}{k + 1}}, \]
+	we call the $\left\{a_{_k}\right\}_{k = 0}^{\infty}$ as Collatz series or Collatz sequence. Denote 
+	\[\mathcal{A}_n^{m} = \sum_{i=m}^{n}\CollatzSeries{a}{i}\]
+	called Collatz accumulation. Specially if $m = 0$, we can omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
+\end{definition}
+For ease of presentation, unless otherwise stated, we use lowercase letters with subscripts to denote terms in the Collatz series and cursive capital letters to denote the Collatz accumulation without additional clarification. And unless otherwise stated, all subscripts are finite natural numbers.
+\begin{remark} If $m > n$, $\mathcal{A}_{m}^{n} = 0$. \end{remark}
+\begin{remark}
+	$\forall k \ge 1$, $\CollatzSeries{a}{k} \ge 1$, thus $\mathcal{A}_k \ge k$.
+\end{remark}
+\begin{remark} $a_{k + 1} \le \frac{3}{2}a_{k} + \frac{1}{2}$. \end{remark}
+\begin{remark} $\forall m, n \ge 0$,
+\[a_{m+n} \le a_m \cdot 3^{n} \cdot 2^{-n} + \sum_{i=0}^{n-1}2^{i-n} \cdot 3^{n-i-1} {\color{gray}\le (a_m + n) \cdot 3^{n} \cdot 2^{-n}}. \]
+\end{remark}
+\begin{lemma}
+Let $a = t \cdot 2^{n} + s$, that $t, s$ both are odd number, then $\forall m \ge 0$
+\[\begin{aligned}
+a_m \cdot 2^{\mathcal{A}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{A}_i}\cdot3^{m-i-1} 
+    & = \left(t_m \cdot 2 ^{\mathcal{T}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{T}_i}\cdot3^{m-i-1}\right) \cdot 2^{n} \\
+    & + s_m \cdot 2 ^{\mathcal{S}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{S}_i}\cdot3^{m-i-1}.
+\end{aligned}\]
+\end{lemma} 
+\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
+Given an odd number $a$, $\forall m \ge 0$
+\[ a_m \cdot 2^{\mathcal{A}_m} = a \cdot 3 ^ m + \sum_{i = 0}^{m - 1}2^{\mathcal{A}_i}\cdot3^{m-i-1}. \]
+\end{theorem}
+\begin{remark}
+for all $m,n \ge 0$, 
+\[ a_{m+n} \cdot 2^{\mathcal{A}_{m+n}^{m}} = a_m \cdot 3 ^ n + \sum_{i = 0}^{n - 1}2^{\mathcal{A}_{m+i}^{m}}\cdot3^{n-i-1}. \]
+\end{remark}
+\begin{theorem}[Consistency]~\label{theorem:consistency}
+If there is two odd number $a, b$, that $a = b$, then $\forall m > 0$, 
+there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
+\end{theorem}
+\begin{theorem}[Co-consistency]~\label{theorem:co-consistency}
+	If there is two odd number $a, b$ that $\forall \alpha \le m$, $\mathcal{A}_\alpha = \mathcal{B}_\alpha$, then $2^{\mathcal{A}_m} \mid (a - b)$ and $3^{m} \mid (a_m - b_m)$.
+\end{theorem}
+\begin{remark}
+Let $a = t \cdot 2^{n} + s$, that $t, s$ both are odd number, then $\forall m \ge 0: 2^{\mathcal{A}_m} \le n$,
+\[a_m = t \cdot 3^{m} \cdot 2 ^{n - \mathcal{A}_m} + s_m.\]
+\end{remark}
+For a Collatz series $\left\{a_k\right\}_{k=0}^{\infty}$, we have
+\begin{remark}
+	If $\exists n > m \ge 0$ that $a_n = a_m$, 
+	then $\exists d \mid (n - m)$ that $a_{m + k \cdot d} = a_{m}$ holds for all $k > 0$.
+\end{remark}
+\begin{corollary}
+    For a Collatz series $\left\{a_k\right\}_{k=0}^{\infty}$, there is only one of bellow holds:
+    \begin{itemize}
+        \item[1)] $\exists m, n$, $a_n = a_m$ that $\left\{a_k\right\}_{k=0}^{\infty}$ fall into a periodic series;
+        \item[2)] $\forall m, n$, $a_n \ne a_m$ that there is absolute ascent chain in $\left\{a_k\right\}_{k=0}^{\infty}$.
+    \end{itemize}
+\end{corollary}
+
+\begin{proposition}
+	If $\left\{a_k\right\}_{k=0}^{\infty}$ is a periodic series that minimal period is $t$, 
+	and $a_n = \max_{0\le i \le t}\{a_i\}$, $a_m = \min_{0\le i \le t}\{a_i\}$, we can know that $t \le (a_n - a_m) / 2$.
+\end{proposition}
+\begin{definition}[$\mathfrak{R}$-Chain]
+    Let $\mathfrak{R}$ be a 2-ary relation. For series $\left\{s_k\right\}$, if there is a sub-series $\left\{s_{k_\alpha}\right\}$ that $\forall \alpha, a_{k_\alpha}\mathfrak{R}a_{k_{\alpha+1}}$, we call the sub-series $\left\{s_{k_\alpha}\right\}$ is a $\mathfrak{R}$-chain in series $\left\{s_k\right\}$.
+
+    \noindent
+    If $\forall \alpha > 0$, $\nexists m \in (k_\alpha, k_{\alpha})$, $a_{k_\alpha}\mathfrak{R}a_m\mathfrak{R}a_{k_{\alpha+1}}$, we say that $\left\{s_{k_\alpha}\right\}$ is dense for $\mathfrak{R}$.
+\end{definition}
+\begin{proposition}
+	For a Collatz series $\left\{a_k\right\}_{k=0}^{n}$, if there is a dense absolute ascent chain $\left\{a_{i_\alpha}\right\}_{\alpha=0}^{n}$, we have
+	\[a_{i_\alpha} > 2 i_{\alpha+1} + 3\]
+    holds for $\alpha = 0, 1, 2, \cdots, n - 1$.
+\end{proposition}
+\begin{remark}
+    If $\exists n > m \ge 0$ that $a_n = a_m$, 
+    then $\exists d \mid (n - m)$ that $a_{m + k \cdot d} = a_{m}$ holds for all $k > 0$.
+\end{remark}
+
+\end{document}

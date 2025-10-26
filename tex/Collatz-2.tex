@@ -1,0 +1,43 @@
+\documentclass[border=2pt,preview]{standalone}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{color,xcolor}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+% \DeclareMathSizes{10}{10}{5}{5}\linespread{1.2}
+\usepackage{hyperref}
+\hypersetup{
+    final,                   % Include links even if document is in 'draft' mode.
+    hidelinks,               % Prevent boxes from being drawn around links in some viewers.
+    breaklinks=true,         % Allow line breaks in the middle of links
+    colorlinks=true,
+    linkcolor=black,         % TOC, links to labeled equations and environments
+    urlcolor=black!30!blue,  % URLS including links in references  
+    anchorcolor=blue,        % I'm not sure what this does.
+    citecolor=black!30!blue, % In-line citations  
+}
+\usepackage[
+    noabbrev,   % E.g., "Figure" instead of "Fig."
+    capitalise, % E.g., "Figure" instead of "figure"
+    nameinlink  % Make "Figure 1" linked instead of just "1".
+]{cleveref}
+\newtheoremstyle{sltheorem}
+    {}          % Space above
+    {}          % Space below
+    {} 			% Body font
+    {}          % Indent amount
+    {\bfseries} % Head font
+    {.}         % Punctuation after head
+    { }         % Space after theorem head
+    {}          % Theorem head spec
+% Enable the new "sltheorem" theorem style.
+\theoremstyle{sltheorem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+\newcommand{\CollatzSeries}[2]{\Gamma({#1};{#2})}
+
+\begin{document}
+\end{document}
