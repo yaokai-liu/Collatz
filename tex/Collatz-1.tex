@@ -3,7 +3,8 @@
 \usepackage{color,xcolor}
 \usepackage{fontspec}
 \usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
-% \DeclareMathSizes{10}{10}{5}{5}\linespread{1.2}
+% \DeclareMathSizes{10}{10}{5}{5}
+\linespread{1.5}
 \usepackage{hyperref}
 \hypersetup{
     final,                   % Include links even if document is in 'draft' mode.
@@ -16,18 +17,18 @@
     citecolor=black!30!blue, % In-line citations  
 }
 \usepackage[
-    noabbrev,   % E.g., "Figure" instead of "Fig."
-    capitalise, % E.g., "Figure" instead of "figure"
-    nameinlink  % Make "Figure 1" linked instead of just "1".
+    noabbrev,               % E.g., "Figure" instead of "Fig."
+    capitalise,             % E.g., "Figure" instead of "figure"
+    nameinlink              % Make "Figure 1" linked instead of just "1".
 ]{cleveref}
-\usepackage{cancel}
+\setmainfont{Times New Roman}
 \newtheoremstyle{sltheorem}
                 {}          % Space above
                 {}          % Space below
-                {\slshape} 	% Body font
+                {\upshape}  % Body font
                 {}          % Indent amount
                 {\bfseries} % Head font
-                {.}         % Punctuation after head
+                {:}         % Punctuation after head
                 { }         % Space after theorem head
                 {}          % Theorem head spec
 % Enable the new "sltheorem" theorem style.
@@ -35,92 +36,144 @@
 \makeatletter
 \def\@endtheorem{\endtrivlist}
 \makeatother
-
 \newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{proposition}{Proposition}
 \newtheorem*{remark}{Remark}
-\newcommand{\CollatzSeries}[2]{\Gamma({#1};{#2})}
-\setmainfont{Times New Roman}
 \everymath{\displaystyle}
+\newcommand{\CollatzReduce}[2]{\Delta({#1};{#2})}
+\newcommand\quotient[2]{{{\displaystyle #1}}\big\backslash{{\displaystyle #2}}}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
 \begin{document}
 \begin{definition}[Collatz Series and Collatz Accumulation]
-	Given an odd number $a$, denote $\CollatzSeries{a}{k}$ and a series of odd number $\left\{a_{_k}\right\}_{k = 0}^{\infty}$ with $a_0 = a$, $\CollatzSeries{a}{0} = 0$ and
-	\[ 3a_{_k} + 1 = a_{_{k + 1}} \cdot 2^{\CollatzSeries{a}{k + 1}}, \]
+	Given an odd number $a$, denote $\CollatzReduce{a}{k}$ and a series of odd number $\left\{a_{_k}\right\}_{k = 0}^{\infty}$ with $a_0 = a$, $\CollatzReduce{a}{0} = 0$ and
+	\[ 3a_{_k} + 1 = a_{_{k + 1}} \cdot 2^{\CollatzReduce{a}{k + 1}}, \]
 	we call the $\left\{a_{_k}\right\}_{k = 0}^{\infty}$ as Collatz series or Collatz sequence. Denote 
-	\[\mathcal{A}_n^{m} = \sum_{i=m}^{n}\CollatzSeries{a}{i}\]
-	called Collatz accumulation. Specially if $m = 0$, we can omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
+	\[\mathcal{A}_n^{m} = \sum_{i=m}^{n}\CollatzReduce{a}{i}\]
+	called Collatz accumulation. Specially, when $m = 0$, we can omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
 \end{definition}
 For ease of presentation, unless otherwise stated, we use lowercase letters with subscripts to denote terms in the Collatz series and cursive capital letters to denote the Collatz accumulation without additional clarification. And unless otherwise stated, all subscripts are finite natural numbers.
-\begin{remark} If $m > n$, $\mathcal{A}_{m}^{n} = 0$. \end{remark}
-\begin{remark}
-	$\forall k \ge 1$, $\CollatzSeries{a}{k} \ge 1$, thus $\mathcal{A}_k \ge k$.
-\end{remark}
-\begin{remark} $a_{k + 1} \le \frac{3}{2}a_{k} + \frac{1}{2}$. \end{remark}
-\begin{remark} $\forall m, n \ge 0$,
-\[a_{m+n} \le a_m \cdot 3^{n} \cdot 2^{-n} + \sum_{i=0}^{n-1}2^{i-n} \cdot 3^{n-i-1} {\color{gray}\le (a_m + n) \cdot 3^{n} \cdot 2^{-n}}. \]
-\end{remark}
-\begin{lemma}
-Let $a = t \cdot 2^{n} + s$, that $t, s$ both are odd number, then $\forall m \ge 0$
-\[\begin{aligned}
-a_m \cdot 2^{\mathcal{A}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{A}_i}\cdot3^{m-i-1} 
-    & = \left(t_m \cdot 2 ^{\mathcal{T}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{T}_i}\cdot3^{m-i-1}\right) \cdot 2^{n} \\
-    & + s_m \cdot 2 ^{\mathcal{S}_m} - \sum_{i = 0}^{m - 1}2^{\mathcal{S}_i}\cdot3^{m-i-1}.
-\end{aligned}\]
-\end{lemma} 
-\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
-Given an odd number $a$, $\forall m \ge 0$
-\[ a_m \cdot 2^{\mathcal{A}_m} = a \cdot 3 ^ m + \sum_{i = 0}^{m - 1}2^{\mathcal{A}_i}\cdot3^{m-i-1}. \]
-\end{theorem}
-\begin{remark}
-for all $m,n \ge 0$, 
-\[ a_{m+n} \cdot 2^{\mathcal{A}_{m+n}^{m}} = a_m \cdot 3 ^ n + \sum_{i = 0}^{n - 1}2^{\mathcal{A}_{m+i}^{m}}\cdot3^{n-i-1}. \]
+\begin{remark} $\forall k \ge 1$, $\CollatzReduce{a}{k} \ge 1$, thus $\mathcal{A}_k \ge k$. \end{remark}
+\begin{remark} $\forall k \ge 1$, $a_{k + 1} \le \frac{3}{2}a_{k} + \frac{1}{2}$. \end{remark}
+\begin{remark} $\forall k \ge 1$, if $a_{k + 1} = a_{k}$, then $a_{k+1} = 1$. \end{remark}
+\begin{remark} $\forall k \ge 1$, if $a_{k + 1} \ge a_{k}$, then $a_{k+1} = \frac{3}{2}a_{k} + \frac{1}{2}$. \end{remark}
+\begin{remark} $\forall n \ge 0$,
+\[a_{n} \le a \cdot 3^{n} \cdot 2^{-n} + \sum_{i=0}^{n-1}2^{i-n} \cdot 3^{n-i-1}. \]
 \end{remark}
 \begin{theorem}[Consistency]~\label{theorem:consistency}
 If there is two odd number $a, b$, that $a = b$, then $\forall m > 0$, 
 there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
 \end{theorem}
+\begin{proof} Trivial. \end{proof}
+\begin{remark} If $a_0 = 1$, then $a_k \equiv 1$ and $\CollatzReduce{a}{k} \equiv 2$ thus $\mathcal{A}_k = 2k$. \end{remark}
 \begin{theorem}[Co-consistency]~\label{theorem:co-consistency}
-	If there is two odd number $a, b$ that $\forall \alpha \le m$, $\mathcal{A}_\alpha = \mathcal{B}_\alpha$, then $2^{\mathcal{A}_m} \mid (a - b)$ and $3^{m} \mid (a_m - b_m)$.
+    If there is two odd number $a, b$ that $\forall  m \le n$, $\mathcal{A}_m = \mathcal{B}_m$, then $2^{\mathcal{A}_n} \mid (a - b)$ and $3^{n} \mid (a_n - b_n)$, vice versa.
 \end{theorem}
-\begin{remark}
-Let $a = t \cdot 2^{n} + s$, that $t, s$ both are odd number, then $\forall m \ge 0: 2^{\mathcal{A}_m} \le n$,
-\[a_m = t \cdot 3^{m} \cdot 2 ^{n - \mathcal{A}_m} + s_m.\]
-\end{remark}
-For a Collatz series $\left\{a_k\right\}_{k=0}^{\infty}$, we have
-\begin{remark}
-	If $\exists n > m \ge 0$ that $a_n = a_m$, 
-	then $\exists d \mid (n - m)$ that $a_{m + k \cdot d} = a_{m}$ holds for all $k > 0$.
-\end{remark}
+\begin{proof} Trivial. \end{proof}
 \begin{corollary}
     For a Collatz series $\left\{a_k\right\}_{k=0}^{\infty}$, there is only one of bellow holds:
     \begin{itemize}
-        \item[1)] $\exists m, n$, $a_n = a_m$ that $\left\{a_k\right\}_{k=0}^{\infty}$ fall into a periodic series;
-        \item[2)] $\forall m, n$, $a_n \ne a_m$ that there is absolute ascent chain in $\left\{a_k\right\}_{k=0}^{\infty}$.
+        \item[1)] $\exists m, n$, $a_n = a_m$ that $\left\{a_k\right\}_{k=0}^{\infty}$ fall into a cycle;
+        \item[2)] $\forall m, n$, $a_n \ne a_m$ that there is an absolute ascent chain in $\left\{a_k\right\}_{k=0}^{\infty}$.
     \end{itemize}
 \end{corollary}
-
-\begin{proposition}
-	If $\left\{a_k\right\}_{k=0}^{\infty}$ is a periodic series that minimal period is $t$, 
-	and $a_n = \max_{0\le i \le t}\{a_i\}$, $a_m = \min_{0\le i \le t}\{a_i\}$, we can know that $t \le (a_n - a_m) / 2$.
-\end{proposition}
-\begin{definition}[$\mathfrak{R}$-Chain]
-    Let $\mathfrak{R}$ be a 2-ary relation. For series $\left\{s_k\right\}$, if there is a sub-series $\left\{s_{k_\alpha}\right\}$ that $\forall \alpha, a_{k_\alpha}\mathfrak{R}a_{k_{\alpha+1}}$, we call the sub-series $\left\{s_{k_\alpha}\right\}$ is a $\mathfrak{R}$-chain in series $\left\{s_k\right\}$.
-
-    \noindent
-    If $\forall \alpha > 0$, $\nexists m \in (k_\alpha, k_{\alpha})$, $a_{k_\alpha}\mathfrak{R}a_m\mathfrak{R}a_{k_{\alpha+1}}$, we say that $\left\{s_{k_\alpha}\right\}$ is dense for $\mathfrak{R}$.
-\end{definition}
-\begin{proposition}
-	For a Collatz series $\left\{a_k\right\}_{k=0}^{n}$, if there is a dense absolute ascent chain $\left\{a_{i_\alpha}\right\}_{\alpha=0}^{n}$, we have
-	\[a_{i_\alpha} > 2 i_{\alpha+1} + 3\]
-    holds for $\alpha = 0, 1, 2, \cdots, n - 1$.
-\end{proposition}
+\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
+Given an odd number $a$, we have
+\[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \]
+\end{theorem}
+\begin{proof} Trivial. \end{proof}
+\begin{remark}
+For all $m,n \ge 0$, 
+\[ a_{m+n} \cdot 2^{\mathcal{A}_{m+n}^{m}} = a_m \cdot 3 ^ n + \sum_{i = 0}^{n - 1}2^{\mathcal{A}_{m+i}^{m}}\cdot3^{n-i-1}. \]
+\end{remark}
 \begin{remark}
     If $\exists n > m \ge 0$ that $a_n = a_m$, 
     then $\exists d \mid (n - m)$ that $a_{m + k \cdot d} = a_{m}$ holds for all $k > 0$.
 \end{remark}
+\begin{remark}
+Let $a = t \cdot 2^{n} + s$, that $t, s$ both are odd number, then $\forall m \ge 0$ that $2^{\mathcal{A}_m} \le n$,
+\[a_m = t \cdot 3^{m} \cdot 2 ^{n - \mathcal{A}_m} + s_m.\]
+\end{remark}
+\begin{theorem}
+    $\left\{a_k\right\}_{k=0}^{\infty}$ is periodic series iif $a_0 = 1$.
+\end{theorem}
+\begin{proof} TODO \end{proof}
+\begin{theorem}
+    $1 \le \lim_{k\to \infty}\frac{\mathcal{A}_{k}}{k} \le 2$.
+\end{theorem}
+\begin{proof} TODO \end{proof}
+\begin{theorem}
+    Let $\left\{a_{i_\alpha}\right\}_{\alpha=0}^{\infty}$ be a subseries of the Collatz series of $a$, and if \newline 
+    $\lim_{\alpha\to \infty}\frac{\mathcal{A}_{i_\alpha}}{i_\alpha} = \log_{2}3 + \varepsilon$, then
+    \[\lim_{\alpha\to\infty}a_{i_\alpha} = \left\{\begin{aligned}
+        &\frac{a_{i_0}}{2^{(i_{\alpha} - i_0)\varepsilon}} + \frac{1}{3}\cdot\frac{1}{2^{(i_{\alpha} - i_0)\varepsilon}}\cdot\frac{2^{(i_{\alpha} - i_0)\varepsilon} - 1}{2^{\varepsilon}  - 1}, & \varepsilon \ne 0, \\
+        &a_{i_0} + \frac{1}{3}(i_{\alpha} - i_0), & \varepsilon = 0.
+    \end{aligned}\right. \]
+\end{theorem}
+\begin{remark}
+    If $\varepsilon > 0$, then $a_{i_\alpha} \to 1$.
+\end{remark}
 
+\vspace*{2em}
+\begin{proposition}
+	For a Collatz series $\left\{a_k\right\}_{k=0}^{n}$, if there is a dense absolute ascent chain $\left\{a_{i_\alpha}\right\}_{\alpha=0}^{n}$, we have
+    \[ a_{i_{\alpha+1}} \le \frac{3}{2}a_{i_\alpha} + \frac{1}{2} \]
+    and
+    \[ \alpha \le i_{\alpha+1} < \frac{1}{2}a_{i_\alpha}  - \frac{3}{2} \]
+    holds for $\alpha = 0, 1, 2, \cdots, n - 1$.
+\end{proposition}
+\begin{proof} Trivial. \end{proof}
+\begin{proposition}
+    For a Collatz series $\left\{a_k\right\}_{k=0}^{n}$, if there is a dense absolute ascent chain $\left\{a_{i_\alpha}\right\}_{\alpha=0}^{n}$, we have
+    \[ a_{i_{\alpha+1}} \le \left(\frac{3}{2}\right)^{\alpha}\cdot a_{i_0} + \frac{1}{2}\sum_{j=0}^{\alpha-1}\left(\frac{3}{2}\right)^{j} = \left(\frac{3}{2}\right)^{\alpha}\cdot a_{i_0} + \left(\frac{3}{2}\right)^{\alpha} - 1 \]
+    and
+    \[ \alpha \le i_{\alpha+1} < \frac{1}{2}a_{i_0} \left(\frac{3}{2}\right)^{\alpha-1} + \frac{1}{2}\cdot\left(\frac{3}{2}\right)^{\alpha-1} - 2 \]
+    holds for $\alpha = 1, 2, \cdots, n - 1$.
+\end{proposition}
+\begin{proof} Trivial. \end{proof}
+\begin{theorem}
+    $\forall a \in \mathbb{N}$, $\forall n \ge 0$,
+    \[\Gamma(a;1) = \left\{\ \begin{aligned}
+        & 2 + \Gamma(\floor{\frac{a}{4}};1),  & & a \equiv 1 \pmod{4}, \\
+        & 1,                & & a \equiv 3 \pmod{4}, \\
+        & 0,                & & \text{otherwise} .
+    \end{aligned}\right.\]
+\end{theorem}
+\begin{proof} Trivial. \end{proof}
+\begin{theorem}
+    $\forall a \in \mathbb{N}$, $\forall n \ge 0$,
+    \[\Gamma(a;1) = \left\{\ \begin{aligned}
+        & 4 + \Gamma(\floor{\frac{a}{16}};1),  & & a \equiv 5 \hspace{0.5em}\pmod{16}, \\
+        & 3,                & & a \equiv 13 \pmod{16}, \\
+        & 2,                & & a \equiv 1 \hspace{0.5em}\pmod{8}, \\
+        & 1,                & & a \equiv 3 \hspace{0.5em}\pmod{4}, \\
+        & 0,                & & \text{otherwise} .
+    \end{aligned}\right.\]
+\end{theorem}
+\begin{proof} Trivial. \end{proof}
+\begin{lemma}
+    \[3^n \equiv \left\{\ \begin{aligned}
+        & 1,   & & 2 \mid n, \\
+        & 3,   & & 2\nmid n.
+    \end{aligned}\right. \pmod{8} \]
+\end{lemma}
+\begin{proof} Trivial. \end{proof}
+\begin{theorem}
+    $\forall a \in \mathbb{N}$, $\forall n \ge 0$,
+    \[\Gamma(3^{n}a;1) = \left\{\ \begin{aligned}
+        & 2 + \Gamma(3^{n}\cdot\floor{\frac{a}{4}}+3\cdot\floor{\frac{3^n}{4}}+2;1),  & & a \equiv 3^n \equiv 3 \pmod{4}, \\
+        & 2 + \Gamma(3^{n}\cdot\floor{\frac{a}{4}}+\floor{\frac{3^n}{4}};1),  & & a \equiv 3^n \equiv 1 \pmod{4}, \\
+        & 1,                & & a - 3^n\ \equiv 2 \pmod{4}, \\
+        & 0,                & & \text{otherwise} .
+    \end{aligned}\right.\]
+\end{theorem}
+\begin{proof} Trivial. \end{proof}
+% \begin{conjecture}
+%     $\forall k \in \mathbb{N}$, there exists $m, n \in \mathbb{N}$, holds
+%     \[ \log_{2}k < n\log_2{3} - m < \log_{2}(k + 1).  \] 
+% \end{conjecture}
 \end{document}

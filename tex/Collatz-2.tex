@@ -1,10 +1,10 @@
-\documentclass[border=2pt,preview]{standalone}
+\documentclass[a4paper,11pt]{article}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{color,xcolor}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
-\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
-% \DeclareMathSizes{10}{10}{5}{5}\linespread{1.2}
+\usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
+% \DeclareMathSizes{10}{10}{5}{5}
+\linespread{1.5}
 \usepackage{hyperref}
 \hypersetup{
     final,                   % Include links even if document is in 'draft' mode.
@@ -17,27 +17,112 @@
     citecolor=black!30!blue, % In-line citations  
 }
 \usepackage[
-    noabbrev,   % E.g., "Figure" instead of "Fig."
-    capitalise, % E.g., "Figure" instead of "figure"
-    nameinlink  % Make "Figure 1" linked instead of just "1".
+    noabbrev,               % E.g., "Figure" instead of "Fig."
+    capitalise,             % E.g., "Figure" instead of "figure"
+    nameinlink              % Make "Figure 1" linked instead of just "1".
 ]{cleveref}
+\setmainfont{Times New Roman}
 \newtheoremstyle{sltheorem}
-    {}          % Space above
-    {}          % Space below
-    {} 			% Body font
-    {}          % Indent amount
-    {\bfseries} % Head font
-    {.}         % Punctuation after head
-    { }         % Space after theorem head
-    {}          % Theorem head spec
+                {}          % Space above
+                {}          % Space below
+                {\upshape}  % Body font
+                {}          % Indent amount
+                {\bfseries} % Head font
+                {:}         % Punctuation after head
+                { }         % Space after theorem head
+                {}          % Theorem head spec
 % Enable the new "sltheorem" theorem style.
 \theoremstyle{sltheorem}
-
+\makeatletter
+\def\@endtheorem{\endtrivlist}
+\makeatother
+\newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
 \newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{proposition}{Proposition}
 \newtheorem*{remark}{Remark}
-\newcommand{\CollatzSeries}[2]{\Gamma({#1};{#2})}
+\everymath{\displaystyle}
+\newcommand{\CollatzReduce}[2]{\Delta({#1};{#2})}
+\newcommand\quotient[2]{{{\displaystyle #1}}\big\backslash{{\displaystyle #2}}}
+\newcommand\ModSupportSet[2]{{{\displaystyle #1}}-{{\displaystyle #2}}}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
 \begin{document}
+\begin{definition}[Collatz Series and Collatz Accumulation]
+	Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}$. For number $a \in \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$, define a series $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$ and $\CollatzReduce{a}{k}$ with
+	\[\begin{aligned}
+        a_0 &=a, \\
+        \CollatzReduce{a}{0} &=0, \\
+        a_{_{k + 1}} \cdot \beta^{\CollatzReduce{a}{k + 1}} &= \alpha\cdot a_{_k} + \gamma,
+    \end{aligned}\]
+	then the series is called Collatz series or Collatz sequence of $a$, the $\CollatzReduce{a}{k}$ is called Collatz reduce of $a$ at $k$.
+    Denote 
+	\[\mathcal{A}_n^{m} = \sum_{i=m}^{n}\CollatzReduce{a}{i}\]
+	called Collatz accumulation. Specially when $m = 0$, we omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.\newline
+	Besides, denote $\mathfrak{A}_n^{m}$ called Collatz complement of $a$ on $k$ with
+	\[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - m - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-m-i-1}. \]
+	Also I will omit the superscript $m$ when $m = 0$.
+\end{definition}
+\begin{proposition}[Consistency]~\label{proposition:consistency}
+With the same arguments $(\alpha, \beta, \gamma)$, if there are two numbers $a, b \in \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$, that $a = b$, then $\forall m > 0$, 
+there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
+\end{proposition}
+\begin{proof} Trivial. \end{proof}
+\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
+Given an odd number $a$, we have
+\[ a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_k. \]
+\end{theorem}
+\begin{proof} TODO \end{proof}
+\begin{proposition}[Co-consistency]~\label{proposition:co-consistency}
+    With the same arguments $(\alpha, \beta, \gamma)$, if there are two numbers $a, b \in \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$ that $\forall m \le n$, $\mathcal{A}_m = \mathcal{B}_m$, and $\gcd(\alpha, \beta) = 1$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
+\end{proposition}
+\begin{proof} Trivial. \end{proof}
+\begin{remark}
+for all $m,n \ge 0$, 
+\[ a_{m+n} \cdot \beta^{\mathcal{A}_{m+n}^{m}} = a_m\cdot\alpha^n + \gamma\cdot\mathfrak{A}_{m + n}^{m}. \]
+\end{remark}
+\begin{remark}
+    If $\exists n > m \ge 0$ that $a_n = a_m$, 
+    then $\exists d \mid (n - m)$ that $a_{m + k \cdot d} = a_{m}$ holds for all $k > 0$.
+\end{remark}
+\begin{proof} TODO \end{proof}
+\begin{remark}
+    If $\exists t > 0$ that $a_{t} = a_0 = a$, 
+    then $\forall k > 0$, and $s = 1, 2, 3, \cdots, d$, there are
+    \[a_{k\cdot t+s} = a_s,\quad \mathcal{A}_{k\cdot t + s} = \mathcal{A}_{s}.\]
+\end{remark}
+\begin{proof} TODO \end{proof}
+\begin{remark}[Multistability]~\label{remark:multistability}
+	If there exist a subseries that $\lim_{n\to\infty} \frac{\mathcal{A}_n}{n} = \mu$, let $\eta = \frac{\beta^\mu}{\alpha}$, then for the subseries, we have
+    \[\mathfrak{A}_n = \left\{\begin{aligned}
+    & \alpha^{n - 1} \cdot \frac{1 - \eta^n}{1 - \eta}, &\eta \ne 1, \\
+    & \alpha^{n-1} \cdot n, &\eta = 1,
+    \end{aligned}\right.\]
+    and then
+	\[a_n = \left\{\begin{aligned}
+	& \frac{a}{\eta^n} + \frac{\gamma}{\alpha} \cdot \frac{\eta^n - 1}{1 - \eta}, &\eta \ne 1, \\
+	& a + \frac{\gamma}{\alpha}\cdot n, &\eta = 1.
+	\end{aligned}\right.\]
+\end{remark}
+\newpage
+From the recursion fomula
+\[ a_{k+1} \cdot \beta^{\CollatzReduce{a}{k + 1}} = \alpha \cdot a_{k} + \gamma \]
+we have
+\[ a_k \equiv - \gamma \cdot \alpha^{-1} \pmod{\beta^{\CollatzReduce{a}{k + 1}}}. \]
+This means
+\[ a_k \cdot \beta^{\mathcal{A}_{k}} \equiv - \gamma \cdot \alpha^{-1} \cdot \beta^{\mathcal{A}_{k}} \pmod{\beta^{\mathcal{A}_{k+1}}}, \]
+means
+\[a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_k \equiv - \gamma \cdot \alpha^{-1} \cdot \beta^{\mathcal{A}_{k}} \pmod{\beta^{\mathcal{A}_{k+1}}}, \]
+means
+\[a \cdot\alpha^k \equiv - \gamma \cdot \alpha^{-1} \cdot \beta^{\mathcal{A}_{k}} - \gamma\cdot\mathfrak{A}_k \pmod{\beta^{\mathcal{A}_{k+1}}}. \]
+Then we have
+\[ a \equiv - \gamma \cdot \alpha^{-(k + 1)} \cdot (\alpha\cdot\mathfrak{A}_{k} + \beta^{\mathcal{A}_{k}}) \pmod{\beta^{\mathcal{A}_{k+1}}}. \]
+If there is an subseries saticifies the condition of \textbf{Multistability}, i.e. $\lim_{n\to\infty} \frac{\mathcal{A}_n}{n} = \mu$ and $\eta = \frac{\beta^\mu}{\alpha}$, then we have
+\[a \equiv \left\{\begin{aligned}
+& - \gamma \cdot \alpha^{-1} \cdot \frac{1 - \eta^{n}}{1 - \eta}, &\eta \ne 1 \\
+& - \gamma \cdot \alpha^{-1} \cdot n , &\eta = 1
+\end{aligned}\right. \pmod{\beta^{\mathcal{A}_{n}}}.\]
+Here, negative exponents and fractions should be understood in the sense of modulus (integer field).
 \end{document}
