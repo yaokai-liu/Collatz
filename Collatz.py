@@ -76,8 +76,8 @@ class Collatz:
         self.__eval_till__(step)
 
 if __name__ == '__main__':
-    alpha, beta, gamma = 13, 2, 1
-    a = Collatz(alpha, beta, gamma, 5)
+    alpha, beta, gamma = 3, 2, 1
+    a = Collatz(alpha, beta, gamma, -7)
     a.eval_to(1000)
     # for i in range(1000):
     #     print(a.pack_at(i) == a.startswith * (a.alpha ** i) + a.gamma * a.complement_at(i))

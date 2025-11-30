@@ -15,7 +15,7 @@ def real_terms(alpha, beta, gamma, reduces: list[int]):
     return terms
 
 if __name__ == '__main__':
-    period = [random.randint(2, 8) for i in range(2)]
+    period = [1, 3]
     # period = [4, 3, 2, 1]
     # for i in range(1, len(period) // 3):
     #     reduces= period[:3 * i] * 100
