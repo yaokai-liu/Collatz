@@ -33,3 +33,5 @@
 *.xdv
 *.xdy
 *.pdf
+__pycache__
+

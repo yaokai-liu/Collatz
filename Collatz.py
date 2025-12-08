@@ -3,7 +3,7 @@ import sys
 from math import gcd
 import matplotlib.pyplot as plt
 
-sys.set_int_max_str_digits(2 ** 30)
+sys.set_int_max_str_digits((2**16)-1)
 
 def modInverse(a, b):
     if b == 0: return 1, 0
@@ -76,8 +76,8 @@ class Collatz:
         self.__eval_till__(step)
 
 if __name__ == '__main__':
-    alpha, beta, gamma = 3, 2, 1
-    a = Collatz(alpha, beta, gamma, -7)
+    alpha, beta, gamma = 2, 7, 1
+    a = Collatz(alpha, beta, gamma, 4567)
     a.eval_to(1000)
     # for i in range(1000):
     #     print(a.pack_at(i) == a.startswith * (a.alpha ** i) + a.gamma * a.complement_at(i))
