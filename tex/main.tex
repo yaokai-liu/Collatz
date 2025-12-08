@@ -272,7 +272,7 @@ $\forall m, n \ge 0$, we have
 \[ a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \gamma\cdot\mathfrak{A}_{n+m}^{m}. \]
 \end{corollary}
 \begin{remark}~\label{remark:inductive-formula-with-reduced}
-    $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\alpha^{k-1}\cdot\mathfrak{a}_{k} = \alpha^{k}\cdot\left(a + \frac{\gamma}{\alpha}\mathfrak{a}_k\right)$.
+    $a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \frac{\gamma}{\alpha}\cdot\alpha^{n}\cdot\mathfrak{a}_{n+m}^{m} = \alpha^{n}\cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n+m}^{m}\right)$.
 \end{remark}
 \begin{proposition}
 Given $a$ that $\beta \nmid a$, if $\mathfrak{A}_n^m$ is of $a$, then $\beta \nmid \mathfrak{A}_n^m$.
@@ -441,9 +441,18 @@ Anyway, we now finally extended the problem from integers to the $\beta$-adic nu
 \end{proposition}
 It is easy to verify that those propositions of Collatz accumulation and complement still holds. And with these definitions, we have
 \begin{theorem}~\label{theorem:traceback-inductive-formula}
-Given $a \in \mathbb{Q}_\beta-\beta\mathbb{Q}_\beta$ and $\{\Delta_i\}_{i=-\infty}^{\infty}$ that $\forall i, j \in \mathbb{Z}$, $\beta \nmid \mathfrak{A}_{i}^{j}$, let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
+Given $a \in \mathbb{Q}_\beta-\beta\mathbb{Q}_\beta$ and $\{\Delta_i\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that $\forall i, j \in \mathbb{Z}$, $\beta \nmid \mathfrak{A}_{i}^{j}$, let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
 \[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
 \end{theorem}
+\begin{proposition}
+    $a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = \alpha^{n-m} \cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n}^{m}\right)$.
+\end{proposition}
+\begin{corollary}
+    $a_{-k}  = \frac{\beta^{\mathcal{A}^{-k}}}{\alpha^{k}}\cdot a_0 - \frac{\gamma}{\alpha}\cdot\sum_{i=0}^{k-1}\frac{\beta^{\mathcal{A}_{i-k}^{\ -k}}}{\alpha^i}$
+\end{corollary}
+\begin{corollary}
+    If $\forall -i \ge -k$, $\Delta_{-i} = \Delta$, then $a_{-k}  = \delta^{k} \cdot \left(a_0 + \sigma\right) - \sigma$. Here $\delta = \frac{\beta^{\Delta}}{\alpha}$ and $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$.
+\end{corollary}
 
 \section{Continous and Limits}
 
