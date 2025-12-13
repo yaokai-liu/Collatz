@@ -112,7 +112,7 @@ So it is the time to explore what the arguments of these equations has a stabili
 
 \end{definition}
 
-To avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default. Actually, $\CollatzReduce{a}{k+1}$ is the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$. And we can see, it is a well defined, because there is
+To avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default. Actually, $\CollatzReduce{a}{k+1}$ is the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$. And we can see, it is well defined, because there is
 \begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
 If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$.
 \end{proposition}
@@ -336,7 +336,7 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
 \end{theorem}
 \begin{proof} Trivial. \end{proof}
 \begin{proposition}
-    If $\lim_{k\to\infty}\mathcal{A}_k = \infty$, then $\frac{\mathcal{A}_k}{k} > 0$ when $(k\to\infty)$.
+    If $\lim_{k\to\infty}\mathcal{A}_k = \infty$, then $\frac{\mathcal{A}_k}{k} > 0$ when $k\to\infty$.
 \end{proposition}
 % \begin{proof} Trival. \end{proof}
 \begin{proof}
@@ -451,9 +451,15 @@ Given $a \in \mathbb{Q}_\beta-\beta\mathbb{Q}_\beta$ and $\{\Delta_i\}_{i=-\inft
     $a_{-k}  = \frac{\beta^{\mathcal{A}^{-k}}}{\alpha^{k}}\cdot a_0 - \frac{\gamma}{\alpha}\cdot\sum_{i=0}^{k-1}\frac{\beta^{\mathcal{A}_{i-k}^{\ -k}}}{\alpha^i}$
 \end{corollary}
 \begin{corollary}
-    If $\forall -i \ge -k$, $\Delta_{-i} = \Delta$, then $a_{-k}  = \delta^{k} \cdot \left(a_0 + \sigma\right) - \sigma$. Here $\delta = \frac{\beta^{\Delta}}{\alpha}$ and $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$.
+    If $\forall i$ that $k \ge i > 0$, $\Delta_{-i} = \Delta$, then we have $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$. Here $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$.
 \end{corollary}
 
+Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$ has only one form of solution:
+\[\left\{\begin{aligned}
+    a_{0} &= t \cdot \alpha^k - \sigma, \\
+    a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
+\end{aligned}\right.\]
+where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, let $s \equiv \alpha^{-k} \pmod{\alpha - \beta^{\Delta}}$, we require $t \in s\cdot\sigma + \mathbb{N}$. Unfortunately, in this case, not all solutions of the equations guarantee that $\beta \nmid a_0$.
 \section{Continous and Limits}
 
 To analyze the continous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$. 
