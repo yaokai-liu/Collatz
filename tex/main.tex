@@ -56,14 +56,16 @@
 \newcommand\DiffSet[2]{{#1}-{#2}}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Log}{\mathrm{Log}}
 \newcommand{\CollatzCompIndu}[3]{\beta^{\mathcal{A}_{#2}^{#3}}\cdot\mathfrak{A}_{#1}^{#2} + \mathfrak{A}_{#2}^{#3}\cdot\alpha^{{#1}-{#2}}}
 
-\title{{On Dynamical Systems with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{n} + \gamma$ as the Evolution Rule}}
+\title{{On Dynamical Systems with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{n} + \gamma$ as the Recursive Formula}}
 \author{Yaokai Liu \\ \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}}
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explored some properties of the dynamical systems with evolution rule $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$. And a proof of the $3n + 1$ conjecture is then provided.
+    This paper explored some properties of those dynamical systems that with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as recursive formula. And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
 \tableofcontents
 \newpage
@@ -79,7 +81,7 @@ Given an number $a_0 = a \in \mathbb{N}$, we have the modular arithmetic notatio
 where $k \in \mathbb{N}$. The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} = 1$.
 \end{conjecture}
 
-First, I found that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$, for some $m \in \mathbb{N} - \{0\}$. I wander the maxinum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$. So I defined the symbol $\CollatzReduce{a}{k+1}$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$. With this I redefined the sequence with
+First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$. We may wander the maxinum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$. Let's define the symbol $\CollatzReduce{a}{k+1}$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$. With this we can redefine the sequence with
 \[ a_{k + 1} = \frac{3a_{k}+1}{2^{\CollatzReduce{a}{k+1}}}, \]
 which ensures the $a_k$ always is an odd number.
 
@@ -91,9 +93,9 @@ That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
 Notice that $a$ is an positive finity number but $2^{\mathcal{A}_k}$ increase to infinity, that means the $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finity odd times of $-3$ under the modula. This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{4^k}, \]
-follows the Collatz conjecture.
+follows the Collatz conjecture. But we don't know if there is other $a$ and $\mathcal{A}_k$ also follow the congrunece equation system.
 
-And things should not end at this. Back to the definition of $a_{k+1}$, it is a typical single exponential Diophantine equation:
+Back to the definition of $a_{k+1}$, it is a typical single exponential Diophantine equation:
 \[ a_{k+1} \cdot 2^{\CollatzReduce{a}{k+1}} = 3 \cdot a_k + 1. \]
 The recursive Diophantine equations derives the requirements of initial number $a$:
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
@@ -254,7 +256,7 @@ holds for all $k \ge 0$.
 \end{theorem}
 % \begin{proof} Trivial. \end{proof}
 \begin{proof}
-    First, $a_1 \cdot \beta^{\mathcal{A}_1} = \gamma \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
+    First, $a_1 \cdot \beta^{\mathcal{A}_1} = \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
     Second, if $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}$, then
     \[\begin{aligned}
         a_{k+1} \cdot \beta^{\mathcal{A}_{k+1}}
@@ -309,18 +311,18 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
     $[m+1\mid n] \subset [m\mid n]$.
 \end{proposition}
 \begin{proposition}~\label{proposition:avaliable-in-finity-step}%
-    $[m\mid n+\phi(\beta^m)] = [m\mid n]$. The $\phi(\beta)$ is the Euler's function of $\beta$.
+    $[m\mid n+\ord_{\beta^{m}}(\alpha)] = [m\mid n]$. The $\ord_{\beta^{m}}(\alpha)$ is the multiplicative order of $\beta^m$ modulo $\alpha$.
 \end{proposition}
 \begin{proof}
     From \cref{proposition:equivalence-of-classes}, we have
     \[\begin{aligned}
-        a &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{\phi(\beta^m)+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-          &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{\phi(\beta^m)-1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=\phi(\beta^m)}^{\phi(\beta^m) + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-          &\equiv -\frac{\gamma}{\alpha}\cdot\frac{\alpha^{-\phi(\beta^m)} - 1}{\alpha^{-1} - 1} - \frac{\gamma}{\alpha}\cdot \alpha^{-\phi(\beta^m)}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+        a &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{\ord_{\beta^{m}}(\alpha)+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+          &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{\ord_{\beta^{m}}(\alpha)-1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=\ord_{\beta^{m}}(\alpha)}^{\ord_{\beta^{m}}(\alpha) + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+          &\equiv -\frac{\gamma}{\alpha}\cdot\frac{\alpha^{-\ord_{\beta^{m}}(\alpha)} - 1}{\alpha^{-1} - 1} - \frac{\gamma}{\alpha}\cdot \alpha^{-\ord_{\beta^{m}}(\alpha)}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
           &\equiv -\frac{\gamma}{\alpha}\cdot\frac{1 - 1}{\alpha^{-1} - 1} - \frac{\gamma}{\alpha}\cdot 1 \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
           &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}}
     \end{aligned}\]
-    which means $a \in [m\mid n + \phi(\beta^m)] \Longleftrightarrow a \in [m \mid n]$.
+    which means $a \in [m\mid n + \ord_{\beta^{m}}(\alpha)] \Longleftrightarrow a \in [m \mid n]$.
 \end{proof}
 \begin{definition}
     Denote $[m] = \bigcup_{n=0}^{\infty}[m\mid n]$, $\bar{[m]} = \mathbb{N} - [m]$.
@@ -340,7 +342,7 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
 \end{proposition}
 % \begin{proof} Trival. \end{proof}
 \begin{proof}
-    From \cref{theorem:requirements-of-avaliablity}, $a_k \in [1]$, and then from \cref{proposition:avaliable-in-finity-step}, $a_k$ will reduce in at most $\phi(\beta)$ steps. which means $\frac{\mathcal{A}_k}{k} \ge \frac{1}{\phi(\beta)}$ when $(k\to\infty)$.
+    From \cref{theorem:requirements-of-avaliablity}, $a_k \in [1]$, and then from \cref{proposition:avaliable-in-finity-step}, $a_k$ will reduce in at most $\ord_{\beta}(\alpha)$ steps. which means $\frac{\mathcal{A}_k}{k} \ge \frac{1}{\ord_{\beta}(\alpha)}$ when $k\to\infty$.
     % \newline
     % On the other hand, if $\frac{\mathcal{A}_k}{k} \to \infty$, means $\forall c> 0$, $\frac{\mathcal{A}_k}{k} \ge c$ then $\frac{\mathcal{A}_k^{i}}{k-i} \ge c$ when $k\to \infty$, then
     % \[ a_k = a\cdot \frac{\alpha^k}{\beta^{\mathcal{A}_k}} + \gamma\sum_{i=0}^{k-1}\frac{\alpha^{k-i-1}}{\beta^{\mathcal{A}_{k}^{i}}}\le a\cdot \left(\frac{\alpha}{\beta^{c}}\right)^{k} + \frac{\gamma}{\alpha}\cdot\frac{1 - \left(\frac{\alpha}{\beta^{c}}\right)^{k}}{1 - \frac{\alpha}{\beta^{c}}} \to \frac{\gamma}{\alpha}\cdot\frac{1}{1 - \frac{\alpha}{\beta^{c}}}. \]
@@ -350,7 +352,7 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
 
 \cref{theorem:requirements-of-avaliablity} present that,  generally, not all initial number is avaliable to infinity-reduce for triples. But these propositions above provide an effective way to determine whether a number can be reduced, especially since we can easily filter out many numbers that cannot.
 
-However, even though $A_{k}\to \infty$, we can't say that $a_k$ will eventually fall into a cycle. Fo example, when $\alpha = 11$, $\beta=2$, $\gamma=1$, given any number, the sequence will grow exponentially as $k$ increases, while $\alpha = 3$ will reduce to 1. The reason for this is because the distribution of reduce always only relates to $\beta$, and its change with $\alpha$ is not significant. But the growth of sequence numbers accelerates as $\alpha$ increases. $11$ is too large, $\beta=2$ and $\gamma=1$ are dwarfed with it.
+However, even if $A_{k}\to \infty$, we can't say that $a_k$ will eventually fall into a cycle. For example, when $\alpha = 11$, $\beta = 2$, and $\gamma = 1$, for any number, the sequence will grow exponentially as $k$ increases, while $\alpha = 3$ will decrease to 1, at least for the numbers we observe. The reason for this is because the distribution of reduce always only relates to $\beta$, and its change with $\alpha$ is not significant. But the growth of sequence numbers accelerates as $\alpha$ increases. $11$ is too large, $\beta=2$ and $\gamma=1$ are dwarfed with it.
 
 Therefore, we can only find these cycle numbers by letting $a_{t} = a$. Accoding to \cref{theorem:inductive-formula}, that is
 \[ a = \frac{\gamma \cdot \mathfrak{A}_{t}}{\beta^{\mathcal{A}_{t}} - \alpha^{t}}. \]
@@ -376,12 +378,12 @@ A better thought is extending our view from $\mathbb{N}$ to $\mathbb{Q}_\beta$ a
     \end{aligned}\]
     So we just let $a = a_{n}\in \mathbb{Q}_\beta$, then the Collatz sequence of $a$ is what we want. Moreover, its uniqueness is obvious.
 \end{proof}
-In fact, we can see that the rotation of $\Delta_i$ corresponds with the rotation of $a_k$. That implies some symmetry of the Collatz sequence. But not all Collatz reduce is a pure cycle. In fact, most of  what may eventually enter a cycle have a chaotic beginning. Even there may exist some Collatz sequence will not fall into any cycle. For these two kinds of Collatz reduces, we have
+In fact, we can see that the rotation of $\Delta_k$ corresponds with the rotation of $a_k$. That implies some symmetry of the Collatz sequence. But not all Collatz reduce is a pure cycle. In fact, most of  what may eventually enter a cycle have a chaotic beginning. Even there may exist some Collatz sequence will not fall into any cycle. For these two kinds of Collatz reduces, we have
 \begin{theorem}~\label{theorem:any-presequence}
     Given $\{\Delta_i\}_{i=1}^{n}$ that $n < \infty$, and any number $b \in \mathbb{Q}_\beta$. If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence that $\Delta(a;i) = \Delta_i$ and $a_n = b$.
 \end{theorem}
 \begin{proof}
-    Also using the notation $\mathcal{A}_k$, $\mathfrak{a}_k$ and $\mathfrak{a}_k$ as if $\Delta(a;i) = \Delta_{i}$.\newline
+    Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\Delta(a;i) = \Delta_{i}$.\newline
     $\forall k = 0, 1, 2, \cdots, n$, let
     \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \mathbb{Q}_\beta. \]
     Samely, since $\beta \nmid \mathfrak{A}_n^k$, then $\beta \nmid \mathfrak{a}_n^{k}$, then $\beta \nmid a_k$. And we have
@@ -389,17 +391,17 @@ In fact, we can see that the rotation of $\Delta_i$ corresponds with the rotatio
         \alpha \cdot a_k + \gamma &= b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} + \gamma \\
         % &= b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\left(\mathfrak{a}_n^{k} - \frac{1}{\alpha^{k}}\right) \\
         &= b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\left(\mathfrak{a}_n^{k} - \mathfrak{a}_{k+1}^{k}\right) \\
-        &= \left(b \cdot \frac{\beta^{\mathcal{A}_n^{k+1}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\mathfrak{a}_{n}^{k+1}\right) \cdot \beta^{\mathcal{A}_{k+1}^{k}} \\
+        &= \left(b \cdot \frac{\beta^{\mathcal{A}_n^{k+1}}}{\alpha^{n-(k+1)}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k+1}\cdot\mathfrak{a}_{n}^{k+1}\right) \cdot \beta^{\mathcal{A}_{k+1}^{k}} \\
         &= a_{k+1} \cdot \beta^{\Delta_{k+1}}
     \end{aligned}\]
     to make sure it is a Collatz sequence. Finally, It is easy to verify that $a_n = b$. And the uniqueness is obvious, too.
 \end{proof}
 
 \cref{theorem:any-cycle} and \cref{theorem:any-presequence} present that we can come up with a lot of Collatz sequence that will fall into cycles by given its reduce sequence instead of startswith an interger. However, not all given reduce sequence can derive a Collatz sequence because there may be some $\beta\mid \mathfrak{A}_{n+k}^{k}$. At that time, $\beta \left\vert \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \right.$. That's why we need $\beta \nmid \mathfrak{A}_i^j$. Moreover, from the two proofs above, we can also draw another interesting corollary:
-\begin{corollary}
+\begin{theorem}
     If Collatz sequence of $a$ will fall into a cycle, then $a \in \mathbb{Q}$.
-\end{corollary}
-However, the converse of this conclusion does not hold. For example, $a=3$ under $\alpha = 11$, $\beta=2$, $\gamma=1$ will never fall into a cycle. For these won't fall in to cycles, there is also a conjecture:
+\end{theorem}
+However, the converse of this conclusion does not hold. For example, $a=3$ under $\alpha = 11$, $\beta=2$, $\gamma=1$ may never fall into a cycle. For these won't fall in to cycles, there is also a conjecture:
 \begin{conjecture}
     Given $\{\Delta_i\}_{i=1}^{\infty}$ has no cycle, then there is a Collatz sequence that $\Delta(a;i) = \Delta_i$, converges to an irrational number or $0$.
 \end{conjecture}
@@ -413,7 +415,7 @@ Anyway, we now finally extended the problem from integers to the $\beta$-adic nu
 %     -&1, &&a < 0.
 % \end{aligned}\right. \]
 \begin{definition}
-    given $\{\Delta_i\}_{i=-\infty}^{\infty}$ that $\Delta_0 = 0$, define the accumulation from $m$ to $n$ as
+    given $\{\Delta_i\}_{i=-\infty}^{\infty}$, define the accumulation from $m$ to $n$ as
     \[ \mathcal{A}_{n}^{m} = \left\{\begin{aligned}
     &\sum_{i=m}^{n}\Delta_i, &&n > m, \\
     &0, &&n = m, \\
@@ -451,17 +453,23 @@ Given $a \in \mathbb{Q}_\beta-\beta\mathbb{Q}_\beta$ and $\{\Delta_i\}_{i=-\inft
     $a_{-k}  = \frac{\beta^{\mathcal{A}^{-k}}}{\alpha^{k}}\cdot a_0 - \frac{\gamma}{\alpha}\cdot\sum_{i=0}^{k-1}\frac{\beta^{\mathcal{A}_{i-k}^{\ -k}}}{\alpha^i}$
 \end{corollary}
 \begin{corollary}
+    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}$ that
+    \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
+\end{corollary}
+\begin{corollary}
     If $\forall i$ that $k \ge i > 0$, $\Delta_{-i} = \Delta$, then we have $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$. Here $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$.
 \end{corollary}
-
 Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$ has only one form of solution:
 \[\left\{\begin{aligned}
     a_{0} &= t \cdot \alpha^k - \sigma, \\
     a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
 \end{aligned}\right.\]
-where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, let $s \equiv \alpha^{-k} \pmod{\alpha - \beta^{\Delta}}$, we require $t \in s\cdot\sigma + \mathbb{N}$. Unfortunately, in this case, not all solutions of the equations guarantee that $\beta \nmid a_0$.
-\section{Continous and Limits}
+where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$. Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
+Finally, we define two notations.
+Denote $\log_{a, b}(x) = y$ that $b^{y} \equiv x \pmod{a}$ and $0\le y < \ord_{a}(b)$ if the congruence equation has some solution, else say $\log_{a, b}(x)$ not exists. And denote $\Log_{a, b}(x) = \ord_{a}(b)\mathbb{Z} + \log_{a, b}(x)$ if $\log_{a, b}(x)$ exists else $\Log_{a, b}(x) = \varnothing$. Back to the $a \cdot \beta^{\Delta_{0}} = \alpha \cdot a_{-1} + \gamma$. If we want to find an integer pre-item of $a$, we require $\Delta_{0} \in \Log_{\alpha, \beta}(a^{-1} \cdot \gamma)$. If $\Log_{\alpha, \beta}(a^{-1} \cdot \gamma) = \varnothing$, which means that $a^{-1}$ does not exist modulo $\alpha$, or $a^{-1} \cdot \gamma$ is not the remainder of a power of $\beta$, then we call $a$ a Collatz primitive source.
+
+\section{Continous and Limits}
 To analyze the continous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$. 
 \begin{definition}
 Given $n$ dimensions vector $\mathbf{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms. With these, moreover, we can define
