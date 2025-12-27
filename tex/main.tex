@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 % \usepackage{arxiv}
 \usepackage{xeCJK}
-\usepackage{amsmath,amssymb,amsthm,stackrel,nccmath}
+\usepackage{amsmath,amssymb,amsthm,stackrel,nccmath,bm}
 \usepackage{color,xcolor}
 \usepackage{fontspec}
 \usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
@@ -61,7 +61,9 @@
 \newcommand{\CollatzCompIndu}[3]{\beta^{\mathcal{A}_{#2}^{#3}}\cdot\mathfrak{A}_{#1}^{#2} + \mathfrak{A}_{#2}^{#3}\cdot\alpha^{{#1}-{#2}}}
 
 \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
-\author{Yaokai Liu \\ \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}}
+\author{Yaokai Liu \\
+% \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}%
+}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -225,14 +227,14 @@ $\mathfrak{A}_{n}^{n} = 0$, $\mathfrak{A}_{n+1}^{n} = 1$. And $\mathfrak{a}_{n}^
 \begin{proof}
 \[\begin{aligned}
     \mathfrak{A}_n^{m} =&\sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-    =& \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-    =& \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-    =& \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-    =& \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
+    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
+    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
     \mathfrak{a}_n^{m} =&\sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =& \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =& \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =& \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
+    =&\ \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
 \end{aligned}\]
 \end{proof}
 Actually, we can formlly define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. It is easily to verifty that the two definitions are equivalent.
@@ -254,12 +256,12 @@ holds for all $k \ge 0$.
     Second, if $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}$, then
     \[\begin{aligned}
         a_{k+1} \cdot \beta^{\mathcal{A}_{k+1}}
-        =& a_{k+1} \cdot \beta^{\CollatzReduce{a}{k+1}} \cdot \beta^{\mathcal{A}_{k}} \\
-        =& \alpha \cdot a_k \cdot \beta^{\mathcal{A}_k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
-        % =& \alpha \cdot (a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}) + \gamma \cdot \beta^{\mathcal{A}_k} \\
-        =& a \cdot \alpha^{k+1} + \gamma \cdot \alpha \cdot \mathfrak{A}_{k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
-        % =& a \cdot \alpha^{k+1} + \gamma \cdot (\alpha \cdot \mathfrak{A}_{k} + \cdot \beta^{\mathcal{A}_k}) \\
-        =& a \cdot \alpha^{k+1} + \gamma \cdot \mathfrak{A}_{k+1}.
+        =&\ a_{k+1} \cdot \beta^{\CollatzReduce{a}{k+1}} \cdot \beta^{\mathcal{A}_{k}} \\
+        =&\ \alpha \cdot a_k \cdot \beta^{\mathcal{A}_k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        % =&\ \alpha \cdot (a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}) + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        =&\ a \cdot \alpha^{k+1} + \gamma \cdot \alpha \cdot \mathfrak{A}_{k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        % =&\ a \cdot \alpha^{k+1} + \gamma \cdot (\alpha \cdot \mathfrak{A}_{k} + \cdot \beta^{\mathcal{A}_k}) \\
+        =&\ a \cdot \alpha^{k+1} + \gamma \cdot \mathfrak{A}_{k+1}.
     \end{aligned}\]
     Sum up, we proved this proposition.
 \end{proof}
@@ -279,8 +281,8 @@ If $\mathcal{A}_k > 0$, $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -
 \end{corollary}
 % \begin{proof} Trivial with \cref{corollary:inductive-formula-with-reduced}. \end{proof}
 \begin{corollary}
-    If $a = t \cdot \beta^n + s$, that $t, s \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, then
-    \[a_k \cdot \beta^{\mathcal{A}_k} - \gamma\mathfrak{A}_k = (t_k \cdot \beta^{\mathcal{T}_k} - \gamma\mathfrak{T}_k)\cdot \beta^{n} + s_k \cdot \beta^{\mathcal{S}_k} - \gamma\mathfrak{S}_k.\]
+    If $a = t \cdot p^n + s$, that $t, s, p \in \mathbb{N}_{>1}$, then
+    \[a_k \cdot \beta^{\mathcal{A}_k} - \gamma\mathfrak{A}_k = (t_k \cdot \beta^{\mathcal{T}_k} - \gamma\mathfrak{T}_k)\cdot p^{n} + (s_k \cdot \beta^{\mathcal{S}_k} - \gamma\mathfrak{S}_k).\]
 \end{corollary}
 \begin{proof} Trivial. \end{proof}
 \begin{corollary}
@@ -292,25 +294,33 @@ If $\mathcal{A}_k > 0$, $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -
     \end{aligned}\]
     holds during $\mathcal{T}_k + n - \mathcal{A}_k > 0$.
 \end{corollary}
+
+To analysis the relationship between the reduces and the items, we introduce two notations:
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
-    called the discrete order of $b$ modulo $a$. And declare $\ord_{a}(1) = 0$.
+    called the discrete order of $b$ modulo $a$. And declare $\ord_{a}(1) = 1$.
 \end{definition}
 \begin{definition}
 Given $x\in \mathbb{N}_{_{>1}}$.
 
 If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$ and call it the principal discrete logarithm of $x$; otherwise, we say that $\log_{a, b}(x)$ does not exist.
 
-If $\log_{a, b}(x)$ exists, then we denote $\Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x)$; otherwise, we denote $\Log_{a, b}(x) = \varnothing$, and call it the discrete logarithms of $x$. 
+If $\log_{a, b}(x)$ exists, then we denote $\Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x)$; otherwise, we denote $\Log_{a, b}(x) = \varnothing$, and call it the discrete logarithms of $x$.
+
+We declare $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
 \end{definition}
-We declare $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$. But without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$.
-With these notations, we have
+Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
+With the two notations, we have
 \begin{theorem}~\label{theorem:concentric-rule}
     If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $\forall n \in \ord_{\alpha}(\beta)\mathbb{N}$, we have
     \[a' = \beta^{n}\cdot a + \frac{\gamma}{\alpha}\cdot(\beta^{n} - 1) \in \mathbb{N}\]
     such that $b\cdot\beta^{m+n} = \alpha\cdot a' + \gamma$. %And we say $a'$ is concentric with $a$.
 \end{theorem}
+\begin{theorem}
+    If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
+\end{theorem}
+But not all $b$ is inversable modulo $\alpha$, and not all $a^{-1} \cdot \gamma$ is a remainder of a power of $\beta$. If $\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing$, we call $b$ a Collatz primitive source.
 
 It seems like we can intruduce the the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e. fall into those numbers cannot be reduced. Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
 \begin{definition}
@@ -427,8 +437,8 @@ Anyway, we now finally extended the problem from integers to the rational number
 % \section{Continous and Limits}
 % To analyze the continous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$. 
 % \begin{definition}
-% Given $n$ dimensions vector $\mathbf{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms. With these, moreover, we can define
-%     \[f(\mathbf{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
+% Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms. With these, moreover, we can define
+%     \[f(\bm{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
 %     on $\mathbb{R} - \{\mathcal{A}_n \ne n\log_{\beta}{\alpha}\}$ called Collatz value.
 % \end{definition}
 
@@ -494,61 +504,89 @@ Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigm
 \end{aligned}\right.\]
 where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$. Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
-Back to the $a \cdot \beta^{\Delta_{0}} = \alpha \cdot b + \gamma$. If we want to find the integer pre-item of $a$, i.e. the $b$, we require $\Delta_{0} \in \Log_{\beta, \alpha}(a^{-1} \cdot \gamma)$. If $\Log_{\beta, \alpha}(a^{-1} \cdot \gamma) = \varnothing$, which means that $a^{-1}$ does not exist modulo $\alpha$, or $a^{-1} \cdot \gamma$ is not the remainder of a power of $\beta$, then we call $a$ a Collatz primitive source.
-
- \section{Analysis on $\alpha=3$, $\beta=2$, $\gamma=1$}
+\section{Analysis on $\alpha=3$, $\beta=2$, $\gamma=1$}
 Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$. At first, we have
 \[ \Log_{2,3}(x) = \left\{\begin{aligned}
-    &2\mathbb{Z} + 1, &&x\equiv 2 \pmod{3}\\
+    &2\mathbb{Z} + 1, &&x\equiv 2 \pmod{3} \\
     &2\mathbb{Z},     &&x\equiv 1 \pmod{3}
 \end{aligned}\right. \]
+
 Let's change an expression of the Collatz conjecture:
 \begin{corollary}
-    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}$ such that
+    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
     \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
 \end{corollary}
 \begin{definition}
-    For $\mathbf{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}^{n}$, with the notation of $\mathcal{A}_0 = 0$, $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}^{n} \to \mathbb{Q}$ as
-    \[ f_{n}(\mathbf{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
+    For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$, $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
+    \[ f_{n}(\bm{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k} = \frac{2^{\mathcal{A}_{n}}}{3^{n}} - \frac{1}{3}\mathfrak{a}_{n}. \]
 
-    Define mapping $E: \mathbb{N}^{m} \to \mathbb{N}^{n}$ as
+    Define mapping $E: \mathbb{N}_{\ge1}^{m} \to \mathbb{N}_{\ge1}^{n}$ as
     \[ E(\Delta_{1}, \Delta_{2}, \cdots, \Delta_{m}) = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{m}, \underbrace{2, 2, \cdots, 2}_{n-m\ \text{counts}}). \]
 
-    Given $s \in \mathbb{N}$, Define mapping $F_{s; k}: \mathbb{N}^{n} \to \mathbb{N}^{n}$ as
+    Given $s \in \mathbb{Z}$, define mapping $F_{s; k}: \mathbb{N}_{\ge1}^{n} \to \mathbb{N}_{\ge1}^{n}$ as
     \[ F_{s; k}(\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) = (\Delta_{1}, \Delta_{2}, \cdots,\Delta_{k} + s, \cdots, \Delta_{n}). \]
 \end{definition}
 \begin{proposition}
-    $f_{n}(E(\mathbf{a})) = f_{m}(\mathbf{a})$.
+    $2\nmid f_{n}(\bm{a})$.
 \end{proposition}
 \begin{proposition}
-$f_{n}(F_{s;k}(\mathbf{a})) = 2^{s}\cdot f_{n}(\mathbf{a}) + \frac{1}{3}\cdot(2^{s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}}$.
+    $f_{n}(E(\bm{a})) = f_{m}(\bm{a})$.
 \end{proposition}
-Now suppose $f_{n}(\mathbf{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
+\begin{proposition}
+    $F_{t;l}(F_{s;k}(\bm{a})) = F_{s;k}(F_{t;l}(\bm{a}))$.
+\end{proposition}
+\begin{proposition}
+$f_{n}(F_{s;k}(\bm{a})) = 2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}^{k}\cdot(2^{s} - 1)$.
+\end{proposition}
+\begin{proposition}
+    For every weight, $f_n$ is an increasing function.
+\end{proposition}
+\begin{proposition}
+    If $\bm{a} \ne \bm{b}$, then $f_{n}(\bm{a}) \ne f_{n}(\bm{b})$.
+\end{proposition}
+% \begin{proposition}
+% $f_{n}(F_{2s;k}(\bm{a})) = 4^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot(4^{s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}}$.
+% \end{proposition}
+Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
 \begin{lemma}
-    If $a \equiv 1\pmod{3}$, then $\frac{1}{3}(a^{n} - 1) = \sum_{k=0}^{n-1}a^{k} \equiv n \pmod{3}$.
+    If $a = mp + 1$, then $\frac{1}{p}(a^{n} - 1) = \sum_{k=0}^{n-1}a^{k} \equiv mn \pmod{p}$.
 \end{lemma}
 % \begin{proposition}
-% $f_{n}(F_{2s;1}(\mathbf{a})) \equiv f_{n}(\mathbf{a}) + s \pmod{3}$.
+% $f_{n}(F_{2s;1}(\bm{a})) \equiv f_{n}(\bm{a}) + s \pmod{3}$.
 % \end{proposition}
 % \begin{proof} Trivial. \end{proof}
 \begin{proposition}
-    $f_{n}(F_{3^{k-1}\cdot2s;k}(\mathbf{a})) \equiv f_{n}(\mathbf{a}) + s\cdot2^{\mathcal{A}_{k - 1}} \pmod{3}$.
+    $f_{n}(F_{3^{k-1}\cdot2s;k}(\bm{a})) \equiv f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k - 1}} \pmod{3}$.
 \end{proposition}
 % \begin{proof} Trivial. \end{proof}
-\begin{proof}
-    \[ \begin{aligned}
-        &f_{n}(F_{3^{k-1}\cdot2s;k}(\mathbf{a})) && \\
-        =& 2^{3^{k-1}\cdot2s}\cdot f_{n}(\mathbf{a}) + \frac{1}{3}\cdot(2^{3^{k-1}\cdot2s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}} && \\
-        =& 4^{3^{k-1}\cdot s}\cdot f_{n}(\mathbf{a}) + \frac{1}{3}\cdot(4^{3^{k-1}\cdot s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}} && \\
-        \equiv& 4^{3^{k-1}\cdot s}\cdot f_{n}(\mathbf{a}) + s\cdot3^{k-1}\cdot\frac{1}{3^{k-1}}\sum_{i=0}^{k-1}2^{\mathcal{A}_i}\cdot3^{k-i-1} &&\pmod{3}\\
-        \equiv& 4^{3^{k-1}\cdot s}\cdot f_{n}(\mathbf{a}) + s\cdot\sum_{i=0}^{k-1}2^{\mathcal{A}_i}\cdot3^{k-i-1} &&\pmod{3}\\
-        \equiv& f_{n}(\mathbf{a}) + s\cdot2^{\mathcal{A}_{k-1}}. &&\pmod{3}
-    \end{aligned} \]
-\end{proof}
-
+% \begin{proof}
+%     \[ \begin{aligned}
+%         &f_{n}(F_{3^{k-1}\cdot2s;k}(\bm{a})) && \\
+%         =&\ 2^{3^{k-1}\cdot2s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}^{k}\cdot(2^{3^{k-1}\cdot2s} - 1) && \\
+%         =&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + \frac{1}{3}(4^{3^{k-1}\cdot s} - 1)\cdot\mathfrak{a}^{k} && \\
+%         \equiv&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + s\cdot3^{k-1}\cdot\frac{1}{3^{k-1}}\cdot\mathfrak{A}^{k} &&\pmod{3}\\
+%         \equiv&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + s\cdot\mathfrak{A}^{k} &&\pmod{3}\\
+%         \equiv&\ f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k-1}}. &&\pmod{3}
+%     \end{aligned} \]
+% \end{proof}
+% \begin{proposition}
+% Suppose $k\le l$, then
+% \[\begin{aligned}
+% f_{n}(F_{t;l}(F_{s;k}(\bm{a})))
+% =&\ 2^{t}\cdot f_{n}(F_{s;k}(\bm{a})) + \frac{1}{3}\cdot(2^{t} - 1)\cdot F_{s;k}(\mathfrak{a}_{l}^{0}) \\
+% =&\ 2^{t}\cdot f_{n}(F_{s;k}(\bm{a})) + \frac{1}{3}\cdot(2^{t} - 1)\cdot(\mathfrak{a}_{k}^{0} + 2^{s}\cdot\mathfrak{a}_{l}^{k}) \\
+% =&\ 2^{t}\cdot2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot2^{t}\cdot(2^{s} - 1)\cdot\mathfrak{a}_{k}^{0} \\&+ \frac{1}{3}\cdot(2^{t} - 1)\cdot(\mathfrak{a}_{k}^{0} + 2^{s}\cdot\mathfrak{a}_{l}^{k})  \\
+% =&\ 2^{t}\cdot2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot2^{t}\cdot2^{s}\cdot\mathfrak{a}_{k}^{0} - \frac{1}{3}\cdot2^{t}\cdot\mathfrak{a}_{k}^{0} \\
+% &+\frac{1}{3}\cdot2^{t}\cdot\mathfrak{a}_{k}^{0} - \frac{1}{3}\cdot\mathfrak{a}_{k}^{0}+\frac{1}{3}\cdot2^{t}\cdot2^{s}\cdot\mathfrak{a}_{l}^{k} - \frac{1}{3}\cdot2^{s}\cdot\mathfrak{a}_{l}^{k} \\
+% =&\ 2^{t+s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}_{k}^{0}\cdot(2^{t+s} - 1) + \frac{1}{3}\mathfrak{a}_{l}^{k}\cdot2^{s}\cdot(2^t - 1).
+% \end{aligned}\]
+% \end{proposition}
+% \begin{proposition}
+%     \[ f_{n}(F_{ 3^{l-1}\cdot 2t;l}(F_{3^{k-1}\cdot2s;k}(\bm{a}))) \equiv f_{n}(\bm{a}) + s \cdot 2^{\mathcal{A}_{k-1}} + t \cdot 2^{\mathcal{A}_{l - 1}} \pmod{3}. \]
+% \end{proposition}
 \appendix
-\section{Some Propoties of Two Abstract Forms}
-Now let's forgot those definitions before. We will introduce two new abstract forms to inclussion those properties above.
+\section{Two Abstract Forms}
+Now let's forget those definitions before. We will introduce two new abstract forms to inclussion those properties above.
 \begin{definition}
     Providing a ring $R$ and a set of index $I$. \newline
     Mapping $F:I\times I \to R$ is called an form on $R$ with $I$ if it follow some special propoties. And we denote $F_{i}^{j} = F(j, i)$.
@@ -587,19 +625,19 @@ Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mat
     defined as
     \[ (\mathfrak{A} + \mathfrak{B})_{i}^{j} = \mathfrak{A}_{i}^{j} + \mathfrak{B}_{i}^{j}. \]
 \end{proposition}
-\begin{proof}
-    Let $\mathfrak{O}$ is that $\forall i, j \in I$, $\mathfrak{O}_{i}^{j}$maps to $0$. $\mathfrak{O}$ is the zero element of $\mathrm{Con}(A, B)$. We can just verify if the $+$ is closed in $\mathrm{Con}(A, B)$.
-    $\forall \mathfrak{A}, \mathfrak{B} \in \mathrm{Con}(A, B)$, we have
-    \[ \begin{aligned}
-         & A_{i}^{k}\cdot(\mathfrak{A} + \mathfrak{B})_{k}^{j} + (\mathfrak{A} + \mathfrak{B})_{i}^{k}\cdot B_{k}^{j} \\
-        =& A_{i}^{k}\cdot(\mathfrak{A}_{k}^{j} + \mathfrak{B}_{k}^{j}) + (\mathfrak{A}_{i}^{k} + \mathfrak{B}_{i}^{k})\cdot B_{k}^{j} \\
-        =& A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j} \\
-        =& A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j} + A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j} \\
-        =& (A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j}) + (A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j}) \\
-        =& \mathfrak{A}_{i}^{j} + \mathfrak{B}_{i}^{j} = (\mathfrak{A} + \mathfrak{B})_{i}^{j},
-    \end{aligned} \]
-    so $\mathfrak{A} + \mathfrak{B} \in \mathrm{Con}(A, B)$.
-\end{proof}
+% \begin{proof}
+%     Let $\mathfrak{O}$ is that $\forall i, j \in I$, $\mathfrak{O}_{i}^{j}$maps to $0$. $\mathfrak{O}$ is the zero element of $\mathrm{Con}(A, B)$. We can just verify if the $+$ is closed in $\mathrm{Con}(A, B)$.
+%     $\forall \mathfrak{A}, \mathfrak{B} \in \mathrm{Con}(A, B)$, we have
+%     \[ \begin{aligned}
+%          & A_{i}^{k}\cdot(\mathfrak{A} + \mathfrak{B})_{k}^{j} + (\mathfrak{A} + \mathfrak{B})_{i}^{k}\cdot B_{k}^{j} \\
+%         =&\ A_{i}^{k}\cdot(\mathfrak{A}_{k}^{j} + \mathfrak{B}_{k}^{j}) + (\mathfrak{A}_{i}^{k} + \mathfrak{B}_{i}^{k})\cdot B_{k}^{j} \\
+%         =&\ A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j} \\
+%         =&\ A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j} + A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j} \\
+%         =&\ (A_{i}^{k}\cdot\mathfrak{A}_{k}^{j} + \mathfrak{A}_{i}^{k}\cdot B_{k}^{j}) + (A_{i}^{k}\cdot\mathfrak{B}_{k}^{j} + \mathfrak{B}_{i}^{k}\cdot B_{k}^{j}) \\
+%         =&\ \mathfrak{A}_{i}^{j} + \mathfrak{B}_{i}^{j} = (\mathfrak{A} + \mathfrak{B})_{i}^{j},
+%     \end{aligned} \]
+%     so $\mathfrak{A} + \mathfrak{B} \in \mathrm{Con}(A, B)$.
+% \end{proof}
 Also, we denote $\mathfrak{U} = 0$ if it is a zero convolution form. However, we need another restriction of convolution forms to describe our problem.
 \begin{definition}
     Given a convolution form $\mathfrak{U} \in \mathrm{Con}(A, B)$, if $\forall i, j\in I$, there is $\mathfrak{U}_{i+1}^{i} = \mathfrak{U}_{j+1}^{j}$, we say it is index independent.
@@ -607,6 +645,9 @@ Also, we denote $\mathfrak{U} = 0$ if it is a zero convolution form. However, we
 All index independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
 \begin{theorem}
     Given two exponentation form $\mathcal{A}$ and $\mathcal{B}$. If there is $T \in I$ such that $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B})$, $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$.
+\end{theorem}
+\begin{theorem}
+    Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $i, j$ and $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
 \end{theorem}
 \bibliography{Collatz}
 \bibliographystyle{unsrt}

@@ -68,7 +68,7 @@ class Collatz:
 
 if __name__ == '__main__':
     alpha, beta, gamma = 3, 2, 1
-    b, step = 1145141, 0
+    b, step = 191, 0
     a = Collatz(alpha, beta, gamma, b)
     # a.eval_to(100)
     a.eval_eventual()

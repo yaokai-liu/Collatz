@@ -1,5 +1,8 @@
 import math
+import random
 from fractions import Fraction
+from random import randint
+
 import numpy as np
 from math import gcd
 import matplotlib.pyplot as plt
@@ -25,18 +28,26 @@ def pre_reduce_from_num(a: int, b: int, len: int):
         a //= b
     return pre_reduce
 
+def F_trans(pre_reduce, adds: dict):
+    return [r + adds[i] if adds.get(i) else r for i, r in enumerate(pre_reduce)]
+
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [5, 3, 1, 4, 1, 2, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 5, 1, 2,
-                  1, 3, 1, 1, 1, 1, 1, 1, 1, 2, 2, 7, 3, 2, 2, 4, 1, 1, 2, 3, 4]
-    # N = collatz_preitem(1, pre_reduce)
-    # print(N)
-    for s in range(100):
-        pre_reduce[3] = 4 + 54*s
-        N = collatz_preitem(1, pre_reduce)
-        b = 1145141 + s * (2**(5+3+1))
-        print(N, b, N % 3 == b % 3)
-
+    pre_reduce = [1, 3, 1, 2, 3, 4]
+    N = collatz_preitem(1, pre_reduce)
+    print(N)
+    I = ar=random.sample(range(len(pre_reduce)),2)
+    l, k = max(I), min(I)
+    k = max(k, l - k)
+    for t in range(1, 10):
+        m = 2 * (3 ** l) * t
+        for s in range(1, 10):
+            n = 2 * (3 ** k) * s
+            adds = {l: m, k: n}
+            new_pre_reduce = F_trans(pre_reduce, adds)
+            N_new = collatz_preitem(1, new_pre_reduce)
+            b = N + s * (2**sum(pre_reduce[:k])) + t * (2**sum(pre_reduce[:l]))
+            print(adds, N_new, N_new%3 == b%3)
     # deltas = range(1, 10)
     # for i in range(len(pre_reduce)):
     #     values = []
