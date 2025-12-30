@@ -281,7 +281,7 @@ If $\mathcal{A}_k > 0$, $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -
 \end{corollary}
 % \begin{proof} Trivial with \cref{corollary:inductive-formula-with-reduced}. \end{proof}
 \begin{corollary}
-    If $a = t \cdot p^n + s$, that $t, s, p \in \mathbb{N}_{>1}$, then
+    If $a = t \cdot p^n + s$, that $t, s\in \mathbb{N}_{\ge1}, p \in \mathbb{N}_{>1}$, then
     \[a_k \cdot \beta^{\mathcal{A}_k} - \gamma\mathfrak{A}_k = (t_k \cdot \beta^{\mathcal{T}_k} - \gamma\mathfrak{T}_k)\cdot p^{n} + (s_k \cdot \beta^{\mathcal{S}_k} - \gamma\mathfrak{S}_k).\]
 \end{corollary}
 \begin{proof} Trivial. \end{proof}
@@ -432,7 +432,7 @@ However, the converse of this conclusion does not hold. For example, $a=3$ under
 \begin{conjecture}
     Given $\{\Delta_i\}_{i=1}^{\infty}$ has no cycle, then there is a Collatz sequence that $\Delta(a;i) = \Delta_i$, converges to an irrational number or $0$.
 \end{conjecture}
-Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduce.
+Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduces. This implies that the Collatz reduces is the more fundamental aspect of this process.
 
 % \section{Continous and Limits}
 % To analyze the continous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$. 
@@ -505,17 +505,30 @@ Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigm
 where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$. Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
 \section{Analysis on $\alpha=3$, $\beta=2$, $\gamma=1$}
-Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$. At first, we have
-\[ \Log_{2,3}(x) = \left\{\begin{aligned}
-    &2\mathbb{Z} + 1, &&x\equiv 2 \pmod{3} \\
-    &2\mathbb{Z},     &&x\equiv 1 \pmod{3}
-\end{aligned}\right. \]
-
+Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$.
 Let's change an expression of the Collatz conjecture:
 \begin{corollary}
     \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
     \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
 \end{corollary}
+
+At first, we have
+\[ \Log_{2,3}(x) = \left\{\begin{aligned}
+    &2\mathbb{Z},     &&x\equiv 1 \pmod{3} \\
+    &2\mathbb{Z} + 1, &&x\equiv 2 \pmod{3}
+\end{aligned}\right. \]
+And we have
+\begin{lemma}
+    $\Log_{2,3}(x^{-1}) = \Log_{2,3}(x)$.
+\end{lemma}
+\begin{lemma}
+    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$, $m = b\fdiv 3$, then
+    \[ a = \left\{\begin{aligned}
+        &m + \frac{1}{3}(4^{n} - 1)     &&\equiv m + n, && b\equiv 1 \pmod{3} \\
+        &2m + 1 + \frac{1}{3}(4^{n} - 1)&&\equiv 2m + 1 + n. && b\equiv 2\pmod{3}
+    \end{aligned}\right.\]
+\end{lemma}
+
 \begin{definition}
     For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$, $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
     \[ f_{n}(\bm{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k} = \frac{2^{\mathcal{A}_{n}}}{3^{n}} - \frac{1}{3}\mathfrak{a}_{n}. \]
@@ -536,10 +549,10 @@ Let's change an expression of the Collatz conjecture:
     $F_{t;l}(F_{s;k}(\bm{a})) = F_{s;k}(F_{t;l}(\bm{a}))$.
 \end{proposition}
 \begin{proposition}
-$f_{n}(F_{s;k}(\bm{a})) = 2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}^{k}\cdot(2^{s} - 1)$.
+$f_{n}(F_{s;k}(\bm{a})) = 2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}_{k}\cdot(2^{s} - 1)$.
 \end{proposition}
 \begin{proposition}
-    For every weight, $f_n$ is an increasing function.
+    For each weight, $f_n$ is an increasing function.
 \end{proposition}
 \begin{proposition}
     If $\bm{a} \ne \bm{b}$, then $f_{n}(\bm{a}) \ne f_{n}(\bm{b})$.
@@ -584,6 +597,16 @@ Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
 % \begin{proposition}
 %     \[ f_{n}(F_{ 3^{l-1}\cdot 2t;l}(F_{3^{k-1}\cdot2s;k}(\bm{a}))) \equiv f_{n}(\bm{a}) + s \cdot 2^{\mathcal{A}_{k-1}} + t \cdot 2^{\mathcal{A}_{l - 1}} \pmod{3}. \]
 % \end{proposition}
+
+\begin{definition}
+    There is a function $g_{s,m;n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ depends on $f_{n}$ defined as
+    \[ g_{s,m;n}(\bm{a}) = s\cdot 2^{m}\cdot2^{\mathcal{A}_{n}} + f_{n}(\bm{a}). \]
+\end{definition}
+And we have
+\begin{proposition}
+    $g_{s,m;n}(\bm{a}) \to s \cdot 2^{m} \cdot 3^{n} + 1$.
+\end{proposition}
+
 \appendix
 \section{Two Abstract Forms}
 Now let's forget those definitions before. We will introduce two new abstract forms to inclussion those properties above.
@@ -618,7 +641,7 @@ Given a convolution form $\mathfrak{U}$ of $A$ and $B$, left or right both have
     $\forall i, j \in I, A_{j}^{i}\cdot\mathfrak{U}_{i}^{j} + \mathfrak{U}_{j}^{i}\cdot B_{i}^{j} = 0$.
 \end{proposition}
 
-Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mathrm{ConL}(A, B)$ as the set of all left convolutionforms of $A$ and $B$. If the left or right is not matter, we just denote them $\mathrm{Con}(A, B)$.
+Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mathrm{ConL}(A, B)$ as the set of all left convolution forms of $A$ and $B$. If the left or right is not matter, we just denote them $\mathrm{Con}(A, B)$. Our discussion of convolution forms will discare the left or right.
 \begin{proposition}
     $\mathrm{Con}(A, B)$ is a commutative group by
     \[ + : \mathrm{Con}(A, B) \times \mathrm{Con}(A, B) \to \mathrm{Con}(A, B) \]
@@ -639,15 +662,34 @@ Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mat
 %     so $\mathfrak{A} + \mathfrak{B} \in \mathrm{Con}(A, B)$.
 % \end{proof}
 Also, we denote $\mathfrak{U} = 0$ if it is a zero convolution form. However, we need another restriction of convolution forms to describe our problem.
+\begin{lemma}
+    Given two exponentation form $\mathcal{A}$ and $\mathcal{B}$.
+    $\forall \mathfrak{U} \in \mathrm{Con}(\mathcal{A}, \mathcal{B})$, we have
+    \[ \mathfrak{U}_{i}^{j} = \sum_{k = j}^{i - 1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j}. \]
+\end{lemma}
+We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consisting of the $\mathfrak{U}_{i}^{j}$. We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
+% \begin{corollary}
+%     If $\mathfrak{U} \in \mathrm{ICon}(A, B)$ that $\mathfrak{U}_{k+1}^{k} = u$, then
+%     \[ \mathfrak{U}_{i}^{j} = u \cdot\sum_{i \ge k \ge j}\mathcal{A}_{i}^{k+1}\mathcal{B}_{k}^{j}. \]
+% \end{corollary}
 \begin{definition}
-    Given a convolution form $\mathfrak{U} \in \mathrm{Con}(A, B)$, if $\forall i, j\in I$, there is $\mathfrak{U}_{i+1}^{i} = \mathfrak{U}_{j+1}^{j}$, we say it is index independent.
+    Given a convolution form $\mathfrak{U} \in \mathrm{Con}(A, B)$, if $\forall i, j\in I$, there is $\mathfrak{U}_{i+1}^{i} = \mathfrak{U}_{j+1}^{j}$, we say it is kernel independent.
 \end{definition}
-All index independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
+All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
+
 \begin{theorem}
     Given two exponentation form $\mathcal{A}$ and $\mathcal{B}$. If there is $T \in I$ such that $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B})$, $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$.
 \end{theorem}
+\begin{proof}
+    \[ \begin{aligned}
+        \mathfrak{U}_{i+T}^{j+T} =& \sum_{k = j+T}^{i+T-1}\mathcal{A}_{i+T}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j+T} \\
+        =& \sum_{k = j+T}^{i+T-1}\mathcal{A}_{i}^{k-T+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k-T}^{j} \\
+        =& \sum_{k = j}^{i-1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j} \\
+        =& \mathfrak{U}_{i}^{j}
+    \end{aligned} \]
+\end{proof}
 \begin{theorem}
-    Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $i, j$ and $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
+    Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
 \end{theorem}
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
