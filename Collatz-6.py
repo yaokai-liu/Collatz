@@ -64,13 +64,27 @@ class Collatz:
 
     def eval_eventual(self):
         while self.TERMS[-1] > 1:
-            self.eval_to(len(self.TERMS) + 5)
+            self.eval_to(len(self.TERMS) - 1)
 
 if __name__ == '__main__':
     alpha, beta, gamma = 3, 2, 1
-    b, step = 191, 0
-    a = Collatz(alpha, beta, gamma, b)
-    # a.eval_to(100)
+    tail = 0b110110100001001011
+    # tail = 0b1
+    # for head in range(1 << 6):
+    #     b = (head << tail.bit_length()) + tail
+    #     if b % 2 == 0: continue
+    #     a = Collatz(alpha, beta, gamma, b)
+    #     a.eval_eventual()
+    #     # print(a.REDUCES)
+    #     print(b, bin(b), head, bin(head), a.REDUCES)
+    # for i in range(50):
+    #     print("="*50)
+    #     for j in range(50):
+    #         if (2*j + 1) % 3 == 0: continue
+    #         a = Collatz(alpha, beta, gamma, 2*(2*j+1)*(3**i)+1)
+    #         a.eval_eventual()
+    #         print(a.REDUCES)
+
+    a = Collatz(alpha, beta, gamma, 37)
     a.eval_eventual()
     print(a.REDUCES)
-    print(a.TERMS)

@@ -299,17 +299,32 @@ To analysis the relationship between the reduces and the items, we introduce two
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
-    called the discrete order of $b$ modulo $a$. And declare $\ord_{a}(1) = 1$.
+    called the discrete order of $b$ modulo $a$, and define $\ord_{a}(1) = 1$.
 \end{definition}
 \begin{definition}
-Given $x\in \mathbb{N}_{_{>1}}$.
-
-If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$ and call it the principal discrete logarithm of $x$; otherwise, we say that $\log_{a, b}(x)$ does not exist.
-
-If $\log_{a, b}(x)$ exists, then we denote $\Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x)$; otherwise, we denote $\Log_{a, b}(x) = \varnothing$, and call it the discrete logarithms of $x$.
-
-We declare $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
+Given $x\in \mathbb{N}_{_{>1}}$. If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$. Otherwise, we say that $\log_{a, b}(x)$ does not exist.
 \end{definition}
+\begin{definition}
+If $\log_{a, b}(x)$ exists, then we denote that
+\[ \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x). \]
+Otherwise, we denote $\Log_{a, b}(x) = \varnothing$.
+\end{definition}
+
+We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
+
+\begin{proposition}
+    $x^{\log_{a, b}(x)} \equiv x \pmod{b}$.
+\end{proposition}
+\begin{proposition}
+    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}(x) + \log_{a, b}(y) \pmod{b}$.
+\end{proposition}
+\begin{proposition}
+    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}(x) \pmod{b}$.
+\end{proposition}
+\begin{proposition}
+    $\forall c \in \mathbb{N}$, we have $\log_{a+cb, b}(x) \equiv \log_{a, b}(x) \pmod{b}$.
+\end{proposition}
+
 Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
 With the two notations, we have
 \begin{theorem}~\label{theorem:concentric-rule}
@@ -506,12 +521,10 @@ where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we req
 
 \section{Analysis on $\alpha=3$, $\beta=2$, $\gamma=1$}
 Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$.
-Let's change an expression of the Collatz conjecture:
-\begin{corollary}
-    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
-    \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
-\end{corollary}
-
+\begin{lemma}[Euler's Theorem]
+$a, b\in \mathbb{N}$ and $\gcd(a,b) = 1$, denote that
+\[ \phi(b) = \sum_{\gcd(x,b)=1}^{x < b}1, \] then there is $a^{\phi(b)} \equiv 1 \pmod{b}$.    
+\end{lemma}
 At first, we have
 \[ \Log_{2,3}(x) = \left\{\begin{aligned}
     &2\mathbb{Z},     &&x\equiv 1 \pmod{3} \\
@@ -519,16 +532,22 @@ At first, we have
 \end{aligned}\right. \]
 And we have
 \begin{lemma}
-    $\Log_{2,3}(x^{-1}) = \Log_{2,3}(x)$.
+    If $3 \nmid x$, then $x^{-1} \equiv x \pmod{3}$.
 \end{lemma}
 \begin{lemma}
-    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$, $m = b\fdiv 3$, then
+    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$, $m = \floor{b/3}$, then
     \[ a = \left\{\begin{aligned}
         &m + \frac{1}{3}(4^{n} - 1)     &&\equiv m + n, && b\equiv 1 \pmod{3} \\
         &2m + 1 + \frac{1}{3}(4^{n} - 1)&&\equiv 2m + 1 + n. && b\equiv 2\pmod{3}
     \end{aligned}\right.\]
 \end{lemma}
-
+\vspace*{2em}
+We can replace the expression of the Collatz conjecture:
+\begin{corollary}
+    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
+    \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
+\end{corollary}
+To proof the conjecture, we deine some functions.
 \begin{definition}
     For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$, $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
     \[ f_{n}(\bm{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k} = \frac{2^{\mathcal{A}_{n}}}{3^{n}} - \frac{1}{3}\mathfrak{a}_{n}. \]
@@ -552,10 +571,17 @@ And we have
 $f_{n}(F_{s;k}(\bm{a})) = 2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}_{k}\cdot(2^{s} - 1)$.
 \end{proposition}
 \begin{proposition}
-    For each weight, $f_n$ is an increasing function.
+    If $f_{n}(\bm{a}) = \frac{q}{3^{m}}$, then $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}$ only when $s$ holds
+    \[ 2^{s}\cdot q\cdot 3^{k} + (2^{s} - 1) \cdot \mathfrak{A}_{k}\cdot 3^{m} \equiv 0. \pmod{3^{m+k}} \]
 \end{proposition}
 \begin{proposition}
-    If $\bm{a} \ne \bm{b}$, then $f_{n}(\bm{a}) \ne f_{n}(\bm{b})$.
+    $f_{n}(\bm{a}) = f_{n}(\bm{b}) \Longleftrightarrow \bm{a} = \bm{b}$.
+\end{proposition}
+\begin{proposition}
+    $f_{n}(\bm{a}) = \frac{2^{\Delta_{1}}}{3}\left(\frac{2^{\Delta_{2}}}{3}\left(\cdots \left(\frac{2^{\Delta_{n}}}{3} - \frac{1}{3}\right)\cdots\right)- \frac{1}{3}\right) - \frac{1}{3}$.
+\end{proposition}
+\begin{proposition}
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \to 1$.
 \end{proposition}
 % \begin{proposition}
 % $f_{n}(F_{2s;k}(\bm{a})) = 4^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot(4^{s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}}$.
@@ -570,6 +596,9 @@ Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
 % \begin{proof} Trivial. \end{proof}
 \begin{proposition}
     $f_{n}(F_{3^{k-1}\cdot2s;k}(\bm{a})) \equiv f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k - 1}} \pmod{3}$.
+\end{proposition}
+\begin{proposition}
+    $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}_{\ge 1}\Longleftrightarrow s \in 3^{k-1}\cdot2\mathbb{N}$.
 \end{proposition}
 % \begin{proof} Trivial. \end{proof}
 % \begin{proof}
@@ -597,7 +626,6 @@ Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
 % \begin{proposition}
 %     \[ f_{n}(F_{ 3^{l-1}\cdot 2t;l}(F_{3^{k-1}\cdot2s;k}(\bm{a}))) \equiv f_{n}(\bm{a}) + s \cdot 2^{\mathcal{A}_{k-1}} + t \cdot 2^{\mathcal{A}_{l - 1}} \pmod{3}. \]
 % \end{proposition}
-
 \begin{definition}
     There is a function $g_{s,m;n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ depends on $f_{n}$ defined as
     \[ g_{s,m;n}(\bm{a}) = s\cdot 2^{m}\cdot2^{\mathcal{A}_{n}} + f_{n}(\bm{a}). \]
@@ -688,9 +716,9 @@ All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
         =& \mathfrak{U}_{i}^{j}
     \end{aligned} \]
 \end{proof}
-\begin{theorem}
-    Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
-\end{theorem}
+% \begin{theorem}
+%     Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
+% \end{theorem}
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
 \nocite{*}

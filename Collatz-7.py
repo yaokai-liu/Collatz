@@ -10,6 +10,13 @@ import csv
 
 from IPython.core.events import pre_execute, pre_run_cell
 
+def trin(a: int):
+    string = ''
+    while a:
+        string += str(a % 3)
+        a //= 3
+    return string[::-1]
+
 alpha, beta, gamma = 3, 2, 1
 
 def collatz_preitem(init_N, pre_reduces: list):
@@ -33,21 +40,21 @@ def F_trans(pre_reduce, adds: dict):
 
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [1, 3, 1, 2, 3, 4]
+    pre_reduce = [4] # 131
     N = collatz_preitem(1, pre_reduce)
     print(N)
-    I = ar=random.sample(range(len(pre_reduce)),2)
-    l, k = max(I), min(I)
-    k = max(k, l - k)
-    for t in range(1, 10):
-        m = 2 * (3 ** l) * t
-        for s in range(1, 10):
-            n = 2 * (3 ** k) * s
-            adds = {l: m, k: n}
-            new_pre_reduce = F_trans(pre_reduce, adds)
-            N_new = collatz_preitem(1, new_pre_reduce)
-            b = N + s * (2**sum(pre_reduce[:k])) + t * (2**sum(pre_reduce[:l]))
-            print(adds, N_new, N_new%3 == b%3)
+    # new_Ns = []
+    # for k in range(len(pre_reduce)):
+    #     for s in range(20):
+    #         add = (3**k) * 2 * s
+    #         new_pre_reduce = F_trans(pre_reduce, {k: add})
+    #         new_N = collatz_preitem(1, new_pre_reduce)
+    #         # print(k, add, new_N)
+    #         new_N = int(new_N)
+    #         new_Ns.append((new_N, bin(new_N), k, add))
+    # new_Ns.sort(key=lambda p: p[0])
+    # for i in new_Ns:
+    #     print(i)
     # deltas = range(1, 10)
     # for i in range(len(pre_reduce)):
     #     values = []
