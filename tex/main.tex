@@ -67,10 +67,33 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explored some properties of those dynamical systems that with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as recursive formula. And a proof of the $3n + 1$ conjecture is then provided.
+    This paper explored some properties of those dynamical systems that with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as recursive formula.
+    And some propositions that are indispensable to proving the $3n + 1$ conjecture are then provided.
+    % And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
 \tableofcontents
 \newpage
+
+\section{I Have to Stop This Work}
+I don't prove the $3n+1$ problem. I just found some propositions those helped. I definitely believe the 3n+1 problem can be proved with them.
+
+I developed depression and anxiety, and had to give up this research in order to receive treatment.
+
+I don't know if my work is worthwhile, or rather, it is precisely because I don't know if my work is worthwhile that I developed two illnesses.
+
+I love mathematics, but now I get headaches whenever I try to think deeply. I don't want my research to become useless, so I've decided to publish it. This paper is incomplete; many propositions remain unproven, but I can no longer continue this work.
+
+I started researching this problem in July 2025, after resigning from my job about 10 monthes. Initially, I made good progress; however, perhaps because I was too eager to prove something, I began to suffer from depression and anxiety around that time. These two illnesses quickly robbed me of my attention; yes, I would get a headache whenever I thought deeply about something. I was constantly trapped in endless memories and self-denials. Just recently, around December 2025, I started having sleepless nights and lacking energy during the day. I started retching cough, and could eat a little. Then I realized I was probably ill. I went to see a doctor on the 31st and was diagnosed with mild depression and anxiety. The doctor prescribed Fluoxetine and Buspirone. Hope this works.
+
+I'm only worried about the girl I love. She seems to have had a similar illness and overcome it, but when I told her about my condition, she cried again because of her empathy. I haven't heard from her for the past two days. Today is January 7, 2026. I only hope she's safe and sound. I don't even know if she is disappeared for my bother. Lately, I've definitely been appearing in her presence frequently, trying to get her attention. Maybe I'm just crying out to the world for help, rather than truly loving her. That‘s my real fear, that I can't really determine my beheaviors. But I don't think I'm loss my control. I loved her even though she is not my girl friend,  and I am accepting treatment actively. 
+
+In some way, It seems like I've had these illnesses for a long time. I have a good but bad memory for years, and fear to process those misc things. The knowledge I once acquired is rapidly slipping away, as if a paper of poems but some where has been berned, and left a lot of carbon holes. Some of them I can call it name but forget what it is, and some of them I can frequencely use but can't call their name.  There's only some sence telling me they all have being.
+
+Any way, I decided to move to a quite place and find an easy job. I'm not sure if I will restart this work or other math work. Maybe some day, I can recall these, and continue, maybe never can rescure to them. Or maybe all these thoughts were just a dream, and now it's time to wake up. I've been immersed in my own world for too long, disappointing too many people's expectations and sincerity. Perhaps that's why I'm so eager to prove myself. Maybe I should adjust my expectations, maybe I'm just mediocre. I just feel that I don't want to live like most people; I just feel that my life should be extraordinary; I just feel that, since childhood, this world has felt like a cage. No matter how I think about it, I can't escape. The perfection of the universe is a blessing for many, but I find it too tragic. But thinking about these things now is meaningless.
+
+I love math. I don't know why the fate plays tricks on me. I was proud of been a mathematic student. But now I can do nothing.
+\newpage
+
 \section{Introduction} % (fold)
 \label{sec:introduction}
 Our story starts from the $3n + 1$ Conjecture, hereinafter referred to as the Collatz conjecture, which is defined as follows:
@@ -193,7 +216,7 @@ With arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$,
 for any odd number $a \in \mathbb{N}$, it's Collatz sequence will finally reach to $1$.
 \end{conjecture}
 
-\section{Analysis of Collatz Sequence}
+\section{The Collatz Sequence}
 
 % \begin{proposition}
 %     If $\gamma = 0$, then $\gamma = \beta^{n}$ that $a_k = n$ and $\CollatzReduce{a}{k} = n$ for all $k\in \mathbb{N}$.
@@ -263,7 +286,7 @@ holds for all $k \ge 0$.
         % =&\ a \cdot \alpha^{k+1} + \gamma \cdot (\alpha \cdot \mathfrak{A}_{k} + \cdot \beta^{\mathcal{A}_k}) \\
         =&\ a \cdot \alpha^{k+1} + \gamma \cdot \mathfrak{A}_{k+1}.
     \end{aligned}\]
-    Sum up, we proved this proposition.
+    Sum up, we proved this theorem.
 \end{proof}
 It is very important and fundamental, and we will see later that all types of Collatz sequences are actually some kind of variant expression of the \cref{theorem:inductive-formula}.
 \begin{corollary}
@@ -326,7 +349,7 @@ We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b
 \end{proposition}
 
 Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
-With the two notations, we have
+With these notations, we have
 \begin{theorem}~\label{theorem:concentric-rule}
     If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $\forall n \in \ord_{\alpha}(\beta)\mathbb{N}$, we have
     \[a' = \beta^{n}\cdot a + \frac{\gamma}{\alpha}\cdot(\beta^{n} - 1) \in \mathbb{N}\]
@@ -465,7 +488,7 @@ Anyway, we now finally extended the problem from integers to the rational number
 % \begin{proof} Trivial. \end{proof}
 
 \section{Back Trace the Collatz Sequence}
-\cref{theorem:any-presequence} tell us we can also track back the Collatz sequence in $\mathbb{Q}$. But we can only go back under a finite reduces given. To avoid this, we need to redefine the summation to give it directionality.
+\cref{theorem:any-presequence} tell us we can also trace back the Collatz sequence in $\mathbb{Q}$. But we can only go back under a finite reduces given. For an infinity tracing back, we need to redefine the summation to give it directionality.
 % For this, we import a function $\sgn$ defined by
 % \[ \sgn(a) = \left\{\begin{aligned}
 %     &1, &&a > 0, \\
@@ -519,16 +542,16 @@ Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigm
 \end{aligned}\right.\]
 where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$. Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
-\section{Analysis on $\alpha=3$, $\beta=2$, $\gamma=1$}
+\section{On $\alpha=3$, $\beta=2$, $\gamma=1$}
 Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$.
-\begin{lemma}[Euler's Theorem]
-$a, b\in \mathbb{N}$ and $\gcd(a,b) = 1$, denote that
-\[ \phi(b) = \sum_{\gcd(x,b)=1}^{x < b}1, \] then there is $a^{\phi(b)} \equiv 1 \pmod{b}$.    
-\end{lemma}
+% \begin{lemma}[Euler's Theorem]
+% $a, b\in \mathbb{N}$ and $\gcd(a,b) = 1$, denote that
+% \[ \phi(b) = \sum_{\gcd(x,b)=1}^{x < b}1, \] then there is $a^{\phi(b)} \equiv 1 \pmod{b}$.    
+% \end{lemma}
 At first, we have
 \[ \Log_{2,3}(x) = \left\{\begin{aligned}
     &2\mathbb{Z},     &&x\equiv 1 \pmod{3} \\
-    &2\mathbb{Z} + 1, &&x\equiv 2 \pmod{3}
+    &2\mathbb{Z} + 1. &&x\equiv 2 \pmod{3}
 \end{aligned}\right. \]
 And we have
 \begin{lemma}
@@ -642,13 +665,13 @@ Now let's forget those definitions before. We will introduce two new abstract fo
     Providing a ring $R$ and a set of index $I$. \newline
     Mapping $F:I\times I \to R$ is called an form on $R$ with $I$ if it follow some special propoties. And we denote $F_{i}^{j} = F(j, i)$.
 \end{definition}
-\begin{definition}[Exponentiation Form]
+\begin{definition}[Multiply Form]
     Given a form $\mathcal{A}$ on $R$ with $I$. \newline
-    If $\forall i, j, k \in I$, there is $\mathcal{A}_{i}^{k}\cdot\mathcal{A}_{k}^{j} = \mathcal{A}_{i}^{j}$, we call it an exponentiation form.
+    If $\forall i, j, k \in I$, there is $\mathcal{A}_{i}^{k}\cdot\mathcal{A}_{k}^{j} = \mathcal{A}_{i}^{j}$, we call it an multiply form.
 \end{definition}
 \begin{proposition}
     If $\exists s, t \in I$ that $\mathcal{A}_{s}^{t} = 0$, then $\forall i, j \in I$, $\mathcal{A}_{i}^{j} = 0$.
-    We called that $A$ is a zero exponentiation form, and denote $\mathcal{A} = 0$. Otherwise, we say $\mathcal{A} \ne 0$.
+    We called that $A$ is a zero multiply form, and denote $\mathcal{A} = 0$. Otherwise, we say $\mathcal{A} \ne 0$.
 \end{proposition}
 \begin{proposition}
     If $\mathcal{A} \ne 0$, then $\forall i, j \in I$, $\mathcal{A}_{i}^{j}\cdot\mathcal{A}_{j}^{i} = \mathcal{A}_{i}^{i} = 1$.
@@ -722,4 +745,5 @@ All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
 \nocite{*}
+
 \end{document}
