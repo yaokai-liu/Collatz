@@ -20,7 +20,7 @@ def modInverse(a, b):
 
 csvfile = open('table-(3,2,1).csv', mode='w', newline='')
 writer = csv.writer(csvfile, delimiter=',')
-writer.writerow(["delta \ k"] + [k for k in range(1, 10)])
+writer.writerow(["delta \\ k"] + [k for k in range(1, 10)])
 alpha, beta, gamma = 3, 2, 1
 for delta in range(1, 100):
     sigma = alpha - (beta**delta)

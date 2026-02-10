@@ -4,7 +4,7 @@ from Collatz import Collatz
 import matplotlib.pyplot as plot
 
 i = 0
-a = Collatz()
+a = Collatz(3,2,1, 1008611)
 while a.term_at(i) != 1: i += 1
 
 series = a.TERMS
