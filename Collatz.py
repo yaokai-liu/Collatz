@@ -1,7 +1,6 @@
 import math
 import sys
 from math import gcd
-import matplotlib.pyplot as plt
 
 sys.set_int_max_str_digits((2**16)-1)
 

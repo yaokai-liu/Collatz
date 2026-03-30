@@ -1,12 +1,5 @@
 import math
-import random
 from fractions import Fraction
-from random import randint
-
-import numpy as np
-from math import gcd
-import matplotlib.pyplot as plt
-import csv
 
 from IPython.core.events import pre_execute, pre_run_cell
 

@@ -1,8 +1,5 @@
 import math
-import numpy as np
 from math import gcd
-import matplotlib.pyplot as plt
-import csv
 
 from pydantic.v1.class_validators import all_kwargs
 
