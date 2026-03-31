@@ -62,65 +62,53 @@
 \newcommand{\Log}{\mathrm{Log}}
 \newcommand{\CollatzCompIndu}[3]{\beta^{\mathcal{A}_{#2}^{#3}}\cdot\mathfrak{A}_{#1}^{#2} + \mathfrak{A}_{#2}^{#3}\cdot\alpha^{{#1}-{#2}}}
 
-\title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
-\author{Yaokai Liu \\
+% \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
+\title{On the General Collatz Sequence: $\alpha \cdot a + \gamma$ reduced by $\beta$}
+\author{Yaokai Liu
 % \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}%
 }
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explored some properties of those dynamical systems that with $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as recursive formula.
+    This paper explores some properties of the general Collatz sequence that $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$.
     And some propositions that are indispensable to proving the $3n + 1$ conjecture are then provided.
     % And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
 \tableofcontents
 \newpage
 
-% \section{I Have to Stop This Work}
-% I didn't prove the $3n+1$ problem. I just found some propositions those help. I definitely believe the 3n+1 problem can be proved with them.
-
-% I developed depression and anxiety, and had to give up this research in order to receive treatment.
-
-% I don't know if my work is worthwhile, or rather, it is precisely because I don't know if my work is worthwhile that I developed the two illnesses.
-
-% I love mathematics, but now I get headaches whenever I try to think deeply. I don't want my research to become useless, so I've decided to publish it. This paper is incomplete; many propositions remain unproven, but I can no longer continue this work. If someone can verify my work, that would be so apreciate.
-
-% I started researching this problem in July 2025, after resigning from my job about 10 monthes. Initially, I made good progress; however, perhaps because I was too eager to prove something, I began to suffer from depression and anxiety around that time. These two illnesses quickly robbed me of my attention; yes, I would get a headache whenever I thought deeply about something. I was constantly trapped in endless memories and self-denials. Just recently, around December 2025, I started having sleepless nights and lacking energy during the day. I started retching cough, and could eat a little. Then I realized I was probably ill. I went to see a doctor on the 31st and was diagnosed with mild depression and anxiety. The doctor prescribed Fluoxetine and Buspirone. Hope this works.
-
-% I'm only worried about the girl I love. She seems to have had a similar illness and overcome it, but when I told her about my condition, she cried again because of her empathy. I haven't heard from her for the past two days. Today is January 7, 2026. I only hope she's safe and sound. I don't even know if she is disappeared for my bother. Lately, I've definitely been appearing in her presence frequently, trying to get her attention. It is so cruel when I finially summoned up courage to pursuit her, I was been diagnosed with mild depression and anxiety. Maybe I should never get loved. Maybe I'm just crying out to the world for help, rather than truly loving her. That makes me fear, that I can't really determine my beheaviors. But I don't think I'm loss my control. I loved her even though she is not my girl friend, and I am accepting treatment actively.
-
-% In some way, It seems like I've had these illnesses for a long time. I have a good but bad memory for years, and fear to process those misc things. The knowledge I once acquired is rapidly slipping away, as if a paper of poems but some where has been berned, and left a lot of carbon holes. Some of them I can call it name but forget what it is, and some of them I can frequencely use but can't call their name. There's only some sence telling me they all have being.
-
-% Any way, I decided to move to a quite place and find an easy job. I'm not sure if I will restart this work or other math work. Maybe some day, I can recall these, and continue, maybe never can rescure to them. Or maybe all these thoughts were just a dream, and now it's time to wake up. I've been immersed in my own world for too long, disappointing too many people's expectations and sincerity. Perhaps that's why I'm so eager to prove myself. Maybe I should adjust my expectations, maybe I'm just mediocre. I just feel that I don't want to live like most people; I just feel that my life should be extraordinary; I just feel that, since childhood, this world has felt like a cage. No matter how I think about it, I can't escape. The perfection of the universe is a blessing for many, but I find it too tragic. But thinking about these things now is meaningless.
-
-% I love math. I don't know why the fate plays tricks on me. I was proud of been a mathematic student. But now I can do nothing.
-% \newpage
-
-\section{Introduction And the General Collatz Sequence} % (fold)
-\label{sec:introduction}
+\section{Introduction And the General Collatz Sequence}\label{sec:introduction-and-the-general-collatz-sequence} % (fold)
 Our story starts from the $3n + 1$ Conjecture, hereinafter referred to as the Collatz conjecture, which is defined as follows:
 \begin{conjecture}[Collatz Conjecture]~\label{conjecture:original-conjecture}
-Given an number $a_0 = a \in \mathbb{N}$, we have the modular arithmetic notation 
+Given a number $a_0 = a \in \mathbb{N}$, we have the modular arithmetic notation
 \[a_{k+1} = \left\{\begin{aligned}
     &a_{k}/2, &a_{k}\equiv 0\pmod{2}, \\
     &3a_{k}+1, &a_{k}\equiv 1\pmod{2},
 \end{aligned}\right.\]
-where $k \in \mathbb{N}$. The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} = 1$.
+where $k \in \mathbb{N}$.
+The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} = 1$.
 \end{conjecture}
 
-First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$. We may wander the maxinum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$. Let's define the symbol $\CollatzReduce{a}{k+1}$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$. With this we can redefine the sequence with
+First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$.
+We may wander the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
+Let's define the symbol $\CollatzReduce{a}{k+1}$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
+With this we can redefine the sequence with
 \[ a_{k + 1} = \frac{3a_{k}+1}{2^{\CollatzReduce{a}{k+1}}}, \]
 which ensures the $a_k$ always is an odd number.
 
-It make things easier. Because when I start iterately to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, I found
+It makes things easier.
+Because when I start iteratively to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, I found
 \[ a_k \cdot 2^{\sum_{j=0}^{k}\CollatzReduce{a}{j}} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i}\CollatzReduce{a}{j}}\cdot3^{k-i-1}.  \]
 Though it looks like a little bit dirty, but with the definition $\mathcal{A}_{k} = \sum_{j=0}^{k}\CollatzReduce{a}{j}$, the looks of the formula soon be better:
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
-Notice that $a$ is an positive finity number but $2^{\mathcal{A}_k}$ increase to infinity, that means the $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finity odd times of $3^{-1}$ under the modula. This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
+Notice that $a$ is a positive finity number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finity odd times of $3^{-1}$ under the modula.
+This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
-follows the Collatz conjecture. We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds. So it is the time to explore what the arguments of these equations has a stability solution.
+follows the Collatz conjecture.
+We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
+So it is the time to explore what the arguments of these equations has a stability solution.
 \begin{definition}[Collatz Sequence and Collatz Accumulation]~\label{definition:collatz-sequence}
     Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
     For number $a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ named Collatz sequence and $\CollatzReduce{a}{k}\in\mathbb{N}$ named Collatz reduce with
@@ -131,11 +119,13 @@ follows the Collatz conjecture. We can see that each number generates a sequence
     \end{aligned}\]
     For a better looking, denote 
     \[\mathcal{A}_n^{m} = \sum_{k=m}^{n}\CollatzReduce{a}{k}\]
-    named Collatz accumulation from $m$ to $n$. Specially when $m = 0$, we omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
-
+    named Collatz accumulation from $m$ to $n$.
+    Specially when $m = 0$, we omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
 \end{definition}
 
-To avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default. Actually, $\CollatzReduce{a}{k+1}$ is the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$. And we can see, it is well defined, because there is
+To avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
+Actually, $\CollatzReduce{a}{k+1}$ is the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
+And we can see, it is well-defined, because there is
 \begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
 If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$.
 \end{proposition}
@@ -149,7 +139,7 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{
     \[a_{k+1} \cdot \beta^{\CollatzReduce{a}{k + 1}} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\CollatzReduce{b}{k + 1}}.\]
     That means
     \[a_{k+1} = b_{k+1} \cdot \beta^{\CollatzReduce{b}{k + 1} - \CollatzReduce{a}{k + 1}}. \]
-    But we requires $a_{k+1} \in \mathbb{N} - \beta\mathbb{N}$ as definition that $\beta \nmid a_{k+1}$, which means
+    But there is $a_{k+1} \in \mathbb{N} - \beta\mathbb{N}$ as definition that $\beta \nmid a_{k+1}$, which means
     \[\CollatzReduce{a}{k + 1} = \CollatzReduce{b}{k + 1}, \]
     and then
     \[\begin{aligned}
@@ -161,37 +151,41 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{
 \begin{proposition}
     If $\exists t > 0$ that $a_{t} = a_0 = a$, 
     then $\forall k > 0$, and $s = 1, 2, 3, \cdots, t$, there are
-    $a_{k\cdot t+s} = a_s$, $\mathcal{A}_{k\cdot t + s} = \mathcal{A}_{s}$.
+    $a_{k\cdot t+s} = a_s$ and $\mathcal{A}_{k\cdot t + s} = \mathcal{A}_{s}$.
 \end{proposition}
 \begin{proposition}[Co-uniqueness]~\label{proposition:co-uniqueness}
-    If there are two numbers $a, b \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ that $\exists n \ge 0$, such that $\forall m = 0, 1, 2, \cdots, n$, $\mathcal{A}_m = \mathcal{B}_m$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
+    If there are two numbers $a, b \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ that $\exists n \ge 0$, such that $\forall m = 0, 1, 2, \cdots, n$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
 \end{proposition}
 % \begin{proof} Trivial with \cref{theorem:inductive-formula}. \end{proof}
 \begin{proof}
     We will use \cref{theorem:inductive-formula} to prove this proposition.\newline
-    Since $\mathcal{A}_m = \mathcal{B}_m$, we have $\mathfrak{A}_{m} = \mathfrak{B}_{m}$. With the \cref{theorem:inductive-formula}, we have
+    Since $\mathcal{A}_m = \mathcal{B}_m$, we have $\mathfrak{A}_{m} = \mathfrak{B}_{m}$.
+    With the \cref{theorem:inductive-formula}, we have
     \[ (a_{m} - b_{m}) \cdot \beta^{\mathcal{A}_m} = (a - b) \cdot \alpha^{m}. \]
-    Since $\gcd(\alpha, \beta) = 1$, then $\gcd(\beta^{\mathcal{A}_m}, \alpha^{m}) = 1$. So we have
+    Since $\gcd(\alpha, \beta) = 1$, then $\gcd(\beta^{\mathcal{A}_m}, \alpha^{m}) = 1$.
+    So we have
     \[\beta^{\mathcal{A}_m} \mid (a - b), \quad \alpha^{m} \mid (a_m - b_m) \]
     holds for all $m\le n$.
 \end{proof}
 \begin{proposition}
-    If $\forall m \ge 0$, $\mathcal{A}_m = \mathcal{B}_m$, $a = b$.
+    If $\forall m \ge 0$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $a = b$.
 \end{proposition}
 \begin{proposition}
-    $\forall n \ge k \ge m$, we have $\mathcal{A}_n^m = \mathcal{A}_n^{k} + \mathcal{A}_k^{m}$.
+    $\forall n \ge k \ge m$ there is $\mathcal{A}_n^m = \mathcal{A}_n^{k} + \mathcal{A}_k^{m}$.
 \end{proposition}
 \begin{proposition}~\label{proposition:trivial-periodic-sequence}
     If there is $\Delta \in \mathbb{N}_{\ge1}$ holds $(\beta^{\Delta} - \alpha) \mid \gamma$, then let $a_0 = \frac{\gamma}{\beta^{\Delta} - \alpha}$, we have $\forall k \in \mathbb{N}$, $a_k = a_0$ and $A_k = k\cdot \Delta$.
 \end{proposition}
 \begin{proposition}~\label{proposition:equivalent-between-collatz-conjecture-and-our-definition}
-Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$. For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conjecture:original-conjecture} and $a_k$ be the $k$-th element of Collatz sequence of $a$, then $\forall k \in \mathbb{N}$,  we have $a_{k} = a'_{i_{k}}$.
+Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$.
+For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conjecture:original-conjecture} and $a_k$ be the $k$-th element of Collatz sequence of $a$, then $\forall k \in \mathbb{N}$,  we have $a_{k} = a'_{i_{k}}$.
 \end{proposition}
 % \begin{proof} Trivial. \end{proof}
 \begin{proof}
     Let $a'_{i}$ be the $i$-th number in \cref{conjecture:original-conjecture}, and $a'_{i_k}$ be the $k$-th odd number in it.\newline
     First, we have $a_{0} = a = a'_0 = a'_{i_0}$;\newline
-    Second, if $a_{k} = a'_{i_k}$, suppose $2^{s_{k+1}} \mid 3a'_{i_k} + 1$ and $2^{s_{k+1}+1} \nmid 3a'_{i_k} + 1$. That means
+    Second, if $a_{k} = a'_{i_k}$, suppose $2^{s_{k+1}} \mid 3a'_{i_k} + 1$ and $2^{s_{k+1}+1} \nmid 3a'_{i_k} + 1$.
+    That means
     \[\begin{aligned}
         a'_{i_k+1} &= (3a'_{i_k} + 1) / 2,   \\
         a'_{i_k+2} &= (3a'_{i_k} + 1) / 2^2, \\
@@ -199,7 +193,8 @@ Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$. For all odd number $a$, let
         &\cdots \\
         a'_{i_k+s_k} &= (3a'_{i_k} + 1) / 2^{s_{k+1}} = a'_{i_{k+1}}
     \end{aligned}\]
-    and $a_{k+1} = (3a_k + 1) / 2^{\CollatzReduce{a}{k+1}} = (3a'_{i_k} + 1) / 2^{\CollatzReduce{a}{k+1}}$. That means
+    and $a_{k+1} = (3a_k + 1) / 2^{\CollatzReduce{a}{k+1}} = (3a'_{i_k} + 1) / 2^{\CollatzReduce{a}{k+1}}$.
+    That means
     \[a_{k+1} = a'_{i_{k+1}} \cdot 2^{s_{k+1} - \CollatzReduce{a}{k+1}}.\]
     Notice that $2\nmid a_{k+1}$, means
     \[\begin{aligned}
@@ -209,27 +204,34 @@ Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$. For all odd number $a$, let
     Sum up, we proved this proposition.
 \end{proof}
 \cref{proposition:equivalent-between-collatz-conjecture-and-our-definition} ensures our definition of Collatz sequence is equivalent with the iterative function in \cref{conjecture:original-conjecture}.
-Because for even numbers, we can easily figure out that every even number will reduce to an odd number at first. In that siduation, the proposition holds as well. With this proposition, we can describe the Collatz Conjecture with the Collatz sequence:
+Because for even numbers, we can easily figure out that every even number will reduce to an odd number at first.
+In that situation, the proposition holds as well.
+With this proposition, we can describe the Collatz Conjecture with the Collatz sequence:
 
 \begin{conjecture}[Rewritten Collatz Conjecture]~\label{definition:rewritten-conjecture}
 With arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$,
 for any odd number $a \in \mathbb{N}$, it's Collatz sequence will finally reach to $1$.
 \end{conjecture}
 
-The following discussion involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. For a better looking, we first define a notation to represent them:
+The following discussion involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$.
+For a better looking, we first define a notation to represent them:
 \begin{definition}~\label{definition:collatz-complement}
-    Given a serquence of number $\{\Delta_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{A}_{n}^{m} = \sum_{i=m}^{n}\Delta_i$, and define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{\Delta_{i}\}$ at $n$ relative to $m$ with
+    Given a sequence of number $\{\Delta_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{A}_{n}^{m} = \sum_{i=m}^{n}\Delta_i$, and define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{\Delta_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
     And define $\mathfrak{a}_n^{m}$ called reduced Collatz complement of $a$ at $n$ relative to $m$ with
     \[ \mathfrak{a}_n^{m} = \frac{\mathfrak{A}_n^{m}}{\alpha^{n-1}} = \sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \in \mathbb{Q}. \]
-    Also they can be omitted the superscript $m$ when $m = 0$ that $\mathfrak{A}_n = \mathfrak{A}_n^{0}$, $\mathfrak{a}_n = \mathfrak{a}_n^{0}$.
+    Also, they can be omitted the superscript $m$ when $m = 0$ that $\mathfrak{A}_n = \mathfrak{A}_n^{0}$, and $\mathfrak{a}_n = \mathfrak{a}_n^{0}$.
 \end{definition}
 
-To avoid repeating the explanation each time, without further explanation, we will use the same letter of the Collatz accumulation but uppercase fraktur font to represent Collatz complement and the same letter but lowercase fraktur font to represent reduced Collatz complement. And if $\{\Delta_{i}\}$ is the Collatz reduces of a number, we also say that $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ are of that number.
+To avoid repeating the explanation each time, without further explanation,
+we will use the same letter of the Collatz accumulation but uppercase fraktur font to represent Collatz complement,
+and the same letter but lowercase fraktur font to represent reduced Collatz complement.
+And if $\{\Delta_{i}\}$ is the Collatz reduces of a number, we also say that $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ are of that number.
 
 For the Collatz complement, we have two basic propositions:
 \begin{proposition}~\label{proposition:collatz-complement-basic-prop1}
-$\mathfrak{A}_{n}^{n} = 0$, $\mathfrak{A}_{n+1}^{n} = 1$. And $\mathfrak{a}_{n}^{n} = 0$, $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n}}$.
+$\mathfrak{A}_{n}^{n} = 0$, and $\mathfrak{A}_{n+1}^{n} = 1$.
+And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n}}$.
 \end{proposition}
 % \begin{proposition}
 %     $\mathfrak{A}_{n+1} = \alpha \cdot \mathfrak{A}_{n} + \beta^{\mathcal{A}_n}$. And $\mathfrak{a}_{n+1} = \mathfrak{a}_{n} + \frac{\beta^{\mathcal{A}_n}}{\alpha^{n}}$.
@@ -254,23 +256,24 @@ $\mathfrak{A}_{n}^{n} = 0$, $\mathfrak{A}_{n+1}^{n} = 1$. And $\mathfrak{a}_{n}^
     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
 \end{aligned}\]
 \end{proof}
-Actually, we can formlly define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. It is easily to verifty that the two definitions are equivalent.
+Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
+It is easily to verify that the two definitions are equivalent.
 
-Also, accoding to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
+Also, according to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
 \begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
-    If $a = b$, then $\forall m, n \ge 0$, $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$, $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
+    If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
 \end{proposition}
 
-\section{The basic fomula of Collatz Sequences}
+\section{The basic formula of Collatz Sequences}\label{sec:the-basic-fomula-of-collatz-sequences}
 
-With the definition of Collatz complement, we can easily find that the equation in \cref{equation:collatz-inductioon-3-2-1} also hold with all gnenral Collatz sequences:
+With the definition of Collatz complement, we can easily find that the equation in \cref{equation:collatz-inductioon-3-2-1} also hold with all general Collatz sequences:
 \begin{theorem}~\label{theorem:inductive-formula}
-$\forall a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, $\forall k \in \mathbb{N}$, we have
+$\forall a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, $\forall k \in \mathbb{N}$ we have
 \[ a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}. \]
 \end{theorem}
 % \begin{proof} Trivial. \end{proof}
 \begin{proof}
-    First, $a_0 \cdot \beta^{\mathcal{A}_0} = a = a \cdot \alpha^{0} + \gamma \cdot \mathfrak{A}_0$, and $a_1 \cdot \beta^{\mathcal{A}_1} = \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
+    First, we have $a_0 \cdot \beta^{\mathcal{A}_0} = a = a \cdot \alpha^{0} + \gamma \cdot \mathfrak{A}_0$ and $a_1 \cdot \beta^{\mathcal{A}_1} = \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
     Second, if $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}$, then
     \[\begin{aligned}
         a_{k+1} \cdot \beta^{\mathcal{A}_{k+1}}
@@ -285,7 +288,7 @@ $\forall a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, $\forall k \in \mathbb{N}
 \end{proof}
 It is very important and fundamental, and we will see later that all types of Collatz sequences are actually some kind of variant expression of the \cref{theorem:inductive-formula}.
 \begin{corollary}
-$\forall m, n \ge 0$, we have
+$\forall m, n \ge 0$ we have
 \[ a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \gamma\cdot\mathfrak{A}_{n+m}^{m}. \]
 \end{corollary}
 \begin{corollary}~\label{corollary:inductive-formula-with-reduced}
@@ -295,7 +298,7 @@ $\forall m, n \ge 0$, we have
 Given $a$ that $\beta \nmid a$, if $\mathfrak{A}_n^m$ is of $a$, then $\beta \nmid \mathfrak{A}_n^m$.
 \end{corollary}
 \begin{corollary}~\label{corollary:congerunce-with-collatz-complement}
-If $\mathcal{A}_k > 0$, $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -\gamma \cdot \frac{\mathfrak{A}_k}{\alpha^k} \pmod{\beta^{\mathcal{A}_k}}$.
+If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -\gamma \cdot \frac{\mathfrak{A}_k}{\alpha^k} \pmod{\beta^{\mathcal{A}_k}}$.
 \end{corollary}
 % \begin{proof} Trivial with \cref{corollary:inductive-formula-with-reduced}. \end{proof}
 \begin{corollary}
@@ -312,56 +315,6 @@ If $\mathcal{A}_k > 0$, $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -
     holds during $S_k < n$.
 \end{corollary}
 
-To analysis the relationship between the reduces and the items, we will introduce some notations of number theory.
-\begin{definition}
-    Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
-    \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
-    called the discrete order of $b$ modulo $a$, and define $\ord_{a}(1) = 1$.
-\end{definition}
-\begin{proposition}
-    If $c \mid a$, then $\ord_{c}(b) \mid \ord_{a}(b)$.
-\end{proposition}
-\begin{definition}
-Given $x\in \mathbb{N}_{_{>1}}$. If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$. Otherwise, we say that $\log_{a, b}(x)$ does not exist.
-\end{definition}
-\begin{proposition}
-    $\log_{a, b}(x^{-1}) = \ord_{a}(b) - \log_{a,b}(x)$.
-\end{proposition}
-\begin{definition}
-If $\log_{a, b}(x)$ exists, then we denote that
-\[ \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x). \]
-Otherwise, we denote $\Log_{a, b}(x) = \varnothing$. And we denote
-\[- \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} - \log_{a, b}(x).\]
-\end{definition}
-
-We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
-
-\begin{proposition}
-    $x^{\log_{a, b}(x)} \equiv x \pmod{b}$.
-\end{proposition}
-\begin{proposition}
-    $\Log_{a,b}(x^{-1}) = -\Log_{a,b}(x)$.
-\end{proposition}
-\begin{proposition}
-    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}(x) + \log_{a, b}(y) \pmod{\ord_a(b)}$.
-\end{proposition}
-\begin{proposition}
-    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}(x) \pmod{\ord_a(b)}$.
-\end{proposition}
-\begin{proposition}
-    $\forall c \in \mathbb{N}$, we have $\log_{a+cb, b}(x) \equiv \log_{a, b}(x) \pmod{\ord_a(b)}$.
-\end{proposition}
-
-Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
-\begin{definition}
-    Define $\fac_{a}(b) = \max_{n \in \mathbb{N}}\{a^n \mid b\}$.
-\end{definition}
-\begin{proposition}
-    If $c \mid a$ and $a \mid b$, then $\fac_{c}(b) \ge \fac_{c}(a) \cdot \fac_{a}(b)$.
-\end{proposition}
-\begin{definition}
-    Define $\rad(b) = \prod_{p_i \in \mathbb{P}}^{p_i \mid b}p_i$ as the radical of $b$.
-\end{definition}
 
 With these notations, firstly, we have
 \begin{theorem}~\label{theorem:concentric-rule}
@@ -372,12 +325,14 @@ With these notations, firstly, we have
 \begin{theorem}
     If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
 \end{theorem}
-But not all $b$ is inversable modulo $\alpha$, and not all $a^{-1} \cdot \gamma$ is a remainder of a power of $\beta$. So we have
+But not all $b$ is reversible modulo $\alpha$, and not all $a^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
+So we have
 \begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
     If $a \in \mathbb{N}-\beta\mathbb{N}$ such that \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing, \]then we say $a$ is a Collatz primitive source.
 \end{definition}
 
-It seems like we can intruduce the the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e. fall into those numbers cannot be reduced. Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
+It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
+Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
 \begin{definition}
 Given $m,n \in \mathbb{N}$, when $m \ge 1$, define
 \[ [m\mid n] = \left\{a \in \mathbb{N}\ \left|\ \left(a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i\right) \equiv 0 \pmod{\beta^{m}}\right.\right\}. \]
@@ -406,25 +361,29 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
                 &= \fac_{p_i}(\alpha^P - 1) - \fac_{p_i}(\alpha-1) \\
                 &\ge \fac_{p_i}(\beta) \cdot m.
     \end{aligned} \]
-    That means $p_{i}^{m \cdot \fac_{p_i}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $. From the Chinese Remainder Theorem, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    That means $p_{i}^{m \cdot \fac_{p_i}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    From the Chinese Remainder Theorem, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
     
-    Now suppose $a \in [m \mid n + P]$. From \cref{proposition:equivalence-of-classes}, we have
+    Now suppose $a \in [m \mid n + P]$.
+    From \cref{proposition:equivalence-of-classes}, we have
     \[\begin{aligned}
         a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{P } \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}}
     \end{aligned}\]
-    which means $a \in [ m \mid n + P] \Longleftrightarrow a \in [m \mid n]$. But this $P$ is not always the minimal period.
+    which means $a \in [ m \mid n + P] \Longleftrightarrow a \in [m \mid n]$.
+    But this $P$ is not always the minimal period.
 \end{proof}
 \begin{definition}
-    Denote $[m] = \bigcup_{n=0}^{\infty}[m\mid n]$, $\bar{[m]} = \mathbb{N} - [m]$.
+    Denote $[m] = \bigcup_{n=0}^{\infty}[m\mid n]$ and $\bar{[m]} = \mathbb{N} - [m]$.
 \end{definition}
 \begin{proposition}
-    $[0] = \mathbb{N}$, $\bar{[0]} = \varnothing$.
+    $[0] = \mathbb{N}$ and $\bar{[0]} = \varnothing$.
 \end{proposition}
 \begin{proposition}
-    $a \in \bar{[1]} \Longrightarrow \alpha \cdot a + \gamma \in \bar{[1]}$. On the contrary, if $a\equiv \gamma \pmod{\alpha}$, $a \in \bar{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \bar{[1]}$.
+    $a \in \bar{[1]} \Longrightarrow \alpha \cdot a + \gamma \in \bar{[1]}$.
+    On the contrary, if $a\equiv \gamma \pmod{\alpha}$, then $a \in \bar{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \bar{[1]}$.
 \end{proposition}
 \begin{theorem}~\label{theorem:requirements-of-avaliablity}
     $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
@@ -436,8 +395,9 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
         If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\Delta(a, k + n_{k}) > 0$,
         that means $a_{k} \in [\Delta(a, k + n_{k}) | n_{k}] \subset [1]$.
     \item[$\Longleftarrow$)] 
-        If $\forall k \in \mathbb{N}$, $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{proposition:avaliable-in-finity-step} we can suppose $n_k \le P$,
-        such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$. Thus we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
+        If $\forall k \in \mathbb{N}$, there is $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{proposition:avaliable-in-finity-step} we can suppose $n_k \le P$,
+        such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
+        Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
 \end{itemize}
 Sum up, we proved this direction.
 \end{proof}
@@ -448,24 +408,39 @@ Sum up, we proved this direction.
     There's an upperbound of $\frac{\mathcal{A}_k}{k}$ when $k\to\infty$, and it doesn't depend on $\alpha$.
 \end{conjecture}
 
-\cref{theorem:requirements-of-avaliablity} present that, for general triplet arguments, not all initial numbers can be reduced infinitely many times. But these propositions above provide a basic way to determine whether a number can be reduced, especially since we can easily filter out many initial numbers that cannot.
+\cref{theorem:requirements-of-avaliablity} present that, for general triplet arguments, not all initial numbers can be reduced infinitely many times.
+But these propositions above provide a basic way to determine whether a number can be reduced, especially since we can easily filter out many initial numbers that cannot.
 
-However, even if $A_{k}\to \infty$, we can't say that $a_k$ will eventually fall into a cycle. For example, when $\alpha = 11$, $\beta = 2$, and $\gamma = 1$, for any number, the sequence may grow exponentially as $k$ increases, while $\alpha = 3$ will decrease to 1, at least for the numbers we observe. The reason for this is because the distribution of reduce always only relates to $\beta$, and its change with $\alpha$ is not significant. But the growth of sequence numbers accelerates as $\alpha$ increases. $11$ is too large, $\beta=2$ and $\gamma=1$ are dwarfed with it.
+However, even if $A_{k}\to \infty$, we can't say that $a_k$ will eventually fall into a cycle.
+For example, when $\alpha = 11$, $\beta = 2$ and $\gamma = 1$, for any number, the sequence may grow exponentially as $k$ increases, while $\alpha = 3$ will decrease to 1, at least for the numbers we observe.
+The reason for this is that the distribution of reduce always only relates to $\beta$, and its change with $\alpha$ is not significant.
+But the growth of sequence numbers accelerates as $\alpha$ increases. $11$ is too large, $\beta=2$ and $\gamma=1$ are dwarfed with it.
 
-Therefore, we can only find these cycle numbers by letting $a_{t} = a$. Accoding to \cref{theorem:inductive-formula}, that is
+Therefore, we can only find these cycle numbers by letting $a_{t} = a$.
+According to \cref{theorem:inductive-formula}, that is
 \[ a = \frac{\gamma \cdot \mathfrak{A}_{t}}{\beta^{\mathcal{A}_{t}} - \alpha^{t}}. \]
-For this equation, there probably are some integer solutions from \cref{proposition:trivial-periodic-sequence}, but not all integer solution of it follows that proposition. For example, $a=13$ has a 4-tempus cycle under $\alpha=3$, $\beta=5$, $\gamma=1$, that the $\Delta(13;1) = 1$, $\Delta(13;2) = 2$, $\Delta(13;3) = 0$ and $\Delta(13;4) = 0$. Obviously, $\Delta(13;i)$ are not same. Therefore, we have to explore the properties of this fractional expression independently.
-\section{Extend the Field of Values for the Collatz Sequence}
-A better thought is extending our view from $\mathbb{N}$ to $\mathbb{Q}$. Keeping the $\alpha, \beta, \gamma \in \mathbb{N}$, instead of restricting the initial number $a \in \mathbb{N}$, we can let $a$ be any number of $\mathbb{Q}-\beta\mathbb{Q}$. In this siduation, the \cref{theorem:inductive-formula} still holds, so do those corollaries of the theorem. More than that, we can given an Collatz sequence by given the reduces.
+For this equation, there probably are some integer solutions from \cref{proposition:trivial-periodic-sequence}, but not all integer solution of it follows that proposition.
+For example, $a=13$ has a 4-tempus cycle under $\alpha=3$, $\beta=5$, $\gamma=1$, that $\Delta(13;1) = 1$, $\Delta(13;2) = 2$, $\Delta(13;3) = 0$ and $\Delta(13;4) = 0$.
+Obviously, $\Delta(13;i)$ are not same.
+Therefore, we have to explore the properties of this fractional expression independently.
+
+\section{Extend the Field of Values for the Collatz Sequence}\label{sec:extend-the-field-of-values-for-the-collatz-sequence}
+
+A better thought is extending our view from $\mathbb{N}$ to $\mathbb{Q}$.
+Keeping $\alpha, \beta, \gamma \in \mathbb{N}$, instead of restricting the initial number $a \in \mathbb{N}$, we can let $a$ be any number of $\mathbb{Q}-\beta\mathbb{Q}$.
+In this situation, the \cref{theorem:inductive-formula} still holds, so do those corollaries of the theorem.
+More than that, we can get a Collatz sequence by given the reduces.
 
 \begin{theorem}~\label{theorem:any-cycle}
     Given $\{\Delta_i\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\mathbb{Q}$ is a cycle that $\Delta(a;k) = \Delta_{k\fmod n}$.
 \end{theorem}
 \begin{proof}%[Proof of \cref{theorem:any-cycle}]
     Let's just using the notation $\mathcal{A}_k$ and $\mathfrak{A}_k$ as if $\Delta(a;k) = \Delta_{k\fmod n}$.\newline
-    Then $\forall k = 1, 2, \cdots, n$, we have $\mathcal{A}_{k + n}^{k} = \mathcal{A}_n$. Let
+    Then $\forall k = 1, 2, \cdots, n$, we have $\mathcal{A}_{k + n}^{k} = \mathcal{A}_n$.
+    Let
     \[ a_k = \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{Q}. \]
-    Obviously, $\beta \nmid a_{k}$. And we have
+    Obviously, we have $\beta \nmid a_{k}$.
+    And we have
     \[\begin{aligned}
         \alpha\cdot a_{k} + \gamma &= \frac{\gamma\cdot\alpha\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} + \frac{\gamma\cdot(\beta^{\mathcal{A}_n} - \alpha^n)}{\beta^{\mathcal{A}_n} - \alpha^n} \\
         &= \frac{\gamma\cdot(\alpha\cdot\mathfrak{A}_{n+k}^{k}+\beta^{\mathcal{A}_{n+k}^{k}}) - \gamma\cdot\alpha^n}{\beta^{\mathcal{A}_n} - \alpha^n} \\
@@ -474,17 +449,26 @@ A better thought is extending our view from $\mathbb{N}$ to $\mathbb{Q}$. Keepin
         &= \frac{\gamma\cdot\mathfrak{A}_{n+k+1}^{k+1}}{\beta^{\mathcal{A}_n} - \alpha^n}\cdot \beta^{\mathcal{A}_{k+1}^{k}} \\
         &= a_{k+1}\cdot \beta^{\Delta_{k+1}}.
     \end{aligned}\]
-    So we just let $a = a_{n}$, then the Collatz sequence of $a$ is what we want. And it is unique.
+    So we just let $a = a_{n}$, then the Collatz sequence of $a$ is what we want.
+    And it is unique.
 \end{proof}
-In fact, we can see that the rotation of $\Delta_k$ corresponds with the rotation of $a_k$. That implies some symmetry of the Collatz sequence. But not all Collatz reduce is a pure cycle. In fact, most of  what may eventually enter a cycle have a chaotic beginning. Even there may exist some Collatz sequence will not fall into any cycle. For these two kinds of Collatz reduces, we have
+In fact, we can see that the rotation of $\Delta_k$ corresponds with the rotation of $a_k$.
+That implies some symmetry of the Collatz sequence.
+But not all Collatz reduce is a pure cycle.
+In fact, most of  what may eventually enter a cycle have a chaotic beginning.
+Even there may exist some Collatz sequence will not fall into any cycle.
+For these two kinds of Collatz reduces, we have
 \begin{theorem}~\label{theorem:any-presequence}
-    Given $\{\Delta_i\}_{i=1}^{n}$ that $n < \infty$, and any number $b$. If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\mathbb{Q}[b]$ that $\Delta(a;i) = \Delta_i$ and $a_n = b$.
+    Given $\{\Delta_i\}_{i=1}^{n}$ that $n < \infty$, and any number $b$.
+    If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\mathbb{Q}[b]$ that $\Delta(a;i) = \Delta_i$ and $a_n = b$.
 \end{theorem}
 \begin{proof}
-    Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\Delta(a;i) = \Delta_{i}$.\newline
-    $\forall k = 0, 1, 2, \cdots, n$, let
-    \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \mathbb{Q}. \]
-    Samely, since $\beta \nmid \mathfrak{A}_n^k$, then $\beta \nmid \mathfrak{a}_n^{k}$, then $\beta \nmid a_k$. And we have
+    Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\Delta(a;i) = \Delta_{i}$.
+    Let
+    \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \mathbb{Q} \]
+    where $k = 0, 1, 2, \cdots, n$.
+    Similarly, since $\beta \nmid \mathfrak{A}_n^k$, then $\beta \nmid \mathfrak{a}_n^{k}$, then $\beta \nmid a_k$.
+    And we have
     \[\begin{aligned}
         \alpha \cdot a_k + \gamma &= b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} + \gamma \\
         % &= b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k-1}}  - \gamma\cdot\alpha^{k}\cdot\left(\mathfrak{a}_n^{k} - \frac{1}{\alpha^{k}}\right) \\
@@ -492,41 +476,32 @@ In fact, we can see that the rotation of $\Delta_k$ corresponds with the rotatio
         &= \left(b \cdot \frac{\beta^{\mathcal{A}_n^{k+1}}}{\alpha^{n-(k+1)}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k+1}\cdot\mathfrak{a}_{n}^{k+1}\right) \cdot \beta^{\mathcal{A}_{k+1}^{k}} \\
         &= a_{k+1} \cdot \beta^{\Delta_{k+1}}
     \end{aligned}\]
-    to make sure it is a Collatz sequence. Finally, It is easy to verify that $a_n = b$. Also, it is unique.
+    to make sure it is a Collatz sequence.
+    Finally, we have $a_n = b$.
+    Also, it is unique.
 \end{proof}
 
-\cref{theorem:any-cycle} and \cref{theorem:any-presequence} present that we can come up with a lot of Collatz sequence that will fall into cycles by given its reduce sequence instead of startswith an interger. However, not all given reduce sequence can derive a Collatz sequence because there may be some $\beta\mid \mathfrak{A}_{n+k}^{k}$. At that time, $\beta \left\vert \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \right.$. That's why we need $\beta \nmid \mathfrak{A}_i^j$. Moreover, from the two proofs above, we can also draw another interesting corollary:
+\cref{theorem:any-cycle} and \cref{theorem:any-presequence} present that we can come up with a lot of Collatz sequence that will fall into cycles by given its reduce sequence instead of startswith an integer.
+However, not all given reduce sequence can derive a Collatz sequence because there may be some $\beta\mid \mathfrak{A}_{n+k}^{k}$.
+At that time, we have $\beta \left\vert \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \right.$.
+That's why we need $\beta \nmid \mathfrak{A}_i^j$.
+Moreover, from the two proofs above, we can also draw another interesting corollary:
 \begin{theorem}
     If Collatz sequence of $a$ will fall into a cycle, then $a \in \mathbb{Q}$.
 \end{theorem}
-However, the converse of this conclusion does not hold. For example, $a=3$ under $\alpha = 11$, $\beta=2$, $\gamma=1$ may never fall into a cycle. For these won't fall in to cycles, there is also a conjecture:
+However, the converse of this conclusion does not hold.
+For example, $a=3$ under $\alpha = 11$, $\beta=2$ and $\gamma=1$ may never fall into a cycle.
+For these won't fall in to cycles, there is also a conjecture:
 \begin{conjecture}
     Given $\{\Delta_i\}_{i=1}^{\infty}$ has no cycle, then there is a Collatz sequence that $\Delta(a;i) = \Delta_i$, converges to an $\beta$-adic irrational number or $0$.
 \end{conjecture}
-Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduces. This implies that the Collatz reduces is the more fundamental aspect of this process.
+Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduces.
+This implies that the Collatz reduces is the more fundamental aspect of this process.
 
-% \section{Continous and Limits}
-% To analyze the continous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$. 
-% \begin{definition}
-% Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms. With these, moreover, we can define
-%     \[f(\bm{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
-%     on $\mathbb{R} - \{\mathcal{A}_n \ne n\log_{\beta}{\alpha}\}$ called Collatz value.
-% \end{definition}
-
-% From the \cref{theorem:any-cycle}, we have
-% \begin{conjecture}
-%     If subsequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
-%     \[ \lim_{i\to\infty}^{\mathbb{Q}_\beta} a_{k_i} = \lim_{i\to\infty}^{\mathbb{R}}\frac{\gamma \cdot \mathfrak{A}_{k_i}}{\beta^{\mathcal{A}_{k_i}} - \alpha^{k_i}}. \]
-% \end{conjecture}
-
-\section{Back Trace the Collatz Sequence}
-\cref{theorem:any-presequence} tell us we can also trace back the Collatz sequence in $\mathbb{Q}$. But we can only go back under a finite reduces given. For an infinity tracing back, we need to redefine the summation to give it directionality.
-% For this, we import a function $\sgn$ defined by
-% \[ \sgn(a) = \left\{\begin{aligned}
-%     &1, &&a > 0, \\
-%     &0, &&a = 0, \\
-%     -&1, &&a < 0.
-% \end{aligned}\right. \]
+\section{Back Trace the Collatz Sequence}\label{sec:back-trace-the-collatz-sequence}
+\cref{theorem:any-presequence} tell us we can also trace back the Collatz sequence in $\mathbb{Q}$.
+But we can only go back under a finite reduces given.
+For an infinity tracing back, we need to redefine the summation to give it directionality.
 \begin{definition}
     given $\{\Delta_i\}_{i=-\infty}^{\infty}$, define the accumulation from $m$ to $n$ as
     \[ \mathcal{A}_{n}^{m} = \left\{\begin{aligned}
@@ -546,7 +521,8 @@ Anyway, we now finally extended the problem from integers to the rational number
     &0, &&n = m, \\
     -&\sum_{i = n}^{m - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}}, &&n < m.
 \end{aligned}\right. \]
-    Here $m, n \in \mathbb{Z}$, thus $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ should be in $\mathbb{Q}$. And also we omit $m$ or $n$ when them are $0$.
+    Here $m, n \in \mathbb{Z}$, thus $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ should be in $\mathbb{Q}$.
+    And also we omit $m$ or $n$ when them are $0$.
 \end{definition}
 \begin{proposition}
     $\mathcal{A}_{n}^{m} = -\mathcal{A}_{m}^{n}$.
@@ -554,9 +530,11 @@ Anyway, we now finally extended the problem from integers to the rational number
 \begin{proposition}
     $\alpha^{n-m} \cdot \mathfrak{A}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{A}_{n}^{m} = 0$ and $\mathfrak{a}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{a}_{n}^{m} = 0$.
 \end{proposition}
-It is easy to verify that those propositions of Collatz accumulation and complement still holds. And with these definitions, we have
+It is easy to verify that those propositions of Collatz accumulation and complement still holds.
+And with these definitions, we have
 \begin{theorem}~\label{theorem:final-inductive-formula}
-Given $a \in \mathbb{Q}-\beta\mathbb{Q}$ and $\{\Delta_i\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, $\beta \nmid \mathfrak{A}_{i}^{j}$. Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
+Given $a \in \mathbb{Q}-\beta\mathbb{Q}$ and $\{\Delta_i\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
+Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
 \[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
 \end{theorem}
 
@@ -564,7 +542,7 @@ Given $a \in \mathbb{Q}-\beta\mathbb{Q}$ and $\{\Delta_i\}_{i=-\infty}^{\infty} 
     $a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = \alpha^{n-m} \cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n}^{m}\right)$.
 \end{corollary}
 \begin{corollary}
-    If $\forall i$ that $k \ge i > 0$, $\Delta_{-i} = \Delta$, denote $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$, then we have
+    If $\forall i$ that $k \ge i > 0$, there is $\Delta_{-i} = \Delta$, denote $\sigma = \frac{\gamma}{\alpha-\beta^{\Delta}}$, then we have
     $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$.
 \end{corollary}
 Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigma)$ has only one form of solution:
@@ -572,10 +550,12 @@ Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{k\Delta} \cdot (a_0 + \sigm
     a_{0} &= t \cdot \alpha^k - \sigma, \\
     a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
 \end{aligned}\right.\]
-where $t \in \mathbb{Q}$. To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$. Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
+where $t \in \mathbb{Q}$.
+To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$.
+Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
-\section{On $\alpha=3$, $\beta=2$, $\gamma=1$}
-Now suppose $\alpha=3$, $\beta=2$, $\gamma=1$.
+\section{On $\alpha=3$, $\beta=2$, $\gamma=1$}\label{sec:on-alpha3-beta2-gamma1}
+Now suppose $\alpha=3$, $\beta=2$ and $\gamma=1$.
 % \begin{lemma}[Euler's Theorem]
 % $a, b\in \mathbb{N}$ and $\gcd(a,b) = 1$, denote that
 % \[ \phi(b) = \sum_{\gcd(x,b)=1}^{x < b}1, \] then there is $a^{\phi(b)} \equiv 1 \pmod{b}$.    
@@ -590,7 +570,7 @@ And we have
     If $3 \nmid x$, then $x^{-1} \equiv x \pmod{3}$.
 \end{lemma}
 \begin{lemma}
-    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$, $m = \floor{b/3}$, then
+    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$ and $m = \floor{b/3}$, then
     \[ a = \left\{\begin{aligned}
         &m + \frac{1}{3}(4^{n} - 1)     &&\equiv m + n, && b\equiv 1 \pmod{3} \\
         &2m + 1 + \frac{1}{3}(4^{n} - 1)&&\equiv 2m + 1 + n. && b\equiv 2\pmod{3}
@@ -602,9 +582,9 @@ We can replace the expression of the Collatz conjecture:
     \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
     \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
 \end{corollary}
-To proof the conjecture, we deine some functions.
+To proof the conjecture, we define some functions.
 \begin{definition}
-    For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$, $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
+    For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$ and $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
     \[ f_{n}(\bm{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k} = \frac{2^{\mathcal{A}_{n}}}{3^{n}} - \frac{1}{3}\mathfrak{a}_{n}. \]
 
     Define mapping $E: \mathbb{N}_{\ge1}^{m} \to \mathbb{N}_{\ge1}^{n}$ as
@@ -648,9 +628,10 @@ f_{n}(F_{t;l}(F_{s;k}(\bm{a})))
 \end{aligned}\]
 \end{proposition}
 
-To describe the iterational properties, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$. If we don't care the $k$, we denote $a \rightsquigarrow b$.
+To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
+If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
 \begin{proposition}
-    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \rightsquigarrow 1$.
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} 1$.
 \end{proposition}
 % \begin{proposition}
 % $f_{n}(F_{2s;k}(\bm{a})) = 4^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot(4^{s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}}$.
@@ -680,6 +661,7 @@ Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
         \equiv&\ f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k-1}}. &&\pmod{3}
     \end{aligned} \]
 \end{proof}
+Similarly, we have
 \begin{proposition}
     \[ f_{n}(F_{ 3^{l-1}\cdot 2t;l}(F_{3^{k-1}\cdot2s;k}(\bm{a}))) \equiv f_{n}(\bm{a}) + s \cdot 2^{\mathcal{A}_{k-1}} + t \cdot 2^{\mathcal{A}_{l - 1}} \pmod{3}. \]
 \end{proposition}
@@ -690,35 +672,108 @@ Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
 And we have
 \begin{proposition}
     If $m > 0$, then we have 
-    \[g_{s,m;n}(\bm{a}) \rightsquigarrow s \cdot 2^{m} \cdot 3^{n} + 1 \rightsquigarrow \left\{\begin{aligned}
+    \[g_{s,m;n}(\bm{a}) \overset{n}{\rightsquigarrow} s \cdot 2^{m} \cdot 3^{n} + 1 \overset{(m - 1)/2}{\rightsquigarrow} \left\{\begin{aligned}
         &s \cdot 2 \cdot 3^{n + (m - 1)/2} + 1, && m \equiv 1 \pmod{2}, \\
         &s \cdot 4 \cdot 3^{n + (m - 2)/2} + 1, && m \equiv 0 \pmod{2}.
     \end{aligned}\right.\]
 \end{proposition}
 
 \appendix
-\section{Two Abstract Forms}
-Now let's forget those definitions before. We will introduce two new abstract forms to inclussion those properties above.
+\section{Number Theory Tools}\label{sec:number-theory-tools}
+To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
+\begin{definition}
+    Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
+    \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
+    called the discrete order of $b$ modulo $a$, and define $\ord_{a}(1) = 1$.
+\end{definition}
+\begin{proposition}
+    If $c \mid a$, then $\ord_{c}(b) \mid \ord_{a}(b)$.
+\end{proposition}
+\begin{definition}
+Given $x\in \mathbb{N}_{_{>1}}$.
+If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$.
+Otherwise, we say that $\log_{a, b}(x)$ does not exist.
+\end{definition}
+\begin{proposition}
+    $\log_{a, b}(x^{-1}) = \ord_{a}(b) - \log_{a,b}(x)$.
+\end{proposition}
+\begin{definition}
+If $\log_{a, b}(x)$ exists, then we denote that
+\[ \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x). \]
+Otherwise, we denote $\Log_{a, b}(x) = \varnothing$.
+And we denote
+\[- \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} - \log_{a, b}(x).\]
+\end{definition}
+
+We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
+
+Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
+\begin{proposition}
+    $x^{\log_{a, b}(x)} \equiv x \pmod{b}$.
+\end{proposition}
+\begin{proposition}
+    $\Log_{a,b}(x^{-1}) = -\Log_{a,b}(x)$.
+\end{proposition}
+\begin{proposition}
+    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}(x) + \log_{a, b}(y) \pmod{\ord_a(b)}$.
+\end{proposition}
+\begin{proposition}
+    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}(x) \pmod{\ord_a(b)}$.
+\end{proposition}
+\begin{proposition}
+    $\forall c \in \mathbb{N}$ we have $\log_{a+cb, b}(x) \equiv \log_{a, b}(x) \pmod{\ord_a(b)}$.
+\end{proposition}
+\begin{definition}
+    Define $\fac_{a}(b) = \max_{n \in \mathbb{N}}\{a^n \mid b\}$.
+\end{definition}
+\begin{proposition}
+    If $c \mid a$ and $a \mid b$, then $\fac_{c}(b) \ge \fac_{c}(a) \cdot \fac_{a}(b)$.
+\end{proposition}
+\begin{definition}
+    Define $\rad(b) = \prod_{p_i \in \mathbb{P}}^{p_i \mid b}p_i$ as the radical of $b$.
+\end{definition}
+
+ \section{Continuous and Limits}\label{sec:continous-and-limits}
+To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.
+ \begin{definition}
+ Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms.
+ With these, moreover, we can define
+     \[f(\bm{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
+     on $\mathbb{R} - \{\mathcal{A}_n \ne n\log_{\beta}{\alpha}\}$ called Collatz value.
+ \end{definition}
+
+ From the \cref{theorem:any-cycle}, we have
+ \begin{conjecture}
+     If subsequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
+     \[ \lim_{i\to\infty}^{\mathbb{Q}_\beta} a_{k_i} = \lim_{i\to\infty}^{\mathbb{R}}\frac{\gamma \cdot \mathfrak{A}_{k_i}}{\beta^{\mathcal{A}_{k_i}} - \alpha^{k_i}}. \]
+ \end{conjecture}
+
+\section{Two Abstract Forms}\label{sec:two-abstract-forms}
+Now let's forget those definitions before.
+We will introduce two new abstract forms to inclusion those properties above.
 \begin{definition}
     Providing a ring $R$ and a set of index $I$. \newline
-    Mapping $F:I\times I \to R$ is called an form on $R$ with $I$ if it follow some special propoties. And we denote $F_{i}^{j} = F(j, i)$.
+    Mapping $F:I\times I \to R$ is called a form on $R$ with $I$ if it follows some special properties.
+    And we denote $F_{i}^{j} = F(j, i)$.
 \end{definition}
 \begin{definition}[Multiply Form]
     Given a form $\mathcal{A}$ on $R$ with $I$. \newline
-    If $\forall i, j, k \in I$, there is $\mathcal{A}_{i}^{k}\cdot\mathcal{A}_{k}^{j} = \mathcal{A}_{i}^{j}$, we call it an multiply form.
+    If $\forall i, j, k \in I$, there is $\mathcal{A}_{i}^{k}\cdot\mathcal{A}_{k}^{j} = \mathcal{A}_{i}^{j}$, we call it a multiply form.
 \end{definition}
 \begin{proposition}
-    If $\exists s, t \in I$ that $\mathcal{A}_{s}^{t} = 0$, then $\forall i, j \in I$, $\mathcal{A}_{i}^{j} = 0$.
-    We called that $A$ is a zero multiply form, and denote $\mathcal{A} = 0$. Otherwise, we say $\mathcal{A} \ne 0$.
+    If $\exists s, t \in I$ that $\mathcal{A}_{s}^{t} = 0$, then $\forall i, j \in I$, we have $\mathcal{A}_{i}^{j} = 0$.
+    We called that $A$ is a zero multiply form, and denote $\mathcal{A} = 0$.
+    Otherwise, we say $\mathcal{A} \ne 0$.
 \end{proposition}
 \begin{proposition}
-    If $\mathcal{A} \ne 0$, then $\forall i, j \in I$, $\mathcal{A}_{i}^{j}\cdot\mathcal{A}_{j}^{i} = \mathcal{A}_{i}^{i} = 1$.
+    If $\mathcal{A} \ne 0$, then $\forall i, j \in I$, there is $\mathcal{A}_{i}^{j}\cdot\mathcal{A}_{j}^{i} = \mathcal{A}_{i}^{i} = 1$.
 \end{proposition}
 \begin{definition}[Convolution Form]
-    Given two forms $A$ and $B$ on $R$ with $I$. 
+    Given two forms $A$ and $B$ on $R$ with $I$.
     There's a new form $\mathfrak{R}$ such that $\forall i, j, k \in I$, there is
     \[ A_{i}^{k}\cdot\mathfrak{R}_{k}^{j} + \mathfrak{R}_{i}^{k}\cdot B_{k}^{j} = \mathfrak{R}_{i}^{j} \]
-    called the right convolution form of $A$ and $B$. And form $\mathfrak{L}$
+    called the right convolution form of $A$ and $B$.
+    And form $\mathfrak{L}$
     \[ A_{k}^{j}\cdot\mathfrak{L}_{i}^{k} + \mathfrak{L}_{k}^{j}\cdot B_{i}^{k} = \mathfrak{L}_{i}^{j} \]
     called the left convolution form of $A$ and $B$.
 \end{definition}
@@ -730,7 +785,9 @@ Given a convolution form $\mathfrak{U}$ of $A$ and $B$, left or right both have
     $\forall i, j \in I, A_{j}^{i}\cdot\mathfrak{U}_{i}^{j} + \mathfrak{U}_{j}^{i}\cdot B_{i}^{j} = 0$.
 \end{proposition}
 
-Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mathrm{ConL}(A, B)$ as the set of all left convolution forms of $A$ and $B$. If the left or right is not matter, we just denote them $\mathrm{Con}(A, B)$. Our discussion of convolution forms will discare the left or right.
+Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mathrm{ConL}(A, B)$ as the set of all left convolution forms of $A$ and $B$.
+If the left or right is not matter, we just denote them $\mathrm{Con}(A, B)$.
+Our discussion of convolution forms will discard the left or right.
 \begin{proposition}
     $\mathrm{Con}(A, B)$ is a commutative group by
     \[ + : \mathrm{Con}(A, B) \times \mathrm{Con}(A, B) \to \mathrm{Con}(A, B) \]
@@ -738,7 +795,8 @@ Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mat
     \[ (\mathfrak{A} + \mathfrak{B})_{i}^{j} = \mathfrak{A}_{i}^{j} + \mathfrak{B}_{i}^{j}. \]
 \end{proposition}
 % \begin{proof}
-%     Let $\mathfrak{O}$ is that $\forall i, j \in I$, $\mathfrak{O}_{i}^{j}$maps to $0$. $\mathfrak{O}$ is the zero element of $\mathrm{Con}(A, B)$. We can just verify if the $+$ is closed in $\mathrm{Con}(A, B)$.
+%     Let $\mathfrak{O}$ is that $\forall i, j \in I$, $\mathfrak{O}_{i}^{j}$maps to $0$.
+%     $\mathfrak{O}$ is the zero element of $\mathrm{Con}(A, B)$. We can just verify if the $+$ is closed in $\mathrm{Con}(A, B)$.
 %     $\forall \mathfrak{A}, \mathfrak{B} \in \mathrm{Con}(A, B)$, we have
 %     \[ \begin{aligned}
 %          & A_{i}^{k}\cdot(\mathfrak{A} + \mathfrak{B})_{k}^{j} + (\mathfrak{A} + \mathfrak{B})_{i}^{k}\cdot B_{k}^{j} \\
@@ -750,13 +808,15 @@ Denote $\mathrm{ConR}(A, B)$ as the set of all right convolution forms and $\mat
 %     \end{aligned} \]
 %     so $\mathfrak{A} + \mathfrak{B} \in \mathrm{Con}(A, B)$.
 % \end{proof}
-Also, we denote $\mathfrak{U} = 0$ if it is a zero convolution form. However, we need another restriction of convolution forms to describe our problem.
+Also, we denote $\mathfrak{U} = 0$ if it is a zero convolution form.
+However, we need another restriction of convolution forms to describe our problem.
 \begin{lemma}
     Given two multiply form $\mathcal{A}$ and $\mathcal{B}$.
-    $\forall \mathfrak{U} \in \mathrm{Con}(\mathcal{A}, \mathcal{B})$, we have
+    $\forall \mathfrak{U} \in \mathrm{Con}(\mathcal{A}, \mathcal{B})$ we have
     \[ \mathfrak{U}_{i}^{j} = \sum_{k = j}^{i - 1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j}. \]
 \end{lemma}
-We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consisting of the $\mathfrak{U}_{i}^{j}$. We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
+We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consisting of $\mathfrak{U}_{i}^{j}$.
+We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
 % \begin{corollary}
 %     If $\mathfrak{U} \in \mathrm{ICon}(A, B)$ that $\mathfrak{U}_{k+1}^{k} = \gamma$, then
 %     \[ \mathfrak{U}_{i}^{j} = \gamma \cdot\sum_{i \ge k \ge j}\mathcal{A}_{i}^{k+1}\mathcal{B}_{k}^{j}. \]
@@ -767,7 +827,8 @@ We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consist
 All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
 
 \begin{theorem}
-    Given two multiply form $\mathcal{A}$ and $\mathcal{B}$. If there is $T \in I$ such that $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B})$, $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$.
+    Given two multiply form $\mathcal{A}$ and $\mathcal{B}$.
+    If there is $T \in I$ such that $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B})$, then $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$.
 \end{theorem}
 \begin{proof}
     \[ \begin{aligned}
@@ -778,8 +839,9 @@ All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
     \end{aligned} \]
 \end{proof}
 % \begin{theorem}
-%     Given two exponatation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
+%     Given two exponentation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
 % \end{theorem}
+
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
 \nocite{*}
