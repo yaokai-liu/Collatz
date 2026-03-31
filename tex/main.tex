@@ -756,6 +756,9 @@ We will introduce two new abstract forms to inclusion those properties above.
     Mapping $F:I\times I \to R$ is called a form on $R$ with $I$ if it follows some special properties.
     And we denote $F_{i}^{j} = F(j, i)$.
 \end{definition}
+\begin{definition}
+    If $\exists t \in I$ such that if $\forall i, j\in I$, there is $F_{i+t}^{j+t} = F_{i}^{j}$, then we say $F$ is a cycle form, and $t$ is called a period of it.
+\end{definition}
 \begin{definition}[Multiply Form]
     Given a form $\mathcal{A}$ on $R$ with $I$. \newline
     If $\forall i, j, k \in I$, there is $\mathcal{A}_{i}^{k}\cdot\mathcal{A}_{k}^{j} = \mathcal{A}_{i}^{j}$, we call it a multiply form.
@@ -816,31 +819,37 @@ However, we need another restriction of convolution forms to describe our proble
     \[ \mathfrak{U}_{i}^{j} = \sum_{k = j}^{i - 1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j}. \]
 \end{lemma}
 We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consisting of $\mathfrak{U}_{i}^{j}$.
-We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
-% \begin{corollary}
-%     If $\mathfrak{U} \in \mathrm{ICon}(A, B)$ that $\mathfrak{U}_{k+1}^{k} = \gamma$, then
-%     \[ \mathfrak{U}_{i}^{j} = \gamma \cdot\sum_{i \ge k \ge j}\mathcal{A}_{i}^{k+1}\mathcal{B}_{k}^{j}. \]
-% \end{corollary}
+\begin{definition}[kernel of Convolution Form]
+    We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
+\end{definition}
+\begin{definition}
+    If $\forall i, j\in I$, such that $\mathfrak{U}_{i+1}^{i} = \mathfrak{U}_{i+t+1}^{i+t}$, then we say it has a cycle kernel with $t$ is a period of it.
+\end{definition}
+All cycle kernel convolution forms with period $t$ are denoted as $\mathrm{CCon}_{t}(A, B)$.
 \begin{definition}
     Given a convolution form $\mathfrak{U} \in \mathrm{Con}(A, B)$, if $\forall i, j\in I$, there is $\mathfrak{U}_{i+1}^{i} = \mathfrak{U}_{j+1}^{j}$, we say it is kernel independent.
 \end{definition}
 All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
-
+Of course, we have
+\begin{corollary}
+    $\mathrm{ICon}(A, B) = \mathrm{CCon}_{1}(A, B)$.
+\end{corollary}
+\begin{corollary}
+    If $\mathfrak{U} \in \mathrm{ICon}(A, B)$ that $\mathfrak{U}_{k+1}^{k} = \gamma$, then
+    \[ \mathfrak{U}_{i}^{j} = \gamma \cdot\sum_{i \ge k \ge j}\mathcal{A}_{i}^{k+1}\mathcal{B}_{k}^{j}. \]
+\end{corollary}
+Specially, For the cycle kernel convolution form, we have
 \begin{theorem}
-    Given two multiply form $\mathcal{A}$ and $\mathcal{B}$.
-    If there is $T \in I$ such that $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B})$, then $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$.
+    Given two cycle multiply form $\mathcal{A}$ and $\mathcal{B}$ with period $t$. then $\forall \mathfrak{U} \in \mathrm{CCon}_{t}(\mathcal{A}, \mathcal{B})$, we have $\mathfrak{U}$ is a cycle form with peroid $t$.
 \end{theorem}
 \begin{proof}
     \[ \begin{aligned}
-        \mathfrak{U}_{i+T}^{j+T} =& \sum_{k = j+T}^{i+T-1}\mathcal{A}_{i+T}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j+T} \\
-        =& \sum_{k = j+T}^{i+T-1}\mathcal{A}_{i}^{k-T+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k-T}^{j} \\
+        \mathfrak{U}_{i+t}^{j+t} =& \sum_{k = j+t}^{i+t-1}\mathcal{A}_{i+t}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j+t} \\
+        =& \sum_{k = j+t}^{i+t-1}\mathcal{A}_{i}^{k-t+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k-t}^{j} \\
         =& \sum_{k = j}^{i-1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j} \\
-        =& \mathfrak{U}_{i}^{j}
+        =& \mathfrak{U}_{i}^{j}.
     \end{aligned} \]
 \end{proof}
-% \begin{theorem}
-%     Given two exponentation form $\mathcal{A}$ and $\mathcal{B}$. If $\mathcal{A}\ne\mathcal{B}$, then $\forall \mathfrak{U} \in \mathrm{ICon}(\mathcal{A}, \mathcal{B}) - \{0\}$, if there is $T \in I$, such that $\mathfrak{U}_{i+T}^{j+T} = \mathfrak{U}_{i}^{j}$, then $\mathcal{A}_{i+T}^{j+T} = \mathcal{A}_{i}^{j}$ and $\mathcal{B}_{i+T}^{j+T} = \mathcal{B}_{i}^{j}$.
-% \end{theorem}
 
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
