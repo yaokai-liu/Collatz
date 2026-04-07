@@ -59,13 +59,15 @@
 \newcommand{\ord}{\mathrm{ord}}
 \newcommand{\fac}{\mathrm{fac}}
 \newcommand{\rad}{\mathrm{rad}}
+\newcommand{\raf}{\mathrm{raf}}
+\newcommand{\rem}{\mathrm{rem}}
+\newcommand{\lcm}{\mathrm{lcm}}
 \newcommand{\Log}{\mathrm{Log}}
-\newcommand{\CollatzCompIndu}[3]{\beta^{\mathcal{A}_{#2}^{#3}}\cdot\mathfrak{A}_{#1}^{#2} + \mathfrak{A}_{#2}^{#3}\cdot\alpha^{{#1}-{#2}}}
 
 % \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
 \title{On the General Collatz Sequence: $\alpha \cdot a + \gamma$ reduced by $\beta$}
 \author{Yaokai Liu
-% \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}%
+\href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}%
 }
 \begin{document}
 \maketitle
@@ -99,11 +101,11 @@ which ensures the $a_k$ always is an odd number.
 It makes things easier.
 Because when I start iteratively to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, I found
 \[ a_k \cdot 2^{\sum_{j=0}^{k}\CollatzReduce{a}{j}} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i}\CollatzReduce{a}{j}}\cdot3^{k-i-1}.  \]
-Though it looks like a little bit dirty, but with the definition $\mathcal{A}_{k} = \sum_{j=0}^{k}\CollatzReduce{a}{j}$, the looks of the formula soon be better:
+Though it looks like a little bit complex, but with the definition $\mathcal{A}_{k} = \sum_{j=0}^{k}\CollatzReduce{a}{j}$, the looks of the formula soon be better:
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
-Notice that $a$ is a positive finity number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finity odd times of $3^{-1}$ under the modula.
+Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modula.
 This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
 follows the Collatz conjecture.
@@ -325,10 +327,10 @@ With these notations, firstly, we have
 \begin{theorem}
     If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
 \end{theorem}
-But not all $b$ is reversible modulo $\alpha$, and not all $a^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
+But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
 So we have
 \begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
-    If $a \in \mathbb{N}-\beta\mathbb{N}$ such that \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing, \]then we say $a$ is a Collatz primitive source.
+    If $b \in \mathbb{N}-\beta\mathbb{N}$ such that \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing, \]then we say $b$ is a Collatz primitive source.
 \end{definition}
 
 It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
@@ -348,28 +350,28 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
     $\exists P \in \mathbb{N}_{\ge1}$, such that $[m \mid n + P ] = [m\mid n]$.
 \end{proposition}
 \begin{proof}
-    Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p_i\in\mathbb{P}}^{p_i \mid \beta}p_i^{\fac_{p_i}(\alpha-1)}$.
+    Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p\in\mathbb{P}}^{p \mid \beta}p^{\fac_{p}(\alpha-1)}$.
 
-    First, since $\gcd(\alpha, \beta) = 1$, we have
+    First, since $\gcd(\alpha, \beta) = 1$, for those $p \in \mathbb{P}$ that $p \mid \beta$, we have
     \[ \begin{aligned}
-        \fac_{p_i}(\alpha^P - 1) & \ge \fac_{p_i}\left(\prod_{p_i\in\mathbb{P}}^{p_i \mid \beta}p_i^{\fac_{p_i}(\alpha-1)}\right) + \fac_{p_i}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
-                                 & \ge \fac_{p_i}(\alpha-1) + \fac_{p_i}(\beta) \cdot m,
+        \fac_{p}(\alpha^P - 1) & \ge \fac_{p}\left(\prod_{p\in\mathbb{P}}^{p \mid \beta}p^{\fac_{p}(\alpha-1)}\right) + \fac_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
+                                 & \ge \fac_{p}(\alpha-1) + \fac_{p}(\beta) \cdot m,
     \end{aligned} \]
     Then we have
     \[ \begin{aligned}
-        \fac_{p_i}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \fac_{p_i}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
-                &= \fac_{p_i}(\alpha^P - 1) - \fac_{p_i}(\alpha-1) \\
-                &\ge \fac_{p_i}(\beta) \cdot m.
+        \fac_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \fac_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
+                &= \fac_{p}(\alpha^P - 1) - \fac_{p}(\alpha-1) \\
+                &\ge \fac_{p}(\beta) \cdot m.
     \end{aligned} \]
-    That means $p_{i}^{m \cdot \fac_{p_i}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
-    From the Chinese Remainder Theorem, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    That means $p_{i}^{m \cdot \fac_{p}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
     
     Now suppose $a \in [m \mid n + P]$.
     From \cref{proposition:equivalence-of-classes}, we have
     \[\begin{aligned}
         a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-            &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{P } \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+            &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{-P} \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}}
     \end{aligned}\]
     which means $a \in [ m \mid n + P] \Longleftrightarrow a \in [m \mid n]$.
@@ -389,7 +391,6 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
     $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
 \end{theorem}
 \begin{proof}
-
 \begin{itemize}
     \item[$\Longrightarrow$)]
         If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\Delta(a, k + n_{k}) > 0$,
@@ -399,7 +400,7 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
         such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
         Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
 \end{itemize}
-Sum up, we proved this direction.
+Sum up, we proved this theorem.
 \end{proof}
 \begin{corollary}
     If $\lim_{k\to\infty}\mathcal{A}_k = \infty$, then $\frac{\mathcal{A}_k}{k} \ge \frac{1}{P}$ when $k\to\infty$.
@@ -554,128 +555,105 @@ where $t \in \mathbb{Q}$.
 To ensure both $a_{-k}$ and $a_0$ are integers, we require $t \in s\cdot\sigma + \mathbb{N}$, where $s \equiv \alpha^{-k} \equiv \beta^{-k\Delta} \pmod{\alpha - \beta^{\Delta}}$.
 Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
 
-\section{On $\alpha=3$, $\beta=2$, $\gamma=1$}\label{sec:on-alpha3-beta2-gamma1}
-Now suppose $\alpha=3$, $\beta=2$ and $\gamma=1$.
-% \begin{lemma}[Euler's Theorem]
-% $a, b\in \mathbb{N}$ and $\gcd(a,b) = 1$, denote that
-% \[ \phi(b) = \sum_{\gcd(x,b)=1}^{x < b}1, \] then there is $a^{\phi(b)} \equiv 1 \pmod{b}$.    
-% \end{lemma}
-At first, we have
-\[ \Log_{2,3}(x) = \left\{\begin{aligned}
-    &2\mathbb{Z},     &&x\equiv 1 \pmod{3} \\
-    &2\mathbb{Z} + 1. &&x\equiv 2 \pmod{3}
-\end{aligned}\right. \]
-And we have
-\begin{lemma}
-    If $3 \nmid x$, then $x^{-1} \equiv x \pmod{3}$.
-\end{lemma}
-\begin{lemma}
-    If $b\cdot 2^{\Delta} = 3a + 1$, let $\Delta = 2n + \log_{2, 3}(b)$ and $m = \floor{b/3}$, then
-    \[ a = \left\{\begin{aligned}
-        &m + \frac{1}{3}(4^{n} - 1)     &&\equiv m + n, && b\equiv 1 \pmod{3} \\
-        &2m + 1 + \frac{1}{3}(4^{n} - 1)&&\equiv 2m + 1 + n. && b\equiv 2\pmod{3}
-    \end{aligned}\right.\]
-\end{lemma}
-\vspace*{2em}
-We can replace the expression of the Collatz conjecture:
-\begin{corollary}
-    \cref{definition:rewritten-conjecture} equivalents to this: $\forall N \in \mathbb{N} - \beta\mathbb{N}$, there's a reduce sequence $\{\Delta_{k}\}_{k = 0}^{n} \subset \mathbb{N}_{\ge1}$ such that
-    \[ N = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k}. \]
-\end{corollary}
-To proof the conjecture, we define some functions.
+\section{Varies in Source Value with Respect to the Reduce Sequence}\label{sec:varies-in-source-value-with-respect-to-the-reduce-sequence}
+
 \begin{definition}
-    For $\bm{a} = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) \in \mathbb{N}_{\ge1}^{n}$, with the notation of $\mathcal{A}_0 = 0$ and $\mathcal{A}_{k} = \sum_{i=1}^{k}\Delta_{i}$, define function $f_{n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ as
-    \[ f_{n}(\bm{a}) = \frac{2^{\mathcal{A}_{n}}}{3^{n}}- \frac{1}{3}\sum_{k=0}^{n-1}\frac{2^{\mathcal{A}_{k}}}{3^k} = \frac{2^{\mathcal{A}_{n}}}{3^{n}} - \frac{1}{3}\mathfrak{a}_{n}. \]
+From \cref{theorem:any-presequence}, with the same arguments $\alpha$, $\beta$ and $\gamma$, and target value $b\in \mathbb{Q} - \beta\mathbb{Q}$, for any finite vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{N}^{n}$, we have a function $f_n : \mathbb{N}^{n} \to \mathbb{Q}$, that defined as
+\[ f_{n}(\bm{a}) = b \cdot \frac{\beta^{\mathcal{A}_{n}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot \mathfrak{a}_{n} \in \mathbb{Q} \]
+is called the source value from $b$ by $\bm{a}$.
 
-    Define mapping $E: \mathbb{N}_{\ge1}^{m} \to \mathbb{N}_{\ge1}^{n}$ as
-    \[ E(\Delta_{1}, \Delta_{2}, \cdots, \Delta_{m}) = (\Delta_{1}, \Delta_{2}, \cdots, \Delta_{m}, \underbrace{2, 2, \cdots, 2}_{n-m\ \text{counts}}). \]
-
-    Given $s \in \mathbb{Z}$, define mapping $F_{s; k}: \mathbb{N}_{\ge1}^{n} \to \mathbb{N}_{\ge1}^{n}$ as
+And given $s \in \mathbb{Z}$, there is a mapping $F_{s; k}: \mathbb{N}^{n} \to \mathbb{N}^{n}$ that
     \[ F_{s; k}(\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) = (\Delta_{1}, \Delta_{2}, \cdots,\Delta_{k} + s, \cdots, \Delta_{n}). \]
+Also, we sometimes denote $F_{s; k}(\mathfrak{A})$ and $F_{s; k}(\mathfrak{a})$ to present those Collatz complements and reduced Collatz complements that from $F_{s; k}(\bm{a})$.
 \end{definition}
+
 \begin{proposition}
-    $2\nmid f_{n}(\bm{a})$.
+    If $\mathfrak{a}_{n}$ follow the requirements of \cref{theorem:any-presequence}, then we will have $\beta \nmid f_{n}(\bm{a})$.
 \end{proposition}
 \begin{proposition}
     $f_{n}(\bm{a}) = f_{n}(\bm{b}) \Longleftrightarrow \bm{a} = \bm{b}$.
 \end{proposition}
 \begin{proposition}
-    $f_{n}(\bm{a}) = \frac{2^{\Delta_{1}}}{3}\left(\frac{2^{\Delta_{2}}}{3}\left(\cdots \left(\frac{2^{\Delta_{n}}}{3} - \frac{1}{3}\right)\cdots\right)- \frac{1}{3}\right) - \frac{1}{3}$.
-\end{proposition}
-\begin{proposition}
-    $f_{n}(E(\bm{a})) = f_{m}(\bm{a})$.
+    $f_{n}(\bm{a}) = \frac{\beta^{\Delta_{1}}}{\alpha}\left(\frac{\beta^{\Delta_{2}}}{\alpha}\left(\cdots \left(\frac{\beta^{\Delta_{n}}}{\alpha} - \frac{\gamma}{\alpha}\right)\cdots\right)- \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}$.
 \end{proposition}
 \begin{proposition}
     $F_{t;l}(F_{s;k}(\bm{a})) = F_{s;k}(F_{t;l}(\bm{a}))$.
 \end{proposition}
-\begin{proposition}
-$f_{n}(F_{s;k}(\bm{a})) = 2^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}_{k}\cdot(2^{s} - 1)$.
+\begin{proposition}~\label{prop:vary-rule}
+$f_{n}(F_{s;k}(\bm{a})) = \beta^{s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1)$.
 \end{proposition}
 \begin{proposition}
-$\frac{1}{3}\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - 2^{s}\cdot f_{n}(\bm{a})}{2^{s} - 1}$.
+$\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - \beta^{s}\cdot f_{n}(\bm{a})}{\beta^{s} - 1}$.
 \end{proposition}
 \begin{proposition}
-    If $f_{n}(\bm{a}) = \frac{q}{3^{m}}$, then $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}$ only when $s$ holds
-    \[ 2^{s}\cdot q\cdot 3^{k} + (2^{s} - 1) \cdot \mathfrak{A}_{k}\cdot 3^{m} \equiv 0. \pmod{3^{m+k}} \]
+    If $f_{n}(\bm{a}) = \frac{q}{\alpha^{m}}$, then $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}$ only when $s$ holds
+    \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{A}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 \end{proposition}
 \begin{proposition}
 Suppose $k\le l$, then
 \[\begin{aligned}
 f_{n}(F_{t;l}(F_{s;k}(\bm{a})))
-=&\ 2^{t}\cdot f_{n}(F_{s;k}(\bm{a})) + \frac{1}{3}\cdot(2^{t} - 1)\cdot F_{s;k}(\mathfrak{a}_{l}^{0}) \\
-% =&\ 2^{s}\cdot2^{t}\cdot\mathfrak{a}_{k}^{0} - \frac{1}{3}\cdot\mathfrak{a}_{k}^{0}+\frac{1}{3}\cdot2^{t}\cdot2^{s}\cdot\mathfrak{a}_{l}^{k} - \frac{1}{3}\cdot2^{s}\cdot\mathfrak{a}_{l}^{k} \\
-=&\ 2^{t+s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}_{k}^{0}\cdot(2^{t+s} - 1) + \frac{1}{3}\mathfrak{a}_{l}^{k}\cdot2^{s}\cdot(2^t - 1).
+=&\ \beta^{t}\cdot f_{n}(F_{s;k}(\bm{a})) + \frac{\gamma}{\alpha}\cdot(\beta^{t} - 1)\cdot F_{s;k}(\mathfrak{a})_{l}^{0} \\
+=&\ \beta^{s}\cdot\beta^{t}\cdot\mathfrak{a}_{k}^{0} - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}^{0}+\frac{\gamma}{\alpha}\cdot\beta^{t}\cdot\beta^{s}\cdot\mathfrak{a}_{l}^{k} - \frac{\gamma}{\alpha}\cdot\beta^{s}\cdot\mathfrak{a}_{l}^{k} \\
+=&\ \beta^{t+s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}^{0}\cdot(\beta^{t+s} - 1) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{l}^{k}\cdot\beta^{s}\cdot(\beta^t - 1).
 \end{aligned}\]
 \end{proposition}
 
+\begin{theorem}~\label{thm:integral-trans}
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then
+    \[f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}_{\ge 1}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
+    where the auxiliary operator $\Psi_{\alpha}(\beta)$ is defined as \[
+        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\rem_{p}\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}.
+    \]
+\end{theorem}
+\begin{proof}
+    From \cref{prop:vary-rule}, we have
+    \[ f_{n}(F_{s;k}(\bm{a})) = \beta^{s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1). \]
+    Since $\beta^{s}\cdot f_{n}(\bm{a}) \in \mathbb{N}$, then $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1) \in \mathbb{N}$, that equivalents
+    \[\alpha^{k} \mid \gamma\cdot\mathfrak{A}_{k}\cdot(\beta^{s} - 1).\]
+    Since $\gcd(\alpha, \mathfrak{A}_{k}) = 1$, the divisibility condition simplifies to
+    \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
+    By the Fundamental Theorem of Arithmetic, $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} p^{\fac_{p}(\alpha)}$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    \[ p^{k\cdot\fac_{p}(\alpha)} \mid \gamma\cdot(\beta^{s} - 1). \]
+    Note that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
+    \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(p). \]
+    Rearranging for $fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
+    \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(p). \]
+    Isolating the valuation of $s$, we obtain
+    \[ \fac_{p}(s) \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right), \]
+    which equivalents
+    \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) \right\vert s. \]
+    From \cref{prop:raf-keeps-multiply}, we have
+    \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}, \]
+    which implies the divisibility
+    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
+    Besides, we'v assumed $\ord_{p}(\beta) \mid s$. Since $\raf_{p}\ord_{p}(\beta) \mid s$, thus we need the $\rem_{p}\ord_{p}(\beta) \mid s$. Aggregate these all $p$ conditions, it follows
+    \[ \underset{p\mid \alpha}{\lcm}\{ \rem_{p}\ord_{p}(\beta) \} \mid s. \]
+
+    Sum up, we have
+    \[ \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s. \]
+\end{proof}
+\cref{thm:integral-trans} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{a}$, but only on the position $k$.
+Therefore, we can classify these reduced sequences into different equivalence classes.
+
+Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the lcm with the least common ideal, while the form remains essentially unchanged. However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
+
+Now let's consider the Collatz primitive source. Notice that not all $b$ has infinite-step source value.
+Thus we have to explore the primitive source of $b$ by $\bm{a}$.
+
+Suppose $f_n(\bm{a})$ is a Collatz primitive source, then we have $\forall k \in \mathbb{N}$, there is
+\[ f_{n}(\bm{a})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
+which equivalents
+\[ \alpha^{n + 1} \nmid (\beta^{\mathcal{A}_n}\cdot b - \gamma \cdot \mathfrak{A}_n)^{-1} - \alpha^{n}\cdot\beta^{k}, \]
+where the inverse is about $\alpha^{n+1}$.
+
+We can find that the destribution of Collatz primitive source deeply relay on $\beta^{k}$ modula $\alpha$.
+
 To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
 If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
+And we immediately have
 \begin{proposition}
-    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} 1$.
-\end{proposition}
-% \begin{proposition}
-% $f_{n}(F_{2s;k}(\bm{a})) = 4^{s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\cdot(4^{s} - 1)\cdot\sum_{i=0}^{k-1}\frac{2^{\mathcal{A}_i}}{3^{i}}$.
-% \end{proposition}
-Now suppose $f_{n}(\bm{a}) \in \mathbb{N}$ and $s\in \mathbb{N}$, we have
-\begin{proposition}
-    $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}_{\ge 1}\Longleftrightarrow s \in 3^{k-1}\cdot2\mathbb{N}$.
-\end{proposition}
-% \begin{proof} Trivial. \end{proof}
-\begin{lemma}
-    If $a = mp + 1$, then $\frac{1}{p}(a^{n} - 1) \equiv mn \pmod{p}$.
-\end{lemma}
-% \begin{proposition}
-% $f_{n}(F_{2s;1}(\bm{a})) \equiv f_{n}(\bm{a}) + s \pmod{3}$.
-% \end{proposition}
-% \begin{proof} Trivial. \end{proof}
-\begin{proposition}
-    $f_{n}(F_{3^{k-1}\cdot2s;k}(\bm{a})) \equiv f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k - 1}} \pmod{3}$.
-\end{proposition}
-\begin{proof}
-    \[ \begin{aligned}
-        &f_{n}(F_{3^{k-1}\cdot2s;k}(\bm{a})) && \\
-        =&\ 2^{3^{k-1}\cdot2s}\cdot f_{n}(\bm{a}) + \frac{1}{3}\mathfrak{a}^{k}\cdot(2^{3^{k-1}\cdot2s} - 1) && \\
-        =&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + \frac{1}{3}(4^{3^{k-1}\cdot s} - 1)\cdot\mathfrak{a}^{k} && \\
-        \equiv&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + s\cdot3^{k-1}\cdot\frac{1}{3^{k-1}}\cdot\mathfrak{A}^{k} &&\pmod{3}\\
-        \equiv&\ 4^{3^{k-1}\cdot s}\cdot f_{n}(\bm{a}) + s\cdot\mathfrak{A}^{k} &&\pmod{3}\\
-        \equiv&\ f_{n}(\bm{a}) + s\cdot2^{\mathcal{A}_{k-1}}. &&\pmod{3}
-    \end{aligned} \]
-\end{proof}
-Similarly, we have
-\begin{proposition}
-    \[ f_{n}(F_{ 3^{l-1}\cdot 2t;l}(F_{3^{k-1}\cdot2s;k}(\bm{a}))) \equiv f_{n}(\bm{a}) + s \cdot 2^{\mathcal{A}_{k-1}} + t \cdot 2^{\mathcal{A}_{l - 1}} \pmod{3}. \]
-\end{proposition}
-\begin{definition}
-    There is a function $g_{s,m;n} : \mathbb{N}_{\ge1}^{n} \to \mathbb{Q}$ depends on $f_{n}$ defined as
-    \[ g_{s,m;n}(\bm{a}) = s\cdot 2^{m}\cdot2^{\mathcal{A}_{n}} + f_{n}(\bm{a}). \]
-\end{definition}
-And we have
-\begin{proposition}
-    If $m > 0$, then we have 
-    \[g_{s,m;n}(\bm{a}) \overset{n}{\rightsquigarrow} s \cdot 2^{m} \cdot 3^{n} + 1 \overset{(m - 1)/2}{\rightsquigarrow} \left\{\begin{aligned}
-        &s \cdot 2 \cdot 3^{n + (m - 1)/2} + 1, && m \equiv 1 \pmod{2}, \\
-        &s \cdot 4 \cdot 3^{n + (m - 2)/2} + 1, && m \equiv 0 \pmod{2}.
-    \end{aligned}\right.\]
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
 \end{proposition}
 
 \appendix
@@ -730,10 +708,60 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ an
     If $c \mid a$ and $a \mid b$, then $\fac_{c}(b) \ge \fac_{c}(a) \cdot \fac_{a}(b)$.
 \end{proposition}
 \begin{definition}
-    Define $\rad(b) = \prod_{p_i \in \mathbb{P}}^{p_i \mid b}p_i$ as the radical of $b$.
+    Define $\rad(a) = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$.
 \end{definition}
+\begin{definition}
+    Define $\raf_{a}(b) = \prod_{p \in \mathbb{P}}^{p \mid a}p^{\fac_{p}(b)}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical power of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}(b) = 1$.
 
- \section{Continuous and Limits}\label{sec:continous-and-limits}
+    Define $\rem_{a}(b) = \frac{b}{\raf_a{b}}$ is called the remained part of $b$ with respect to $a$.
+\end{definition}
+\begin{proposition}
+    $\raf_{a}(b) \mid b$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a}(a) = a$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a}(\raf_{a}(b)) = \raf_{a}(b)$.
+\end{proposition}
+\begin{proposition}~\label{prop:raf-keeps-multiply}
+    $\raf_{a}(b_1b_2) = \raf_{a}(b_1)\cdot\raf_{a}(b_2)$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a_1 a_2}(b) = \frac{\raf_{a_1}(b) \cdot \raf_{a_2}(b)}{\raf_{\gcd(a_1, a_2)}(b)}$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a}(b^n) = [\raf_{a}(b)]^{n}$.
+\end{proposition}
+\begin{proposition}
+    If $a_1 \mid a_2$, then $\raf_{a_1}(b) \mid \raf_{a_2}(b)$.
+\end{proposition}
+\begin{proposition}
+    If $\fac_{p}(b_1) \le \fac_{p}(b_2)$, then $\raf_{p}(b_1) \mid \raf_{p}(b_2)$. Vice versa.
+\end{proposition}
+\begin{proposition}
+    If $\rad(a_1) = \rad(a_2)$, then $\raf_{a_1}(b) = \raf_{a_2}(b)$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a}(\gcd(b_1, b_2)) = \gcd(\raf_{a}(b_1), \raf_{a}(b_2))$.
+\end{proposition}
+\begin{proposition}
+    $\raf_{a}(\lcm(b_1, b_2)) = \lcm(\raf_{a}(b_1), \raf_{a}(b_2))$.
+\end{proposition}
+\begin{proposition}
+    $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}(b)$.
+\end{proposition}
+\begin{proposition}
+      $\log \raf_a(b) = \sum_{p\in\mathbb{P}}^{p \mid a} \fac_{p}(b) \log p$
+\end{proposition}
+\begin{proposition}
+    $\gcd(\rem_{a}(b), a) = 1$.
+\end{proposition}
+\begin{theorem}
+    If $p\in\mathbb{P}$ that $p > 2$, then $\raf_{p}(b^{n} - 1) = \raf_{p}(b - 1) \cdot \raf_{p}(n)$.
+\end{theorem}
+
+\section{Continuous and Limits}\label{sec:continous-and-limits}
 To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.
  \begin{definition}
  Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms.
@@ -818,7 +846,7 @@ However, we need another restriction of convolution forms to describe our proble
     $\forall \mathfrak{U} \in \mathrm{Con}(\mathcal{A}, \mathcal{B})$ we have
     \[ \mathfrak{U}_{i}^{j} = \sum_{k = j}^{i - 1}\mathcal{A}_{i}^{k+1}\mathfrak{U}_{k+1}^{k}\mathcal{B}_{k}^{j}. \]
 \end{lemma}
-We can see that these $\mathfrak{U}_{k+1}^{k}$ play an important role on consisting of $\mathfrak{U}_{i}^{j}$.
+We can see that these $\mathfrak{U}_{k+1}^{k}$ play important roles on consisting of $\mathfrak{U}_{i}^{j}$.
 \begin{definition}[kernel of Convolution Form]
     We say $\mathfrak{U}_{k+1}^{k}$ are the kernel on $k$ of $\mathfrak{U}$.
 \end{definition}
@@ -831,16 +859,16 @@ All cycle kernel convolution forms with period $t$ are denoted as $\mathrm{CCon}
 \end{definition}
 All kernel independent convolution forms are denoted as $\mathrm{ICon}(A, B)$.
 Of course, we have
-\begin{corollary}
+\begin{proposition}
     $\mathrm{ICon}(A, B) = \mathrm{CCon}_{1}(A, B)$.
-\end{corollary}
-\begin{corollary}
+\end{proposition}
+\begin{proposition}
     If $\mathfrak{U} \in \mathrm{ICon}(A, B)$ that $\mathfrak{U}_{k+1}^{k} = \gamma$, then
     \[ \mathfrak{U}_{i}^{j} = \gamma \cdot\sum_{i \ge k \ge j}\mathcal{A}_{i}^{k+1}\mathcal{B}_{k}^{j}. \]
-\end{corollary}
+\end{proposition}
 Specially, For the cycle kernel convolution form, we have
 \begin{theorem}
-    Given two cycle multiply form $\mathcal{A}$ and $\mathcal{B}$ with period $t$. then $\forall \mathfrak{U} \in \mathrm{CCon}_{t}(\mathcal{A}, \mathcal{B})$, we have $\mathfrak{U}$ is a cycle form with peroid $t$.
+    Given two cycle multiply form $\mathcal{A}$ and $\mathcal{B}$ with period $t$. then $\forall \mathfrak{U} \in \mathrm{CCon}_{t}(\mathcal{A}, \mathcal{B})$, we have $\mathfrak{U}$ is a cycle form with period $t$.
 \end{theorem}
 \begin{proof}
     \[ \begin{aligned}
