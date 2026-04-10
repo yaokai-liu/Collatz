@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 % \usepackage{arxiv}
 \usepackage{xeCJK}
 \usepackage{amsmath,amssymb,amsthm,stackrel,nccmath,bm}
@@ -26,6 +26,7 @@
 \usepackage{cite}
 % \usepackage{thmbox}
 \setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 \newtheoremstyle{sltheorem}
                 {}          % Space above
                 {}          % Space below
@@ -76,6 +77,7 @@
     And some propositions that are indispensable to proving the $3n + 1$ conjecture are then provided.
     % And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
+\newpage
 \tableofcontents
 \newpage
 
@@ -112,7 +114,7 @@ follows the Collatz conjecture.
 We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
 So it is the time to explore what the arguments of these equations has a stability solution.
 \begin{definition}[Collatz Sequence and Collatz Accumulation]~\label{definition:collatz-sequence}
-    Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
+    Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
     For number $a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ named Collatz sequence and $\CollatzReduce{a}{k}\in\mathbb{N}$ named Collatz reduce with
     \[\begin{aligned}
         a_0 &=a, \\
@@ -266,6 +268,11 @@ Also, according to \cref{proposition:uniqueness} and \cref{proposition:co-unique
     If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
 \end{proposition}
 
+Now we are ready to explore the properties of Collatz sequences.
+But before that, I need to point out that there are many symbols in number theory.
+These symbols, while simple, differ slightly from those in some other papers.
+These symbols are defined in \cref{sec:number-theory-tools}. Before proceeding, please ensure you are familiar with these symbols first.
+
 \section{The basic formula of Collatz Sequences}\label{sec:the-basic-fomula-of-collatz-sequences}
 
 With the definition of Collatz complement, we can easily find that the equation in \cref{equation:collatz-inductioon-3-2-1} also hold with all general Collatz sequences:
@@ -365,6 +372,7 @@ Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
     \end{aligned} \]
     That means $p_{i}^{m \cdot \fac_{p}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
     Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    Of course, $\alpha^{-1}$ is defined in terms of the modulus of $\beta^{m}$.
     
     Now suppose $a \in [m \mid n + P]$.
     From \cref{proposition:equivalence-of-classes}, we have
@@ -579,8 +587,25 @@ Also, we sometimes denote $F_{s; k}(\mathfrak{A})$ and $F_{s; k}(\mathfrak{a})$ 
 \begin{proposition}
     $F_{t;l}(F_{s;k}(\bm{a})) = F_{s;k}(F_{t;l}(\bm{a}))$.
 \end{proposition}
-\begin{proposition}~\label{prop:vary-rule}
+\begin{proposition}~\label{prop:single-vary-rule}
 $f_{n}(F_{s;k}(\bm{a})) = \beta^{s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1)$.
+\end{proposition}
+\begin{proposition}
+    Suppose $m\le n$, then
+    \[\begin{aligned}
+        F_{s;k}(\mathcal{A})_{n}^{m} &= \left\{\begin{aligned}
+        &\mathcal{A}_{n}^{m} + s, & m\le k < n, \\
+        &\mathcal{A}_{n}^{m}, & \text{otherwise},
+    \end{aligned}\right. \\
+    F_{s;k}(\mathfrak{A})_{n}^{m} &= \left\{\begin{aligned}
+        &\mathfrak{A}_{k}^{m} + \beta^{s}\cdot \mathfrak{A}_{n}^{k}, & m\le k \le n, \\
+        &\mathfrak{A}_{n}^{m}, & \text{otherwise},
+    \end{aligned}\right. \\
+    F_{s;k}(\mathfrak{a})_{n}^{m} &= \left\{\begin{aligned}
+        &\mathfrak{a}_{k}^{m}\cdot\alpha^{k-n} + \beta^{s}\cdot \mathfrak{a}_{n}^{k}, & m\le k \le n, \\
+        &\mathfrak{a}_{n}^{m}, & \text{otherwise}.
+    \end{aligned}\right.
+    \end{aligned}\]
 \end{proposition}
 \begin{proposition}
 $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - \beta^{s}\cdot f_{n}(\bm{a})}{\beta^{s} - 1}$.
@@ -589,25 +614,38 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - \be
     If $f_{n}(\bm{a}) = \frac{q}{\alpha^{m}}$, then $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}$ only when $s$ holds
     \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{A}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 \end{proposition}
-\begin{proposition}
-Suppose $k\le l$, then
-\[\begin{aligned}
-f_{n}(F_{t;l}(F_{s;k}(\bm{a})))
-=&\ \beta^{t}\cdot f_{n}(F_{s;k}(\bm{a})) + \frac{\gamma}{\alpha}\cdot(\beta^{t} - 1)\cdot F_{s;k}(\mathfrak{a})_{l}^{0} \\
-=&\ \beta^{s}\cdot\beta^{t}\cdot\mathfrak{a}_{k}^{0} - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}^{0}+\frac{\gamma}{\alpha}\cdot\beta^{t}\cdot\beta^{s}\cdot\mathfrak{a}_{l}^{k} - \frac{\gamma}{\alpha}\cdot\beta^{s}\cdot\mathfrak{a}_{l}^{k} \\
-=&\ \beta^{t+s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}^{0}\cdot(\beta^{t+s} - 1) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{l}^{k}\cdot\beta^{s}\cdot(\beta^t - 1).
-\end{aligned}\]
-\end{proposition}
 
+\begin{proposition}~\label{prop:vary-rule}
+Given $\bm{s} \in \mathbb{N}^{n}$, view it as a $n$-length Collatz sequence, thus we can using $\mathcal{S}$, $\mathfrak{S}$ and $\mathfrak{s}$. Then we have
+\[f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)\]
+\end{proposition}
+\begin{proof}
+    Notice that
+    \[f_{n}(\bm{a} + \bm{s}) = b \cdot \frac{\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n} = \beta^{\mathcal{S}_n} \cdot b\cdot \frac{\beta^{\mathcal{A}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n}.\]
+    Then
+    \[\begin{aligned}
+        f_{n}(\bm{a} + \bm{s}) - \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) &= \frac{\gamma}{\alpha}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\mathfrak{a}_{n} - F_{\bm{s}}(\mathfrak{a})_{n} \right) \\
+        &=\frac{\gamma}{\alpha^{n}}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}\cdot\alpha^{n-k-1}} - \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}\cdot\alpha^{n-k-1} \right) \\
+        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot(\beta^{\mathcal{S}_{n}} - \beta^{\mathcal{S}_{k}})\cdot\alpha^{n-k-1} \\
+        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \\
+        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)
+    \end{aligned}\]
+\end{proof}
+Immediately, we have
+\begin{proposition}
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$ equivalents to 
+    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) = 0 \pmod{\alpha^{n}}. \]
+\end{proposition}
+However, this congruence equation is too complex to analyze. But if $\bm{s}$ has only one non-zero weight, i.e. $F_{\bm{s}}$ degenerates to $F_{s;k}$, it becomes more easier.
 \begin{theorem}~\label{thm:integral-trans}
     If $f_{n}(\bm{a}) \in \mathbb{N}$, then
     \[f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}_{\ge 1}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
     where the auxiliary operator $\Psi_{\alpha}(\beta)$ is defined as \[
-        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\rem_{p}\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}.
+        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}.
     \]
 \end{theorem}
 \begin{proof}
-    From \cref{prop:vary-rule}, we have
+    From \cref{prop:single-vary-rule}, we have
     \[ f_{n}(F_{s;k}(\bm{a})) = \beta^{s}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1). \]
     Since $\beta^{s}\cdot f_{n}(\bm{a}) \in \mathbb{N}$, then $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k}\cdot(\beta^{s} - 1) \in \mathbb{N}$, that equivalents
     \[\alpha^{k} \mid \gamma\cdot\mathfrak{A}_{k}\cdot(\beta^{s} - 1).\]
@@ -617,48 +655,62 @@ f_{n}(F_{t;l}(F_{s;k}(\bm{a})))
     \[ p^{k\cdot\fac_{p}(\alpha)} \mid \gamma\cdot(\beta^{s} - 1). \]
     Note that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
     \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(p). \]
-    Rearranging for $fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
+    Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
     \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(p). \]
     Isolating the valuation of $s$, we obtain
     \[ \fac_{p}(s) \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right), \]
     which equivalents
     \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) \right\vert s. \]
-    From \cref{prop:raf-keeps-multiply}, we have
+    From \cref{prop:raf-completely-multiplicative}, we have
     \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}, \]
     which implies the divisibility
-    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
-    Besides, we'v assumed $\ord_{p}(\beta) \mid s$. Since $\raf_{p}\ord_{p}(\beta) \mid s$, thus we need the $\rem_{p}\ord_{p}(\beta) \mid s$. Aggregate these all $p$ conditions, it follows
-    \[ \underset{p\mid \alpha}{\lcm}\{ \rem_{p}\ord_{p}(\beta) \} \mid s. \]
-
+    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(b)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
+    Besides, we've assumed $\ord_{p}(\beta) \mid s$. Aggregate these all $p$ conditions, it follows
+    \[ \underset{p\mid \alpha}{\lcm}\{ \ord_{p}(\beta) \} \mid s. \]
     Sum up, we have
     \[ \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s. \]
 \end{proof}
 \cref{thm:integral-trans} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{a}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 
-Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the lcm with the least common ideal, while the form remains essentially unchanged. However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
+Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the lcm with the least common ideal, while the form remains essentially unchanged.
+However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
 
+\section{Distribution of Multi-step Collatz Primitive Source}
 Now let's consider the Collatz primitive source. Notice that not all $b$ has infinite-step source value.
 Thus we have to explore the primitive source of $b$ by $\bm{a}$.
-
 Suppose $f_n(\bm{a})$ is a Collatz primitive source, then we have $\forall k \in \mathbb{N}$, there is
 \[ f_{n}(\bm{a})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
 which equivalents
 \[ \alpha^{n + 1} \nmid (\beta^{\mathcal{A}_n}\cdot b - \gamma \cdot \mathfrak{A}_n)^{-1} - \alpha^{n}\cdot\beta^{k}, \]
-where the inverse is about $\alpha^{n+1}$.
+where the inverse is under the module of $\alpha^{n+1}$. If it holds, we say $\bm{a}$ is a $n$-step Collatz primitive source vector of $b$, and $f_{n}(\bm{a})$ is the $n$-step Collatz primitive source value.
 
-We can find that the destribution of Collatz primitive source deeply relay on $\beta^{k}$ modula $\alpha$.
-
-To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
-If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
-And we immediately have
+We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
+For number $b$, if $\alpha \mid b$, then $b^{-1}$ not exists, thus $b$ is clearly Collatz primitive. And we called they are trivial primitive source. But if $\alpha\nmid b$, for the $b^{-1}\cdot \gamma \not\equiv \beta^{k}\pmod{\alpha}$, we have $b + m\cdot\alpha$ also satisfies those in-equations. Let's denote
+\[ \mathbb{S} = \{ b \in \mathbb{Z} \mid b^{-1} \text{ not exists or } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
+then we have
 \begin{proposition}
-    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
+    If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
 \end{proposition}
+But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
+
+% To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
+% If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
+% And we immediately have
+% \begin{proposition}
+%     If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
+% \end{proposition}
 
 \appendix
 \section{Number Theory Tools}\label{sec:number-theory-tools}
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
+
+Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$. Thus, at first, we have to clarify the definition of divisibility.
+\begin{definition}
+Given two numbers $a, b \in \mathbb{K}$, define $a\mid b$ as $\exists c \in \mathbb{Z}_{\ne0}$ such that $c\cdot a = b$. Here, $\mathbb{K}$ is some number set. And define $a\nmid b$ as $\forall c \in \mathbb{Z}_{\ne0}$ such that $c\cdot a \ne b$. Of course we stipulate that $\forall a \in \mathbb{K}$, $a\mid 0$.
+\end{definition}
+
+Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
@@ -713,52 +765,59 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ an
 \begin{definition}
     Define $\raf_{a}(b) = \prod_{p \in \mathbb{P}}^{p \mid a}p^{\fac_{p}(b)}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical power of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}(b) = 1$.
 
-    Define $\rem_{a}(b) = \frac{b}{\raf_a{b}}$ is called the remained part of $b$ with respect to $a$.
+    Define $\rem_{a}(b) = \frac{b}{\raf_{a}(b)}$ is called the remainder part of $b$ with respect to $a$.
 \end{definition}
-\begin{proposition}
+\begin{proposition}~\label{prop:self-containment}
     $\raf_{a}(b) \mid b$.
 \end{proposition}
 \begin{proposition}
     $\raf_{a}(a) = a$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-idempotency}
     $\raf_{a}(\raf_{a}(b)) = \raf_{a}(b)$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-keeps-multiply}
+\begin{proposition}~\label{prop:raf-completely-multiplicative}
     $\raf_{a}(b_1b_2) = \raf_{a}(b_1)\cdot\raf_{a}(b_2)$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-inclusion-exclusion-principle}
     $\raf_{a_1 a_2}(b) = \frac{\raf_{a_1}(b) \cdot \raf_{a_2}(b)}{\raf_{\gcd(a_1, a_2)}(b)}$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-power-homogeneity}
     $\raf_{a}(b^n) = [\raf_{a}(b)]^{n}$.
 \end{proposition}
-\begin{proposition}
-    If $a_1 \mid a_2$, then $\raf_{a_1}(b) \mid \raf_{a_2}(b)$.
+\begin{proposition}~\label{prop:raf-index-monotonicity}
+    $a_1 \mid a_2 \implies \raf_{a_1}(b) \mid \raf_{a_2}(b)$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-valuation-monotonicity}
     If $\fac_{p}(b_1) \le \fac_{p}(b_2)$, then $\raf_{p}(b_1) \mid \raf_{p}(b_2)$. Vice versa.
 \end{proposition}
-\begin{proposition}
-    If $\rad(a_1) = \rad(a_2)$, then $\raf_{a_1}(b) = \raf_{a_2}(b)$.
+\begin{proposition}~\label{prop:raf-radical-invariance}
+    $\rad(a_1) = \rad(a_2)\implies \raf_{a_1}(b) = \raf_{a_2}(b)$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-gcd-distributivity}
     $\raf_{a}(\gcd(b_1, b_2)) = \gcd(\raf_{a}(b_1), \raf_{a}(b_2))$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-lcm-distributivity}
     $\raf_{a}(\lcm(b_1, b_2)) = \lcm(\raf_{a}(b_1), \raf_{a}(b_2))$.
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:raf-limit-power-gcd-raf-equvalent}
     $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}(b)$.
 \end{proposition}
 \begin{proposition}
       $\log \raf_a(b) = \sum_{p\in\mathbb{P}}^{p \mid a} \fac_{p}(b) \log p$
 \end{proposition}
-\begin{proposition}
+\begin{proposition}~\label{prop:rem-coprimality}
     $\gcd(\rem_{a}(b), a) = 1$.
 \end{proposition}
-\begin{theorem}
-    If $p\in\mathbb{P}$ that $p > 2$, then $\raf_{p}(b^{n} - 1) = \raf_{p}(b - 1) \cdot \raf_{p}(n)$.
+\begin{proposition}~\label{prop:raf-ord-non-self-divisibility}
+    If $p \in \mathbb{P}$, $p\nmid b$, then $\raf_{p}\ord_{p}(b) = 1$.
+\end{proposition}
+\begin{theorem}~\label{thm:lte-radical-theorem}
+    If $p \in \mathbb{P}$ and $p\mid (b - 1)$, then
+    \[\raf_{p}(b^{n} - 1) = \left\{ \begin{aligned}
+        &\raf_{p}(b - 1) \cdot \raf_{p}(n), & p \in \mathbb{P}_{>2}, \\
+        &\raf_{2}(b - 1) \cdot \raf_{2}(n) + \raf_{2}(b + 1) - 1, & p = 2.
+    \end{aligned} \right.\]
 \end{theorem}
 
 \section{Continuous and Limits}\label{sec:continous-and-limits}
@@ -772,7 +831,7 @@ To analyze the continuous and limits of Collatz sequence, we have to embed Colla
 
  From the \cref{theorem:any-cycle}, we have
  \begin{conjecture}
-     If subsequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
+     If sub-sequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
      \[ \lim_{i\to\infty}^{\mathbb{Q}_\beta} a_{k_i} = \lim_{i\to\infty}^{\mathbb{R}}\frac{\gamma \cdot \mathfrak{A}_{k_i}}{\beta^{\mathcal{A}_{k_i}} - \alpha^{k_i}}. \]
  \end{conjecture}
 
