@@ -107,7 +107,7 @@ Though it looks like a little bit complex, but with the definition $\mathcal{A}_
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
-Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modula.
+Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modulo.
 This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
 follows the Collatz conjecture.
@@ -324,22 +324,6 @@ If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_
     holds during $S_k < n$.
 \end{corollary}
 
-
-With these notations, firstly, we have
-\begin{theorem}~\label{theorem:concentric-rule}
-    If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $\forall n \in \ord_{\alpha}(\beta)\mathbb{N}$, we have
-    \[a' = \beta^{n}\cdot a + \frac{\gamma}{\alpha}\cdot(\beta^{n} - 1) \in \mathbb{N}\]
-    such that $b\cdot\beta^{m+n} = \alpha\cdot a' + \gamma$. %And we say $a'$ is concentric with $a$.
-\end{theorem}
-\begin{theorem}
-    If $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
-\end{theorem}
-But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
-So we have
-\begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
-    If $b \in \mathbb{N}-\beta\mathbb{N}$ such that \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing, \]then we say $b$ is a Collatz primitive source.
-\end{definition}
-
 It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
 Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
 \begin{definition}
@@ -414,7 +398,7 @@ Sum up, we proved this theorem.
     If $\lim_{k\to\infty}\mathcal{A}_k = \infty$, then $\frac{\mathcal{A}_k}{k} \ge \frac{1}{P}$ when $k\to\infty$.
 \end{corollary}
 \begin{conjecture}
-    There's an upperbound of $\frac{\mathcal{A}_k}{k}$ when $k\to\infty$, and it doesn't depend on $\alpha$.
+    There's an upper bound of $\frac{\mathcal{A}_k}{k}$ when $k\to\infty$, and it doesn't depend on $\alpha$.
 \end{conjecture}
 
 \cref{theorem:requirements-of-avaliablity} present that, for general triplet arguments, not all initial numbers can be reduced infinitely many times.
@@ -574,6 +558,12 @@ And given $s \in \mathbb{Z}$, there is a mapping $F_{s; k}: \mathbb{N}^{n} \to \
     \[ F_{s; k}(\Delta_{1}, \Delta_{2}, \cdots, \Delta_{n}) = (\Delta_{1}, \Delta_{2}, \cdots,\Delta_{k} + s, \cdots, \Delta_{n}). \]
 Also, we sometimes denote $F_{s; k}(\mathfrak{A})$ and $F_{s; k}(\mathfrak{a})$ to present those Collatz complements and reduced Collatz complements that from $F_{s; k}(\bm{a})$.
 \end{definition}
+To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
+If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
+Immediately, we have
+\begin{proposition}
+    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
+\end{proposition}
 
 \begin{proposition}
     If $\mathfrak{a}_{n}$ follow the requirements of \cref{theorem:any-presequence}, then we will have $\beta \nmid f_{n}(\bm{a})$.
@@ -617,29 +607,35 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - \be
 
 \begin{proposition}~\label{prop:vary-rule}
 Given $\bm{s} \in \mathbb{N}^{n}$, view it as a $n$-length Collatz sequence, thus we can using $\mathcal{S}$, $\mathfrak{S}$ and $\mathfrak{s}$. Then we have
-\[f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)\]
+\[f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)\]
 \end{proposition}
 \begin{proof}
     Notice that
-    \[f_{n}(\bm{a} + \bm{s}) = b \cdot \frac{\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n} = \beta^{\mathcal{S}_n} \cdot b\cdot \frac{\beta^{\mathcal{A}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n}.\]
+    \[f_{n}(\bm{a} + \bm{s}) = b \cdot \frac{\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n} = \beta^{\mathcal{S}_n} \cdot b\cdot \frac{\beta^{\mathcal{A}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n},\]
+    where $F_{\bm{s}}(\mathfrak{a})_{n}$ is the reduced Collatz complement of $\bm{a} + \bm{s}$ that
+    \[ F_{\bm{s}}(\mathfrak{a})_{n} = \sum_{k=0}^{n-1}\frac{\beta^{\mathcal{A}_k + \mathcal{S}_k}}{\alpha^{k}}. \]
     Then
     \[\begin{aligned}
-        f_{n}(\bm{a} + \bm{s}) - \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) &= \frac{\gamma}{\alpha}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\mathfrak{a}_{n} - F_{\bm{s}}(\mathfrak{a})_{n} \right) \\
-        &=\frac{\gamma}{\alpha^{n}}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}\cdot\alpha^{n-k-1}} - \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}\cdot\alpha^{n-k-1} \right) \\
-        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot(\beta^{\mathcal{S}_{n}} - \beta^{\mathcal{S}_{k}})\cdot\alpha^{n-k-1} \\
-        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \\
-        &=\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)
+        & f_{n}(\bm{a} + \bm{s}) - \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) \\
+        =& \frac{\gamma}{\alpha}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\mathfrak{a}_{n} - F_{\bm{s}}(\mathfrak{a})_{n} \right) \\
+        =&\frac{\gamma}{\alpha^{n}}\cdot\left(\beta^{\mathcal{S}_{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1} - \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}\cdot\alpha^{n-k-1} \right) \\
+        =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot(\beta^{\mathcal{S}_{n}} - \beta^{\mathcal{S}_{k}})\cdot\alpha^{n-k-1} \\
+        =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \\
+        =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1).
     \end{aligned}\]
+    Thus, this proposition has been proved.
 \end{proof}
-Immediately, we have
-\begin{proposition}
+And immediately, we have
+\begin{proposition}~\label{prop:integral-trans}
     If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$ equivalents to 
-    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) = 0 \pmod{\alpha^{n}}. \]
+    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}. \]
 \end{proposition}
-However, this congruence equation is too complex to analyze. But if $\bm{s}$ has only one non-zero weight, i.e. $F_{\bm{s}}$ degenerates to $F_{s;k}$, it becomes more easier.
-\begin{theorem}~\label{thm:integral-trans}
+If $\alpha^{n} \mid\gamma$, then this congruence equation is trivial.
+Otherwise, the analysis of this congruence equation would be very difficult.
+However, if there is another $\bm{s}$ with only one non-zero weight, i.e., $\bm{a} + \bm{s}$ degenerates into $F_{s;k}(\bm{a})$, then the analysis becomes easier.
+\begin{theorem}~\label{thm:single-integral-trans}
     If $f_{n}(\bm{a}) \in \mathbb{N}$, then
-    \[f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}_{\ge 1}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
+    \[f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
     where the auxiliary operator $\Psi_{\alpha}(\beta)$ is defined as \[
         \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}.
     \]
@@ -670,46 +666,60 @@ However, this congruence equation is too complex to analyze. But if $\bm{s}$ has
     Sum up, we have
     \[ \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s. \]
 \end{proof}
-\cref{thm:integral-trans} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{a}$, but only on the position $k$.
+\cref{thm:single-integral-trans} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{a}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 
-Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the lcm with the least common ideal, while the form remains essentially unchanged.
+Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
 
+Back to the \cref{prop:integral-trans}.
+Since the congruence equation can be convert a series of prime number's congruence.
+That's $\forall p\in\mathbb{P}$ that $p \mid \alpha$, such that
+\[\gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot p^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \cdot \rem_{p}(\alpha^{n-k-1}) \equiv 0 \pmod{p^{n\cdot\fac_{p}(\alpha)}}, \]
+we can first consider $\alpha\in \mathbb{P}$.
+
 \section{Distribution of Multi-step Collatz Primitive Source}
-Now let's consider the Collatz primitive source. Notice that not all $b$ has infinite-step source value.
-Thus we have to explore the primitive source of $b$ by $\bm{a}$.
-Suppose $f_n(\bm{a})$ is a Collatz primitive source, then we have $\forall k \in \mathbb{N}$, there is
+Now let's consider the Collatz primitive source. They are those number that can't trace back again.
+Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
+But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
+
+\begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
+    For $b\in \mathbb{N}-\beta\mathbb{N}$, if there is a sequence $\bm{a}\in \mathbb{N}^{n}$ such that $f_{n}(a)$ is not reversible modulo $\alpha$, or
+    \[\Log_{\beta, \alpha}(f_{n}(a)^{-1} \cdot \gamma) = \varnothing, \]
+    then we say $\bm{a}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(a)$ is a $n$-step Collatz primitive source of $b$.
+    Notice that a number $a$ is not reversible modulo $\alpha$ equivalents $\gcd(a, \alpha) > 1$. For these, we say they are trivial primitive source.
+    Others we call them non-trivial primitive source.\newline
+    All non-trivial primitive source are denoted as 
+    \[\mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
+    and all non-trivial primitive source vector of $b$ denoted as
+    \[ \mathbb{V}_{b}^{n} = \{\bm{a} \in \mathbb{N}^{n} \mid \Log(f_{n}(a)^{-1}\cdot\gamma) = \varnothing\}. \]
+\end{definition}
+
+If $f_n(\bm{a}) \in \mathbb{S}$, then we have $\forall k \in \mathbb{N}$, there is
 \[ f_{n}(\bm{a})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
 which equivalents
 \[ \alpha^{n + 1} \nmid (\beta^{\mathcal{A}_n}\cdot b - \gamma \cdot \mathfrak{A}_n)^{-1} - \alpha^{n}\cdot\beta^{k}, \]
-where the inverse is under the module of $\alpha^{n+1}$. If it holds, we say $\bm{a}$ is a $n$-step Collatz primitive source vector of $b$, and $f_{n}(\bm{a})$ is the $n$-step Collatz primitive source value.
-
+where the inverse is under the module of $\alpha^{n+1}$.
 We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
-For number $b$, if $\alpha \mid b$, then $b^{-1}$ not exists, thus $b$ is clearly Collatz primitive. And we called they are trivial primitive source. But if $\alpha\nmid b$, for the $b^{-1}\cdot \gamma \not\equiv \beta^{k}\pmod{\alpha}$, we have $b + m\cdot\alpha$ also satisfies those in-equations. Let's denote
-\[ \mathbb{S} = \{ b \in \mathbb{Z} \mid b^{-1} \text{ not exists or } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
-then we have
+
+Now let's consider the $0$-step primitive source. 
 \begin{proposition}
     If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
 \end{proposition}
 But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
-
-% To describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
-% If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
-% And we immediately have
-% \begin{proposition}
-%     If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
-% \end{proposition}
+This equivalence provides a new equation $b'\cdot \beta^{\Delta} = b + m'\cdot\alpha$, which is also a Collatz reduce formula, which $\gamma = b$.
 
 \appendix
 \section{Number Theory Tools}\label{sec:number-theory-tools}
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
 
-Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$. Thus, at first, we have to clarify the definition of divisibility.
+Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$, at first, we have to clarify the definition of divisibility.
 \begin{definition}
-Given two numbers $a, b \in \mathbb{K}$, define $a\mid b$ as $\exists c \in \mathbb{Z}_{\ne0}$ such that $c\cdot a = b$. Here, $\mathbb{K}$ is some number set. And define $a\nmid b$ as $\forall c \in \mathbb{Z}_{\ne0}$ such that $c\cdot a \ne b$. Of course we stipulate that $\forall a \in \mathbb{K}$, $a\mid 0$.
+Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}$, $\frac{p_1}{q_1}\mid 0$.
 \end{definition}
-
+\begin{proposition}
+    $\frac{p_1}{q_1}\mid \frac{p_2}{q_2} \Longleftrightarrow p_1\mid p_2$.
+\end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
