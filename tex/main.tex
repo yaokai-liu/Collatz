@@ -514,7 +514,7 @@ For an infinity tracing back, we need to redefine the summation to give it direc
     &0, &&n = m, \\
     -&\sum_{i = n}^{m - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}}, &&n < m.
 \end{aligned}\right. \]
-    Here $m, n \in \mathbb{Z}$, thus $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ should be in $\mathbb{Q}$.
+    Here $m, n \in \mathbb{Z}$, thus $\mathfrak{A}_{n}^{m} \in \mathbb{Z}$ and $\mathfrak{a}_{n}^{m}\in\mathbb{Q}$.
     And also we omit $m$ or $n$ when them are $0$.
 \end{definition}
 \begin{proposition}
@@ -562,7 +562,7 @@ To describe the iterative properties of Collatz sequences, we denote $a \overset
 If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
 Immediately, we have
 \begin{proposition}
-    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
+    $f_{n}(\bm{a}) \overset{n}{\rightsquigarrow} b$.
 \end{proposition}
 
 \begin{proposition}
@@ -625,6 +625,7 @@ Given $\bm{s} \in \mathbb{N}^{n}$, view it as a $n$-length Collatz sequence, thu
     \end{aligned}\]
     Thus, this proposition has been proved.
 \end{proof}
+
 And immediately, we have
 \begin{proposition}~\label{prop:integral-trans}
     If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$ equivalents to 
@@ -632,7 +633,7 @@ And immediately, we have
 \end{proposition}
 If $\alpha^{n} \mid\gamma$, then this congruence equation is trivial.
 Otherwise, the analysis of this congruence equation would be very difficult.
-However, if there is another $\bm{s}$ with only one non-zero weight, i.e., $\bm{a} + \bm{s}$ degenerates into $F_{s;k}(\bm{a})$, then the analysis becomes easier.
+However, if there is another $\bm{s}$ with only one non-zero weight, i.e. $\bm{a} + \bm{s}$ degenerates into $F_{s;k}(\bm{a})$, then the analysis becomes easier.
 \begin{theorem}~\label{thm:single-integral-trans}
     If $f_{n}(\bm{a}) \in \mathbb{N}$, then
     \[f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
@@ -672,8 +673,40 @@ Therefore, we can classify these reduced sequences into different equivalence cl
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
 
-Back to the \cref{prop:integral-trans}.
-Since the congruence equation can be convert a series of prime number's congruence.
+Back to the \cref{prop:vary-rule}.
+This proposition offers a very important insight.
+That is, if $f_{n}(\bm{a})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{a} + \bm{s}) \overset{n}{\rightsquigarrow} b$, then starting from a certain bit $m$ and $m + \mathcal{S}_n$, the $\beta$-carrying terms of these two numbers satisfy a certain relationship. Mathematically, that's
+\begin{theorem}
+    Suppose $f_{n}(\bm{a}) = \sum_{k=0}^{\infty}x_k\beta^{k}$ and $f_{n}(\bm{a} + \bm{s}) = \sum_{k=0}^{\infty}x'_k\beta^{k}$. If there's 
+    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}, \]
+    then $\exists m \ge 0$, such that
+    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta, \]
+    where the $\delta\in\{0, 1\}$.
+\end{theorem}
+Notice that we don't limit the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in $\mathbb{N}$, that means they can be any $\beta$-adic number.
+\begin{proof}
+    Let
+    \[ \Gamma = \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
+    Since the congruence equation holds, then $\Gamma \in \mathbb{N}$, that means $\deg_{\beta}(\Gamma)<\infty$. Let $m = \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, then
+    \[ \beta^{m - 1}\le\beta^{\mathcal{S}_k}\sum_{k=0}^{m - \mathcal{S}_k - 1}x_k\beta^{k} + \Gamma \le \beta^{m}. \]
+    And from \cref{prop:vary-rule}, we have
+    \[ \sum_{k=0}^{\infty}x'_k\beta^{k} = \beta^{\mathcal{S}_k}\sum_{k=0}^{m - \mathcal{S}_k - 1}x_k\beta^{k} + \Gamma + \beta^{\mathcal{S}_k}\sum_{k=m}^{\infty}x_{k}\beta^{k}. \]
+    Let's right shift both the series by $m$, then we have
+    \[ \sum_{k=m}^{\infty}x'_k\beta^{k - m} = \sum_{k=m - \mathcal{S}_k}^{\infty}x_{k}\beta^{k-m + \mathcal{S}_{n}} + \delta. \]
+    Adjusting the subscript yields
+    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta. \]
+\end{proof}
+
+\begin{conjecture}
+    Suppose $x = \sum_{k=0}^{\infty}x_k\beta^{k}$ and $x' = \sum_{k=0}^{\infty}x'_k\beta^{k}$. If $\exists m \ge 0$ and $\bm{s}\in \mathbb{N}^{n}$, such that
+    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta, \]
+    and holds
+    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}, \]
+    let $x \overset{n}{\rightsquigarrow} b$, then $x' \overset{n}{\rightsquigarrow} b$.
+\end{conjecture}
+
+
+Since the congruence of \cref{prop:integral-trans} equation can be convert a series of prime number's congruence.
 That's $\forall p\in\mathbb{P}$ that $p \mid \alpha$, such that
 \[\gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot p^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \cdot \rem_{p}(\alpha^{n-k-1}) \equiv 0 \pmod{p^{n\cdot\fac_{p}(\alpha)}}, \]
 we can first consider $\alpha\in \mathbb{P}$.
@@ -690,11 +723,10 @@ But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$
     Notice that a number $a$ is not reversible modulo $\alpha$ equivalents $\gcd(a, \alpha) > 1$. For these, we say they are trivial primitive source.
     Others we call them non-trivial primitive source.\newline
     All non-trivial primitive source are denoted as 
-    \[\mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
+    \[\mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
     and all non-trivial primitive source vector of $b$ denoted as
-    \[ \mathbb{V}_{b}^{n} = \{\bm{a} \in \mathbb{N}^{n} \mid \Log(f_{n}(a)^{-1}\cdot\gamma) = \varnothing\}. \]
+    \[ \mathbb{V}_{b}^{n} = \{\bm{a} \in \mathbb{N}^{n} \mid  f_{n}(\bm{a}) \in \mathbb{S}\}. \]
 \end{definition}
-
 If $f_n(\bm{a}) \in \mathbb{S}$, then we have $\forall k \in \mathbb{N}$, there is
 \[ f_{n}(\bm{a})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
 which equivalents
@@ -702,7 +734,7 @@ which equivalents
 where the inverse is under the module of $\alpha^{n+1}$.
 We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
 
-Now let's consider the $0$-step primitive source. 
+Let's consider the $0$-step primitive source. 
 \begin{proposition}
     If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
 \end{proposition}
@@ -731,7 +763,7 @@ Below are number theory tools we introduced in this paper and their propositions
 \end{proposition}
 \begin{definition}
 Given $x\in \mathbb{N}_{_{>1}}$.
-If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that $a^y \equiv x \pmod{b}$ and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$.
+If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$.
 Otherwise, we say that $\log_{a, b}(x)$ does not exist.
 \end{definition}
 \begin{proposition}
