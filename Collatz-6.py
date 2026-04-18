@@ -1,7 +1,4 @@
-import math
 from math import gcd
-
-from pydantic.v1.class_validators import all_kwargs
 
 class Collatz:
 
@@ -82,6 +79,6 @@ if __name__ == '__main__':
     #         a.eval_eventual()
     #         print(a.REDUCES)
 
-    a = Collatz(alpha, beta, gamma, 37)
+    a = Collatz(alpha, beta, gamma, 13)
     a.eval_eventual()
     print(a.REDUCES)

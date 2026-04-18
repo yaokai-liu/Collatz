@@ -260,10 +260,9 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
 \end{aligned}\]
 \end{proof}
-Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
-It is easily to verify that the two definitions are equivalent.
+Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. More essentially, the two propositions are just the basic rules of convolution form of \cref{sec:two-abstract-forms}, which in other words, the Collatz complement is a kind of convolution form (\cref{def:convolution-form}).
 
-Also, according to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
+According to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
 \begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
     If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
 \end{proposition}
@@ -604,11 +603,10 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{a}_{k} = \frac{f_{n}(F_{s;k}(\bm{a})) - \be
     If $f_{n}(\bm{a}) = \frac{q}{\alpha^{m}}$, then $f_{n}(F_{s;k}(\bm{a})) \in \mathbb{N}$ only when $s$ holds
     \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{A}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 \end{proposition}
-
-\begin{proposition}~\label{prop:vary-rule}
-Given $\bm{s} \in \mathbb{N}^{n}$, view it as a $n$-length Collatz sequence, thus we can using $\mathcal{S}$, $\mathfrak{S}$ and $\mathfrak{s}$. Then we have
-\[f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1)\]
-\end{proposition}
+\begin{theorem}~\label{thm:vary-rule}
+Given $\bm{s} \in \mathbb{Z}^{n}$, view it as a $n$-length Collatz sequence, thus we can using $\mathcal{S}$, $\mathfrak{S}$ and $\mathfrak{s}$. Then we have
+\[ f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
+\end{theorem}
 \begin{proof}
     Notice that
     \[f_{n}(\bm{a} + \bm{s}) = b \cdot \frac{\beta^{\mathcal{A}_{k}+\mathcal{S}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n} = \beta^{\mathcal{S}_n} \cdot b\cdot \frac{\beta^{\mathcal{A}_{k}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot F_{\bm{s}}(\mathfrak{a})_{n},\]
@@ -623,14 +621,24 @@ Given $\bm{s} \in \mathbb{N}^{n}$, view it as a $n$-length Collatz sequence, thu
         =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\mathcal{S}_{k}}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \\
         =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1).
     \end{aligned}\]
-    Thus, this proposition has been proved.
+    Finally, this proposition has been proved.
 \end{proof}
+From now we denote
+\[ \Gamma_n = \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
+Then this proposition can be written as $f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \Gamma_n$. Additionally, if $n$ is explicit, we abbreviate $\Gamma_n$ to $\Gamma$.
+Actually we have
+\begin{corollary}
+    $\Gamma = \frac{\gamma}{\alpha}\cdot\beta^{\mathcal{S}_n}\cdot\mathfrak{a}_n - \frac{\gamma}{\alpha}\cdot\mathfrak{a}'_{n}$. Here $\mathfrak{a}'$ is for $\bm{a} + \bm{s}$.
+\end{corollary}
 
 And immediately, we have
-\begin{proposition}~\label{prop:integral-trans}
-    If $f_{n}(\bm{a}) \in \mathbb{N}$, then $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$ equivalents to 
+\begin{corollary}~\label{corollary:integral-trans}
+    $\Gamma \in \mathbb{N}$ equivalents to 
     \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}. \]
-\end{proposition}
+\end{corollary}
+\begin{remark}
+    If $\mathcal{S}_{n}^{k} < 0$, that means the times of $\beta$ is over gather to $\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}$, instead of the inverse under the module of $\alpha^{n}$.
+\end{remark}
 If $\alpha^{n} \mid\gamma$, then this congruence equation is trivial.
 Otherwise, the analysis of this congruence equation would be very difficult.
 However, if there is another $\bm{s}$ with only one non-zero weight, i.e. $\bm{a} + \bm{s}$ degenerates into $F_{s;k}(\bm{a})$, then the analysis becomes easier.
@@ -673,43 +681,47 @@ Therefore, we can classify these reduced sequences into different equivalence cl
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
 
-Back to the \cref{prop:vary-rule}.
+Back to the \cref{thm:vary-rule}.
 This proposition offers a very important insight.
 That is, if $f_{n}(\bm{a})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{a} + \bm{s}) \overset{n}{\rightsquigarrow} b$, then starting from a certain bit $m$ and $m + \mathcal{S}_n$, the $\beta$-carrying terms of these two numbers satisfy a certain relationship. Mathematically, that's
-\begin{theorem}
-    Suppose $f_{n}(\bm{a}) = \sum_{k=0}^{\infty}x_k\beta^{k}$ and $f_{n}(\bm{a} + \bm{s}) = \sum_{k=0}^{\infty}x'_k\beta^{k}$. If there's 
-    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}, \]
-    then $\exists m \ge 0$, such that
-    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta, \]
-    where the $\delta\in\{0, 1\}$.
+\begin{theorem}~\label{thm:high-order-bits-sync}
+    Suppose $f_{n}(\bm{a}) = \sum_{k=0}^{\infty}x_k\beta^{k}$ and $f_{n}(\bm{a} + \bm{s}) = \sum_{k=0}^{\infty}x'_k\beta^{k}$. If $\Gamma \in \mathbb{N}$, then $\exists m \ge 0$, such that
+    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_n}\beta^{k} + \delta, \]
+    where the $\delta\in\{0, 1\}$. Vice versa.
 \end{theorem}
-Notice that we don't limit the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in $\mathbb{N}$, that means they can be any $\beta$-adic number.
+Notice that we don't require the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in $\mathbb{N}$, that means they can be any $\beta$-adic integer.
 \begin{proof}
-    Let
-    \[ \Gamma = \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
-    Since the congruence equation holds, then $\Gamma \in \mathbb{N}$, that means $\deg_{\beta}(\Gamma)<\infty$. Let $m = \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, then
-    \[ \beta^{m - 1}\le\beta^{\mathcal{S}_k}\sum_{k=0}^{m - \mathcal{S}_k - 1}x_k\beta^{k} + \Gamma \le \beta^{m}. \]
-    And from \cref{prop:vary-rule}, we have
-    \[ \sum_{k=0}^{\infty}x'_k\beta^{k} = \beta^{\mathcal{S}_k}\sum_{k=0}^{m - \mathcal{S}_k - 1}x_k\beta^{k} + \Gamma + \beta^{\mathcal{S}_k}\sum_{k=m}^{\infty}x_{k}\beta^{k}. \]
+    Since $\Gamma \in \mathbb{N}$, that means $\deg_{\beta}(\Gamma)<\infty$. Let $m = \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, then
+    \[ \beta^{m - 1}\le\beta^{\mathcal{S}_n}\sum_{k=0}^{m - \mathcal{S}_n - 1}x_k\beta^{k} + \Gamma \le \beta^{m}. \]
+    And from \cref{thm:vary-rule}, we have
+    \[ \sum_{k=0}^{\infty}x'_k\beta^{k} = \beta^{\mathcal{S}_n}\sum_{k=0}^{m - \mathcal{S}_n - 1}x_k\beta^{k} + \Gamma + \beta^{\mathcal{S}_n}\sum_{k=m}^{\infty}x_{k}\beta^{k}. \]
     Let's right shift both the series by $m$, then we have
-    \[ \sum_{k=m}^{\infty}x'_k\beta^{k - m} = \sum_{k=m - \mathcal{S}_k}^{\infty}x_{k}\beta^{k-m + \mathcal{S}_{n}} + \delta. \]
+    \[ \sum_{k=m}^{\infty}x'_k\beta^{k - m} = \sum_{k=m - \mathcal{S}_n}^{\infty}x_{k}\beta^{k-m + \mathcal{S}_{n}} + \delta. \]
     Adjusting the subscript yields
-    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta. \]
+    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_n}\beta^{k} + \delta. \]
+    On the other hand, if there is $m\ge 0$ make the series equation holds, then $\forall k \ge m$ the series equation also holds. So suppose $m \ge \mathcal{S}_n + 1$. We can see from the previous derivation that
+    \[ \Gamma = \sum_{k=0}^{m-1}x'_k\beta^{k} - \beta^{\mathcal{S}_n}\sum_{k=0}^{m - \mathcal{S}_n - 1}x_k\beta^{k} + \delta\cdot\beta^{m}, \]
+    thus $\deg_{\beta}(\Gamma) \le m \le\infty$, thus $\Gamma \in \mathbb{N}$.
 \end{proof}
+\begin{remark}
+    If $f_{n}(\bm{a}) \not\in \mathbb{Z}_{<0}$, then $\exists m > \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, such that \cref{thm:high-order-bits-sync} holds and $\delta = 0$. But if $f_{n}(\bm{a}) \in \mathbb{Z}_{<0}$ and $\Gamma \ge \left\vert \beta^{\mathcal{S}_n}\cdot f_{n}(\bm{a}) \right\vert_{\mathrm{abs}}$, then $\forall m$ large enough, there is only $\delta = 1$, i.e. $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$.
+\end{remark}
 
+Denote $\mathbb{A}_n(b) = \{ \bm{s} \in \mathbb{Z}^{n} \mid \Gamma_n \in \mathbb{N}\}$ and $\mathbb{F}_n(b) = \{ f_n(\bm{a} + \bm{s}) \mid \bm{s} \in \mathbb{A}_n(b) \}$. Specially, we define $\mathbb{A}_0(b) = \varnothing$ and $\mathbb{F}_0(b) = \{b\}$. Then there is
 \begin{conjecture}
-    Suppose $x = \sum_{k=0}^{\infty}x_k\beta^{k}$ and $x' = \sum_{k=0}^{\infty}x'_k\beta^{k}$. If $\exists m \ge 0$ and $\bm{s}\in \mathbb{N}^{n}$, such that
-    \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_k}\beta^{k} + \delta, \]
-    and holds
-    \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{\alpha^{n}}, \]
-    let $x \overset{n}{\rightsquigarrow} b$, then $x' \overset{n}{\rightsquigarrow} b$.
+    For $(\alpha, \beta, \gamma) = (3,2,1)$, and $\forall n\ge 1$, $\bm{a} = (2, 2, 2, \cdots, 2)$, we have $\bigcup_{n = 0}^{\infty}\mathbb{F}_n(1) =\mathbb{N} - 2\mathbb{N}$.
 \end{conjecture}
+Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$. But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value. Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end. Of course, the condition of $\Gamma_n$ should be satisfied anyway.
+Now we given the transform rule of $\Gamma_{n}$.
 
+TODO.
 
-Since the congruence of \cref{prop:integral-trans} equation can be convert a series of prime number's congruence.
-That's $\forall p\in\mathbb{P}$ that $p \mid \alpha$, such that
-\[\gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot p^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \cdot \rem_{p}(\alpha^{n-k-1}) \equiv 0 \pmod{p^{n\cdot\fac_{p}(\alpha)}}, \]
-we can first consider $\alpha\in \mathbb{P}$.
+% Since the congruence of \cref{corollary:integral-trans} equation can be convert a series of prime number's congruence.
+% That's $\forall p\in\mathbb{P}$ that $p \mid \alpha$, such that
+% \[\gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot p^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \cdot \rem_{p}(\alpha^{n-k-1}) \equiv 0 \pmod{p^{n\cdot\fac_{p}(\alpha)}}, \]
+% we can first consider $\alpha\in \mathbb{P}$. For $p \in \mathbb{P}$, we have
+% \[ \gamma \cdot \sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot p^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1) \equiv 0 \pmod{p^{n}}. \]
+
 
 \section{Distribution of Multi-step Collatz Primitive Source}
 Now let's consider the Collatz primitive source. They are those number that can't trace back again.
@@ -717,8 +729,8 @@ Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\al
 But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
 
 \begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
-    For $b\in \mathbb{N}-\beta\mathbb{N}$, if there is a sequence $\bm{a}\in \mathbb{N}^{n}$ such that $f_{n}(a)$ is not reversible modulo $\alpha$, or
-    \[\Log_{\beta, \alpha}(f_{n}(a)^{-1} \cdot \gamma) = \varnothing, \]
+    For $b\in \mathbb{N}-\beta\mathbb{N}$, if there is a sequence $\bm{a}\in \mathbb{N}^{n}$ such that $f_{n}(\bm{a})$ is not reversible modulo $\alpha$, or
+    \[\Log_{\beta, \alpha}(f_{n}(\bm{a})^{-1} \cdot \gamma) = \varnothing, \]
     then we say $\bm{a}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(a)$ is a $n$-step Collatz primitive source of $b$.
     Notice that a number $a$ is not reversible modulo $\alpha$ equivalents $\gcd(a, \alpha) > 1$. For these, we say they are trivial primitive source.
     Others we call them non-trivial primitive source.\newline
@@ -733,6 +745,10 @@ which equivalents
 \[ \alpha^{n + 1} \nmid (\beta^{\mathcal{A}_n}\cdot b - \gamma \cdot \mathfrak{A}_n)^{-1} - \alpha^{n}\cdot\beta^{k}, \]
 where the inverse is under the module of $\alpha^{n+1}$.
 We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
+Immediately, we have
+\begin{remark}
+    If $(\alpha, \beta, \gamma) = (3,2,1)$, then $\mathbb{S} = \varnothing$.
+\end{remark}
 
 Let's consider the $0$-step primitive source. 
 \begin{proposition}
@@ -862,22 +878,23 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ an
     \end{aligned} \right.\]
 \end{theorem}
 
-\section{Continuous and Limits}\label{sec:continous-and-limits}
-To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.
- \begin{definition}
- Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms.
- With these, moreover, we can define
-     \[f(\bm{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
-     on $\mathbb{R} - \{\mathcal{A}_n \ne n\log_{\beta}{\alpha}\}$ called Collatz value.
- \end{definition}
+% \section{Continuous and Limits}\label{sec:continous-and-limits}
+% To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.
+%  \begin{definition}
+%  Given $n$ dimensions vector $\bm{a} = (\Delta_1, \Delta_2, \cdots, \Delta_n) \in \mathbb{R}^{n}$, obviously we can define its Collatz accumulation and Collatz complement by weights as reduce terms.
+%  With these, moreover, we can define
+%      \[f(\bm{a}) = \frac{\gamma \cdot \mathfrak{A}_n}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{R}  \]
+%      on $\mathbb{R} - \{\mathcal{A}_n \ne n\log_{\beta}{\alpha}\}$ called Collatz value.
+%  \end{definition}
 
- From the \cref{theorem:any-cycle}, we have
- \begin{conjecture}
-     If sub-sequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
-     \[ \lim_{i\to\infty}^{\mathbb{Q}_\beta} a_{k_i} = \lim_{i\to\infty}^{\mathbb{R}}\frac{\gamma \cdot \mathfrak{A}_{k_i}}{\beta^{\mathcal{A}_{k_i}} - \alpha^{k_i}}. \]
- \end{conjecture}
+%  From the \cref{theorem:any-cycle}, we have
+%  \begin{conjecture}
+%      If sub-sequence $a_{k_i}$ has a limit in $\mathbb{Q}_\beta$, then
+%      \[ \lim_{i\to\infty}^{\mathbb{Q}_\beta} a_{k_i} = \lim_{i\to\infty}^{\mathbb{R}}\frac{\gamma \cdot \mathfrak{A}_{k_i}}{\beta^{\mathcal{A}_{k_i}} - \alpha^{k_i}}. \]
+%  \end{conjecture}
 
 \section{Two Abstract Forms}\label{sec:two-abstract-forms}
+From \cref{sec:the-basic-fomula-of-collatz-sequences}
 Now let's forget those definitions before.
 We will introduce two new abstract forms to inclusion those properties above.
 \begin{definition}
@@ -900,7 +917,7 @@ We will introduce two new abstract forms to inclusion those properties above.
 \begin{proposition}
     If $\mathcal{A} \ne 0$, then $\forall i, j \in I$, there is $\mathcal{A}_{i}^{j}\cdot\mathcal{A}_{j}^{i} = \mathcal{A}_{i}^{i} = 1$.
 \end{proposition}
-\begin{definition}[Convolution Form]
+\begin{definition}[Convolution Form]~\label{def:convolution-form}
     Given two forms $A$ and $B$ on $R$ with $I$.
     There's a new form $\mathfrak{R}$ such that $\forall i, j, k \in I$, there is
     \[ A_{i}^{k}\cdot\mathfrak{R}_{k}^{j} + \mathfrak{R}_{i}^{k}\cdot B_{k}^{j} = \mathfrak{R}_{i}^{j} \]

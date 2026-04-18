@@ -1,14 +1,4 @@
-import math
-import random
 from fractions import Fraction
-from random import randint
-
-import numpy as np
-from math import gcd
-import matplotlib.pyplot as plt
-import csv
-
-from IPython.core.events import pre_execute, pre_run_cell
 
 alpha, beta, gamma = 3, 2, 1
 
@@ -33,6 +23,25 @@ def F_trans(pre_reduce, adds: dict):
 
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [3, 3, 1, 2, 3, 4]
-    N = collatz_preitem(1, pre_reduce)
-    print(N)
+    basic_reduce = [2, 2, 2]
+    for i in range(2):
+        modify_reduce = [i, 1, 2]
+        pre_reduce = [basic_reduce[i] + modify_reduce[i] for i in range(len(basic_reduce))]
+        N = collatz_preitem(1, pre_reduce)
+        if N.is_integer():
+            print(f"{i}:")
+            print(f"It's an integer: {N}")
+    for i in range(2):
+        modify_reduce = [i, 2, 0]
+        pre_reduce = [basic_reduce[i] + modify_reduce[i] for i in range(len(basic_reduce))]
+        N = collatz_preitem(1, pre_reduce)
+        if N.is_integer():
+            print(f"{i}:")
+            print(f"It's an integer: {N}")
+
+    # basic_reduce = [2, 2]
+    # modify_reduce = [1, 2]
+    # pre_reduce = [basic_reduce[i] + modify_reduce[i] for i in range(len(basic_reduce))]
+    # N = collatz_preitem(1, pre_reduce)
+    # if N.is_integer():
+    #     print(f"It's an integer: {N}")
