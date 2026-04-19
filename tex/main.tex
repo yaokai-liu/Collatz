@@ -571,7 +571,7 @@ Immediately, we have
     $f_{n}(\bm{a}) = f_{n}(\bm{b}) \Longleftrightarrow \bm{a} = \bm{b}$.
 \end{proposition}
 \begin{proposition}
-    $f_{n}(\bm{a}) = \frac{\beta^{\Delta_{1}}}{\alpha}\left(\frac{\beta^{\Delta_{2}}}{\alpha}\left(\cdots \left(\frac{\beta^{\Delta_{n}}}{\alpha} - \frac{\gamma}{\alpha}\right)\cdots\right)- \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}$.
+    $f_{n}(\bm{a}) = \frac{\beta^{\Delta_{1}}}{\alpha}\left(\frac{\beta^{\Delta_{2}}}{\alpha}\left(\cdots \left(\frac{\beta^{\Delta_{n}}}{\alpha}\cdot b - \frac{\gamma}{\alpha}\right)\cdots\right)- \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}$.
 \end{proposition}
 \begin{proposition}
     $F_{t;l}(F_{s;k}(\bm{a})) = F_{s;k}(F_{t;l}(\bm{a}))$.
@@ -706,15 +706,28 @@ Notice that we don't require the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in
 \begin{remark}
     If $f_{n}(\bm{a}) \not\in \mathbb{Z}_{<0}$, then $\exists m > \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, such that \cref{thm:high-order-bits-sync} holds and $\delta = 0$. But if $f_{n}(\bm{a}) \in \mathbb{Z}_{<0}$ and $\Gamma \ge \left\vert \beta^{\mathcal{S}_n}\cdot f_{n}(\bm{a}) \right\vert_{\mathrm{abs}}$, then $\forall m$ large enough, there is only $\delta = 1$, i.e. $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$.
 \end{remark}
-
-Denote $\mathbb{A}_n(b) = \{ \bm{s} \in \mathbb{Z}^{n} \mid \Gamma_n \in \mathbb{N}\}$ and $\mathbb{F}_n(b) = \{ f_n(\bm{a} + \bm{s}) \mid \bm{s} \in \mathbb{A}_n(b) \}$. Specially, we define $\mathbb{A}_0(b) = \varnothing$ and $\mathbb{F}_0(b) = \{b\}$. Then there is
+\begin{definition}
+Denote that
+\[ \begin{aligned}
+    \mathbb{A}_n(b) &= \left\{ \bm{s} \in \mathbb{Z}^{n} \mid b\cdot\beta^{\mathcal{S}_n} + \Gamma_n \in \mathbb{N} \right\},\\
+    \mathbb{F}_n(b) &= \left\{ f_n(\bm{a} + \bm{s}) \mid \bm{s} \in \mathbb{A}_n(b) \right\}.
+\end{aligned} \]
+Specially, we define $\mathbb{A}_0(b) = \varnothing$ and $\mathbb{F}_0(b) = \{b\}$.
+\end{definition}
 \begin{conjecture}
     For $(\alpha, \beta, \gamma) = (3,2,1)$, and $\forall n\ge 1$, $\bm{a} = (2, 2, 2, \cdots, 2)$, we have $\bigcup_{n = 0}^{\infty}\mathbb{F}_n(1) =\mathbb{N} - 2\mathbb{N}$.
 \end{conjecture}
-Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$. But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value. Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end. Of course, the condition of $\Gamma_n$ should be satisfied anyway.
-Now we given the transform rule of $\Gamma_{n}$.
+Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$. But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value. Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end. Of course, the condition of $\Gamma_n$ should be satisfied anyway. Iteratively, we have
+\begin{proposition}
+For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
+\[ \begin{aligned}
+    \mathbb{A}_{n+1}(b) &= \left\{ (\Delta, \bm{s}) \mid 2^{\Delta}\cdot f \equiv 1\pmod{2}, f \in \mathbb{F}_{n}(b), \bm{s} \in \mathbb{A}_{n}(b) \right\},\\
+    \mathbb{F}_{n+1}(b) &= \left\{ \left.\frac{\beta^{\Delta}\cdot f  - 1}{3} \right\vert 2^{\Delta}\cdot f \equiv 1\pmod{2}, f \in \mathbb{F}_{n}(b) \right\}.
+\end{aligned} \]
+\end{proposition}
 
-TODO.
+% Now we given the transform rule of $\Gamma_{n}$.
+
 
 % Since the congruence of \cref{corollary:integral-trans} equation can be convert a series of prime number's congruence.
 % That's $\forall p\in\mathbb{P}$ that $p \mid \alpha$, such that
@@ -746,11 +759,9 @@ which equivalents
 where the inverse is under the module of $\alpha^{n+1}$.
 We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
 Immediately, we have
-\begin{remark}
+\begin{proposition}
     If $(\alpha, \beta, \gamma) = (3,2,1)$, then $\mathbb{S} = \varnothing$.
-\end{remark}
-
-Let's consider the $0$-step primitive source. 
+\end{proposition}
 \begin{proposition}
     If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
 \end{proposition}
@@ -792,9 +803,7 @@ Otherwise, we denote $\Log_{a, b}(x) = \varnothing$.
 And we denote
 \[- \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} - \log_{a, b}(x).\]
 \end{definition}
-
-We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \mathbb{Z}$.
-
+We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \ord_{b}(a)\mathbb{Z}$.
 Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
 \begin{proposition}
     $x^{\log_{a, b}(x)} \equiv x \pmod{b}$.

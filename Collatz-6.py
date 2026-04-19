@@ -79,6 +79,6 @@ if __name__ == '__main__':
     #         a.eval_eventual()
     #         print(a.REDUCES)
 
-    a = Collatz(alpha, beta, gamma, 13)
+    a = Collatz(alpha, beta, gamma, 31)
     a.eval_eventual()
     print(a.REDUCES)

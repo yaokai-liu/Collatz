@@ -1,8 +1,6 @@
 import math
 from fractions import Fraction
 
-from IPython.core.events import pre_execute, pre_run_cell
-
 def trin(a: int):
     string = ''
     while a:
@@ -33,7 +31,7 @@ def F_trans(pre_reduce, adds: dict):
 
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [4] # 131
+    pre_reduce = [8] # 131
     N = collatz_preitem(1, pre_reduce)
     print(N)
     # new_Ns = []
