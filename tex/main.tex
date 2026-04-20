@@ -624,8 +624,8 @@ Given $\bm{s} \in \mathbb{Z}^{n}$, view it as a $n$-length Collatz sequence, thu
     Finally, this proposition has been proved.
 \end{proof}
 From now we denote
-\[ \Gamma_n = \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
-Then this proposition can be written as $f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \Gamma_n$. Additionally, if $n$ is explicit, we abbreviate $\Gamma_n$ to $\Gamma$.
+\[ \Gamma_n(b) = \frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{A}_{k} + \mathcal{S}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\mathcal{S}_{n}^{k}} - 1). \]
+Then this proposition can be written as $f_{n}(\bm{a} + \bm{s}) = \beta^{\mathcal{S}_{n}}\cdot f_{n}(\bm{a}) + \Gamma_n(b)$. Additionally, if no ambiguous, we abbreviate $\Gamma_n(b)$ to $\Gamma$.
 Actually we have
 \begin{corollary}
     $\Gamma = \frac{\gamma}{\alpha}\cdot\beta^{\mathcal{S}_n}\cdot\mathfrak{a}_n - \frac{\gamma}{\alpha}\cdot\mathfrak{a}'_{n}$. Here $\mathfrak{a}'$ is for $\bm{a} + \bm{s}$.
@@ -689,7 +689,6 @@ That is, if $f_{n}(\bm{a})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{a} + \
     \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \mathcal{S}_n}\beta^{k} + \delta, \]
     where the $\delta\in\{0, 1\}$. Vice versa.
 \end{theorem}
-Notice that we don't require the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in $\mathbb{N}$, that means they can be any $\beta$-adic integer.
 \begin{proof}
     Since $\Gamma \in \mathbb{N}$, that means $\deg_{\beta}(\Gamma)<\infty$. Let $m = \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, then
     \[ \beta^{m - 1}\le\beta^{\mathcal{S}_n}\sum_{k=0}^{m - \mathcal{S}_n - 1}x_k\beta^{k} + \Gamma \le \beta^{m}. \]
@@ -703,29 +702,36 @@ Notice that we don't require the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in
     \[ \Gamma = \sum_{k=0}^{m-1}x'_k\beta^{k} - \beta^{\mathcal{S}_n}\sum_{k=0}^{m - \mathcal{S}_n - 1}x_k\beta^{k} + \delta\cdot\beta^{m}, \]
     thus $\deg_{\beta}(\Gamma) \le m \le\infty$, thus $\Gamma \in \mathbb{N}$.
 \end{proof}
+Notice that we don't require the $f_{n}(\bm{a})$ and $f_{n}(\bm{a} + \bm{s})$ in $\mathbb{N}$, that means they can be any $\beta$-adic integer.
 \begin{remark}
     If $f_{n}(\bm{a}) \not\in \mathbb{Z}_{<0}$, then $\exists m > \max\{\deg_{\beta}(\Gamma), \mathcal{S}_n\} + 1$, such that \cref{thm:high-order-bits-sync} holds and $\delta = 0$. But if $f_{n}(\bm{a}) \in \mathbb{Z}_{<0}$ and $\Gamma \ge \left\vert \beta^{\mathcal{S}_n}\cdot f_{n}(\bm{a}) \right\vert_{\mathrm{abs}}$, then $\forall m$ large enough, there is only $\delta = 1$, i.e. $f_{n}(\bm{a} + \bm{s}) \in \mathbb{N}$.
 \end{remark}
+Even though, we can't determinate integer source values only depends on $\Gamma\in\mathbb{N}$, because there are evidences present that even if $\Gamma\not\in\mathbb{N}$, we can derive an integer source value.
+
 \begin{definition}
-Denote that
+Given a target set $B$ Denote that
 \[ \begin{aligned}
-    \mathbb{A}_n(b) &= \left\{ \bm{s} \in \mathbb{Z}^{n} \mid b\cdot\beta^{\mathcal{S}_n} + \Gamma_n \in \mathbb{N} \right\},\\
-    \mathbb{F}_n(b) &= \left\{ f_n(\bm{a} + \bm{s}) \mid \bm{s} \in \mathbb{A}_n(b) \right\}.
+    \mathbb{A}_n(B) &= \bigcup_{b\in B}\left\{ \bm{s} \in \mathbb{Z}^{n} \mid b\cdot\beta^{\mathcal{S}_n} + \Gamma_n(b) \in \mathbb{N} \right\},\\
+    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{a} + \bm{s}) \mid \bm{s} \in \mathbb{A}_n(b) \right\}.
 \end{aligned} \]
-Specially, we define $\mathbb{A}_0(b) = \varnothing$ and $\mathbb{F}_0(b) = \{b\}$.
+Specially, we define $\mathbb{A}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. When $B = \{b\}$, that's $B$ contains only one number, we also denote as  $\mathbb{A}_n(b)$ and $\mathbb{F}_n(b)$.
 \end{definition}
 \begin{conjecture}
     For $(\alpha, \beta, \gamma) = (3,2,1)$, and $\forall n\ge 1$, $\bm{a} = (2, 2, 2, \cdots, 2)$, we have $\bigcup_{n = 0}^{\infty}\mathbb{F}_n(1) =\mathbb{N} - 2\mathbb{N}$.
 \end{conjecture}
-Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$. But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value. Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end. Of course, the condition of $\Gamma_n$ should be satisfied anyway. Iteratively, we have
-\begin{proposition}
+Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$. But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value. Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end. Of course, the condition of $\Gamma_n$ should be satisfied anyway.
 For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
+\begin{proposition}
 \[ \begin{aligned}
     \mathbb{A}_{n+1}(b) &= \left\{ (\Delta, \bm{s}) \mid 2^{\Delta}\cdot f \equiv 1\pmod{2}, f \in \mathbb{F}_{n}(b), \bm{s} \in \mathbb{A}_{n}(b) \right\},\\
-    \mathbb{F}_{n+1}(b) &= \left\{ \left.\frac{\beta^{\Delta}\cdot f  - 1}{3} \right\vert 2^{\Delta}\cdot f \equiv 1\pmod{2}, f \in \mathbb{F}_{n}(b) \right\}.
+    \mathbb{F}_{n+1}(b) &= \left\{ (2^{\Delta}\cdot f  - 1)/3 \mid 2^{\Delta}\cdot f \equiv 1\pmod{2}, f \in \mathbb{F}_{n}(b) \right\}.
 \end{aligned} \]
 \end{proposition}
-
+\begin{proposition}
+    \[\mathbb{F}_{n+1}(b) = \bigcup_{f\in \mathbb{F}_{n}(1) - \mathbb{S}} \left\{f_0 = (2^{\Delta}\cdot f  - 1)/3, f_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\},\]
+    Where the $\mathbb{S}$ is all primitive source defined as \cref{collatz-primitive-source}, and $\Delta$ is the min value such that $2^{\Delta}\cdot f \equiv 1\pmod{2}$.
+\end{proposition}
+Actually, each $k$ represents add-on times to the first component $\Delta$ by $2$.
 % Now we given the transform rule of $\Gamma_{n}$.
 
 
@@ -747,10 +753,10 @@ But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$
     then we say $\bm{a}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(a)$ is a $n$-step Collatz primitive source of $b$.
     Notice that a number $a$ is not reversible modulo $\alpha$ equivalents $\gcd(a, \alpha) > 1$. For these, we say they are trivial primitive source.
     Others we call them non-trivial primitive source.\newline
-    All non-trivial primitive source are denoted as 
-    \[\mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
-    and all non-trivial primitive source vector of $b$ denoted as
-    \[ \mathbb{V}_{b}^{n} = \{\bm{a} \in \mathbb{N}^{n} \mid  f_{n}(\bm{a}) \in \mathbb{S}\}. \]
+    And all non-trivial primitive source are denoted as 
+    \[\mathbb{S}_c = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
+    all primitive source denotes as
+    \[ \mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) > 1\}\cup \mathbb{S}_c. \]
 \end{definition}
 If $f_n(\bm{a}) \in \mathbb{S}$, then we have $\forall k \in \mathbb{N}$, there is
 \[ f_{n}(\bm{a})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
@@ -760,7 +766,7 @@ where the inverse is under the module of $\alpha^{n+1}$.
 We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
 Immediately, we have
 \begin{proposition}
-    If $(\alpha, \beta, \gamma) = (3,2,1)$, then $\mathbb{S} = \varnothing$.
+    If $(\alpha, \beta, \gamma) = (3,2,1)$, then $\mathbb{S}_c = \varnothing$.
 \end{proposition}
 \begin{proposition}
     If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
@@ -768,6 +774,10 @@ Immediately, we have
 But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
 This equivalence provides a new equation $b'\cdot \beta^{\Delta} = b + m'\cdot\alpha$, which is also a Collatz reduce formula, which $\gamma = b$.
 
+For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
+\begin{proposition}
+    Suppose $f_{n}(\bm{s}) \in \mathbb{S}$, then $\left\{f_{n}(\bm{s} + 6\bm{e}_1) \mid k\in\mathbb{N}\right\} \subset \mathbb{S}$.
+\end{proposition}
 \appendix
 \section{Number Theory Tools}\label{sec:number-theory-tools}
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
