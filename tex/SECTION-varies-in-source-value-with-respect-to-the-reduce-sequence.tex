@@ -91,12 +91,13 @@ Where
 \end{proof}
 Though $\Delta\bm{v} \in \mathbb{Z}^{n}$, we still require $\bm{v} + \Delta\bm{v} \in\mathbb{N}^{n}$.
 If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{v} + \Delta\bm{v}$ becomes $F_{s;k}(\bm{v})$, then the analysis becomes easier.
-\begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:single-integral-trans}
+\begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then
     \[f_{n}(F_{s;k}(\bm{v})) \in \mathbb{N}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
     where the auxiliary operator $\Psi_{\alpha}(\beta)$ is defined as \[
-        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}.
+        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)},
     \]
+    and $\delta = \fac_2(\beta + 1)$ if $2 \mid \alpha$ else $0$.
 \end{theorem}
 \begin{proof}
     From \cref{prop:single-vary-rule}, we have
@@ -108,9 +109,10 @@ If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{
     By the Fundamental Theorem of Arithmetic, $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} p^{\fac_{p}(\alpha)}$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ p^{k\cdot\fac_{p}(\alpha)} \mid \gamma\cdot(\beta^{s} - 1). \]
     Note that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
-    \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(p). \]
+    \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(\beta). \]
+    Here $\delta_2(p) = \fac_2(\beta + 1)$ if $p = 2$ else $0$.
     Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
-    \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(p). \]
+    \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(\beta). \]
     Isolating the valuation of $s$, we obtain
     \[ \fac_{p}(s) \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right), \]
     which equivalents
@@ -124,7 +126,7 @@ If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{
     Sum up, we have
     \[ \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s. \]
 \end{proof}
-\cref{thm:single-integral-trans} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
+\cref{thm:the-periodic-rule-of-reduce-sequence} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
