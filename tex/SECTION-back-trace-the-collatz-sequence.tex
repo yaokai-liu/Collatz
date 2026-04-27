@@ -1,0 +1,44 @@
+% !TEX root = main.tex
+\section{Back Trace the Collatz Sequence}\label{sec:back-trace-the-collatz-sequence}
+\cref{theorem:any-presequence} tell us we can also trace back the Collatz sequence in $\mathbb{Q}$.
+But we can only go back under a finite reduces given.
+For an infinity tracing back, we need to redefine the summation to give it directionality.
+\begin{definition}
+    Let's modified the definition of $\sum$ operator. The sum $S$ of $s$ from $m$ to $n$ is defined as
+    \[ S = \left\{\begin{aligned}
+    &\sum_{i=m}^{n-1}s_i, &&n > m, \\
+    &0, &&n = m, \\
+    -&\sum_{i=n}^{m-1}s_i, &&n < m.
+\end{aligned}\right. \]
+\end{definition}
+With this we have
+\begin{proposition}
+    $\mathcal{A}_{n}^{m} = -\mathcal{A}_{m}^{n}$.
+\end{proposition}
+\begin{proposition}
+    $\alpha^{n-m} \cdot \mathfrak{A}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{A}_{n}^{m} = 0$ and $\mathfrak{a}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{a}_{n}^{m} = 0$.
+\end{proposition}
+It is easy to verify that those propositions of Collatz accumulation and complement still holds.
+And with these definitions, we have
+\begin{theorem}~\label{theorem:final-inductive-formula}
+Given $a \in \mathbb{Q}-\beta\mathbb{Q}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
+Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
+\[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
+\end{theorem}
+
+\begin{corollary}
+    $a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = \alpha^{n-m} \cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n}^{m}\right)$.
+\end{corollary}
+\begin{corollary}
+    If $\forall i$ that $k \ge i > 0$, there is $v_{-i} = t$, denote $\sigma = \frac{\gamma}{\alpha-\beta^{t}}$, then we have
+    $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$.
+\end{corollary}
+Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$ has only one form of solution:
+\[\left\{\begin{aligned}
+    a_{0} &= t \cdot \alpha^k - \sigma, \\
+    a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
+\end{aligned}\right.\]
+where $t \in \mathbb{Q}$.
+To ensure both $a_{-k}$ and $a_0$ are integers, we require
+\[ t \in \{s\cdot\sigma+n \mid n \in \mathbb{N}, s \equiv \alpha^{-k} \equiv \beta^{-kt} \pmod{\alpha - \beta^{t}}\}. \]
+Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.

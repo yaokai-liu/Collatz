@@ -62,7 +62,6 @@ class Collatz:
 
 if __name__ == '__main__':
     alpha, beta, gamma = 3, 2, 1
-    tail = 0b110110100001001011
     # tail = 0b1
     # for head in range(1 << 6):
     #     b = (head << tail.bit_length()) + tail
@@ -81,4 +80,8 @@ if __name__ == '__main__':
 
     a = Collatz(alpha, beta, gamma, 31)
     a.eval_eventual()
+    # while a.TERMS[-1] > 7:
+    #     a.eval_to(len(a.TERMS) - 1)
     print(a.REDUCES)
+    # print([r - 2 for r in a.REDUCES])
+    print(a.TERMS)

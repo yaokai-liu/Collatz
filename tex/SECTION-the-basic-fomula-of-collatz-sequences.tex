@@ -1,0 +1,146 @@
+% !TEX root = main.tex
+\section{The basic formula of Collatz Sequences}\label{sec:the-basic-fomula-of-collatz-sequences}
+
+With the definition of Collatz complement, we can easily find that the equation in \cref{equation:collatz-inductioon-3-2-1} also hold with all general Collatz sequences:
+\begin{theorem}~\label{theorem:inductive-formula}
+$\forall a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, $\forall k \in \mathbb{N}$ we have
+\[ a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}. \]
+\end{theorem}
+% \begin{proof} Trivial. \end{proof}
+\begin{proof}
+    First, we have $a_0 \cdot \beta^{\mathcal{A}_0} = a = a \cdot \alpha^{0} + \gamma \cdot \mathfrak{A}_0$ and $a_1 \cdot \beta^{\mathcal{A}_1} = \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
+    Second, if $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}$, then
+    \begin{align*}
+        a_{k+1} \cdot \beta^{\mathcal{A}_{k+1}}
+        =&\ a_{k+1} \cdot \beta^{\val_{\beta}(a;k+1)} \cdot \beta^{\mathcal{A}_{k}} \\
+        =&\ \alpha \cdot a_k \cdot \beta^{\mathcal{A}_k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        % =&\ \alpha \cdot (a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}) + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        =&\ a \cdot \alpha^{k+1} + \gamma \cdot \alpha \cdot \mathfrak{A}_{k} + \gamma \cdot \beta^{\mathcal{A}_k} \\
+        % =&\ a \cdot \alpha^{k+1} + \gamma \cdot (\alpha \cdot \mathfrak{A}_{k} + \cdot \beta^{\mathcal{A}_k}) \\
+        =&\ a \cdot \alpha^{k+1} + \gamma \cdot \mathfrak{A}_{k+1}.
+    \end{align*}
+    Sum up, we proved this theorem.
+\end{proof}
+It is very important and fundamental, and we will see later that all types of Collatz sequences are actually some kind of variant expression of the \cref{theorem:inductive-formula}.
+\begin{corollary}
+$\forall m, n \ge 0$ we have
+\[ a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \gamma\cdot\mathfrak{A}_{n+m}^{m}. \]
+\end{corollary}
+\begin{corollary}~\label{corollary:inductive-formula-with-reduced}
+    $a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \frac{\gamma}{\alpha}\cdot\alpha^{n}\cdot\mathfrak{a}_{n+m}^{m} = \alpha^{n}\cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n+m}^{m}\right)$.
+\end{corollary}
+\begin{corollary}
+Given $a$ that $\beta \nmid a$, if $\mathfrak{A}_n^m$ is of $a$, then $\beta \nmid \mathfrak{A}_n^m$.
+\end{corollary}
+\begin{corollary}~\label{corollary:congerunce-with-collatz-complement}
+If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = -\gamma \cdot \frac{\mathfrak{A}_k}{\alpha^k} \pmod{\beta^{\mathcal{A}_k}}$.
+\end{corollary}
+% \begin{proof} Trivial with \cref{corollary:inductive-formula-with-reduced}. \end{proof}
+\begin{corollary}
+    If $a = t \cdot p^n + s$, that $t, s\in \mathbb{N}_{\ge1} - \beta\mathbb{N}_{\ge1}, p \in \mathbb{N}_{>1}$, then
+    \[a_k \cdot \beta^{\mathcal{A}_k} - \gamma\cdot\mathfrak{A}_k = (t_k \cdot \beta^{\mathcal{T}_k} - \gamma\cdot\mathfrak{T}_k)\cdot p^{n} + (s_k \cdot \beta^{\mathcal{S}_k} - \gamma\cdot\mathfrak{S}_k).\]
+\end{corollary}
+\begin{corollary}
+    If $a = t \cdot \beta^n + s$, that $t, s \in \DiffSet{\mathbb{N}_{\ge1}}{\beta\mathbb{N}_{\ge1}}$ and $n \in \mathbb{N}_{\ge1}$, then
+    \begin{align*}
+        \mathcal{A}_k &= \mathcal{S}_k, \\
+        \mathfrak{A}_k &= \mathfrak{S}_k,\\
+        a_k &= t \cdot \alpha^{k} \cdot \beta^{n-\mathcal{S}_k} + s_k
+    \end{align*}
+    holds during $S_k < n$.
+\end{corollary}
+
+It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
+Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
+\begin{definition}
+Given $m,n \in \mathbb{N}$, when $m \ge 1$, define
+\[ [m\mid n] = \left\{a \in \mathbb{N}\ \left|\ \left(a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i\right) \equiv 0 \pmod{\beta^{m}}\right.\right\}. \]
+Specially, when $m = 0$, define $[0\mid n] = \mathbb{N}$.
+\end{definition}
+\begin{proposition}~\label{proposition:equivalence-of-classes}
+    $a \in [m\mid n] \Longleftrightarrow a\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n-1}\alpha^{-i}\pmod{\beta^{m}}$.
+\end{proposition}
+\begin{proposition}
+    $ l \ge m \Longleftrightarrow [l\mid n] \subset [m\mid n]$.
+\end{proposition}
+\begin{proposition}~\label{proposition:avaliable-in-finity-step}%
+    $\exists P \in \mathbb{N}_{\ge1}$, such that $[m \mid n + P ] = [m\mid n]$.
+\end{proposition}
+\begin{proof}
+    Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p\in\mathbb{P}}^{p \mid \beta}p^{\fac_{p}(\alpha-1)}$.
+
+    First, since $\gcd(\alpha, \beta) = 1$, for those $p \in \mathbb{P}$ that $p \mid \beta$, we have
+    \begin{align*}
+        \fac_{p}(\alpha^P - 1) & \ge \fac_{p}\left(\prod_{p\in\mathbb{P}}^{p \mid \beta}p^{\fac_{p}(\alpha-1)}\right) + \fac_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
+                                 & \ge \fac_{p}(\alpha-1) + \fac_{p}(\beta) \cdot m,
+    \end{align*}
+    Then we have
+    \begin{align*}
+        \fac_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \fac_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
+                &= \fac_{p}(\alpha^P - 1) - \fac_{p}(\alpha-1) \\
+                &\ge \fac_{p}(\beta) \cdot m.
+    \end{align*}
+    That means $p_{i}^{m \cdot \fac_{p}(\beta)} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+    Here, $\alpha^{-1}$ is defined in terms of the modulus of $\beta^{m}$. \newline
+    Now suppose $a \in [m \mid n + P]$.
+    From \cref{proposition:equivalence-of-classes}, we have
+    \begin{align*}
+        a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+            &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{-P} \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}}
+    \end{align*}
+    which means $a \in [ m \mid n + P] \Longleftrightarrow a \in [m \mid n]$.
+    But this $P$ is not always the minimal period.
+\end{proof}
+\begin{definition}
+    Denote $[m] = \bigcup_{n=0}^{\infty}[m\mid n]$ and $\bar{[m]} = \mathbb{N} - [m]$.
+\end{definition}
+\begin{proposition}
+    $[0] = \mathbb{N}$ and $\bar{[0]} = \varnothing$.
+\end{proposition}
+\begin{proposition}
+    $a \in \bar{[1]} \Longrightarrow \alpha \cdot a + \gamma \in \bar{[1]}$.
+    On the contrary, if $a\equiv \gamma \pmod{\alpha}$, then $a \in \bar{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \bar{[1]}$.
+\end{proposition}
+\begin{theorem}~\label{theorem:requirements-of-avaliablity}
+    $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+    \item[$\Longrightarrow$)]
+        If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\Delta(a, k + n_{k}) > 0$,
+        that means $a_{k} \in [\Delta(a, k + n_{k}) | n_{k}] \subset [1]$.
+    \item[$\Longleftarrow$)] 
+        If $\forall k \in \mathbb{N}$, there is $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{proposition:avaliable-in-finity-step} we can suppose $n_k \le P$,
+        such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
+        Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
+\end{itemize}
+Sum up, we proved this theorem.
+\end{proof}
+\begin{corollary}
+    If $\lim_{k\to\infty}\mathcal{A}_k = \infty$, then $\frac{\mathcal{A}_k}{k} \ge \frac{1}{P}$ when $k\to\infty$.
+\end{corollary}
+\begin{conjecture}
+    $\exists c(\beta) \ge 0$, $\mu\{a \in\mathbb{Z}_{\beta} \mid \lim_{k\to\infty}\frac{\mathcal{A}_k}{k} \ge c \}  = 0$.
+\end{conjecture}
+
+\cref{theorem:requirements-of-avaliablity} present that, for general triplet arguments, not all initial numbers can be reduced infinitely many times.
+But these propositions above provide a basic way to determine whether a number can be reduced, especially since we can easily filter out many initial numbers that cannot. For $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have
+\begin{corollary}
+    $\forall a \in \mathbb{N} - 2\mathbb{N}$, $a\in[1]$, and $1 \le \frac{\mathcal{A}_k}{k} \le 2$ thus $\lim_{k\to\infty}\mathcal{A}_k = \infty$.
+\end{corollary}
+
+However, even if $A_{k}\to \infty$, we can't say that $a_k$ will eventually fall into a cycle.
+For example, when $\alpha = 11$, $\beta = 2$ and $\gamma = 1$, for any number, the sequence may grow exponentially as $k$ increases, while $\alpha = 3$ will decrease to 1, at least for the numbers we observe.
+The reason for this is that the distribution of reduce always only relates to $\beta$, and its change with $\alpha$ is not significant.
+But the growth of sequence numbers accelerates as $\alpha$ increases. $11$ is too large, $\beta=2$ and $\gamma=1$ are dwarfed with it.
+
+Therefore, we can only find these cycle numbers by letting $a_{t} = a$.
+According to \cref{theorem:inductive-formula}, that is
+\[ a = \frac{\gamma \cdot \mathfrak{A}_{t}}{\beta^{\mathcal{A}_{t}} - \alpha^{t}}. \]
+For this equation, there probably are some integer solutions from \cref{proposition:trivial-periodic-sequence}, but not all integer solution of it follows that proposition.
+For example, $a=13$ has a 4-tempus cycle under $\alpha=3$, $\beta=5$, $\gamma=1$, that $\val_{5}(13;1) = 1$, $\val_{5}(13;2) = 2$, $\val_{5}(13;3) = 0$ and $\val_{5}(13;4) = 0$.
+Obviously, $\val_{5}(13;i)$ are not same.
+Therefore, we have to explore the properties of this fractional expression independently.
