@@ -36,11 +36,10 @@ So it is the time to explore what the arguments of these equations has a stabili
     For number $a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ named Collatz sequence and $\val_{\beta}(a;k)\in\mathbb{N}$ named Collatz reduce with
     \begin{align*}
         a_0 &=a, \\
-        \val_{\beta}(a;0) &=0, \\
         a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} &= \alpha\cdot a_{k} + \gamma.
     \end{align*}
     For a better looking, denote 
-    \[\mathcal{A}_n^{m} = \sum_{k=m}^{n-1}\val_{\beta}(a;k)\]
+    \[\mathcal{A}_n^{m} = \sum_{k=m}^{n-1}\val_{\beta}(a;k + 1)\]
     named Collatz accumulation from $m$ to $n$.
     Specially when $m = 0$, we omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
 \end{definition}
@@ -55,7 +54,8 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{
     First, we have
     \begin{align*}
         a = b &\Rightarrow a_0 = b_0, \\
-        \mathcal{A}_0 = \val_{\beta}(a;0) &= 0 = \val_{\beta}(b;0) = \mathcal{B}_0.
+        a_1 \cdot \beta^{\val_{\beta}(a;1)} &= b_1 \cdot \beta^{\val_{\beta}(b;1)}, \\
+        \mathcal{A}_1 = \val_{\beta}(a;1) &= \val_{\beta}(b;1) = \mathcal{B}_1.
     \end{align*}
     Second, if $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$, we have
     \[a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val_{\beta}(b;k + 1)}.\]
@@ -183,6 +183,9 @@ Actually, we can formally define the Collatz complement only from \cref{proposit
 According to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
 \begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
     If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
+\end{proposition}
+\begin{proposition}
+    If $\forall v_i \ge 1$, then $\beta\nmid \mathfrak{A}_n^{m}$ and $\alpha \nmid \mathfrak{A}_n^{m}$.
 \end{proposition}
 
 Now we are ready to explore the properties of Collatz sequences.

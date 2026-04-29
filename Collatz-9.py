@@ -25,6 +25,6 @@ def F_trans(pre_reduce, adds: dict):
 
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [3, 3, 1, 2, 3, 4]
+    pre_reduce = [1, 2, 2]
     N = collatz_preitem(1, pre_reduce)
     print(N)

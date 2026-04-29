@@ -85,3 +85,4 @@ if __name__ == '__main__':
     print(a.REDUCES)
     # print([r - 2 for r in a.REDUCES])
     print(a.TERMS)
+    print(a.ACCUMULATIONS[1])

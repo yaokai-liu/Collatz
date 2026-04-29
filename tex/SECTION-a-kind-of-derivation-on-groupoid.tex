@@ -5,9 +5,10 @@ Now let's forget those definitions before.
 We will introduce a new kind of form to subsume those properties above. It's the extend of $(\sigma, \tau)$-derivation on groupoids.
 
 Let $\mathbb{G}(+, G)$ be a groupoid and $\mathbb{R}(+, \cdot, R)$ be a ring.
-We can define two kind of functions that from $\mathbb{G}$ to $\mathbb{R}$.
+% Normally, we use lowercase letters to represent elements in $\mathbb{G}$ or $\mathbb{R}$. But for elements in $\mathbb{G}$, we introduce a notation consisting of two uppercase letters. They follow concatenation rules. That is, two uppercase letters can be added if and only if the first letter of the latter element is the same as the last letter of the former element. We also represent the inverse of an element by swapping letters. For example, $AC = AB + BC$ but $CD \ne CA + DE$, and $AB = -BA$.
+With these, we can define groupoid homomorphisms and their derivtions from $\mathbb{G}$ to $\mathbb{R}$.
 \begin{definition}[groupoid homomorphism]
-    Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $ab \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
+    Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $a + b \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
 \end{definition}
 \begin{proposition}
     If $\exists a \in \mathbb{G}$ that $\mathcal{A}(a) = 0$, then $\forall b \in \mathbb{G}$, we have $\mathcal{A}(b) = 0$.
@@ -23,12 +24,12 @@ We can define two kind of functions that from $\mathbb{G}$ to $\mathbb{R}$.
 \end{proposition}
 \begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]~\label{def:quasi-derivation-on-groupoid}
     Given two groupoid homomorphisms $\mathcal{A}$ and $\mathcal{B}$.
-    There's another function $\mathfrak{L}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
-    \[ \mathfrak{L}(a+b) = \mathcal{A}(a)\cdot\mathfrak{R}(b) + \mathfrak{R}(a)\cdot\mathcal{B}(b) \]
-    called the left ($\mathcal{A}$, $\mathcal{B}$)-derivation.
-    And function $\mathfrak{R}: \mathbb{G} \to \mathbb{R}$
-    \[ \mathfrak{R}(a+b) = \mathcal{A}(b)\cdot\mathfrak{R}(a) + \mathfrak{R}(b)\cdot\mathcal{B}(a) \]
-    called the right ($\mathcal{A}$, $\mathcal{B}$)-derivation.
+    There's another function $\mathfrak{F}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
+    \[ \mathfrak{F}(a+b) = \mathcal{A}(a)\cdot\mathfrak{B}(b) + \mathfrak{B}(a)\cdot\mathcal{B}(b) \]
+    called the forward ($\mathcal{A}$, $\mathcal{B}$)-derivation.
+    And function $\mathfrak{B}: \mathbb{G} \to \mathbb{R}$
+    \[ \mathfrak{B}(a+b) = \mathcal{A}(b)\cdot\mathfrak{B}(a) + \mathfrak{B}(b)\cdot\mathcal{B}(a) \]
+    called the backward ($\mathcal{A}$, $\mathcal{B}$)-derivation.
 \end{definition}
 Actually, ($\mathcal{A}$, $\mathcal{B}$)-derivation is the extension of the $(\sigma, \tau)$-derivation on groupoid.
 Given a ($\mathcal{A}$, $\mathcal{B}$)-derivation $\mathfrak{U}$, left or right both have
@@ -49,38 +50,48 @@ Our discussion of ($\mathcal{A}$, $\mathcal{B}$)-derivations will base on $\math
 Also, we denote $\mathfrak{U} = 0$ if it is a zero ($\mathcal{A}$, $\mathcal{B}$)-derivation.
 However, we need another restriction of ($\mathcal{A}$, $\mathcal{B}$)-derivations to describe our problem.
 
-We denote $\mathbb{P}(\mathbb{G}) = \{ p\in\mathbb{G} \mid p \text{ is inseperable}\}$. With this we have
+We say $p \in\mathbb{G}$ is inseparable, if $\forall a, b \in\mathbb{G}$, $p$ cannot be represented by $a + b$.
+And we denote $\mathbb{P}(\mathbb{G}) = \{ AB \in\mathbb{G} \mid p \text{ is inseparable}\}$. With this we have
 \begin{definition}[kernel of ($\mathcal{A}$, $\mathcal{B}$)-derivation]
-    We say $\mathfrak{U}(a)$ is a kernel on $a$ of $\mathfrak{U}$ if $a \in \mathbb{P}(\mathbb{G})$. If $\mathbb{P}(\mathbb{G}) = \varnothing$, we define all kernels of $\mathfrak{U}$ are same.
+    We say $\mathfrak{U}(p)$ is a kernel on $p$ of $\mathfrak{U}$ if $p \in \mathbb{P}(\mathbb{G})$. When $\mathbb{P}(\mathbb{G}) = \varnothing$, we define all kernels of $\mathfrak{U}$ are same.
 \end{definition}
+Now suppose there is an isomorphism in $\mathbb{G}^{I}$ such that $s \mapsto p(s)$ and $s + t \mapsto p(s) + p(t)$, here $I$ is some index set.
+If $\exists t\in I$ such that $\forall p(s)\in \mathbb{P}(\mathbb{G})$, such that $F:\mathbb{G} \to \mathbb{R}$ satisfied $F(p(s + t)) = F(p(s))$, then we say $F$ is periodic on $\mathbb{G}^{I}$ with $t$ is one period of it.
 \begin{definition}
-    If $\exists t \in\mathbb{N}_{\ge 1}$ such that $\forall a_{k}\in \mathbb{P}(\mathbb{G})$, such that $F:\mathbb{G} \to \mathbb{R}$ satisfied $F(a_{k + t}) = F(a_k)$, then we say $F$ is a cycle kernel form with $t$ is a period of it.
+    All periodic groupoid homomorphism with period $t$ denote as $\mathrm{Hom}_{\circ(t)}(\mathbb{G},\mathbb{R})$.
+    And all periodic kernel ($\mathcal{A}$, $\mathcal{B}$)-derivations with period $t$ denote as $\partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$.
 \end{definition}
-All cycle kernel ($\mathcal{A}$, $\mathcal{B}$)-derivations with period $t$ are denoted as $\partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$.
+\begin{proposition}
+    If $\mathcal{A}, \mathcal{B} \in \mathrm{Hom}_{\circ(t)}(\mathbb{G}, \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$, $\forall a \in\mathbb{G}$, we have
+    \[ \mathfrak{U}(a(s + t)) = \mathfrak{U}(a(s)) \]
+\end{proposition}
 \begin{definition}
     Given a ($\mathcal{A}$, $\mathcal{B}$)-derivation $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, if $\forall p, q\in \mathbb{P}(\mathbb{G})$, there is $\mathfrak{U}(p) = \mathfrak{U}(q)$, we say $\mathfrak{U}$ is kernel independent.
+    All kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivations are denoted as $\partial(\mathcal{A}, \mathcal{B})$.
 \end{definition}
-All kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivations are denoted as $\partial(\mathcal{A}, \mathcal{B})$.
-Of course, we have
 \begin{proposition}
     $\partial(\mathcal{A}, \mathcal{B}) = \partial_{\circ(1)}(\mathcal{A}, \mathcal{B})$.
 \end{proposition}
+
+We say a sequence $\mathbb{T}(a)$ on $\mathbb{G}$ is a partition of $a \in \mathbb{G}$, if $\forall c \in \mathbb{T}(a)$, $\exists b, d \in \mathbb{G}$, such that $a = b + c + d$. And $\sum_{c\in \mathbb{T}(a)}c = a$. We denote $b = *c$ and $d = c*$. If $\forall c \in \mathbb{T}(a)$, there is $c\in\mathbb{P}(\mathbb{G})$, then we also denote the partition as $\mathbb{P}(a)$.
 \begin{theorem}
-    Suppose $\mathcal{A}, \mathcal{B} \in\mathrm{Hom}(\mathbb{G}, \mathbb{R})$.
-    If $c = \sum_{i = 0}^{n-1} a_i \in \mathbb{G}$, denote $P_k = \sum_{i = 0}^{k-1}a_i$ and $S_{k} = \sum_{i = k + 1}^{n-1}a_i$, then
     $\forall \mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$ we have
-    \[ \mathfrak{U}(c) = \sum_{k = 0}^{n-1}\mathcal{A}(P_k)\cdot\mathfrak{U}(a_k)\cdot\mathcal{B}(S_k). \]
+    \[ \mathfrak{U}(a) = \sum_{c \in \mathbb{T}(a)}\mathcal{A}(*c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c*). \]
 \end{theorem}
-\begin{corollary}
-    If $\mathcal{A}$ and $\mathcal{B}$ are periodic that peroid is $t$, then $\forall \mathfrak{U} \in \partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$, we have
-    \[ \mathfrak{U}(\sum_{i = t}^{n+t-1} a_i) = \mathfrak{U}(\sum_{i = 0}^{n - 1} a_i)  \]
-\end{corollary}
 Specially, For the kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivation, we have
 \begin{corollary}
     If $\mathfrak{U} \in \partial(\mathcal{A}, \mathcal{B})$ that $\mathfrak{U}(p) = \gamma$, then
-    \[ \mathfrak{U}(c) = \gamma \cdot\sum_{k = 0}^{n-1}\mathcal{A}(P_k)\cdot\mathcal{B}(S_k). \]
+    \[ \mathfrak{U}(c) = \gamma \cdot\sum_{p \in \mathbb{P}(a)}\mathcal{A}(*p)\cdot\mathcal{B}(p*). \]
 \end{corollary}
-
+This corollary also holds on those continuous system.
+\begin{definition}[varied homomorphism derivation and their varities]~\label{def:varied-homomorphism derivation-and-their-varities}
+\begin{align*}
+    \mathcal{C}\mathfrak{U} &= \sum_{c \in \mathbb{T}(a)}(\mathcal{C}\cdot\mathcal{A})(*c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c*),\\
+    \mathfrak{U}\mathcal{C} &= \sum_{c \in \mathbb{T}(a)}\mathcal{A}(*c)\cdot\mathfrak{U}(c)\cdot(\mathcal{B}\cdot\mathcal{C})(c*),\\
+    \delta_{\sigma}\mathfrak{U} &= \mathcal{C}\mathfrak{V} - \mathcal{C}(a)\cdot\mathfrak{U} = \sum_{c \in \mathbb{T}(a)}\left[1 - \mathcal{C}(c + c*)\right]\cdot(\mathcal{C}\cdot\mathcal{A})(*c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c*),\\
+    \delta_{\tau}\mathfrak{U} &= \mathfrak{V}\mathcal{C} - \mathfrak{U}\cdot \mathcal{C}(a) = \sum_{c \in \mathbb{T}(a)}\mathcal{A}(*c)\cdot\mathfrak{U}(c)\cdot(\mathcal{B}\cdot\mathcal{C})(c*)\cdot\left[1 - \mathcal{C}(*c + c)\right].
+\end{align*}
+\end{definition}
 Finially back to the Collatz complement. With arguments $(\alpha, \beta, \gamma)$, all Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.
-Inseparable elements of it is $\mathbb{P}([\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}) = \{i \rightsquigarrow (i + 1) \mid i \in \mathbb{Z}\}$. And the kernel $\mathfrak{A}(i \rightsquigarrow i + 1) = \mathfrak{A}_{i+1}^{i} = \gamma$.
-Besides, the Collatz complement of Conway's extension of Collatz problem is actually those $\partial_{*}(\mathcal{A}, \mathcal{B})$, they are not kernel independent, but its kernels are $\beta$-peroidic. Hence, no matter our Collatz complement, or Collatz complement of Conway's extension, just let $\mathcal{A}$ and $\mathcal{B}$ are $\beta$-periodic, they will all be peroidic.
+Inseparable elements of it is $\mathbb{P}([\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}) = \{i \rightsquigarrow (i + 1) \mid i \in \mathbb{Z}\}$. And the kernel $\mathfrak{A}(i \rightsquigarrow i + 1) = \gamma \cdot \mathfrak{A}_{i+1}^{i} = \gamma$.
+Besides, the Collatz complement of Conway's extension of Collatz problem is actually those $\partial_{*}(\mathcal{A}, \mathcal{B})$, they are not kernel independent, but its kernels are $\beta$-periodic. Hence, no matter our Collatz complement, or Collatz complement of Conway's extension, just let $\mathcal{A}$ and $\mathcal{B}$ are $\beta$-periodic, they will all be periodic.
