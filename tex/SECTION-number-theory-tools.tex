@@ -3,11 +3,14 @@
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
 
 Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$, at first, we have to clarify the definition of divisibility.
-\begin{definition}
+\begin{definition}~\label{def:extend-dividable}
 Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}$, $\frac{p_1}{q_1}\mid 0$.
 \end{definition}
 \begin{proposition}
     $\frac{p_1}{q_1}\mid \frac{p_2}{q_2} \Longleftrightarrow p_1\mid p_2$.
+\end{proposition}
+\begin{proposition}
+    If $a \mid c$ and $b \mid c$, then $ ab \mid c$.
 \end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}

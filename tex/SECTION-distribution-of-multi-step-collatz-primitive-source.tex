@@ -1,4 +1,6 @@
+% !TEX root = main.tex
 \section{Distribution of Multi-step Collatz Primitive Source}~\label{sec:distribution-of-multi-step-collatz-primitive-source}
+
 Now let's consider the Collatz primitive source. They are those number that can't trace back again.
 Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
 But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
@@ -26,11 +28,15 @@ We can find that the distribution of Collatz primitive source deeply relay on $\
 \end{proposition}
 But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
 This equivalence provides a new equation $b'\cdot \beta^{\Delta} = b + m'\cdot\alpha$, which is also a Collatz reduce formula, which $\gamma = b$.
-
-\begin{proposition}
+\begin{proposition}~\label{prop:trivial-primitive-source}
+    $\mathbb{S} - \tilde{\mathbb{S}} = \bigcup_{p\in\mathbb{P}}^{p\mid\alpha} p\mathbb{N} - \beta\mathbb{N}$.
+\end{proposition}
+\begin{proposition}~\label{prop:primitive-source-of-prime-alpha}
     If $\alpha \in \mathbb{P}$, then $\tilde{\mathbb{S}} = \varnothing$.
 \end{proposition}
-
+\begin{proposition}~\label{prop:all-source-value-set-has-primitive-source}
+    Suppose $\alpha \in \mathbb{P}$, then for $b \not\in\mathbb{S}$, we have $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
+\end{proposition}
 And for $(\alpha, \beta, \gamma) = (3,2,1)$, from \cref{prop:single-vary-rule} we have
 \begin{proposition}
     Suppose $f_{n}(\bm{v}) \in \mathbb{S}$, then $\left\{f_{n}(\bm{v} + 6k\bm{e}_1) \mid k\in\mathbb{N}\right\} \subset \mathbb{S}$.

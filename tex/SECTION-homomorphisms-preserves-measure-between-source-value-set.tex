@@ -1,0 +1,45 @@
+% !TEX root = main.tex
+\section{Homomorphisms Preserves Measure Between Source Value Set}~\label{sec:homomorphisms-preserves-measure-between-source-value-set}
+
+Let us return to an examination of the measure or density of $\mathbb{F}_{n}(b)$.
+
+\begin{definition}
+Denote
+\[\mathbb{F}(b) = \{ a \mid a\rightsquigarrow b \}\cup\{b\} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(b)\]
+as all numbers that will be convergent to $b$.
+\end{definition}
+\begin{proposition}~\label{prop:source-set-disjoint}
+	If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
+\end{proposition}
+\begin{proposition}
+	If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
+\end{proposition}
+\begin{theorem}~\label{thm:infinite-layers}
+	For $b\not\in\mathbb{S}$, we have $\forall N > 0$, $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
+\end{theorem}
+\begin{proof}
+	Divide it into two situations:\newline
+	\begin{itemize}
+		\item[If $b \not\rightsquigarrow b$:] 
+		Since $b\not\in\mathbb{S}$, from \cref{prop:all-source-value-set-has-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+		From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
+		\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
+		\item[If $b \rightsquigarrow b$:] Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi(1)}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi(1)} - 1)\in\mathbb{F}_{t}(b)$ that $b\not\rightsquigarrow a$ but $a \rightsquigarrow b$. From previous discussion, $\mathbb{F}(a)$ can't be covered within finity layers, thus $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
+	\end{itemize}
+\end{proof}
+% \begin{corollary}~\label{cor:card-of-source-value-set}
+%     $\mathrm{card}(\mathbb{F}_{0}(B)) = \mathrm{card}(B)$, $\mathrm{card}(\mathbb{F}_{n+1}(B)) = {\aleph_{0}}\times\mathrm{card}(\mathbb{F}_{n}(B))$.
+% \end{corollary}
+
+\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis, even if we partition the problem into various infinite sets.
+Hence, we shall instead attempt to identify certain homomorphisms in the hope of capturing specific measure-theoretic properties that, we trust, may ultimately aid us in unraveling this conjecture.
+
+From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $1$.
+Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{F}(b)\cap\mathbb{F}(1) = \varnothing$, that means the logarithm density of $\mathbb{F}(b)$ will be $0$.
+Since $\mathbb{F}(b)$ can't be covered by finity layers.
+Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means there's no one that will not fall into cycle can escape from $1$.
+
+Thus, if we can prove there is a homomorphism that keeps the logarithm measure between those source value set, we proved \cref{conj:source-value-of-1-cover-all-odd-numbers}, which is equivalent to the classic Collatz conjecture.
+Fortunately, from \cref{sec:varies-in-source-value-with-respect-to-the-reduce-sequence}, we can build such a homomorphism.
+
+TODO

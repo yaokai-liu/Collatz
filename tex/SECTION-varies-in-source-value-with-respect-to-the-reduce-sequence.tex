@@ -17,6 +17,9 @@ Immediately, we have
     $f_{n}(\bm{v}) \overset{n}{\rightsquigarrow} b$.
 \end{proposition}
 \begin{proposition}
+    $a\rightsquigarrow a$ and $a \rightsquigarrow b$, then $b \rightsquigarrow a \rightsquigarrow b$.
+\end{proposition}
+\begin{proposition}
     If $\mathfrak{v}_{n}$ follow the requirements of \cref{theorem:any-presequence}, then we will have $\beta \nmid f_{n}(\bm{v})$.
 \end{proposition}
 \begin{proposition}
@@ -91,10 +94,12 @@ Where
 Though $\Delta\bm{v} \in \mathbb{Z}^{n}$, we still require $\bm{v} + \Delta\bm{v} \in\mathbb{N}^{n}$.
 If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{v} + \Delta\bm{v}$ becomes $F_{s;k}(\bm{v})$, then the analysis becomes easier.
 \begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
-    If $f_{n}(\bm{v}) \in \mathbb{N}$, then
-    \[f_{n}(F_{s;k}(\bm{v})) \in \mathbb{N}\Longleftrightarrow \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s, \]
-    where the auxiliary operator $\Psi_{\alpha}(\beta)$ is defined as \[
-        \Psi_{\alpha}(\beta) = \underset{p\mid\alpha}{\lcm}\{\ord_{p}(\beta)\}\cdot\prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)},
+    If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
+    \[f_{n}(F_{s;k}(\bm{v})) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
+    where the basic adjust fuction is defined as
+    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\underset{p\mid (\alpha^{k}/\raf_{\alpha}(\gamma))}{\overset{p\in\mathbb{P}}{\lcm}}\{\ord_{p}(\beta)\}\cdot\Psi(\alpha,\beta,\gamma), \]
+    and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
+    \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)},
     \]
     and $\delta = \fac_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
 \end{theorem}
@@ -105,11 +110,12 @@ If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{
     \[\alpha^{k} \mid \gamma\cdot\mathfrak{V}_{k}\cdot(\beta^{s} - 1).\]
     Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
-    By the Fundamental Theorem of Arithmetic, $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} p^{\fac_{p}(\alpha)}$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    We just consider when $\alpha^{k} \nmid \gamma$.
+    By the Fundamental Theorem of Arithmetic, we have that $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} p^{\fac_{p}(\alpha)}$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ p^{k\cdot\fac_{p}(\alpha)} \mid \gamma\cdot(\beta^{s} - 1). \]
-    Note that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
+    Notice that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
     \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(\beta). \]
-    Here $\delta_2(p) = \fac_2(\beta + 1) - 1$ if $p = 2$ else $0$.
+    Here $\delta_2(\beta) = \fac_2(\beta + 1) - 1$ if $p = 2$ else $0$.
     Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
     \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(\beta). \]
     Isolating the valuation of $s$, we obtain
@@ -119,12 +125,30 @@ If there is a vector $\Delta\bm{v}$ with only one non-zero component, i.e. $\bm{
     From \cref{prop:raf-completely-multiplicative}, we have
     \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}, \]
     which implies the divisibility
-    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(b)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{1}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
+    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
     Besides, we've assumed $\ord_{p}(\beta) \mid s$. Aggregate these all $p$ conditions, it follows
-    \[ \underset{p\mid \alpha}{\lcm}\{ \ord_{p}(\beta) \} \mid s. \]
-    Sum up, we have
-    \[ \left.\frac{\alpha^{k}}{\raf_{\alpha}(\gamma\cdot2^{\delta})}\cdot\Psi_{\alpha}(\beta)\right\vert s. \]
+    \[ \underset{p\in\mathbb{P}}{\overset{p\mid \alpha}{\lcm}}\{\ord_{p}(\beta)\} \mid s. \]
+    Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\underset{p\in\mathbb{P}}{\overset{p\mid \alpha}{\lcm}}\{\ord_{p}(\beta)\} \mid s$. So we let
+    \[ \left.\underset{p\mid (\alpha^{k}/\raf_{\alpha}(\gamma))}{\overset{p\in\mathbb{P}}{\lcm}}\{\ord_{p}(\beta)\} \right\vert s, \]
+    which contains both conditions of $\alpha^{k}\mid \gamma$ or $\alpha^{k}\nmid \gamma$.
+    Finally, sum up, we have $\Phi(\alpha,\beta,\gamma;k) \mid s$.
 \end{proof}
+In the absence of ambiguity, we denote $\Phi(k) = \Phi(\alpha, \beta, \gamma; k)$.
+We have to mention that the dividable in this proof is not the common dividable between integers, instead of the \cref{def:extend-dividable}. This implies that, although the derived value of $\Phi(k)$ may be a fraction, we require $s \in \mathbb{N}$, and $s$ must be a multiple of the numerator of that fractional value in its reduced form. Since the denumerator of all $\Phi(k)$ are $\Psi(\alpha,\beta,\gamma)$ and we will not pay too much attention on it.
+Thus we denote $\Phi_k$ as the numerator of $\Phi(k)$'s reduced form.
+Below we denote
+From the proof, we can deduce that
+\begin{corollary}~\label{cor:sequence-of-Phi}
+    Suppose $\fac_{\alpha}(\gamma) = k$, then we have
+    \[ \{\Phi_i\}_{i=1}^{n} = \{\underbrace{1, 1, \cdots, 1}_{k \text{ count}}, \Phi_{k+1}, \alpha\Phi_{k+1}, \alpha^{2}\Phi_{k+1}, \cdots, \alpha^{n-k-1}\Phi_{k+1}\}. \]
+\end{corollary}
+\begin{corollary}
+    $\forall s \in\mathbb{N}$, we have $\alpha^{k} \mid \gamma\cdot(\beta^{s\cdot\Phi_k} - 1)$.
+\end{corollary}
+\begin{corollary}
+    $\Psi(3,2,1) = \frac{1}{3}$, and $\Phi(3, 2, 1; k) = 2 \cdot 3^{k - 1}$.
+\end{corollary}
+
 \cref{thm:the-periodic-rule-of-reduce-sequence} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 
@@ -171,46 +195,77 @@ Besides these varies in source value, just from the definition of source value, 
 Given a basic target value set $B$ denote that
 \begin{align*}
     \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \mathbb{N} \right\},\\
-    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{A}_n(b) \right\}.
+    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\}.
 \end{align*}
 Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. When $B = \{b\}$, that's $B$ contains only one number, we also denote as $\mathbb{V}_n(b)$ and $\mathbb{F}_n(b)$.
 \end{definition}
-\begin{proposition}
-If $b$ in a cycle which period is $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, thus $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
+For $b\not\in \mathbb{S}$, we have
+\begin{proposition}~\label{prop:non-cycle-layer-independent}
+    If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{F}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{F}_{k}(b) = \varnothing$.
 \end{proposition}
-Actually we can derive $\mathbb{A}_{n+1}(b)$ from $\mathbb{A}_{n}(b)$.
+\begin{proof}
+    If $\exists m \le n$, $\mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
+\end{proof}
+\begin{proposition}~\label{prop:cycle-layer-included}
+If $b \rightsquigarrow b$ in a cycle which period is $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, thus $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
+\end{proposition}
+Actually we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$.
 But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value.
 Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end.
 Of course, the condition of $\Delta\mathfrak{V}_{n}$ should be satisfied anyway.
-
-For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
-\begin{conjecture}~\label{conj:source-value-of-1-cover-all-odd-numbers}
-    $\lim_{n\to\infty}\mathbb{F}_n(1) =\mathbb{N} - 2\mathbb{N}$.
-\end{conjecture}
-\begin{proposition}
-\begin{align*}
-    \mathbb{V}_{n+1}(b) &= \left\{ (v, \bm{v}) \mid 2^{v}\cdot f \equiv 1\pmod{3}, v\in\mathbb{N}, f \in \mathbb{F}_{n}(b), \bm{v} \in \mathbb{V}_{n}(b) \right\},\\
-    \mathbb{F}_{n+1}(b) &= \left\{ (2^{v}\cdot f  - 1)/3 \mid 2^{v}\cdot f \equiv 1\pmod{3}, v\in\mathbb{N}, f \in \mathbb{F}_{n}(b) \right\}.
-\end{align*}
-\end{proposition}
-And From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
-\begin{proposition}~\label{prop:layers-of-reduce-space-and-source-value-set}
+From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
+\begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
+    Denote $s_i = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}\cdot a_i \equiv \gamma\pmod{\alpha}\}$, there is
     \begin{align*}
-        \mathbb{V}_{n+1}(b) &= \left\{ (v, \bm{v}) \mid 2^{v}\cdot f \equiv 1\pmod{3}, v\in\mathbb{N}, f \in \mathbb{F}_{n}(b), \bm{v} \in \mathbb{V}_{n}(b) \right\} \\
-        &= \bigcup_{f\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (2k + s, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \right\}\\
-        &= \left\{ \left.\sum_{i=1}^{n}(2k_i\cdot3^{i-1} + s_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\},\\
-        \mathbb{F}_{n+1}(b) &= \bigcup_{f\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{f_0 = (2^{s}\cdot f  - 1)/3, f_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
-        &= \bigcup_{f\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{3}\cdot 2^{2k+s}\cdot f - \frac{1}{3}\right\vert k\in \mathbb{N}\right\}.
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\cdot \Phi_1 + s_1, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \right\}\\
+        &= \left\{ \left.\sum_{i=1}^{n}(k_i\cdot \Phi_i + s_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\},\\
+        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left. A_0 = \frac{\beta^{s_1}\cdot a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\cdot (\beta^{k\cdot \Phi_1 + s_1}\cdot a - \gamma)\right\vert k\in \mathbb{N}\right\}.
     \end{align*}
-    Where the $\mathbb{S}$ is all primitive source defined as \cref{collatz-primitive-source}, and
+    Where the $\mathbb{S}$ is all primitive source defined as \cref{collatz-primitive-source}.
+\end{theorem}
+\begin{corollary}~\label{cor:modulo-alpha-of-layers}
+   $A_{k} \equiv\left\{\begin{aligned}
+        &k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\alpha \nmid \gamma,\\
+        &\beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}, &&\alpha \mid \gamma.
+   \end{aligned}\right.$
+\end{corollary}
+\begin{proof}
+    If $\alpha \nmid \gamma$, then $\alpha \mid (\beta^{\Phi_1} - 1)$. Then we have
     \begin{align*}
-        s_i &= \min_{v\in\mathbb{N}_{\ge1}}\{2^{v}\cdot f_i \equiv 1\pmod{3} \mid f_i\in\mathbb{F}_{i}(b) - \mathbb{S} \},\\
-        s &= \min_{v\in\mathbb{N}_{\ge1}}\{2^{v}\cdot f \equiv 1\pmod{3} \mid f\in\mathbb{F}_{n}(b) - \mathbb{S} \}.
+        A_{k} =& \frac{1}{\alpha}\cdot (\beta^{k\cdot \Phi_1 + s_1}\cdot a - \gamma)  &&\ \\
+        =& \frac{1}{\alpha}\cdot \beta^{k\cdot \Phi_1 + s_1}\cdot a - \frac{\gamma}{\alpha}   &&\ \\
+        \equiv& \frac{1}{\alpha}\cdot (P\alpha + 1)^{k}\cdot\beta^{s_1}\cdot a - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
+        \equiv& \frac{1}{\alpha}\cdot (kP\alpha + 1)\cdot (\alpha\cdot A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
+        \equiv& kP\cdot\gamma + \frac{1}{\alpha}\cdot(\alpha\cdot A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
+        \equiv& kP\cdot\gamma + A_0 &&\pmod{\alpha} \\
+        \equiv& k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\pmod{\alpha}
     \end{align*}
-\end{proposition}
-This proposition provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
+    where $P = \frac{\beta^{\Phi_1} - 1}{\alpha}$.\newline
+    If $\alpha \mid \gamma$, then from \cref{cor:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
+    \begin{align*}
+        A_{k} =& \frac{1}{\alpha}\cdot (\beta^{k\cdot \Phi_1 + s_1}\cdot a - \gamma)  &&\ \\
+        =& \frac{1}{\alpha}\cdot \beta^{k}\cdot \beta^{s_1}\cdot a - \frac{\gamma}{\alpha}   &&\ \\
+        \equiv& \frac{1}{\alpha}\cdot \beta^{k}\cdot (\alpha\cdot A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
+        \equiv& \beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.   &&\pmod{\alpha}
+    \end{align*}
+\end{proof}
+\cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
 However, although we have provided expressions for $\mathbb{V}_{n+1}(b)$ and $\mathbb{F}_{n+1}(b)$, they are still complex and difficult to use.
 They are merely another equivalent expression of the original problem and are hard to use for finding counter examples.
 That's because they are still based on $\mathbb{F}_{n}(b)$, and therefore still require recursively representing all the first $n$ $\mathbb{F}$s to represent the $(n+1)$-th.
 
-We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ will become increasingly "sparse" because the terminal components between two integers will increase in multiples of $2 \cdot 3^{n}$. Actually, that's because mnay number has been put lower dimension space, and the primitive source also limit the dimension's extension.
+We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{F}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
+
+For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
+\begin{corollary}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
+    \begin{align*}
+        \mathbb{V}_{n+1}(b) &= \left\{ \left.\sum_{i=1}^{n}(2k_i\cdot 3^{i-1} + s_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\},\\
+        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{f_0 = \frac{(2^{s_i}\cdot a  - 1)}{3}, a_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{3}\cdot2^{2k + s_i}\cdot a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},
+    \end{align*}
+    and the basic valuation is $s_i = \min_{v\in\mathbb{N}_{\ge1}}\{2^{v}\cdot f_i \equiv 1\pmod{3}\}$.
+\end{corollary}
+\begin{conjecture}~\label{conj:source-value-of-1-cover-all-odd-numbers}
+    $\lim_{n\to\infty}\mathbb{F}_n(1) =\mathbb{N} - 2\mathbb{N}$.
+\end{conjecture}
