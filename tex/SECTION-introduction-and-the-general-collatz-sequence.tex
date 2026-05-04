@@ -13,39 +13,52 @@ The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} 
 
 First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$.
 We may wander the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
-Let's define the symbol $\val_{2}(a;k+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
+Let's define the symbol $\val_{2}(a;k+1) = \fac_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
 With this we can redefine the sequence with
 \[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val_{2}(a;k+1)}}, \]
 which ensures the $a_k$ always is an odd number.
 
 It makes things easier.
-Because when I start iteratively to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, I found
-\[ a_k \cdot 2^{\sum_{j=0}^{k}\val_{2}(a;j)} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i}\val_{2}(a;j)}\cdot3^{k-i-1}.  \]
-Though it looks like a little bit complex, but with the definition $\mathcal{A}_{k} = \sum_{j=0}^{k}\val_{2}(a;j)$, the looks of the formula soon be better:
+Because when we start iteratively to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, we can find
+\[ a_k \cdot 2^{\sum_{j=0}^{k-1}\val_{2}(a;j+1)} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i-1}\val_{2}(a;j+1)}\cdot3^{k-i-1}.  \]
+With the definition $\mathcal{A}_{k} = \sum_{j=0}^{k-1}\val_{2}(a;j+1)$, it would be
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
-Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinity, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modulo.
-This congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
+Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinite, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the module, which convergences to $1/3$ in $\mathbb{Z}_2$.
+And this congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
 follows the Collatz conjecture.
 We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
 So it is the time to explore what the arguments of these equations has a stability solution.
-\begin{definition}[Collatz Sequence and Collatz Accumulation]~\label{definition:collatz-sequence}
+
+At first we define two auxity notation:
+\begin{definition}~\label{def:collatz-accumulation}
+    Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
+    Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
+\end{definition}
+\begin{proposition}
+    $\forall n \ge k \ge m$ there is $\mathcal{A}_n^m = \mathcal{A}_n^{k} + \mathcal{A}_k^{m}$.
+\end{proposition}
+\begin{definition}~\label{def:exclude-beta-times}
+    For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
+ \end{definition}
+Here the divisibility follows \cref{def:extend-divisibility}, and any divisibility appearing in this text follows this definition.
+With these we have
+\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
     Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
-    For number $a \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ named Collatz sequence and $\val_{\beta}(a;k)\in\mathbb{N}$ named Collatz reduce with
+    For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val_{\beta}(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
         a_0 &=a, \\
         a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} &= \alpha\cdot a_{k} + \gamma.
     \end{align*}
-    For a better looking, denote 
-    \[\mathcal{A}_n^{m} = \sum_{k=m}^{n-1}\val_{\beta}(a;k + 1)\]
-    named Collatz accumulation from $m$ to $n$.
-    Specially when $m = 0$, we omit the superscript, that $\mathcal{A}_n = \mathcal{A}_n^{0}$.
+    Of course, $\val_{\beta}(a;k + 1) = \fac_\beta(\alpha\cdot a_{k} + \gamma)$.
+    Actually, $\val_{\beta}(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
 \end{definition}
 
-To avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
-Actually, $\val_{\beta}(a;k+1)$ is the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
+Given a number $a \in \widehat{\mathbb{N}}_{{\beta}}$, we can derive a Collatz sequence and Collatz reduce sequence. For the Collatz reduce sequence, we can define its accumulation, and we call it Collatz accumulation.
+And to avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
+
 And we can see, it is well-defined, because there is
 \begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
 If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$.
@@ -61,7 +74,7 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{
     \[a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val_{\beta}(b;k + 1)}.\]
     That means
     \[a_{k+1} = b_{k+1} \cdot \beta^{\val_{\beta}(b;k + 1) - \val_{\beta}(a;k + 1)}. \]
-    But there is $a_{k+1} \in \mathbb{N} - \beta\mathbb{N}$ as definition that $\beta \nmid a_{k+1}$, which means
+    But there is $a_{k+1} \in \widehat{\mathbb{N}}_{{\beta}}$ as definition that $\beta \nmid a_{k+1}$, which means
     \[\val_{\beta}(a;k + 1) = \val_{\beta}(b;k + 1), \]
     and then
     \begin{align*}
@@ -73,27 +86,7 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{
 \begin{proposition}
     If $\exists t > 0$ that $a_{t} = a_0 = a$, 
     then $\forall k > 0$, and $s = 1, 2, 3, \cdots, t$, there are
-    $a_{k\cdot t+s} = a_s$ and $\mathcal{A}_{k\cdot t + s} = \mathcal{A}_{s}$.
-\end{proposition}
-\begin{proposition}[Co-uniqueness]~\label{proposition:co-uniqueness}
-    If there are two numbers $a, b \in \DiffSet{\mathbb{N}}{\beta\mathbb{N}}$ that $\exists n \ge 0$, such that $\forall m = 0, 1, 2, \cdots, n$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
-\end{proposition}
-% \begin{proof} Trivial with \cref{theorem:inductive-formula}. \end{proof}
-\begin{proof}
-    We will use \cref{theorem:inductive-formula} to prove this proposition.\newline
-    Since $\mathcal{A}_m = \mathcal{B}_m$, we have $\mathfrak{A}_{m} = \mathfrak{B}_{m}$.
-    With the \cref{theorem:inductive-formula}, we have
-    \[ (a_{m} - b_{m}) \cdot \beta^{\mathcal{A}_m} = (a - b) \cdot \alpha^{m}. \]
-    Since $\gcd(\alpha, \beta) = 1$, then $\gcd(\beta^{\mathcal{A}_m}, \alpha^{m}) = 1$.
-    So we have
-    \[\beta^{\mathcal{A}_m} \mid (a - b), \quad \alpha^{m} \mid (a_m - b_m) \]
-    holds for all $m\le n$.
-\end{proof}
-\begin{proposition}
-    If $\forall m \ge 0$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $a = b$.
-\end{proposition}
-\begin{proposition}
-    $\forall n \ge k \ge m$ there is $\mathcal{A}_n^m = \mathcal{A}_n^{k} + \mathcal{A}_k^{m}$.
+    $a_{kt+s} = a_s$ and $\mathcal{A}_{kt + s}^{kt} = \mathcal{A}_{s}$.
 \end{proposition}
 \begin{proposition}~\label{proposition:trivial-periodic-sequence}
     If there is $\Delta \in \mathbb{N}_{\ge1}$ holds $(\beta^{\Delta} - \alpha) \mid \gamma$, then let $a_0 = \frac{\gamma}{\beta^{\Delta} - \alpha}$, we have $\forall k \in \mathbb{N}$, $a_k = a_0$ and $A_k = k\cdot \Delta$.
@@ -132,13 +125,12 @@ With this proposition, we can describe the Collatz Conjecture with the Collatz s
 
 \begin{conjecture}[Rewritten Collatz Conjecture]~\label{definition:rewritten-conjecture}
 With arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$,
-for any odd number $a \in \mathbb{N}$, it's Collatz sequence will finally reach to $1$.
+for any odd number $a \in \widehat{\mathbb{N}}_{2}$, it's Collatz sequence will finally reach to $1$.
 \end{conjecture}
 
-The following discussion involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$.
-For a better looking, we first define a notation to represent them:
+This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define a notation to represent them:
 \begin{definition}~\label{definition:collatz-complement}
-    Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{A}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$, and define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
+    Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms, we have $\mathcal{A}_{n}^{m}$. Now we define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
     And define $\mathfrak{a}_n^{m}$ called reduced Collatz complement of $a$ at $n$ relative to $m$ with
     \[ \mathfrak{a}_n^{m} = \frac{\mathfrak{A}_n^{m}}{\alpha^{n-1}} = \sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \in \mathbb{Q}. \]
@@ -178,9 +170,9 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
 \end{align*}
 \end{proof}
-Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. More essentially, the two propositions are just the basic rules of the quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
+Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. More essentially, the two propositions are just the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
 
-According to \cref{proposition:uniqueness} and \cref{proposition:co-uniqueness}, we have
+According to \cref{proposition:uniqueness} and \cref{cor:co-uniqueness}, we have
 \begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
     If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
 \end{proposition}
@@ -192,4 +184,3 @@ Now we are ready to explore the properties of Collatz sequences.
 But before that, I need to point out that there are many symbols in number theory.
 These symbols, while simple, differ slightly from those in some other papers.
 These symbols are defined in \cref{sec:number-theory-tools}. Before proceeding, please ensure you are familiar with these symbols first.
-

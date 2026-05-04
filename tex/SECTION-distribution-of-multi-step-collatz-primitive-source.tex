@@ -6,38 +6,40 @@ Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\al
 But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
 
 \begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
-    For $b\in \mathbb{N}-\beta\mathbb{N}$, if there is a sequence $\bm{v}\in \mathbb{N}^{n}$ such that $f_{n}(\bm{v})$ is not reversible modulo $\alpha$, or
+    For $b\in \widehat{\mathbb{N}}_{\beta}$, if there is a sequence $\bm{v}\in \mathbb{N}^{n}$ such that $f_{n}(\bm{v})$ is not reversible modulo $\alpha$, or
     \[\Log_{\beta, \alpha}(f_{n}(\bm{v})^{-1} \cdot \gamma) = \varnothing, \]
-    then we say $\bm{v}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(a)$ is a $n$-step Collatz primitive source of $b$.
+    then we say $\bm{v}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(\bm{v})$ is a $n$-step Collatz primitive source of $b$.
     For those $n = 0$, we simplly call them Collatz primitive source.
     Notice that a number $a$ is not reversible modulo $\alpha$ equivalents $\gcd(a, \alpha) > 1$. For these, we say they are trivial primitive source.
     Others we call them non-trivial primitive source.\newline
     And all non-trivial primitive source are denoted as 
-    \[\tilde{\mathbb{S}} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
+    \[\tilde{\mathbb{S}} = \{b \in \widehat{\mathbb{N}}_{\beta} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}, \]
     all primitive source denotes as
-    \[ \mathbb{S} = \{b \in \mathbb{N}-\beta\mathbb{N} \mid \gcd(b, \alpha) > 1\}\cup \tilde{\mathbb{S}}. \]
+    \[ \mathbb{S} = \{b \in \widehat{\mathbb{N}}_{\beta} \mid \gcd(b, \alpha) > 1\}\cup \tilde{\mathbb{S}}. \]
 \end{definition}
-If $f_n(\bm{v}) \in \mathbb{S}$, then we have $\forall k \in \mathbb{N}$, there is
-\[ f_{n}(\bm{v})^{-1} \cdot \gamma \not\equiv \beta^{k} \pmod{\alpha}, \]
-which equivalents
-\[ \alpha^{n + 1} \nmid (\beta^{\mathcal{V}_n}\cdot b - \gamma \cdot \mathfrak{V}_n)^{-1} - \alpha^{n}\cdot\beta^{k}, \]
-where the inverse is under the module of $\alpha^{n+1}$.
-We can find that the distribution of Collatz primitive source deeply relay on $\beta^{k}$ module $\alpha$.
-\begin{proposition}
-    If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
-\end{proposition}
-But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
-This equivalence provides a new equation $b'\cdot \beta^{\Delta} = b + m'\cdot\alpha$, which is also a Collatz reduce formula, which $\gamma = b$.
 \begin{proposition}~\label{prop:trivial-primitive-source}
-    $\mathbb{S} - \tilde{\mathbb{S}} = \bigcup_{p\in\mathbb{P}}^{p\mid\alpha} p\mathbb{N} - \beta\mathbb{N}$.
+    $\mathbb{S} - \tilde{\mathbb{S}} = \bigcup_{p\in\mathbb{P}}^{p\mid\alpha} p\widehat{\mathbb{N}}_{{\beta}}$.
 \end{proposition}
 \begin{proposition}~\label{prop:primitive-source-of-prime-alpha}
     If $\alpha \in \mathbb{P}$, then $\tilde{\mathbb{S}} = \varnothing$.
 \end{proposition}
-\begin{proposition}~\label{prop:all-source-value-set-has-primitive-source}
-    Suppose $\alpha \in \mathbb{P}$, then for $b \not\in\mathbb{S}$, we have $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
+\begin{proposition}
+    If $b \in \mathbb{S}$, then $\forall m \in \mathbb{Z}$, if $\beta \nmid (b + m\cdot\alpha)$, there is $b + m\cdot\alpha \in \mathbb{S}$.
 \end{proposition}
-And for $(\alpha, \beta, \gamma) = (3,2,1)$, from \cref{prop:single-vary-rule} we have
+
+
+But if $\beta \mid (b + m\cdot\alpha)$, then we have to turn it to $b' \equiv \frac{b + m\cdot\alpha}{\beta^{\Delta}}\pmod{\alpha}$.
+This equivalence provides a new equation $b'\cdot \beta^{\Delta} = b + m'\cdot\alpha$, which is also a Collatz reduce formula, which $\gamma = b$.
+
+From \cref{cor:modulo-alpha-of-layers}, we have
+\begin{proposition}~\label{prop:all-source-value-set-has-primitive-source}
+    Suppose $\gamma = 1$, then for $b \not\in\mathbb{S}$, we have $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
+\end{proposition}
+% \begin{proof}
+%     TODO.
+% \end{proof}
+
+For $(\alpha, \beta, \gamma) = (3,2,1)$, from \cref{prop:single-vary-rule} we have
 \begin{proposition}
     Suppose $f_{n}(\bm{v}) \in \mathbb{S}$, then $\left\{f_{n}(\bm{v} + 6k\bm{e}_1) \mid k\in\mathbb{N}\right\} \subset \mathbb{S}$.
 \end{proposition}

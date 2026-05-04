@@ -2,7 +2,7 @@
 \section{Back Trace the Collatz Sequence}\label{sec:back-trace-the-collatz-sequence}
 \cref{theorem:any-presequence} tell us we can also trace back the Collatz sequence in $\mathbb{Q}$.
 But we can only go back under a finite reduces given.
-For an infinity tracing back, we need to redefine the summation to give it directionality.
+For an infinite tracing back, we need to redefine the summation to give it directionality.
 \begin{definition}
     Let's modified the definition of $\sum$ operator. The sum $S$ of $s$ from $m$ to $n$ is defined as
     \[ S = \left\{\begin{aligned}
@@ -21,7 +21,7 @@ With this we have
 It is easy to verify that those propositions of Collatz accumulation and complement still holds.
 And with these definitions, we have
 \begin{theorem}~\label{theorem:final-inductive-formula}
-Given $a \in \mathbb{Q}-\beta\mathbb{Q}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
+Given $a \in \widehat{\mathbb{Q}}_{{\beta}}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
 Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
 \[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
 \end{theorem}

@@ -2,18 +2,18 @@
 \section{Extend the Field of Values for the Collatz Sequence}\label{sec:extend-the-field-of-values-for-the-collatz-sequence}
 
 A better thought is extending our view from $\mathbb{N}$ to $\mathbb{Q}$.
-Keeping $\alpha, \beta, \gamma \in \mathbb{N}$, instead of restricting the initial number $a \in \mathbb{N}$, we can let $a$ be any number of $\mathbb{Q}-\beta\mathbb{Q}$.
+Keeping $\alpha, \beta, \gamma \in \mathbb{N}$, instead of restricting the initial number $a \in \mathbb{N}$, we can let $a$ be any number of $\widehat{\mathbb{Q}}_{{\beta}}$.
 In this situation, the \cref{theorem:inductive-formula} still holds, so do those corollaries of the theorem.
 More than that, we can get a Collatz sequence by given the reduces.
 
 \begin{theorem}~\label{theorem:any-cycle}
-    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\mathbb{Q}$ is a cycle that $\val_{\beta}(a;k) = v_{k\fmod n}$.
+    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}$ is a cycle that $\val_{\beta}(a;k) = v_{k\fmod n}$.
 \end{theorem}
 \begin{proof}%[Proof of \cref{theorem:any-cycle}]
     Let's just using the notation $\mathcal{A}_k$ and $\mathfrak{A}_k$ as if $\val_{\beta}(a;k) = v_{k\fmod n}$.\newline
     Then $\forall k = 1, 2, \cdots, n$, we have $\mathcal{A}_{k + n}^{k} = \mathcal{A}_n$.
     Let
-    \[ a_k = \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \in \mathbb{Q}. \]
+    \[ a_k = \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \in \widehat{\mathbb{Q}}_{{\beta}}. \]
     Obviously, we have $\beta \nmid a_{k}$.
     And we have
     \begin{align*}
@@ -35,12 +35,12 @@ Even there may exist some Collatz sequence will not fall into any cycle.
 For these two kinds of Collatz reduces, we have
 \begin{theorem}~\label{theorem:any-presequence}
     Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, and any number $b$.
-    If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\mathbb{Q}[b]$ that $\val_{\beta}(a;i) = v_{i}$ and $a_n = b$.
+    If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}[b]$ that $\val_{\beta}(a;i) = v_{i}$ and $a_n = b$. Of course, we requires $\beta \nmid b$.
 \end{theorem}
 \begin{proof}
     Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\val_{\beta}(a;i) = v_{i}$.
     Let
-    \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \mathbb{Q} \]
+    \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \widehat{\mathbb{Q}}_{{\beta}}[b] \]
     where $k = 0, 1, 2, \cdots, n$.
     Similarly, since $\beta \nmid \mathfrak{A}_n^k$, then $\beta \nmid \mathfrak{a}_n^{k}$, then $\beta \nmid a_k$.
     And we have
@@ -56,7 +56,7 @@ For these two kinds of Collatz reduces, we have
     Also, it is unique.
 \end{proof}
 \begin{corollary}
-    Given $a = \frac{   p}{q}\in \mathbb{Q}$. If $\exists s\in \mathbb{N}$, such that $q = \alpha^{s}$, then $a_{s} \in \mathbb{N}$ by natual reduce sequence.
+    Given $a = \frac{   p}{q}\in \widehat{\mathbb{Q}}_{{\beta}}$. If $\exists s\in \mathbb{N}$, such that $q = \alpha^{s}$, then $a_{s} \in \mathbb{N}$ by natual reduce sequence.
 \end{corollary}
 
 \cref{theorem:any-cycle} and \cref{theorem:any-presequence} present that we can come up with a lot of Collatz sequence that will fall into cycles by given its reduce sequence instead of startswith an integer.
@@ -65,7 +65,7 @@ At that time, we have $\beta \left\vert \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}
 That's why we need $\beta \nmid \mathfrak{A}_i^j$.
 Moreover, from the two proofs above, we can also draw another interesting corollary:
 \begin{theorem}
-    If Collatz sequence of $a$ will fall into a cycle, then $a \in \mathbb{Q}$.
+    If Collatz sequence of $a$ will fall into a cycle, then $a \in \widehat{\mathbb{Q}}_{{\beta}}$.
 \end{theorem}
 However, the converse of this conclusion does not hold.
 For example, $a=3$ under $\alpha = 11$, $\beta=2$ and $\gamma=1$ may never fall into a cycle.

@@ -3,35 +3,35 @@
 
 Let us return to an examination of the measure or density of $\mathbb{F}_{n}(b)$.
 
+In this section, we will always suppose $\alpha \nmid \gamma$.
+
 \begin{definition}
 Denote
 \[\mathbb{F}(b) = \{ a \mid a\rightsquigarrow b \}\cup\{b\} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(b)\]
 as all numbers that will be convergent to $b$.
 \end{definition}
+\begin{proposition}~\label{prop:source-set-include}
+	If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
+\end{proposition}
 \begin{proposition}~\label{prop:source-set-disjoint}
 	If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
-\end{proposition}
-\begin{proposition}
-	If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
 \end{proposition}
 \begin{theorem}~\label{thm:infinite-layers}
 	For $b\not\in\mathbb{S}$, we have $\forall N > 0$, $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
 \end{theorem}
 \begin{proof}
 	Divide it into two situations:\newline
-	\begin{itemize}
-		\item[If $b \not\rightsquigarrow b$:] 
-		Since $b\not\in\mathbb{S}$, from \cref{prop:all-source-value-set-has-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
-		From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
-		\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
-		\item[If $b \rightsquigarrow b$:] Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi(1)}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi(1)} - 1)\in\mathbb{F}_{t}(b)$ that $b\not\rightsquigarrow a$ but $a \rightsquigarrow b$. From previous discussion, $\mathbb{F}(a)$ can't be covered within finity layers, thus $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
-	\end{itemize}
+	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:all-source-value-set-has-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
+	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
+	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi(1)}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi(1)} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can't be covered within finity layers, thus $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
 \end{proof}
 % \begin{corollary}~\label{cor:card-of-source-value-set}
 %     $\mathrm{card}(\mathbb{F}_{0}(B)) = \mathrm{card}(B)$, $\mathrm{card}(\mathbb{F}_{n+1}(B)) = {\aleph_{0}}\times\mathrm{card}(\mathbb{F}_{n}(B))$.
 % \end{corollary}
 
 \cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis, even if we partition the problem into various infinite sets.
+It's because different layers are in defferent patterns. Though we can tell any given layer's pattern, that's not enough at all.
 Hence, we shall instead attempt to identify certain homomorphisms in the hope of capturing specific measure-theoretic properties that, we trust, may ultimately aid us in unraveling this conjecture.
 
 From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $1$.
@@ -42,4 +42,38 @@ Thus, if there a homomorphism that keeps the logarithm measure, or keeps the log
 Thus, if we can prove there is a homomorphism that keeps the logarithm measure between those source value set, we proved \cref{conj:source-value-of-1-cover-all-odd-numbers}, which is equivalent to the classic Collatz conjecture.
 Fortunately, from \cref{sec:varies-in-source-value-with-respect-to-the-reduce-sequence}, we can build such a homomorphism.
 
-TODO
+\begin{definition}~\label{def:logarithmic-density}
+	Given $A \subset \mathbb{N}$, define
+	\[ \mu A = \lim_{n\to\infty}\frac{1}{\ln n}\sum_{k\in\mathbb{N}}^{k\in A}\frac{1}{k} \]
+	as the logarithmic density of $A$.
+\end{definition}
+\begin{proposition}
+	$\mu\mathbb{N} = 1$, $\mu\varnothing = 0$ and $\forall a \in\mathbb{N}$, $\mu\{a\} = 0$.
+\end{proposition}
+\begin{proposition}
+	If $\mu{A}$ exists, then $\mu(\mathbb{N} - A) = 1 - \mu{A}$.
+\end{proposition}
+\begin{proposition}
+	If $A = \bigcup_{k=0}^{n-1}A_{k}$ that $\forall i, j$, $A_{i}\cap A_{j} = \varnothing$ and $\forall k$, the $\mu{A_k}$ exists, then we have $\mu{A} = \sum_{k=0}^{n-1}\mu{A_{k}}$.
+\end{proposition}
+\begin{proposition}
+	$\mu\widehat{\mathbb{N}}_{{\beta}} = \frac{\beta - 1}{\beta}$.
+\end{proposition}
+Given number $b \in\widehat{\mathbb{N}}_{{\beta}}$, we have
+\begin{proposition}
+	$\forall a, a' \in \mathbb{F}_{1}(b)$, there is
+	\[ \beta^{\rdu\val_{\beta}(a';1)}\cdot\mu\mathbb{F}(a') = \beta^{\rdu\val_{\beta}(a;1)}\cdot\mu\mathbb{F}(a). \]
+\end{proposition}
+\begin{proposition}
+	If $a \overset{1}{\rightsquigarrow} b$ and $b \not\rightsquigarrow b$, then there is
+	\[ \mu\mathbb{F}(a) = \frac{\beta - 1}{\beta}\cdot\beta^{-\rdu\val_{\beta}(a;1)}\cdot\mu\mathbb{F}(b). \]
+\end{proposition}
+\begin{proposition}
+	If $\{b_n\}_{n=0}^{\infty} \subset \mathbb{N}$, and $\forall b_i, b_j$, we have $b_i \not\rightsquigarrow b_j$, then
+	\[ \mu\bigcup_{n=0}^{\infty}\mathbb{F}(b_n) = \sum_{n=0}^{\infty}\mu\mathbb{F}(b_n). \]
+\end{proposition}
+
+\begin{proposition}
+	If $a \overset{n}{\rightsquigarrow} b$ and $b \not\rightsquigarrow b$, then there is
+	\[ \mu\mathbb{F}(a) = \left(\frac{\beta - 1}{\beta}\right)^{n} \cdot \beta^{-\mathrm{red}\mathcal{A}_n}\cdot\mu\mathbb{F}(b). \]
+\end{proposition}

@@ -3,8 +3,8 @@
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
 
 Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$, at first, we have to clarify the definition of divisibility.
-\begin{definition}~\label{def:extend-dividable}
-Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}$, $\frac{p_1}{q_1}\mid 0$.
+\begin{definition}~\label{def:extend-divisibility}
+Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}[X]$, $\frac{p_1}{q_1}\mid 0$. For $\mathbb{N}$, we treate as that $q = 1$.
 \end{definition}
 \begin{proposition}
     $\frac{p_1}{q_1}\mid \frac{p_2}{q_2} \Longleftrightarrow p_1\mid p_2$.
@@ -64,8 +64,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ an
 \end{definition}
 \begin{definition}
     Define $\raf_{a}(b) = \prod_{p \in \mathbb{P}}^{p \mid a}p^{\fac_{p}(b)}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical power of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}(b) = 1$.
-
-    Define $\rem_{a}(b) = \frac{b}{\raf_{a}(b)}$ is called the remainder part of $b$ with respect to $a$.
+    And we define $\rem_{a}(b) = \frac{b}{\raf_{a}(b)}$ called the remainder part of $b$ with respect to $a$.
 \end{definition}
 \begin{proposition}~\label{prop:self-containment}
     $\raf_{a}(b) \mid b$.
