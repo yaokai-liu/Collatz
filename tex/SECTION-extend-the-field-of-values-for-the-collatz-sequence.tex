@@ -7,10 +7,10 @@ In this situation, the \cref{theorem:inductive-formula} still holds, so do those
 More than that, we can get a Collatz sequence by given the reduces.
 
 \begin{theorem}~\label{theorem:any-cycle}
-    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}$ is a cycle that $\val_{\beta}(a;k) = v_{k\fmod n}$.
+    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}$ is a cycle that $\val(a;k) = v_{k\fmod n}$.
 \end{theorem}
 \begin{proof}%[Proof of \cref{theorem:any-cycle}]
-    Let's just using the notation $\mathcal{A}_k$ and $\mathfrak{A}_k$ as if $\val_{\beta}(a;k) = v_{k\fmod n}$.\newline
+    Let's just using the notation $\mathcal{A}_k$ and $\mathfrak{A}_k$ as if $\val(a;k) = v_{k\fmod n}$.\newline
     Then $\forall k = 1, 2, \cdots, n$, we have $\mathcal{A}_{k + n}^{k} = \mathcal{A}_n$.
     Let
     \[ a_k = \frac{\gamma\cdot\mathfrak{A}_{n+k}^{k}}{\beta^{\mathcal{A}_n} - \alpha^n} \in \widehat{\mathbb{Q}}_{{\beta}}. \]
@@ -34,11 +34,11 @@ In fact, most of  what may eventually enter a cycle have a chaotic beginning.
 Even there may exist some Collatz sequence will not fall into any cycle.
 For these two kinds of Collatz reduces, we have
 \begin{theorem}~\label{theorem:any-presequence}
-    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, and any number $b$.
-    If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}[b]$ that $\val_{\beta}(a;i) = v_{i}$ and $a_n = b$. Of course, we requires $\beta \nmid b$.
+    Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, and $b \in \widehat{\mathbb{Q}}_\beta[b]$.
+    If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there is only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}[b]$ that $\val(a;i) = v_{i}$ and $a_n = b$.
 \end{theorem}
 \begin{proof}
-    Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\val_{\beta}(a;i) = v_{i}$.
+    Also using the notation $\mathcal{A}_k$, $\mathfrak{A}_k$ and $\mathfrak{a}_k$ as if $\val(a;i) = v_{i}$.
     Let
     \[ a_k = \frac{b \cdot \beta^{\mathcal{A}_n^{k}} - \gamma\cdot\mathfrak{A}_n^{k}}{\alpha^{n-k}} = b \cdot \frac{\beta^{\mathcal{A}_n^{k}}}{\alpha^{n-k}}  - \frac{\gamma}{\alpha}\cdot\alpha^{k}\cdot\mathfrak{a}_n^{k} \in \widehat{\mathbb{Q}}_{{\beta}}[b] \]
     where $k = 0, 1, 2, \cdots, n$.
@@ -71,7 +71,7 @@ However, the converse of this conclusion does not hold.
 For example, $a=3$ under $\alpha = 11$, $\beta=2$ and $\gamma=1$ may never fall into a cycle.
 For these won't fall in to cycles, there is also a conjecture:
 \begin{conjecture}
-    Given $\{v_{i}\}_{i=1}^{\infty}$ has no cycle, then there is a Collatz sequence that $\val_{\beta}(a;i) = v_{i}$, it has a subsequence $\{a_{k_i}\}_{i=0}^{\infty}$ converges to an $\beta$-adic irrational number or $0$.
+    Given $\{v_{i}\}_{i=1}^{\infty}$ has no cycle, then there is a Collatz sequence that $\val(a;i) = v_{i}$, it has a subsequence $\{a_{k_i}\}_{i=0}^{\infty}$ converges to an $\beta$-adic irrational number or $0$.
 \end{conjecture}
 
 Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduces.

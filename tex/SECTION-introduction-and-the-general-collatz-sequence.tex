@@ -13,15 +13,15 @@ The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} 
 
 First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$.
 We may wander the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
-Let's define the symbol $\val_{2}(a;k+1) = \fac_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
+Let's define the symbol $\val(a;k+1) = \fac_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
 With this we can redefine the sequence with
-\[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val_{2}(a;k+1)}}, \]
+\[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val(a;k+1)}} = \ram_{2}(3a_{k}+1), \]
 which ensures the $a_k$ always is an odd number.
 
 It makes things easier.
 Because when we start iteratively to apply the definition of $a_{k-1}$ into the definition of $a_{k}$, we can find
-\[ a_k \cdot 2^{\sum_{j=0}^{k-1}\val_{2}(a;j+1)} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i-1}\val_{2}(a;j+1)}\cdot3^{k-i-1}.  \]
-With the definition $\mathcal{A}_{k} = \sum_{j=0}^{k-1}\val_{2}(a;j+1)$, it would be
+\[ a_k \cdot 2^{\sum_{j=0}^{k-1}\val(a;j+1)} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\sum_{j=0}^{i-1}\val(a;j+1)}\cdot3^{k-i-1}.  \]
+With the definition $\mathcal{A}_{k} = \sum_{j=0}^{k-1}\val(a;j+1)$, it would be
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
@@ -47,39 +47,38 @@ Here the divisibility follows \cref{def:extend-divisibility}, and any divisibili
 With these we have
 \begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
     Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
-    For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{_k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val_{\beta}(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
+    For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
-        a_0 &=a, \\
-        a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} &= \alpha\cdot a_{k} + \gamma.
+        &a_0=a, \\
+        &\val(a;k) = 0, \\
+        &a_{k+1} = \frac{\alpha\cdot a_{k} + \gamma}{\beta^{\val(a;k + 1)}} = \ram_{\beta}(\alpha\cdot a_{k} + \gamma), \\
+        &\val(a;k+1) = \fac_{\beta}(\alpha\cdot a_k + \gamma).
     \end{align*}
-    Of course, $\val_{\beta}(a;k + 1) = \fac_\beta(\alpha\cdot a_{k} + \gamma)$.
-    Actually, $\val_{\beta}(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
 \end{definition}
+Actually, $\val(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
 
-Given a number $a \in \widehat{\mathbb{N}}_{{\beta}}$, we can derive a Collatz sequence and Collatz reduce sequence. For the Collatz reduce sequence, we can define its accumulation, and we call it Collatz accumulation.
+Given a number $a \in \widehat{\mathbb{N}}_{{\beta}}$, we can derive a Collatz sequence $\left\{a_{k}\right\}_{k = 0}^{\infty}$ and Collatz reduce sequence $\{\val(a;k)\}_{k=0}^{\infty}$. For the Collatz reduce sequence, we can define its accumulation, and we call it Collatz accumulation $\mathcal{A}$.
 And to avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
-
-And we can see, it is well-defined, because there is
 \begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
-If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$.
+If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\val(a;k) = \val(b;k)$ and $\mathcal{A}_k = \mathcal{B}_k$.
 \end{proposition}
 \begin{proof}
     First, we have
     \begin{align*}
         a = b &\Rightarrow a_0 = b_0, \\
-        a_1 \cdot \beta^{\val_{\beta}(a;1)} &= b_1 \cdot \beta^{\val_{\beta}(b;1)}, \\
-        \mathcal{A}_1 = \val_{\beta}(a;1) &= \val_{\beta}(b;1) = \mathcal{B}_1.
+        a_1 \cdot \beta^{\val(a;1)} &= b_1 \cdot \beta^{\val(b;1)}, \\
+        \mathcal{A}_1 = \val(a;1) &= \val(b;1) = \mathcal{B}_1.
     \end{align*}
     Second, if $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$, we have
-    \[a_{k+1} \cdot \beta^{\val_{\beta}(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val_{\beta}(b;k + 1)}.\]
+    \[a_{k+1} \cdot \beta^{\val(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val(b;k + 1)}.\]
     That means
-    \[a_{k+1} = b_{k+1} \cdot \beta^{\val_{\beta}(b;k + 1) - \val_{\beta}(a;k + 1)}. \]
+    \[a_{k+1} = b_{k+1} \cdot \beta^{\val(b;k + 1) - \val(a;k + 1)}. \]
     But there is $a_{k+1} \in \widehat{\mathbb{N}}_{{\beta}}$ as definition that $\beta \nmid a_{k+1}$, which means
-    \[\val_{\beta}(a;k + 1) = \val_{\beta}(b;k + 1), \]
+    \[\val(a;k + 1) = \val(b;k + 1), \]
     and then
     \begin{align*}
         a_{k+1} &= b_{k+1}, \\
-        \mathcal{A}_{k+1} = \mathcal{A}_{k} + \val_{\beta}(a;k+1) &= \mathcal{B}_{k} + \val_{\beta}(b;k+1) = \mathcal{B}_{k+1}.
+        \mathcal{A}_{k+1} = \mathcal{A}_{k} + \val(a;k+1) &= \mathcal{B}_{k} + \val(b;k+1) = \mathcal{B}_{k+1}.
     \end{align*}
     Sum up, we proved this proposition.
 \end{proof}
@@ -99,22 +98,22 @@ For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conject
 \begin{proof}
     Let $a'_{i}$ be the $i$-th number in \cref{conjecture:original-conjecture}, and $a'_{i_k}$ be the $k$-th odd number in it.\newline
     First, we have $a_{0} = a = a'_0 = a'_{i_0}$;\newline
-    Second, if $a_{k} = a'_{i_k}$, suppose $2^{s_{k+1}} \mid 3a'_{i_k} + 1$ and $2^{s_{k+1}+1} \nmid 3a'_{i_k} + 1$.
-    That means
+    Second, if $a_{k} = a'_{i_k}$. Suppose $s_{k+1} = \fac_{\beta}(3a'_{i_k} + 1)$. We have
+    \[ s_{k+1} = \fac_{\beta}(3a_k + 1) = \val(a;k+1). \]
+    For $a'_{i_k}$, we have
     \begin{align*}
-        a'_{i_k+1} &= (3a'_{i_k} + 1) / 2,   \\
-        a'_{i_k+2} &= (3a'_{i_k} + 1) / 2^2, \\
-        a'_{i_k+3} &= (3a'_{i_k} + 1) / 2^3, \\
+        a'_{i_k+1} &= (3a'_{i_k} + 1) / 2 \in 2\mathbb{N},   \\
+        a'_{i_k+2} &= (3a'_{i_k} + 1) / 2^2 \in 2\mathbb{N}, \\
         &\cdots \\
-        a'_{i_k+s_k} &= (3a'_{i_k} + 1) / 2^{s_{k+1}} = a'_{i_{k+1}}
+        a'_{i_k+s_k} &= (3a'_{i_k} + 1) / 2^{s_{k+1}}  \in \widehat{\mathbb{N}}_{2}.
     \end{align*}
-    and $a_{k+1} = (3a_k + 1) / 2^{\val_{\beta}(a;k+1)} = (3a'_{i_k} + 1) / 2^{\val_{\beta}(a;k+1)}$.
-    That means
-    \[a_{k+1} = a'_{i_{k+1}} \cdot 2^{s_{k+1} - \val_{\beta}(a;k+1)}.\]
-    Notice that $2\nmid a_{k+1}$, means
+    That means $a'_{i_k+s_k}$ is the $(k+1)$-th odd number,  in other words, $a'_{i_k+s_k} = a'_{i_{k+1}}$.
+    Hence we have
     \begin{align*}
-        s_{k+1} &= \val_{\beta}(a;k+1), \\
-        a_{k+1} &= a'_{i_{k+1}}.
+        a_{k+1} &= (3a_k + 1) / 2^{\val(a;k+1)} \\
+        &= (3a'_{i_k} + 1) / 2^{s_{k+1}} \\
+        & = a'_{i_k+s_k} \\
+        &= a'_{i_{k+1}}.
     \end{align*}
     Sum up, we proved this proposition.
 \end{proof}
@@ -137,10 +136,8 @@ This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\ma
     Also, they can be omitted the superscript $m$ when $m = 0$ that $\mathfrak{A}_n = \mathfrak{A}_n^{0}$, and $\mathfrak{a}_n = \mathfrak{a}_n^{0}$.
 \end{definition}
 
-To avoid repeating the explanation each time, without further explanation,
-we will use the same letter of the Collatz accumulation but uppercase fraktur font to represent Collatz complement,
-and the same letter but lowercase fraktur font to represent reduced Collatz complement.
-And if $\{v_{i}\}$ is the Collatz reduces of a number, we also say that $\mathfrak{A}_{n}^{m}$ and $\mathfrak{a}_{n}^{m}$ are of that number.
+If $\{v_{i}\}$ is the Collatz reduces of a number, to avoid repeating the explanation each time, without further explanation, we will use the same letter of the Collatz accumulation but uppercase fraktur font to represent Collatz complement, and the same letter but lowercase fraktur font to represent reduced Collatz complement.
+In that case, we also say that $\mathfrak{A}$ and $\mathfrak{a}$ are of number $a$.
 
 For the Collatz complement, we have two basic propositions:
 \begin{proposition}~\label{proposition:collatz-complement-basic-prop1}
@@ -170,14 +167,16 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
 \end{align*}
 \end{proof}
-Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}. More essentially, the two propositions are just the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
+
+Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
+More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
 
 According to \cref{proposition:uniqueness} and \cref{cor:co-uniqueness}, we have
 \begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
-    If $a = b$, then $\forall m, n \ge 0$, there are $\mathfrak{A}_n^{m} = \mathfrak{B}_n^{m}$ and $\mathfrak{a}_n^{m} = \mathfrak{b}_n^{m}$.
+    Given $\mathfrak{V}$ for $\{v_i\}$ and $\mathfrak{U}$ for $\{u_i\}$. If $\forall i\ge 0$, there is $v_i = u_i$, then $\forall n \ge m \ge 0$, there are $\mathfrak{V}_n^{m} = \mathfrak{U}_n^{m}$ and $\mathfrak{v}_n^{m} = \mathfrak{u}_n^{m}$.
 \end{proposition}
 \begin{proposition}
-    If $\forall v_i \ge 1$, then $\beta\nmid \mathfrak{A}_n^{m}$ and $\alpha \nmid \mathfrak{A}_n^{m}$.
+    If $\forall v_i \in \{v_i\}: v_i \ge 1$, then $\beta\nmid \mathfrak{A}_n^{m}$ and $\alpha \nmid \mathfrak{A}_n^{m}$.
 \end{proposition}
 
 Now we are ready to explore the properties of Collatz sequences.

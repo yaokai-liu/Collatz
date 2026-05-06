@@ -1,34 +1,19 @@
 % !TEX root = main.tex
-\section{Homomorphisms Preserves Measure Between Source Value Set}~\label{sec:homomorphisms-preserves-measure-between-source-value-set}
+\section{Densities that Preserve Algebra Between Source Value Sets}~\label{sec:densities-that-preserve-algebra-between-source-value-sets}
 
-Let us return to an examination of the measure or density of $\mathbb{F}_{n}(b)$.
+Since we have a formula of $\mathbb{F}_{n}(b)$ and know the primitive source's distribution, we can build a kind of "measure" to discribe the density of it in $\mathbb{N}$.
 
-In this section, we will always suppose $\alpha \nmid \gamma$.
-
-\begin{definition}
-Denote
-\[\mathbb{F}(b) = \{ a \mid a\rightsquigarrow b \}\cup\{b\} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(b)\]
-as all numbers that will be convergent to $b$.
-\end{definition}
-\begin{proposition}~\label{prop:source-set-include}
-	If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
-\end{proposition}
-\begin{proposition}~\label{prop:source-set-disjoint}
-	If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
-\end{proposition}
+In this section, we will always suppose arguments follows \cref{prop:source-set-dijoint-primitive-source}.
 \begin{theorem}~\label{thm:infinite-layers}
 	For $b\not\in\mathbb{S}$, we have $\forall N > 0$, $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
 \end{theorem}
 \begin{proof}
 	Divide it into two situations:\newline
-	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:all-source-value-set-has-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:source-set-dijoint-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
 	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
 	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi(1)}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi(1)} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can't be covered within finity layers, thus $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
 \end{proof}
-% \begin{corollary}~\label{cor:card-of-source-value-set}
-%     $\mathrm{card}(\mathbb{F}_{0}(B)) = \mathrm{card}(B)$, $\mathrm{card}(\mathbb{F}_{n+1}(B)) = {\aleph_{0}}\times\mathrm{card}(\mathbb{F}_{n}(B))$.
-% \end{corollary}
 
 \cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis, even if we partition the problem into various infinite sets.
 It's because different layers are in defferent patterns. Though we can tell any given layer's pattern, that's not enough at all.
@@ -61,19 +46,18 @@ Fortunately, from \cref{sec:varies-in-source-value-with-respect-to-the-reduce-se
 \end{proposition}
 Given number $b \in\widehat{\mathbb{N}}_{{\beta}}$, we have
 \begin{proposition}
-	$\forall a, a' \in \mathbb{F}_{1}(b)$, there is
-	\[ \beta^{\rdu\val_{\beta}(a';1)}\cdot\mu\mathbb{F}(a') = \beta^{\rdu\val_{\beta}(a;1)}\cdot\mu\mathbb{F}(a). \]
+	$\forall a, a' \in \mathbb{F}_{1}(b) - \mathbb{S}$, there is
+	\[ \beta^{\rdu\val(a';1)}\cdot\mu\mathbb{F}(a') = \beta^{\rdu\val(a;1)}\cdot\mu\mathbb{F}(a). \]
 \end{proposition}
 \begin{proposition}
-	If $a \overset{1}{\rightsquigarrow} b$ and $b \not\rightsquigarrow b$, then there is
-	\[ \mu\mathbb{F}(a) = \frac{\beta - 1}{\beta}\cdot\beta^{-\rdu\val_{\beta}(a;1)}\cdot\mu\mathbb{F}(b). \]
+	For $a \in \mathbb{F}_{1}(b) - \mathbb{S}$ that $b \not\rightsquigarrow b$, there is
+	\[ \mu\mathbb{F}(a) = \frac{\beta - 1}{\beta}\cdot\beta^{-\rdu\val(a;1)}\cdot\mu\mathbb{F}(b). \]
 \end{proposition}
 \begin{proposition}
-	If $\{b_n\}_{n=0}^{\infty} \subset \mathbb{N}$, and $\forall b_i, b_j$, we have $b_i \not\rightsquigarrow b_j$, then
+	If $\{b_n\}_{n=0}^{\infty} \subset \mathbb{N} - \mathbb{S}$, and $\forall b_i, b_j$, we have $b_i \not\rightsquigarrow b_j$, then
 	\[ \mu\bigcup_{n=0}^{\infty}\mathbb{F}(b_n) = \sum_{n=0}^{\infty}\mu\mathbb{F}(b_n). \]
 \end{proposition}
-
 \begin{proposition}
-	If $a \overset{n}{\rightsquigarrow} b$ and $b \not\rightsquigarrow b$, then there is
+	For $a \in \mathbb{F}_{n}(b) - \mathbb{S}$ that $b \not\rightsquigarrow b$, there is
 	\[ \mu\mathbb{F}(a) = \left(\frac{\beta - 1}{\beta}\right)^{n} \cdot \beta^{-\mathrm{red}\mathcal{A}_n}\cdot\mu\mathbb{F}(b). \]
 \end{proposition}

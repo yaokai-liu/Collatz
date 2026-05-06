@@ -15,106 +15,109 @@ Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they 
 Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
-    \[\ord_{a}(b) = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
-    called the discrete order of $b$ modulo $a$, and define $\ord_{a}(1) = 1$.
+    \[\ord_{a}b = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
+    called the discrete order of $b$ modulo $a$, and define $\ord_{a}1 = 1$.
 \end{definition}
 \begin{proposition}
-    If $c \mid a$, then $\ord_{c}(b) \mid \ord_{a}(b)$.
+    If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
 \begin{definition}
 Given $x\in \mathbb{N}_{_{>1}}$.
-If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_b(a)$, then we denote $\log_{a, b}(x) = y$.
-Otherwise, we say that $\log_{a, b}(x)$ does not exist.
+If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_ba$, then we denote $\log_{a, b}x = y$.
+Otherwise, we say that $\log_{a, b}x$ does not exist.
 \end{definition}
 \begin{proposition}
-    $\log_{a, b}(x^{-1}) = \ord_{a}(b) - \log_{a,b}(x)$.
+    $\log_{a, b}(x^{-1}) = \ord_{a}b - \log_{a,b}x$.
 \end{proposition}
 \begin{definition}
-If $\log_{a, b}(x)$ exists, then we denote that
-\[ \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} + \log_{a, b}(x). \]
-Otherwise, we denote $\Log_{a, b}(x) = \varnothing$.
+If $\log_{a, b}x$ exists, then we denote that
+\[ \Log_{a, b}x = \ord_a(b)\mathbb{Z} + \log_{a, b}x. \]
+Otherwise, we denote $\Log_{a, b}x = \varnothing$.
 And we denote
-\[- \Log_{a, b}(x) = \ord_a(b)\mathbb{Z} - \log_{a, b}(x).\]
+\[- \Log_{a, b}x = \ord_a(b)\mathbb{Z} - \log_{a, b}x.\]
 \end{definition}
-We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}(1) = 0$ and $\Log_{a, b}(1) = \ord_{b}(a)\mathbb{Z}$.
-Without special state, we will always suppose the $x > 1$ in $\log_{a, b}(x)$ and $\Log_{a,b}(x)$.
+We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
+Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and $\Log_{a,b}x$.
 \begin{proposition}
-    $x^{\log_{a, b}(x)} \equiv x \pmod{b}$.
+    $x^{\log_{a, b}x} \equiv x \pmod{b}$.
 \end{proposition}
 \begin{proposition}
-    $\Log_{a,b}(x^{-1}) = -\Log_{a,b}(x)$.
+    $\Log_{a,b}(x^{-1}) = -\Log_{a,b}x$.
 \end{proposition}
 \begin{proposition}
-    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}(x) + \log_{a, b}(y) \pmod{\ord_a(b)}$.
+    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}x + \log_{a, b}y \pmod{\ord_{a}b}$.
 \end{proposition}
 \begin{proposition}
-    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}(x) \pmod{\ord_a(b)}$.
+    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}x \pmod{\ord_{a}b}$.
 \end{proposition}
 \begin{proposition}
-    $\forall c \in \mathbb{N}$ we have $\log_{a+cb, b}(x) \equiv \log_{a, b}(x) \pmod{\ord_a(b)}$.
+    $\forall c \in \mathbb{N}$ we have $\log_{a+cb, b}x \equiv \log_{a, b}x \pmod{\ord_{a}b}$.
 \end{proposition}
 \begin{definition}
-    Define $\fac_{a}(b) = \max_{n \in \mathbb{N}}\{a^n \mid b\}$.
+    Define $\fac_{a}b = \max_{n \in \mathbb{N}}\{a^n \mid b\}$.
 \end{definition}
 \begin{proposition}
-    If $c \mid a$ and $a \mid b$, then $\fac_{c}(b) \ge \fac_{c}(a) \cdot \fac_{a}(b)$.
+    If $c \mid a$ and $a \mid b$, then $\fac_{c}b \ge \fac_{c}a \cdot \fac_{a}b$.
 \end{proposition}
 \begin{definition}
-    Define $\rad(a) = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$.
+    Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Pi(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$.
 \end{definition}
+\begin{proposition}
+    $\rad a = \prod_{p \in \Pi(\mathbb{P}\mid a)}p$
+\end{proposition}
 \begin{definition}
-    Define $\raf_{a}(b) = \prod_{p \in \mathbb{P}}^{p \mid a}p^{\fac_{p}(b)}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical power of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}(b) = 1$.
-    And we define $\rem_{a}(b) = \frac{b}{\raf_{a}(b)}$ called the remainder part of $b$ with respect to $a$.
+    Define $\raf_{a}b = \prod_{p \in \Pi(\mathbb{P}\mid a)}p^{\fac_{p}b}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical power of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
+    And we define $\ram_{a}b = \frac{b}{\raf_{a}b}$ called the remainder part of $b$ with respect to $a$.
 \end{definition}
 \begin{proposition}~\label{prop:self-containment}
-    $\raf_{a}(b) \mid b$.
+    $\raf_{a}b \mid b$.
 \end{proposition}
 \begin{proposition}
-    $\raf_{a}(a) = a$.
+    $\raf_{a}a = a$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-idempotency}
-    $\raf_{a}(\raf_{a}(b)) = \raf_{a}(b)$.
+    $\raf_{a}\raf_{a}b = \raf_{a}b$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-completely-multiplicative}
-    $\raf_{a}(b_1b_2) = \raf_{a}(b_1)\cdot\raf_{a}(b_2)$.
+    $\raf_{a}(b_1b_2) = \raf_{a}b_1\cdot\raf_{a}b_2$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-inclusion-exclusion-principle}
-    $\raf_{a_1 a_2}(b) = \frac{\raf_{a_1}(b) \cdot \raf_{a_2}(b)}{\raf_{\gcd(a_1, a_2)}(b)}$.
+    $\raf_{a_1 a_2}b = \frac{\raf_{a_1}b \cdot \raf_{a_2}b}{\raf_{\gcd(a_1, a_2)}b}$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-power-homogeneity}
-    $\raf_{a}(b^n) = [\raf_{a}(b)]^{n}$.
+    $\raf_{a}(b^n) = (\raf_{a}b)^{n}$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-index-monotonicity}
-    $a_1 \mid a_2 \implies \raf_{a_1}(b) \mid \raf_{a_2}(b)$.
+    $a_1 \mid a_2 \implies \raf_{a_1}b \mid \raf_{a_2}b$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-valuation-monotonicity}
-    If $\fac_{p}(b_1) \le \fac_{p}(b_2)$, then $\raf_{p}(b_1) \mid \raf_{p}(b_2)$. Vice versa.
+    $\fac_{p}b_1 \le \fac_{p}b_2 \Longleftrightarrow \raf_{p}b_1 \mid \raf_{p}b_2$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-radical-invariance}
-    $\rad(a_1) = \rad(a_2)\implies \raf_{a_1}(b) = \raf_{a_2}(b)$.
+    $\rad a_1 = \rad a_2 \implies \raf_{a_1}b = \raf_{a_2}b$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-gcd-distributivity}
-    $\raf_{a}(\gcd(b_1, b_2)) = \gcd(\raf_{a}(b_1), \raf_{a}(b_2))$.
+    $\raf_{a}\gcd(b_1, b_2) = \gcd(\raf_{a}b_1, \raf_{a}b_2)$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-lcm-distributivity}
-    $\raf_{a}(\lcm(b_1, b_2)) = \lcm(\raf_{a}(b_1), \raf_{a}(b_2))$.
+    $\raf_{a}\lcm(b_1, b_2) = \lcm(\raf_{a}b_1, \raf_{a}b_2)$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-limit-power-gcd-raf-equvalent}
-    $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}(b)$.
+    $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}b$.
 \end{proposition}
 \begin{proposition}
-      $\log \raf_a(b) = \sum_{p\in\mathbb{P}}^{p \mid a} \fac_{p}(b) \log p$
+      $\log \raf_{a}b = \sum_{p\in\mathbb{P}}^{p \mid a} \fac_{p}b \log p$
 \end{proposition}
 \begin{proposition}~\label{prop:rem-coprimality}
-    $\gcd(\rem_{a}(b), a) = 1$.
+    $\gcd(\ram_{a}b, a) = 1$.
 \end{proposition}
 \begin{proposition}~\label{prop:raf-ord-non-self-divisibility}
-    If $p \in \mathbb{P}$, $p\nmid b$, then $\raf_{p}\ord_{p}(b) = 1$.
+    If $p \in \mathbb{P}$, $p\nmid b$, then $\raf_{p}\ord_{p}b = 1$.
 \end{proposition}
 \begin{theorem}~\label{thm:lte-radical-theorem}
     If $p \in \mathbb{P}$ and $p\mid (b - 1)$, then
     \[\raf_{p}(b^{n} - 1) = \left\{ \begin{aligned}
-        &\raf_{p}(b - 1) \cdot \raf_{p}(n), & p \in \mathbb{P}_{>2}, \\
-        &\raf_{2}(b - 1) \cdot \raf_{2}(n) + \raf_{2}(b + 1) - 1, & p = 2.
+        &\raf_{p}(b - 1) \cdot \raf_{p}n, & p \in \mathbb{P}_{>2}, \\
+        &\raf_{2}(b - 1) \cdot \raf_{2}n + \raf_{2}(b + 1) - 1, & p = 2.
     \end{aligned} \right.\]
 \end{theorem}

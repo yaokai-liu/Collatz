@@ -24,7 +24,8 @@ def F_trans(pre_reduce, adds: dict):
     return [r + adds[i] if adds.get(i) else r for i, r in enumerate(pre_reduce)]
 
 if __name__ == '__main__':
-    # pre_reduce = pre_reduce_from_num(12345, 3, 10)
+    # pre_reduce = [6, 36, 162, 1926] # alpha, beta, gamma = 7, 5, 1
+    # pre_reduce = [4, 8, 8, 108, 608, 8108] # alpha, beta, gamma = 5, 2, 1
     pre_reduce = [1, 2, 2]
     N = collatz_preitem(1, pre_reduce)
     print(N)

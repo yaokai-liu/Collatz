@@ -48,24 +48,20 @@
 \newtheorem{lemma}{Lemma}[theorem]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{remark}{Remark}[theorem]
+\newtheorem{example}{Example}[section]
 \everymath{\displaystyle}
 
-\newcommand{\fdiv}{/\hspace{-3pt}/}
-\newcommand{\fmod}{\hspace{-4pt}\mod}
-\newcommand{\val}{\mathrm{val}}
-\newcommand{\CollatzReduce}[2]{\val_{\beta}({#1};{#2})}
-\newcommand\quotient[2]{{#1}\big\backslash{#2}}
-\newcommand\DiffSet[2]{{#1}-{#2}}
-\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
-\newcommand{\sgn}{\mathrm{sgn}}
-\newcommand{\ord}{\mathrm{ord}}
-\newcommand{\fac}{\mathrm{fac}}
-\newcommand{\rad}{\mathrm{rad}}
-\newcommand{\raf}{\mathrm{raf}}
-\newcommand{\rem}{\mathrm{rem}}
-\newcommand{\lcm}{\mathrm{lcm}}
-\newcommand{\Log}{\mathrm{Log}}
-\newcommand{\rdu}{\mathrm{red}}
+\DeclareMathOperator{\fmod}{mod}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\fac}{fac}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\raf}{raf}
+\DeclareMathOperator{\ram}{ram}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\rdu}{red}
+\DeclareMathOperator*{\lcm}{lcm}
 
 % \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
 \title{On the General Collatz Sequence: $\alpha \cdot a + \gamma$ reduced by $\beta$}
@@ -75,8 +71,8 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explores some properties of the general Collatz sequence that $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$.
-    Some propositions that are indispensable to proving the $3n + 1$ conjecture are then provided and provide a dynamic system view on difference of powers problem.
+    This paper explores various properties of generalized Collatz sequences of the form $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$, extends this formulation to the field of rational numbers $\mathbb{Q}$, and constructs a hierarchical model for the set of source values. We define a specific density capable of preserving the latent algebraic structures among these sets, thereby mapping the discrete iterative process onto a continuous algebraic landscape.
+    This paper proposes several propositions deemed crucial for proving the "$3n+1$ Conjecture" and offers an interpretation of the difference of powers problems from the perspective of dynamical systems.
     % And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
 \newpage
@@ -84,12 +80,12 @@
 \newpage
 
 \input{SECTION-introduction-and-the-general-collatz-sequence}
-\input{SECTION-the-basic-formula-of-collatz-sequences}
+\input{SECTION-the-basic-formula-of-collatz-sequence}
 \input{SECTION-extend-the-field-of-values-for-the-collatz-sequence}
 \input{SECTION-back-trace-the-collatz-sequence}
 \input{SECTION-varies-in-source-value-with-respect-to-the-reduce-sequence}
-\input{SECTION-distribution-of-multi-step-collatz-primitive-source}
-\input{SECTION-homomorphisms-preserves-measure-between-source-value-set}
+\input{SECTION-distribution-of-collatz-primitive-source}
+\input{SECTION-densities-that-preserve-algebra-between-source-value-sets}
 
 % \section{Continuous and Limits}\label{sec:continous-and-limits}
 % To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.

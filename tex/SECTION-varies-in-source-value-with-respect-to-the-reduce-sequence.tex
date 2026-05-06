@@ -2,12 +2,12 @@
 \section{Varies in Source Value with Respect to the Reduce Sequence}\label{sec:varies-in-source-value-with-respect-to-the-reduce-sequence}
 
 \begin{definition}
-From \cref{theorem:any-presequence}, with the same arguments $\alpha$, $\beta$ and $\gamma$, and target value $b\in \widehat{\mathbb{Q}}_{{\beta}}$, for any finite vector $\bm{v} = (v_{1}, v_{2}, \cdots, v_{n}) \in \mathbb{N}^{n}$, we have a function $f_n : \mathbb{N}^{n} \to \mathbb{Q}$, that defined as
-\[ f_{n}(\bm{v};b) = b \cdot \frac{\beta^{\mathcal{V}_{n}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot \mathfrak{v}_{n} \in \widehat{\mathbb{Q}}_{{\beta}} \]
+From \cref{theorem:any-presequence}, with the same arguments $\alpha$, $\beta$ and $\gamma$, and target value $b\in \widehat{\mathbb{Q}}_{{\beta}}[b]$, for any finite vector $\bm{v} = (v_{1}, v_{2}, \cdots, v_{n}) \in \mathbb{N}^{n}$, we can derive a sequence $\{v_i\}_{i=1}^{n}$ and its accmulation $\mathcal{A}$. With this we can also derive Collatz complement $\mathfrak{V}$ and reduced Collatz complement $\mathfrak{v}$ by arguments $(\alpha, \beta, \gamma)$. And then we have a function $f_n : \mathbb{N}^{n} \to \mathbb{Q}$, that defined as
+\[ f_{n}(\bm{v};b) = b \cdot \frac{\beta^{\mathcal{V}_{n}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot \mathfrak{v}_{n} \in \widehat{\mathbb{Q}}_{{\beta}}[b] \]
 is called the source value from $b$ by $\bm{v}$. In the absence of ambiguity, we denote $f_{n}(\bm{v}) = f_{n}(\bm{v};b)$. Given $s \in \mathbb{Z}$, there is a mapping $F_{s; k}: \mathbb{N}^{n} \to \mathbb{N}^{n}$ that
-\[ F_{s; k}(\bm{v}) = \bm{v} + s\bm{e}_k = (v_{1}, v_{2}, \cdots,v_{k} + s, \cdots, v_{n}), \]
+\[ \bm{v}+s\bm{e}_{k} = \bm{v} + s\bm{e}_k = (v_{1}, v_{2}, \cdots,v_{k} + s, \cdots, v_{n}), \]
 where $\bm{e}_k$ is the $k$-th $n$-dim unit vector.
-And we also sometimes denote $F_{s; k}(\mathfrak{V})$ and $F_{s; k}(\mathfrak{v})$ to present those Collatz complements and reduced Collatz complements that from $F_{s; k}(\bm{v})$.
+And we also sometimes denote $F_{s; k}(\mathfrak{V})$ and $F_{s; k}(\mathfrak{v})$ to present those Collatz complements and reduced Collatz complements that from $\bm{v}+s\bm{e}_{k}$.
 \end{definition}
 
 And to describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
@@ -28,34 +28,31 @@ Immediately, we have
 \begin{proposition}
     $f_{n}(\bm{v}) = \frac{\beta^{v_{1}}}{\alpha}\left(\frac{\beta^{v_{2}}}{\alpha}\left(\cdots \left(\frac{\beta^{v_{n}}}{\alpha}\cdot b - \frac{\gamma}{\alpha}\right)\cdots\right)- \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}$.
 \end{proposition}
-\begin{proposition}
-    $F_{t;l}(F_{s;k}(\bm{v})) = F_{s;k}(F_{t;l}(\bm{v}))$.
-\end{proposition}
 \begin{proposition}~\label{prop:single-vary-rule}
-$f_{n}(F_{s;k}(\bm{v})) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1)$.
+$f_{n}(\bm{v}+s\bm{e}_{k}) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1)$.
 \end{proposition}
 \begin{proposition}
-    Suppose $m\le n$, then
+    Let $\bm{u} = \bm{v}+s\bm{e}_{k}$. Suppose $m\le n$, we have
     \begin{align*}
-        F_{s;k}(\mathcal{V})_{n}^{m} &= \left\{\begin{aligned}
+        \mathcal{U}_{n}^{m} &= \left\{\begin{aligned}
         &\mathcal{V}_{n}^{m} + s, & m\le k < n, \\
         &\mathcal{V}_{n}^{m}, & \text{otherwise},
     \end{aligned}\right. \\
-    F_{s;k}(\mathfrak{V})_{n}^{m} &= \left\{\begin{aligned}
+    \mathfrak{U}_{n}^{m} &= \left\{\begin{aligned}
         &\mathfrak{V}_{k}^{m} + \beta^{s}\cdot \mathfrak{V}_{n}^{k}, & m\le k \le n, \\
         &\mathfrak{V}_{n}^{m}, & \text{otherwise},
     \end{aligned}\right. \\
-    F_{s;k}(\mathfrak{v})_{n}^{m} &= \left\{\begin{aligned}
+    \mathfrak{u}_{n}^{m} &= \left\{\begin{aligned}
         &\mathfrak{v}_{k}^{m}\cdot\alpha^{k-n} + \beta^{s}\cdot \mathfrak{v}_{n}^{k}, & m\le k \le n, \\
         &\mathfrak{v}_{n}^{m}, & \text{otherwise}.
     \end{aligned}\right.
     \end{align*}
 \end{proposition}
 \begin{proposition}
-$\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(F_{s;k}(\bm{v})) - \beta^{s}\cdot f_{n}(\bm{v})}{\beta^{s} - 1}$.
+$\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - \beta^{s}\cdot f_{n}(\bm{v})}{\beta^{s} - 1}$.
 \end{proposition}
 \begin{proposition}
-    If $f_{n}(\bm{v}) = \frac{q}{\alpha^{m}}$, then $f_{n}(F_{s;k}(\bm{v})) \in \mathbb{N}$ only when $s$ holds
+    If $f_{n}(\bm{v}) = \frac{q}{\alpha^{m}}$, then $f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}$ only when $s$ holds
     \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{V}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 \end{proposition}
 \begin{theorem}~\label{thm:vary-rule}
@@ -94,11 +91,11 @@ Where
 Though $\Delta\bm{v} \in \mathbb{Z}^{n}$, we still require $\bm{v} + \Delta\bm{v} \in\mathbb{N}^{n}$.
 This theorem offers a very important insight.
 That is, if $f_{n}(\bm{v})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{v} + \Delta\bm{v}) \overset{n}{\rightsquigarrow} b$, then starting from a certain bit $m$ and $m + \Delta\mathcal{V}_n$, the $\beta$-carrying terms of these two numbers satisfy a certain relationship. Mathematically, that's
-\begin{theorem}~\label{thm:high-order-bits-sync}
+\begin{corollary}~\label{cor:high-order-bits-sync}
     Suppose $f_{n}(\bm{v}) = \sum_{k=s}^{\infty}x_k\beta^{k}$ and $f_{n}(\bm{v} + \Delta\bm{v}) = \sum_{k=s}^{\infty}x'_k\beta^{k}$, $s\in\mathbb{Z}$. If $\alpha^{n} \mid \gamma\cdot\Delta\mathfrak{V}_{n}$, then $\exists m \in \mathbb{Z}: m \ge s$, such that
     \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \Delta\mathcal{V}_n}\beta^{k} + \delta, \]
     where the $\delta\in\{0, 1\}$. Vice versa.
-\end{theorem}
+\end{corollary}
 \begin{proof}
     When $\Delta\mathfrak{V}_{n} = 0$, it's trivial. Consider $\Delta\mathfrak{V}_{n} \ne 0$.\newline
     Since $\alpha^{n} \mid \gamma\cdot\Delta\mathfrak{V}_{n}$, then $\beta^{\vert\Delta\mathcal{V}_n\vert}\cdot\frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n} \in \mathbb{N}$, that means $\deg_{\beta}(\frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n}<)\infty$. Now let $m = \max\{\deg_{\beta}(\frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n}), \Delta\mathcal{V}_n\} + s + 1$, then
@@ -115,7 +112,7 @@ That is, if $f_{n}(\bm{v})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{v} + \
 \end{proof}
 Notice that we don't require the $f_{n}(\bm{v})$ and $f_{n}(\bm{v} + \Delta\bm{v})$ in $\mathbb{N}$, and we don't require $m \ge 0$. that means they can be any $\beta$-adic integers or $\beta$-adic finite decimals.
 \begin{remark}
-    If $f_{n}(\bm{v}) \not\in \mathbb{Z}_{<0}$, then $\exists m > \max\{\deg_{\beta}(\frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n}), \Delta\mathcal{V}_n\} + s + 1$, such that \cref{thm:high-order-bits-sync} holds and $\delta = 0$. But if $f_{n}(\bm{v}) \in \mathbb{Z}_{<0}$ and there is
+    If $f_{n}(\bm{v}) \not\in \mathbb{Z}_{<0}$, then $\exists m > \max\{\deg_{\beta}(\frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n}), \Delta\mathcal{V}_n\} + s + 1$, such that \cref{cor:high-order-bits-sync} holds and $\delta = 0$. But if $f_{n}(\bm{v}) \in \mathbb{Z}_{<0}$ and there is
     \[ \frac{\gamma}{\alpha}\cdot\Delta\mathfrak{v}_{n} \ge \left\vert \beta^{\Delta\mathcal{V}_n}\cdot f_{n}(\bm{v}) \right\vert, \]
     then $\forall m$ large enough, there is only $\delta = 1$, i.e. $f_{n}(\bm{v} + \Delta\bm{v}) \in \mathbb{N}$.
 \end{remark}
@@ -126,44 +123,44 @@ And the $\beta^{\Delta\mathcal{V}_{n}}$ determinate the shift count, it also wil
 
 Even though, we cannot determine the source value of the integer solely based on $\Delta\mathfrak{V}_{n}\in\mathbb{N}$. This is because there is evidence that we can still deduce the source value of the integer even if $\Delta\mathfrak{V}_{n}\not\in\mathbb{N}$. This demonstrates that solving the problem solely through analysis of $\Delta\mathfrak{V}$ is too difficult. Therefore, we must find another way to work around it.
 
-Now let's revisit \cref{thm:vary-rule}. Analyzing the full $\Delta\bm{v}$ is too complex. If there exists a vector $\Delta\bm{v}$ with only one non-zero component, i.e., $\Delta{\bm{v}} = s\bm{e}_{k}$, such that $\bm{v} + \Delta\bm{v} = F_{s;k}(\bm{v})$, then the analysis becomes much simpler. With this we have
+Now let's revisit \cref{thm:vary-rule}. Analyzing the full $\Delta\bm{v}$ is too complex. If there exists a vector $\Delta\bm{v}$ with only one non-zero component, i.e., $\Delta{\bm{v}} = s\bm{e}_{k}$, such that $\bm{v} + \Delta\bm{v} = \bm{v}+s\bm{e}_{k}$, then the analysis becomes much simpler. With this we have
 \begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
-    \[f_{n}(F_{s;k}(\bm{v})) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
+    \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
     where the basic adjust fuction is defined as
-    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\underset{p\mid (\alpha^{k}/\raf_{\alpha}(\gamma))}{\overset{p\in\mathbb{P}}{\lcm}}\{\ord_{p}(\beta)\}\cdot\Psi(\alpha,\beta,\gamma), \]
+    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\raf_{\alpha}\gamma)}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
     and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
-    \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)},
+    \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}\beta} - 1)},
     \]
     and $\delta = \fac_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
 \end{theorem}
 \begin{proof}
     From \cref{prop:single-vary-rule}, we have
-    \[ f_{n}(F_{s;k}(\bm{v})) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1). \]
+    \[ f_{n}(\bm{v}+s\bm{e}_{k}) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1). \]
     Since $\beta^{s}\cdot f_{n}(\bm{v}) \in \mathbb{N}$, then $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1) \in \mathbb{N}$, that equivalents
     \[\alpha^{k} \mid \gamma\cdot\mathfrak{V}_{k}\cdot(\beta^{s} - 1).\]
     Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
     We just consider when $\alpha^{k} \nmid \gamma$.
-    By the Fundamental Theorem of Arithmetic, we have that $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} p^{\fac_{p}(\alpha)}$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
-    \[ p^{k\cdot\fac_{p}(\alpha)} \mid \gamma\cdot(\beta^{s} - 1). \]
-    Notice that $p \mid (\beta^{\ord_{p}(\beta)} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
-    \[ k\cdot\fac_{p}(\alpha) \le \fac_{p}(\gamma) + \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) + \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) + \delta_2(\beta). \]
+    By the Fundamental Theorem of Arithmetic, we have that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
+    Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
+    \[ k\cdot\fac_{p}\alpha \le \fac_{p}\gamma + \fac_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \fac_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
     Here $\delta_2(\beta) = \fac_2(\beta + 1) - 1$ if $p = 2$ else $0$.
-    Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right)$, we obtain
-    \[ \fac_{p}\left(\frac{s}{\ord_{p}(\beta)}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}(\gamma) - \fac_{p}(\beta^{\ord_{p}(\beta)} - 1) - \delta_2(\beta). \]
+    Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}\beta}\right)$, we obtain
+    \[ \fac_{p}\left(\frac{s}{\ord_{p}\beta}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}\gamma - \fac_{p}(\beta^{\ord_{p}\beta} - 1) - \delta_2(\beta). \]
     Isolating the valuation of $s$, we obtain
-    \[ \fac_{p}(s) \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right), \]
+    \[ \fac_{p}s \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right), \]
     which equivalents
-    \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) \right\vert s. \]
+    \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right)\ \right\vert\ s. \]
     From \cref{prop:raf-completely-multiplicative}, we have
-    \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}(\beta)}{\gamma\cdot(\beta^{\ord_{p}(\beta)} - 1)\cdot2^{\delta}}\right) = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)}, \]
+    \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right) = \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}\beta}{\raf_{p}(\beta^{\ord_{p}\beta} - 1)}, \]
     which implies the divisibility
-    \[ \left. \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}(\beta)}{\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} = \frac{p^{k\cdot\fac_{p}(\alpha)}}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}(\beta)} - 1)} \right\vert s. \]
-    Besides, we've assumed $\ord_{p}(\beta) \mid s$. Aggregate these all $p$ conditions, it follows
-    \[ \underset{p\in\mathbb{P}}{\overset{p\mid \alpha}{\lcm}}\{\ord_{p}(\beta)\} \mid s. \]
-    Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\underset{p\in\mathbb{P}}{\overset{p\mid \alpha}{\lcm}}\{\ord_{p}(\beta)\} \mid s$. So we let
-    \[ \left.\underset{p\mid (\alpha^{k}/\raf_{\alpha}(\gamma))}{\overset{p\in\mathbb{P}}{\lcm}}\{\ord_{p}(\beta)\} \right\vert s, \]
+    \[ \left. \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}\beta}{\raf_{p}(\beta^{\ord_{p}\beta} - 1)} = \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}\beta} - 1)}\ \right\vert\ s. \]
+    Besides, we've assumed $\ord_{p}\beta \mid s$. Aggregate these all $p$ conditions, it follows
+    \[ \left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s. \]
+    Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s$. So we let
+    \[ \left.\lcm_{p\mid (\alpha^{k}/\raf_{\alpha}\gamma)}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\ \right\vert\ s, \]
     which contains both conditions of $\alpha^{k}\mid \gamma$ or $\alpha^{k}\nmid \gamma$.
     Finally, sum up, we have $\Phi(\alpha,\beta,\gamma;k) \mid s$.
 \end{proof}
@@ -171,24 +168,39 @@ In the absence of ambiguity, we denote $\Phi(k) = \Phi(\alpha, \beta, \gamma; k)
 We have to mention that the divisibility in this proof is not the common divisibility between integers, instead of the \cref{def:extend-divisibility}. It implies that, although the derived value of $\Phi(k)$ may be a fraction, we require $s \in \mathbb{N}$, and $s$ must be a multiple of the numerator of that fractional value in its reduced form. Since the denumerator of all $\Phi(k)$ are $\Psi(\alpha,\beta,\gamma)$ and we will not pay too much attention on it.
 Thus we denote $\Phi_k$ as the numerator of $\Phi(k)$'s reduced form.
 From the proof, we can deduce that
-\begin{corollary}~\label{cor:sequence-of-Phi}
-    Suppose $\fac_{\alpha}(\gamma) = k$, then we have
-    \[ \{\Phi_i\}_{i=1}^{n} = \{\underbrace{1, 1, \cdots, 1}_{k \text{ count}}, \Phi_{k+1}, \alpha\Phi_{k+1}, \alpha^{2}\Phi_{k+1}, \cdots, \alpha^{n-k-1}\Phi_{k+1}\}. \]
-\end{corollary}
 \begin{corollary}
     $\forall s \in\mathbb{N}$, we have $\alpha^{k} \mid \gamma\cdot(\beta^{s\cdot\Phi_k} - 1)$.
 \end{corollary}
 \begin{corollary}
-    $\Psi(p, 2, 1) = \frac{1}{2^{p - 1} - 1}$, and $\Phi(p, 2, 1; k) = \frac{p - 1}{2^{p - 1} - 1} \cdot p^{k}$. They correspond to the case of $pn+1$ reduced by $2$.
+    $\forall i \ge j \ge 0$, we have $\Phi_j \mid \Phi_i$ and $\Phi_i \mid \alpha \Phi_j$.
 \end{corollary}
-\begin{corollary}
+\begin{corollary}~\label{cor:sequence-of-Phi}
+    Suppose $\alpha\in\mathbb{P}$ and $\fac_{\alpha}(\gamma) = k$, then we have
+    \[ \{\Phi_i\}_{i=1}^{n} = \{\underbrace{1, 1, \cdots, 1}_{k \text{ count}}, \Phi_{k+1}, \alpha\Phi_{k+1}, \alpha^{2}\Phi_{k+1}, \cdots, \alpha^{n-k-1}\Phi_{k+1}\}. \]
+\end{corollary}
+\begin{example}
+    Suppose $q \in\widehat{\mathbb{N}}_{2}$ that $q > 1$, then we have \begin{align*}
+        &\Psi(q, 2, 1) = \prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)}, \\
+        &\Phi(q, 2, 1; k) = q^{k}\cdot\prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)} \cdot \underset{p\in\Pi(\mathbb{P}\mid q)}{\lcm}\{\ord_{p}2\}.
+    \end{align*}
+    They correspond to the case of $qn+1$ reduced by $2$ explored in Santos's paper \cite{santos2021collatzgeneralproblemqn1}.
+\end{example}
+\begin{example}
+    Suppose $p, q \in \mathbb{P}$ and $p\ne q$, then we have \begin{align*}
+        &\Psi(p, q, 1) = \frac{1}{\raf_{p}(q^{\ord_{p}q} - 1)}, \\
+        &\Phi(p, q, 1; k) = \frac{\ord_{p}q}{\raf_{p}(q^{\ord_{p}q} - 1)} \cdot p^{k}.
+    \end{align*}
+    They correspond to the case of $pn+1$ reduced by $q$.
+\end{example}
+\begin{example}
     $\Psi(3,2,1) = \frac{1}{3}$, and $\Phi(3, 2, 1; k) = 2 \cdot 3^{k - 1}$. They correspond to the classic Collatz problem.
-\end{corollary}
+\end{example}
+\begin{example}
+    $\Psi(5,2,1) = \frac{1}{5}$, and $\Phi(5, 2, 1; k) = 4 \cdot 5^{k - 1}$.
+\end{example}
 
 \cref{thm:the-periodic-rule-of-reduce-sequence} represents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
-
-On the other hand, it 
 
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
@@ -196,13 +208,22 @@ However, such generalizations are beyond the scope of this paper, which will con
 
 Besides these varies in source value, just from the definition of source value, we have a two kinds of important sets.
 \begin{definition}
-Given a basic target value set $B \subset \widehat{\mathbb{Q}}_{{\beta}}$ denote that
+Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
     \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \mathbb{N} \right\},\\
     \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\}.
 \end{align*}
+And denote
+\[\mathbb{F}(B) = B\cup\bigcup_{b\in B}\{ a \mid a\rightsquigarrow b \} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(B)\]
+as all numbers that will fall into to $B$.
 Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. When $B = \{b\}$, that's $B$ contains only one number, we also denote as $\mathbb{V}_n(b)$ and $\mathbb{F}_n(b)$.
 \end{definition}
+\begin{proposition}~\label{prop:source-set-include}
+    If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
+\end{proposition}
+\begin{proposition}~\label{prop:source-set-disjoint}
+    If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
+\end{proposition}
 For those $b\not\in \mathbb{S}$, we have the two propositions:
 \begin{proposition}~\label{prop:non-cycle-layer-independent}
     If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{F}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{F}_{k}(b) = \varnothing$.
@@ -236,7 +257,7 @@ From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, w
    \end{aligned}\right. \pmod{\alpha}$.
 \end{corollary}
 \begin{proof}
-    If $\alpha \nmid \gamma$, then $\alpha \mid (\beta^{\Phi_1} - 1)$. Then we have
+    If $\alpha \nmid \gamma$, then $\Phi_1 > 1$, $\alpha \mid (\beta^{\Phi_1} - 1)$. Then we have
     \begin{align*}
         A_{k} =& \frac{1}{\alpha}\cdot (\beta^{k\cdot \Phi_1 + s_1}\cdot a - \gamma)  &&\ \\
         =& \frac{1}{\alpha}\cdot \beta^{k\cdot \Phi_1 + s_1}\cdot a - \frac{\gamma}{\alpha}   &&\ \\
@@ -263,26 +284,28 @@ That's because they are still based on $\mathbb{F}_{n}(b)$, and therefore still 
 
 We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{F}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
 
-Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, what we are doing is changing a number from one $\mathbb{F}_{n-k}(b)$ to another number, while keeping the beginning and subsequent parts of the reduction sequence unchanged. Note that both numbers also have their own source value sets, which implies an isomorphism between these two source value sets.
-And the two theorems reveal that elements of $F_{1}(b)$ is in a same class and their $\val_{\beta}$ are linear recurrenced. Denote
-\begin{align*}
-    &\rdu\val_{\beta}(a;i) = \frac{1}{\Phi_1}(\val_{\beta}(a;i) - s_i), \\
-    &\rdu\mathcal{A}_n = \sum_{k=0}^{n-1}\mathrm{red}\val_{\beta}(a;k + 1).
-\end{align*}
-We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\rdu\val_{\beta}(a;n+1)$. $\rdu\mathcal{A}_n$ functions similarly to a beta power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of Collatz.
+Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, what we are doing is changing a number from one $\mathbb{F}_{n-k}(b)$ to another number, while keeping the beginning and subsequent parts of the reduction sequence unchanged. It also explain the role of $\gamma$. $\gamma$ not participate too much in constructing the source value set, but it determines the with of jump steps.
 
-Now look the classic Collatz problem, for $(\alpha, \beta, \gamma) = (3,2,1)$, we have
-\begin{corollary}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
+Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
+And the two theorems reveal that elements of $F_{1}(b)$ is in a same class and their $\val$ are linear recurrenced. Denote
+\begin{align*}
+    &\rdu\val(a;i) = \frac{1}{\Phi_1}(\val(a;i) - s_i), \\
+    &\rdu\mathcal{A}_n = \sum_{k=0}^{n-1}\mathrm{red}\val(a;k + 1).
+\end{align*}
+We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\rdu\val(a;n+1)$. $\rdu\mathcal{A}_n$ functions similarly to a beta power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of Collatz.
+
+Now look the classic Collatz problem, we have
+\begin{example}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
+    Suppose $(\alpha, \beta, \gamma) = (3,2,1)$.
     \begin{align*}
         \mathbb{V}_{n+1}(b) &= \left\{ \left.\sum_{i=1}^{n}(2k_i\cdot 3^{i-1} + s_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\},\\
         \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{f_0 = \frac{2^{s_i}\cdot a  - 1}{3}, a_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
         &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{3}\cdot2^{2k + s_i}\cdot a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},
     \end{align*}
     and the basic valuation is $s_i = \min_{v\in\mathbb{N}_{\ge1}}\{2^{v}\cdot f_i \equiv 1\pmod{3}\}$.
-\end{corollary}
+\end{example}
 With this, we have
 \begin{conjecture}~\label{conj:source-value-of-1-cover-all-odd-numbers}
     $\lim_{n\to\infty}\mathbb{F}_n(1) =\widehat{\mathbb{N}}_{{2}}$.
 \end{conjecture}
 Obvousely, we can find this conjecture equivalents to the classic Collatz problem.
-
