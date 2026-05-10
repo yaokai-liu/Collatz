@@ -2,76 +2,93 @@
 \section{Distribution of Collatz Primitive Source}~\label{sec:distribution-of-collatz-primitive-source}
 
 Now let's consider the Collatz primitive source mentioned in \cref{thm:layers-of-reduce-space-and-source-value-set}. They are those number that can't trace back again.
-Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
-But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
+And compaired with the total primitive source, we are more concerned about its distribution in source value set. 
 
 \begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
     % For $b\in \widehat{\mathbb{N}}_{\beta}$, if there is a sequence $\bm{v}\in \mathbb{N}^{n}$ such that $f_{n}(\bm{v})$ is not reversible modulo $\alpha$, or
     % \[\Log_{\beta, \alpha}(f_{n}(\bm{v})^{-1} \cdot \gamma) = \varnothing, \]
     % then we say $\bm{v}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(\bm{v})$ is a $n$-step Collatz primitive source of $b$.
-    For $b\in \widehat{\mathbb{N}}_{\beta}$, if it is not reversible modulo $\alpha$, or
-    \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing, \]
+    For $b\in \widehat{\mathbb{N}}_{\beta}$, if not exists $m \ge 1$ and $a \in \widehat{\mathbb{N}}_{\beta}$ such that
+    \[ b \cdot \beta^{m} = \alpha \cdot a + \gamma, \]
     then we say $b$ is a Collatz primitive source.
+    All primitive source are denoted as $\mathbb{S}$.
+    If $a \not\in\mathbb{S}$, we say $a$ is Collatz reversible.
+\end{definition}
+\begin{proposition}
+    If $\alpha \mid \gamma$, then $\mathbb{S} = \{b \in \widehat{\mathbb{N}}_\beta: a\nmid b\}$.
+\end{proposition}
+\begin{proof}
+    If $\alpha\mid \gamma$, $\forall a\in\widehat{\mathbb{N}}_\beta$, we have
+    \[ a_1 \cdot \beta^{m} = \alpha \cdot a + \gamma = \alpha \cdot \left(a + \frac{\gamma}{\alpha}\right). \]
+    That means $\alpha\mid a_1$. Thus if $\alpha \nmid b$, then $b$ is a primitive source.
+\end{proof}
+From \cref{cor:modulo-alpha-of-layers}, we have
+\begin{proposition}
+    If $\alpha \mid \gamma$, $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
+\end{proposition}
+Suppose $\alpha \nmid \gamma$.
+Since if $b \cdot \beta^m = \alpha\cdot a + \gamma$, then $m \in \Log_{\beta,\alpha}(b^{-1}\cdot\gamma)$.
+But not all $b$ is reversible modulo $\alpha$, and not all $b^{-1} \cdot \gamma$ is a remainder of a power of $\beta$.
+\begin{definition}
+    Suppose $\alpha \nmid \gamma$. Given $b \in \mathbb{S}$. Or it is not reversible modulo $\alpha$, or
+    \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing. \]
     Notice that $b$ is not reversible modulo $\alpha$ equivalents $\gcd(b, \alpha) > 1$. For these, we say they are trivial primitive source.
-    Others we call them non-trivial primitive source.\newline
+    Others we call them non-trivial primitive source.
     And all trivial primitive source are denoted as 
     \[\hat{\mathbb{S}} = \{b \in \widehat{\mathbb{N}}_{\beta} \mid \gcd(b, \alpha) > 1\} = \bigcup_{p\in\Pi(\mathbb{P}\mid\alpha)} p\widehat{\mathbb{N}}_{{\beta}}, \]
     all non-trivial primitive source are denoted as
     \[ \tilde{\mathbb{S}} = \{b \in \widehat{\mathbb{N}}_{\beta} \mid \gcd(b, \alpha) = 1 \text{ and } \Log(b^{-1}\cdot\gamma) = \varnothing\}. \]
-    all primitive source are denoted as
-    \[ \mathbb{S} = \tilde{\mathbb{S}} \cup \hat{\mathbb{S}}. \]
 \end{definition}
+Immidiately, we have
 \begin{proposition}
-    If $\alpha \mid \gamma$, then $\alpha \mid b$ thus $\tilde{\mathbb{S}} = \varnothing$.
+    $\mathbb{S} = \tilde{\mathbb{S}} \cup \hat{\mathbb{S}}$.
 \end{proposition}
 \begin{proposition}~\label{prop:primitive-source-of-prime-alpha}
     If $\alpha \in \mathbb{P}$ and $\ord_{\alpha}\beta = \alpha - 1$, then $\tilde{\mathbb{S}} = \varnothing$.
 \end{proposition}
-\begin{proposition}~\label{prop:primitive-source-are-periodic}
-    Let $b \in \mathbb{S}$. $\forall m \in \mathbb{Z}$, if $b + m\cdot\alpha > 0$, then we have $\ram_{\beta}(b + m\cdot\alpha) \in \mathbb{S}$.
-\end{proposition}
-\begin{proof}
-    For those $b \in \hat{\mathbb{S}}$. $\gcd(b, \alpha) > 1$. Let $d = \gcd(b, \alpha)$, then $\gcd(d, \beta) = 1$. Thus $d\mid \ram_{\beta}(b + m\cdot\alpha)$ means $\ram_{\beta}(b + m\cdot\alpha) \in \hat{\mathbb{S}}$.\newline
-    For those $b \in \tilde{\mathbb{S}}$, we have $\gcd(b + m\cdot\alpha, \alpha) = 1$. If $\ram_{\beta}(b + m\cdot\alpha) \not\in \mathbb{S}$, then $\exists k \ge 1$, such that $\beta^{k}\equiv \ram_{\beta}(b + m\cdot\alpha)^{-1} \cdot \gamma \pmod{a}$. Thus we have
-    \begin{align*}
-        \beta^{k \beta - \fac_{\beta}(b + m\cdot a)} &= \beta^{k}\cdot \raf_{\beta}(b + m\cdot a)^{-1} \\
-        &\equiv \raf_{\beta}(b + m\cdot a) \cdot \ram_{\beta}(b + m\cdot\alpha)^{-1} \cdot \gamma &&\pmod{a} \\
-        &\equiv (b + m\cdot a)^{-1} \cdot \gamma &&\pmod{\alpha} \\
-        &\equiv b^{-1} \cdot \gamma &&\pmod{\alpha},
-    \end{align*}
-    which implies that $b \not\in \mathbb{S}$, conflicts with our hyposis. Thus $\ram_{\beta}(b + m\cdot\alpha)\in \tilde{\mathbb{S}}$.
-    Notice that $\beta^{k}$ are periodic, here we should pick a large enough $k$ to make sure $k - \fac_{\beta}(b + m\cdot a) \ge 0$.
-\end{proof}
-
-Compaired with the total primitive source, we are more concerned about its distribution in source value set. From \cref{cor:modulo-alpha-of-layers}, we have
+Suppose $\alpha \nmid \gamma$. From \cref{cor:modulo-alpha-of-layers}, we have
 \begin{proposition}
-    If $\alpha \mid \gamma$, $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
+    If $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$ and $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
 \end{proposition}
 \begin{proposition}
-    Suppose $\alpha \nmid \gamma$. If $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$ and $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
-\end{proposition}
-\begin{proposition}
-    Suppose $\alpha \nmid \gamma$. If $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\exists d \in \Pi(\mathbb{N}\mid\alpha)$ that $d > 1$, such that $d\alpha\mid \gamma (\beta^{\Phi_1} - 1)$.
+    If $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\exists d \in \Pi(\mathbb{N}\mid\alpha)$ that $d > 1$, such that $d\alpha\mid \gamma (\beta^{\Phi_1} - 1)$.
 \end{proposition}
 \begin{proof}
     Let $d = \gcd(P\cdot\gamma, \alpha)$.
-    At first we have $A_k \equiv kP\cdot\gamma + A_0 \pmod{\alpha} \in \mathbb{S}$. If $d = 1$ then $A_k$ runs all remainder module $\alpha$. From \cref{prop:primitive-source-are-periodic}, we will derive that $\mathbb{N}\subset\mathbb{S}$. That's impossiable. Thus $d > 1$. Let
+    At first we have $A_k \equiv kP\cdot\gamma + A_0 \pmod{\alpha} \in \mathbb{S}$. If $d = 1$ then $A_k$ runs all remainder modulo $\alpha$. From \cref{thm:primitive-source-are-periodic}, we will derive that $\mathbb{N}\subset\mathbb{S}$. That's impossiable. Thus $d > 1$. Let
     \[ d = \gcd(P\cdot\gamma, \alpha) \in \Pi(\mathbb{N}\mid\alpha), \]
     we have $d \mid P\cdot\gamma = \frac{\beta^{\Phi_1} - 1}{\alpha}\cdot \gamma$, i.e. $d\alpha\mid \gamma (\beta^{\Phi_1} - 1)$.
 \end{proof}
-\begin{proposition}~\label{prop:all-source-value-set-has-primitive-source}
-    For $b \not\in\mathbb{S}$, if $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$, then $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
-\end{proposition}
-% \begin{proof}
-%     Let $A_0 = \frac{1}{\alpha}\cdot (\beta^{s_1}\cdot b - \gamma) \in \mathbb{F}_{1}(b)$ in form of \cref{thm:layers-of-reduce-space-and-source-value-set}. Then we can treate it in two situations:\newline
+And from \cref{cor:modulo-alpha-of-layers}, we also have
+\begin{theorem}~\label{thm:source-set-dijoint-primitive-source}
+    Suppose $\alpha\in\mathbb{P}$, $\alpha^{2}\nmid (\beta^{\Phi_1} - 1)$ and $\alpha\nmid\gamma$.
+    For $b\not\in\mathbb{S}$, we have $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$ and $\forall a \rightsquigarrow b$, $\mathbb{F}_{1}(a)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+\end{theorem}
+\begin{lemma}~\label{lem:all-source-value-set-has-primitive-source}
+    For $b \not\in\mathbb{S}$, if there is $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$, then we have $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
+\end{lemma}
+We can  verify that arguments $(\alpha, \beta, \gamma) = (3,2,1)$ follow the requirements of \cref{thm:source-set-dijoint-primitive-source}. This is precisely the type of Collatz system we will be discussing.
 
-%     If $A_0 \in \mathbb{S}$, then unless the $P$ in \cref{cor:modulo-alpha-of-layers} can be divided by $\alpha$, or 
-% \end{proof}
-\begin{proposition}~\label{prop:source-set-dijoint-primitive-source}
-    Suppose $\alpha\in\mathbb{P}$, $\ord_{\alpha}\beta = \alpha - 1$ and $\alpha\nmid\gamma$.
-    For $b\not\in\mathbb{S}$, we have $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
-\end{proposition}
-For $(\alpha, \beta, \gamma) = (3,2,1)$, we have
-\begin{proposition}
-    Suppose $f_{n}(\bm{v}) \in \mathbb{S}$, then $\left\{f_{n}(\bm{v} + 6k\bm{e}_1) \mid k\in\mathbb{N}\right\} \subset \mathbb{S}$.
-\end{proposition}
+Finally, at end of this ection, we provide a theorem to describe the distribution of primitive sources in $\widehat{\mathbb{N}}_{\beta}$:
+\begin{theorem}~\label{thm:primitive-source-are-periodic}
+    Let $b \in \mathbb{S}$. $\forall m \in \mathbb{Z}$, if $b + m\alpha > 0$, then $\ram_{\beta}(b + m\alpha) \in \mathbb{S}$.
+\end{theorem}
+\begin{proof}
+    Trivial for $\alpha \mid \gamma$. Suppose $\alpha \nmid \gamma$.
+
+    For those $b \in \hat{\mathbb{S}}$, we have $\gcd(b, \alpha) > 1$. Let $d = \gcd(b, \alpha)$, then we have $\gcd(d, \beta) = 1$. Thus $d\mid \ram_{\beta}(b + m\alpha)$ means $\ram_{\beta}(b + m\alpha) \in \hat{\mathbb{S}}$.
+
+    For those $b \in \tilde{\mathbb{S}}$, we have $\gcd(b + m\alpha,\ \alpha) = 1$. If $\ram_{\beta}(b + m\alpha) \not\in \mathbb{S}$, then $\exists k \ge 1$, such that $\beta^{k}\equiv \ram_{\beta}(b + m\alpha)^{-1} \cdot \gamma \pmod{a}$. Thus we have
+    \vspace{-0.5em}
+    \begin{align*}
+        \beta^{k - \fac_{\beta}(b + m\alpha)} &= \beta^{k}\cdot \raf_{\beta}(b + m\alpha)^{-1} \\
+        &\equiv \raf_{\beta}(b + m\alpha) \cdot \ram_{\beta}(b + m\alpha)^{-1} \cdot \gamma &&\pmod{a} \\
+        &\equiv (b + m\alpha)^{-1} \cdot \gamma &&\pmod{\alpha} \\
+        &\equiv b^{-1} \cdot \gamma &&\pmod{\alpha},
+    \end{align*}
+    which implies that $b \not\in \mathbb{S}$, conflicts with the hypothesis. Therefore, it indicates that there must be $\ram_{\beta}(b + m\alpha)\in \tilde{\mathbb{S}}$.
+\end{proof}
+\begin{remark}
+    Notice that $\beta^{k}$ are periodic modulo $\alpha$, here we should pick a large enough $k$ to make sure $k - \fac_{\beta}(b + m\alpha) \ge 0$.
+\end{remark}
+In fact, not only the original source, but all source values that preserve the reversible structure (reduction sequence) follow a rule similar to \cref{thm:primitive-source-are-periodic}. This is why we discuss $\Phi_{k+1} \mid \alpha\Phi_{k}$, where these source values that preserve the reversible structure are distributed at intervals of some factor of $\alpha$. If we expand our perspective from $\mathbb{N}$ to $\mathbb{Q}$ but those denominator is a power of $\alpha$, then we can find that $b + m\alpha$ also preserves a reduction sequence centered at $b$.

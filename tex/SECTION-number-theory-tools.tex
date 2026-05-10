@@ -16,8 +16,11 @@ Below are number theory tools we introduced in this paper and their propositions
 \begin{definition}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}b = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
-    called the discrete order of $b$ modulo $a$, and define $\ord_{a}1 = 1$.
+    called the discrete order of $b$ modulo $a$.
 \end{definition}
+\begin{proposition}
+    $\ord_{a}1 = 1$.
+\end{proposition}
 \begin{proposition}
     If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
@@ -36,7 +39,7 @@ Otherwise, we denote $\Log_{a, b}x = \varnothing$.
 And we denote
 \[- \Log_{a, b}x = \ord_a(b)\mathbb{Z} - \log_{a, b}x.\]
 \end{definition}
-We call $\log_{a, b}(x)$ the principal modular logarithm of $x$, and $\Log_{a, b}(x)$ the modular logarithms of $x$, and define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
+We call $\log_{a, b}(x)$ the principal modulor logarithm of $x$, and $\Log_{a, b}(x)$ the modulor logarithms of $x$, and define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
 Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and $\Log_{a,b}x$.
 \begin{proposition}
     $x^{\log_{a, b}x} \equiv x \pmod{b}$.

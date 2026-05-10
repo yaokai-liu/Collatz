@@ -5,7 +5,7 @@
 \usepackage{color,xcolor}
 \usepackage{fontspec}
 \usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
-\linespread{1.5}
+\linespread{1.2}
 \usepackage{hyperref}
 \hypersetup{
     final,                   % Include links even if document is in 'draft' mode.
@@ -62,6 +62,8 @@
 \DeclareMathOperator{\Log}{Log}
 \DeclareMathOperator{\rdu}{red}
 \DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\card}{card}
+\DeclareMathOperator*{\chr}{chr}
 
 % \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
 \title{On the General Collatz Sequence: $\alpha \cdot a + \gamma$ reduced by $\beta$}
@@ -71,21 +73,21 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explores various properties of generalized Collatz sequences of the form $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$, extends this formulation to the field of rational numbers $\mathbb{Q}$, and constructs a hierarchical model for the set of source values. We define a specific density capable of preserving the latent algebraic structures among these sets, thereby mapping the discrete iterative process onto a continuous algebraic landscape.
-    This paper proposes several propositions deemed crucial for proving the "$3n+1$ Conjecture" and offers an interpretation of the difference of powers problems from the perspective of dynamical systems.
+    This paper explores various properties of generalized Collatz sequences of the form $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$, and extends this form to the rational number field $\mathbb{Q}$ and finds it's a kind of $(\sigma, \tau)$-derivation of groupoid. We construct a hierarchical model for the source value set in $\mathbb{N}$. We prove that the logarithmic density of the latent algebraic structure in these sets can be preserved, thus providing a comprehensive algebraic landscape for discrete iterative processes. We analyze a certain sub-type of general Collatz system, they are similar to the $3n+1$ problem, and give a classification of its source value sets. In particular, we provide a positive results for the original conjecture. Finally, this paper also explores the power difference problem from the perspective of dynamical systems.
     % And a proof of the $3n + 1$ conjecture is then provided.
 \end{abstract}
 \newpage
 \tableofcontents
 \newpage
 
-\input{SECTION-introduction-and-the-general-collatz-sequence}
+\input{SECTION-introduction-and-collatz-sequence}
 \input{SECTION-the-basic-formula-of-collatz-sequence}
-\input{SECTION-extend-the-field-of-values-for-the-collatz-sequence}
-\input{SECTION-back-trace-the-collatz-sequence}
-\input{SECTION-varies-in-source-value-with-respect-to-the-reduce-sequence}
+\input{SECTION-extend-codomain-for-collatz-sequence}
+\input{SECTION-back-trace-of-collatz-sequence}
+\input{SECTION-collatz-source-value}
 \input{SECTION-distribution-of-collatz-primitive-source}
-\input{SECTION-densities-that-preserve-algebra-between-source-value-sets}
+\input{SECTION-homomorphic-densities-on-source-value-set}
+\input{SECTION-a-dynamical-system-view-in-power-difference-problem}
 
 % \section{Continuous and Limits}\label{sec:continous-and-limits}
 % To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.

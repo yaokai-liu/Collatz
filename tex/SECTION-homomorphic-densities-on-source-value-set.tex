@@ -1,0 +1,81 @@
+% !TEX root = main.tex
+\section{Homomorphic Densities on Source Value Set}~\label{sec:homomorphic-densities-on-source-value-set}
+
+Since we have a formula of $\mathbb{F}_{n}(b)$ and know the primitive source's distribution, we can build a kind of "measure" to discribe the density of it in $\mathbb{N}$.
+
+In this section, we will always suppose arguments follows \cref{thm:source-set-dijoint-primitive-source}.
+\begin{theorem}~\label{thm:infinite-layers}
+	For $b\not\in\mathbb{S}$, we have $\forall N > 0$, $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
+\end{theorem}
+\begin{proof}
+	Divide into two situations:\newline
+	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{thm:source-set-dijoint-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
+	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
+	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can not be covered within finity layers, thus the $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
+\end{proof}
+
+\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell any given layer's pattern, that's not enough at all. Hence, we shall instead attempt to identify certain homomorphisms in the hope of capturing specific measure-theoretic properties that, we trust, may ultimately aid us in unraveling this conjecture.
+
+From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{F}(b)\cap\mathbb{F}(1) = \varnothing$, that means the logarithm density of $\mathbb{F}(b)$ will be $0$. Since $\mathbb{F}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
+
+Summary, if we can find a such homomorphic density and prove the density of $\mathbb{F}(1)$ is almost $\frac{1}{2}$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture. 
+At the same time, we have to say, under the general condition of \cref{thm:source-set-dijoint-primitive-source} instead of $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
+
+Now let's introduce a kind of density:
+\begin{definition}~\label{def:beta-adic-density}
+	We call $\mu: \mathcal{P}(\mathbb{N}) \to [0, 1]$ is an arithmetic density, if $\mu$ satisfies:
+	\begin{itemize}
+		\item[1.]~\label{prop:density-basic} $\mu\mathbb{N} = 1$, $\mu\varnothing = 0$ and $\forall a \in\mathbb{N}$, $\mu\{a\} = 0$;
+		\item[2.]~\label{prop:finite-add} If $A \cap B = \varnothing$, then we have $\mu(A\cup B) = \mu A + \mu B$;
+		\item[3.]~\label{prop:linear-trans} $\mu(a A + b) = \frac{1}{a}\mu{A}$, here $aA + b = \{ ax+b \mid x\in A\}$.
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	$\mu(\mathbb{N} - A) = 1 - \mu{A}$.
+\end{proposition}
+\begin{proposition}
+	$\mu(\beta\mathbb{N}) = \frac{1}{\beta}$, thus $\mu\widehat{\mathbb{N}}_{{\beta}} = \frac{\beta - 1}{\beta}$.
+\end{proposition}
+\begin{theorem}
+	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$, there is
+	\[ \chr a\cdot\mu\mathbb{F}(a) = \chr b\cdot\mu\mathbb{F}(b). \]
+\end{theorem}
+
+% \begin{corollary}
+% 	$\mu\mathbb{F}_{1}(a) = \frac{\alpha}{\beta^{s_1(a)} a}\cdot\mu B$.
+% \end{corollary}
+\begin{corollary}
+	If $\exists b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$ there is $\mu\mathbb{F}(b) \ne 0$, then $\forall a\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have $\mu\mathbb{F}(a) \ne 0$.
+\end{corollary}
+
+% Given number $b \in\widehat{\mathbb{N}}_{{\beta}}$ that $b\not\rightsquigarrow b$, we have
+% \begin{theorem}
+% 	$\mu\mathbb{F}_{1}(b) = 0$, $\mu\mathbb{F}_{1}(b) = \frac{1}{\beta^{s_1(b)}\cdot b}\cdot\frac{\alpha}{\beta^{\Phi_1} - 1}$.
+% \end{theorem}
+% \begin{proof} Thus we have
+% 	\[ \mu\mathbb{F}_{1}(b) = \mu\left(\frac{\beta^{s_1(b)} b}{\alpha} B - \frac{\gamma}{\alpha}\right) = \frac{\alpha}{\beta^{s_1(b)} b} \cdot \mu B. \]
+% \end{proof}
+% \begin{proposition}
+% 	For $a \in \mathbb{F}_{1}(b) - \mathbb{S}$ that $b \not\rightsquigarrow b$, there is
+% 	\[ \mu\mathbb{F}(a) = \frac{\beta - 1}{\beta}\cdot\beta^{-\rdu\val(a;1)}\cdot\mu\mathbb{F}(b). \]
+% \end{proposition}
+% \begin{proof}
+% 	TODO.
+% \end{proof}
+% \begin{proposition}
+% 	If $\{b_n\}_{n=0}^{\infty} \subset \mathbb{N} - \mathbb{S}$, and $\forall b_i, b_j$, we have $b_i \not\rightsquigarrow b_j$, then
+% 	\[ \mu\bigcup_{n=0}^{\infty}\mathbb{F}(b_n) = \sum_{n=0}^{\infty}\mu\mathbb{F}(b_n). \]
+% \end{proposition}
+% \begin{proof}
+% 	TODO.
+% \end{proof}
+% \begin{proposition}
+% 	For $a \in \mathbb{F}_{n}(b) - \mathbb{S}$ that $b \not\rightsquigarrow b$, there is
+% 	\[ \mu\mathbb{F}(a) = \left(\frac{\beta - 1}{\beta}\right)^{n} \cdot \beta^{-\mathrm{red}\mathcal{A}_n}\cdot\mu\mathbb{F}(b). \]
+% \end{proposition}
+% \begin{proof}
+% 	TODO.
+% \end{proof}
+
+% From these propositions, we can see that the $\beta$-adic density function precisely preserves the algebraic relationships between the source value sets.

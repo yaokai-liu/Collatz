@@ -1,8 +1,8 @@
 % !TEX root = main.tex
-\section{Introduction And the General Collatz Sequence}\label{sec:introduction-and-the-general-collatz-sequence} % (fold)
+\section{Introduction and Collatz Sequence}\label{sec:introduction-and-collatz-sequence} % (fold)
 Our story starts from the $3n + 1$ Conjecture, hereinafter referred to as the Collatz conjecture, which is defined as follows:
 \begin{conjecture}[Collatz Conjecture]~\label{conjecture:original-conjecture}
-Given a number $a_0 = a \in \mathbb{N}$, we have the modular arithmetic notation
+Given a number $a_0 = a \in \mathbb{N}$, we have the modulor arithmetic notation
 \[a_{k+1} = \left\{\begin{aligned}
     &a_{k}/2, &a_{k}\equiv 0\pmod{2}, \\
     &3a_{k}+1, &a_{k}\equiv 1\pmod{2},
@@ -25,7 +25,7 @@ With the definition $\mathcal{A}_{k} = \sum_{j=0}^{k-1}\val(a;j+1)$, it would be
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 That means
 \[ a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}. \]
-Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinite, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the module, which convergences to $1/3$ in $\mathbb{Z}_2$.
+Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinite, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modulo, which convergences to $1/3$ in $\mathbb{Z}_2$.
 And this congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
 follows the Collatz conjecture.
@@ -46,7 +46,7 @@ At first we define two auxity notation:
 Here the divisibility follows \cref{def:extend-divisibility}, and any divisibility appearing in this text follows this definition.
 With these we have
 \begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
-    Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
+    Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, $\gcd(\beta, \gamma) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
     For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
         &a_0=a, \\
