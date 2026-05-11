@@ -29,7 +29,7 @@ $\forall m, n \ge 0$ we have
 \begin{corollary}~\label{corollary:inductive-formula-with-reduced}
     $a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = \alpha^{n}\cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n+m}^{m}\right)$.
 \end{corollary}
-\begin{corollary}
+\begin{corollary}~\label{cor:beta-nmid-collatz-complement}
 Given $a\in\widehat{\mathbb{N}}_\beta$, $\mathfrak{A}$ is of $a$, we have $\beta \nmid \mathfrak{A}_n^m$.
 \end{corollary}
 \begin{corollary}~\label{corollary:congerunce-with-collatz-complement}
@@ -68,7 +68,7 @@ If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_
 
 It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
 Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
-\begin{definition}
+\begin{definition}~\label{def:elements-reduce-m-val-by-n-step}\nomenclature{$[m\mid n]$}{ Set of numbers those do not reduce in $n-1$ steps, but reduce at least $m$ valuation by $n$-th step, \cref{def:elements-reduce-m-val-by-n-step}}
 Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
 \[ [m\mid n] = \{a \in \widehat{\mathbb{N}}_{\beta} \mid \mathcal{A}_{n-1} = 0 \text{ and } \mathcal{A}_n \ge m \}. \]
 \end{definition}
@@ -76,7 +76,23 @@ Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
     $ l \ge m \Longleftrightarrow [l\mid n] \subset [m\mid n]$.
 \end{proposition}
 \begin{proposition}
-If $m \ge 1$, and $n \le \ord_{\beta(\alpha - 1)}$ then
+    If $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $[m\mid n] = \varnothing$.
+\end{proposition}
+\begin{proof}
+    If not, then
+    $\forall a\in [m \mid n]$, we have $\forall i \le n - 1$, $\mathcal{A}_i = 0$, thus $\forall 0 < k \le n$, we have
+    \[ \mathfrak{A}_k = \sum_{i=0}^{k-1}\beta^{\mathcal{A}_i}\cdot\alpha^{n-i-1} = \sum_{i=0}^{k-1}\alpha^{i} = \frac{\alpha^{k} - 1}{\alpha - 1}. \]
+    Since $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $\exists k \le n$ such that $k = \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
+    \begin{align*}
+        \mathfrak{A}_k &= \frac{\alpha^{t \cdot \ord_{\beta(\alpha - 1)}(\alpha)} - 1}{\alpha - 1} &&\\
+        &\equiv \frac{t\cdot\beta(\alpha - 1) + 1 - 1}{\alpha - 1} &&\pmod{\beta}\\
+        &\equiv 0. &&\pmod{\beta}
+    \end{align*}
+    It conflict with \cref{cor:beta-nmid-collatz-complement}. Thus $[m\mid n] = \varnothing$.
+\end{proof}
+That means we can just consider $n < \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
+\begin{proposition}
+If $m \ge 1$, then
 \[ [m\mid n] = \left\{a \in \widehat{\mathbb{N}}_{\beta}\ \left|\  a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i \equiv 0 \pmod{\beta^{m}}\right.\right\}. \]
 When $m = 0$, the $[0\mid n] = \widehat{\mathbb{N}}_{\beta}$.
 \end{proposition}
@@ -90,56 +106,49 @@ When $m = 0$, the $[0\mid n] = \widehat{\mathbb{N}}_{\beta}$.
         &=\alpha^{n-1}(\alpha a + \gamma) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
         &=\alpha^{n-1}(a_1\cdot\beta^{\mathcal{A}_1}) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
         &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
+        &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1} && \\
         &\equiv 0 && \pmod{\beta^{m}}
     \end{align*}
-    Thus we have $\beta^{\min\{m, \mathcal{A}_1\}}\ \left\vert\ \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i}\right.$.
+    Thus we have $\beta^{\min\{m, \mathcal{A}_1\}}\ \left\vert\ \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}\right.$.
 
-    Since $\ord_{\beta(\alpha-1)}(\alpha) > n - 1$, we have $\beta\nmid\gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} = \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}$. It means the $\min\{m, \mathcal{A}_1\}=0$. Since $m > 0$, thus $\mathcal{A}_1 = 0$. With this we have
-    \[ \alpha^{n-1}a_1 + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} \equiv 0 \pmod{\beta^{m}} \]
-    with this, iterally, we can proof $\forall i < n$, there is $\mathcal{A}_i = 0$.
-    Thus $\mathfrak{A}_n = \sum_{i = 0}^{n-1}\alpha^i$. Then we have
+    Since $n < \ord_{\beta(\alpha-1)}(\alpha)$, we have $\beta\nmid \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}$. Then we can derive that $\min\{m, \mathcal{A}_1\}=0$. Since $m > 0$, thus $\mathcal{A}_1 = 0$. With this we have
+    \[ \alpha^{n-1}a_1 + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} \equiv 0 \pmod{\beta^{m}}. \]
+    Recursively, we can proof $\forall i < n$, there is $\mathcal{A}_i = 0$, and then we can get that $\mathfrak{A}_n = \sum_{i = 0}^{n-1}\alpha^i$. Thus we have
     \[ \beta^{m}\ \left\vert\ a \cdot \alpha^{n} + \gamma  \sum_{i = 0}^{n-1}\alpha^i \right. = a_n\cdot \beta^{\mathcal{A}_n}, \]
     which means $\mathcal{A}_n \ge m$. Thus $a\in [m \mid n]$.
 \end{proof}
-
-Now $\forall m, n \in\mathbb{N}$, $n\ge 1$, we denote
-\[ \overline{[m\mid n]} = \left\{a \in \widehat{\mathbb{N}}_{\beta}\ \left|\  a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i \equiv 0 \pmod{\beta^{m}}\right.\right\}. \]
-We have
-\begin{proposition}
-    $[m\mid n] \subset \overline{[m\mid n]}$.
-\end{proposition}
-\begin{proposition}~\label{proposition:equivalence-of-classes}
-    $a \in \overline{[m\mid n]} \Longleftrightarrow a\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n-1}\alpha^{-i} \pmod{\beta^{m}}$.
+\begin{proposition}~\label{prop:classes-equiv-congruence}
+    $a \in [m\mid n] \Longleftrightarrow a\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n-1}\alpha^{-i} \pmod{\beta^{m}}$.
 \end{proposition}
 \begin{theorem}~\label{thm:avaliable-in-finity-step}
-    $\exists P \in \mathbb{N}_{\ge1}$, such that $\overline{[m\mid n + P]} = \overline{[m\mid n]}$.
+    $\exists P \in \mathbb{N}_{\ge1}$, such that if there is $[m\mid n + P]\ne\varnothing$, then we have $[m\mid n + P] = [m\mid n]$.
 \end{theorem}
 \begin{proof}
     Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)$.
 
     First, since $\gcd(\alpha, \beta) = 1$, for those $p \in \mathbb{P}$ that $p \mid \beta$, we have
     \begin{align*}
-        \fac_{p}(\alpha^P - 1) & \ge \fac_{p}\left(\prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)\right) + \fac_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
-                                 & \ge \fac_{p}(\alpha-1) + m \cdot \fac_{p}\beta,
+        \val_{p}(\alpha^P - 1) & \ge \val_{p}\left(\prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)\right) + \val_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
+                                 & \ge \val_{p}(\alpha-1) + m \cdot \val_{p}\beta,
     \end{align*}
     Then we have
     \begin{align*}
-        \fac_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \fac_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
-                &= \fac_{p}(\alpha^P - 1) - \fac_{p}(\alpha-1) \\
-                &\ge m \cdot \fac_{p}\beta.
+        \val_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \val_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
+                &= \val_{p}(\alpha^P - 1) - \val_{p}(\alpha-1) \\
+                &\ge m \cdot \val_{p}\beta.
     \end{align*}
     That means $(\raf_{p_i}\beta)^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
     Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
     Here, $\alpha^{-1}$ is defined in terms of modulo $\beta^{m}$. \newline
     Now suppose $a \in [m \mid n + P]$.
-    From \cref{proposition:equivalence-of-classes}, we have
+    From \cref{prop:classes-equiv-congruence}, we have
     \begin{align*}
         a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
             &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{-P} \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}}
+            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}.    &&\pmod{\beta^{m}}
     \end{align*}
-    which means $a \in \overline{[m\mid n + P]} \Longleftrightarrow \overline{[m\mid n]}$.
+    From \cref{prop:classes-equiv-congruence}, we proved $[m\mid n + P] = [m\mid n]$.
 \end{proof}
 \begin{remark}
 It should be noted that this $P$ is not always the minimum period. However, it ultimately shows that we can determine whether a number can be simplified in a finite number of steps.
@@ -154,17 +163,17 @@ Compared to the above, we may not need to consider the number of dry-run steps b
 \end{proposition}
 \begin{proposition}
     $a \in \overline{[1]} \Longrightarrow \alpha \cdot a + \gamma \in \overline{[1]}$.
-    On the contrary, if $a\equiv \gamma \pmod{\alpha}$, then $a \in \overline{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \overline{[1]}$.
+    If $\alpha \mid (a - \gamma)$, then we have $a \in \overline{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \overline{[1]}$.
 \end{proposition}
 \begin{theorem}~\label{theorem:requirements-of-avaliablity}
     $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
 \end{theorem}
 \begin{proof}
 \begin{itemize}
-    \item[$\Longrightarrow$)]
+    \item[$\Rightarrow$)]
         If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\val(a;k + n_{k}) > 0$,
         that means $a_{k} \in [\val(a;k + n_{k}) \mid n_{k}] \subset [1]$.
-    \item[$\Longleftarrow$)] 
+    \item[$\Leftarrow$)] 
         If $\forall k \in \mathbb{N}$, there is $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{thm:avaliable-in-finity-step} we can suppose $n_k \le P$,
         such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
         Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.

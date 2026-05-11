@@ -13,9 +13,9 @@ The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} 
 
 First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$.
 We may wander the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
-Let's define the symbol $\val(a;k+1) = \fac_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
+Let's define the symbol $\val(a;k+1) = \val_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
 With this we can redefine the sequence with
-\[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val(a;k+1)}} = \ram_{2}(3a_{k}+1), \]
+\[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val(a;k+1)}} = \rel_{2}(3a_{k}+1), \]
 which ensures the $a_k$ always is an odd number.
 
 It makes things easier.
@@ -32,30 +32,33 @@ follows the Collatz conjecture.
 We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
 So it is the time to explore what the arguments of these equations has a stability solution.
 
-At first we define two auxity notation:
-\begin{definition}~\label{def:collatz-accumulation}
-    Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
-    Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
-\end{definition}
-\begin{proposition}
-    $\forall n \ge k \ge m$ there is $\mathcal{A}_n^m = \mathcal{A}_n^{k} + \mathcal{A}_k^{m}$.
-\end{proposition}
-\begin{definition}~\label{def:exclude-beta-times}
+At first we define an auxity notation:
+\begin{definition}~\label{def:exclude-beta-times}\nomenclature{$\widehat{\mathbb{K}}_{{\beta}}$}{Numbers of $\mathbb{K}$ those not dividable by $\beta$, \cref{def:exclude-beta-times}}
     For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
  \end{definition}
 Here the divisibility follows \cref{def:extend-divisibility}, and any divisibility appearing in this text follows this definition.
 With these we have
-\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
+\nomenclature{$\alpha$, $\beta$, $\gamma$}{Arguments participate the Collatz system. Requires that $\gcd(\alpha, \beta) = 1$, $\gcd(\beta, \gamma) = 1$, and $\alpha \ne 1, \beta\ne 1$}
+\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}\nomenclature{$a_k$}{The $k$-th item of Collatz sequence of $a$, \cref{definition:collatz-sequence}}\nomenclature{$\val(a;k)$}{The $k$-th item of Collatz reduce sequence of $a$, \cref{definition:collatz-sequence}}
     Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, $\gcd(\beta, \gamma) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
     For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
         &a_0=a, \\
         &\val(a;k) = 0, \\
-        &a_{k+1} = \frac{\alpha\cdot a_{k} + \gamma}{\beta^{\val(a;k + 1)}} = \ram_{\beta}(\alpha\cdot a_{k} + \gamma), \\
-        &\val(a;k+1) = \fac_{\beta}(\alpha\cdot a_k + \gamma).
+        &a_{k+1} = \frac{\alpha\cdot a_{k} + \gamma}{\beta^{\val(a;k + 1)}} = \rel_{\beta}(\alpha\cdot a_{k} + \gamma), \\
+        &\val(a;k+1) = \val_{\beta}(\alpha\cdot a_k + \gamma).
     \end{align*}
 \end{definition}
-Actually, $\val(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$.
+Actually, $\val(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$. In common, we will always lower latter like $a$, $b$, $c$, $\cdots$ to present numbers of a field.
+
+\begin{definition}~\label{def:collatz-accumulation}\nomenclature{$\mathcal{V}_n^m$, $\mathcal{A}_n^m$}{Accumulation from $m$ to $n$ of a sequence, \cref{def:collatz-accumulation}}\nomenclature{$\mathcal{V}_n$, $\mathcal{A}_n$}{Accumulation from $0$ to $n$ of a sequence, \cref{def:collatz-accumulation}}
+    Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
+    Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
+\end{definition}
+Normally, we will always lower latter like $u$, $v$, $w$, $\cdots$ to present elements of some sequences or vectors.
+\begin{proposition}
+    $\forall n \ge k \ge m$ there is $\mathcal{V}_n^m = \mathcal{V}_n^{k} + \mathcal{V}_k^{m}$.
+\end{proposition}
 
 Given a number $a \in \widehat{\mathbb{N}}_{{\beta}}$, we can derive a Collatz sequence $\left\{a_{k}\right\}_{k = 0}^{\infty}$ and Collatz reduce sequence $\{\val(a;k)\}_{k=0}^{\infty}$. For the Collatz reduce sequence, we can define its accumulation, and we call it Collatz accumulation $\mathcal{A}$.
 And to avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
@@ -98,8 +101,8 @@ For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conject
 \begin{proof}
     Let $a'_{i}$ be the $i$-th number in \cref{conjecture:original-conjecture}, and $a'_{i_k}$ be the $k$-th odd number in it.\newline
     First, we have $a_{0} = a = a'_0 = a'_{i_0}$;\newline
-    Second, if $a_{k} = a'_{i_k}$. Suppose $s_{k+1} = \fac_{\beta}(3a'_{i_k} + 1)$. We have
-    \[ s_{k+1} = \fac_{\beta}(3a_k + 1) = \val(a;k+1). \]
+    Second, if $a_{k} = a'_{i_k}$. Suppose $s_{k+1} = \val_{\beta}(3a'_{i_k} + 1)$. We have
+    \[ s_{k+1} = \val_{\beta}(3a_k + 1) = \val(a;k+1). \]
     For $a'_{i_k}$, we have
     \begin{align*}
         a'_{i_k+1} &= (3a'_{i_k} + 1) / 2 \in 2\mathbb{N},   \\
@@ -128,7 +131,7 @@ for any odd number $a \in \widehat{\mathbb{N}}_{2}$, it's Collatz sequence will 
 \end{conjecture}
 
 This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define a notation to represent them:
-\begin{definition}~\label{definition:collatz-complement}
+\begin{definition}~\label{definition:collatz-complement}\nomenclature{$\mathfrak{V}_n^{m}$,$\mathfrak{A}_n^{m}$}{Collatz complement of a sequence from $m$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{v}_n^{m}$, $\mathfrak{a}_n^{m}$}{Reduced Collatz complement of a sequence from $m$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{V}_n$,$\mathfrak{A}_n$}{Collatz complement of a sequence from $0$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{v}_n$, $\mathfrak{a}_n$}{Reduced Collatz complement of a sequence from $0$ to $n$, \cref{definition:collatz-complement}}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms, we have $\mathcal{A}_{n}^{m}$. Now we define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
     And define $\mathfrak{a}_n^{m}$ called reduced Collatz complement of $a$ at $n$ relative to $m$ with

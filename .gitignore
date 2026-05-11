@@ -21,6 +21,7 @@
 *.lof
 *.log
 *.nlo
+*.nls
 *.out
 *.pdfsync
 *.ps

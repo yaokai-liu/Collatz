@@ -24,6 +24,9 @@
 ]{cleveref}
 \usepackage{cite}
 % \usepackage{thmbox}
+\usepackage{nomencl}
+\makenomenclature
+
 \setmainfont{Times New Roman}
 \setCJKmainfont{SimSun}
 \newtheoremstyle{sltheorem}
@@ -55,9 +58,10 @@
 \DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\fac}{fac}
+\DeclareMathOperator{\pow}{pow}
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\raf}{raf}
+\DeclareMathOperator{\rel}{rel}
 \DeclareMathOperator{\ram}{ram}
 \DeclareMathOperator{\Log}{Log}
 \DeclareMathOperator{\rdu}{red}
@@ -79,15 +83,16 @@
 \newpage
 \tableofcontents
 \newpage
-
+\printnomenclature
+\newpage
 \input{SECTION-introduction-and-collatz-sequence}
 \input{SECTION-the-basic-formula-of-collatz-sequence}
-\input{SECTION-extend-codomain-for-collatz-sequence}
+\input{SECTION-extend-domain-for-collatz-sequence}
 \input{SECTION-back-trace-of-collatz-sequence}
 \input{SECTION-collatz-source-value}
 \input{SECTION-distribution-of-collatz-primitive-source}
 \input{SECTION-homomorphic-densities-on-source-value-set}
-\input{SECTION-a-dynamical-system-view-in-power-difference-problem}
+\input{SECTION-a-dynamical-view-on-power-difference-problem}
 
 % \section{Continuous and Limits}\label{sec:continous-and-limits}
 % To analyze the continuous and limits of Collatz sequence, we have to embed Collatz sequences in to $\mathbb{R}^{n}$.
@@ -108,6 +113,7 @@
 \include{SECTION-number-theory-tools}
 \include{SECTION-a-kind-of-derivation-on-groupoid}
 
+\newpage
 \bibliography{Collatz}
 \bibliographystyle{unsrt}
 \nocite{*}

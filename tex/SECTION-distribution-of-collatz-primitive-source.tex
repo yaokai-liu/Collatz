@@ -4,10 +4,7 @@
 Now let's consider the Collatz primitive source mentioned in \cref{thm:layers-of-reduce-space-and-source-value-set}. They are those number that can't trace back again.
 And compaired with the total primitive source, we are more concerned about its distribution in source value set. 
 
-\begin{definition}[Collatz primitive source]~\label{collatz-primitive-source}
-    % For $b\in \widehat{\mathbb{N}}_{\beta}$, if there is a sequence $\bm{v}\in \mathbb{N}^{n}$ such that $f_{n}(\bm{v})$ is not reversible modulo $\alpha$, or
-    % \[\Log_{\beta, \alpha}(f_{n}(\bm{v})^{-1} \cdot \gamma) = \varnothing, \]
-    % then we say $\bm{v}$ is a $n$-step Collatz primitive source vector of $b$ and $f_{n}(\bm{v})$ is a $n$-step Collatz primitive source of $b$.
+\begin{definition}[Collatz primitive source]~\label{def:collatz-primitive-source}\nomenclature{$\mathbb{S}$}{Set of all Collatz primitive source, \cref{def:collatz-primitive-source}}
     For $b\in \widehat{\mathbb{N}}_{\beta}$, if not exists $m \ge 1$ and $a \in \widehat{\mathbb{N}}_{\beta}$ such that
     \[ b \cdot \beta^{m} = \alpha \cdot a + \gamma, \]
     then we say $b$ is a Collatz primitive source.
@@ -71,24 +68,24 @@ We can  verify that arguments $(\alpha, \beta, \gamma) = (3,2,1)$ follow the req
 
 Finally, at end of this ection, we provide a theorem to describe the distribution of primitive sources in $\widehat{\mathbb{N}}_{\beta}$:
 \begin{theorem}~\label{thm:primitive-source-are-periodic}
-    Let $b \in \mathbb{S}$. $\forall m \in \mathbb{Z}$, if $b + m\alpha > 0$, then $\ram_{\beta}(b + m\alpha) \in \mathbb{S}$.
+    Let $b \in \mathbb{S}$. $\forall m \in \mathbb{Z}$, if $b + m\alpha > 0$, then $\rel_{\beta}(b + m\alpha) \in \mathbb{S}$.
 \end{theorem}
 \begin{proof}
     Trivial for $\alpha \mid \gamma$. Suppose $\alpha \nmid \gamma$.
 
-    For those $b \in \hat{\mathbb{S}}$, we have $\gcd(b, \alpha) > 1$. Let $d = \gcd(b, \alpha)$, then we have $\gcd(d, \beta) = 1$. Thus $d\mid \ram_{\beta}(b + m\alpha)$ means $\ram_{\beta}(b + m\alpha) \in \hat{\mathbb{S}}$.
+    For those $b \in \hat{\mathbb{S}}$, we have $\gcd(b, \alpha) > 1$. Let $d = \gcd(b, \alpha)$, then we have $\gcd(d, \beta) = 1$. Thus $d\mid \rel_{\beta}(b + m\alpha)$ means $\rel_{\beta}(b + m\alpha) \in \hat{\mathbb{S}}$.
 
-    For those $b \in \tilde{\mathbb{S}}$, we have $\gcd(b + m\alpha,\ \alpha) = 1$. If $\ram_{\beta}(b + m\alpha) \not\in \mathbb{S}$, then $\exists k \ge 1$, such that $\beta^{k}\equiv \ram_{\beta}(b + m\alpha)^{-1} \cdot \gamma \pmod{a}$. Thus we have
+    For those $b \in \tilde{\mathbb{S}}$, we have $\gcd(b + m\alpha,\ \alpha) = 1$. If $\rel_{\beta}(b + m\alpha) \not\in \mathbb{S}$, then $\exists k \ge 1$, such that $\beta^{k}\equiv \rel_{\beta}(b + m\alpha)^{-1} \cdot \gamma \pmod{a}$. Thus we have
     \vspace{-0.5em}
     \begin{align*}
-        \beta^{k - \fac_{\beta}(b + m\alpha)} &= \beta^{k}\cdot \raf_{\beta}(b + m\alpha)^{-1} \\
-        &\equiv \raf_{\beta}(b + m\alpha) \cdot \ram_{\beta}(b + m\alpha)^{-1} \cdot \gamma &&\pmod{a} \\
+        \beta^{k - \val_{\beta}(b + m\alpha)} &= \beta^{k}\cdot \pow(\beta\mid b + m\alpha)^{-1} \\
+        &\equiv \pow(\beta\mid b + m\alpha) \cdot \rel_{\beta}(b + m\alpha)^{-1} \cdot \gamma &&\pmod{a} \\
         &\equiv (b + m\alpha)^{-1} \cdot \gamma &&\pmod{\alpha} \\
         &\equiv b^{-1} \cdot \gamma &&\pmod{\alpha},
     \end{align*}
-    which implies that $b \not\in \mathbb{S}$, conflicts with the hypothesis. Therefore, it indicates that there must be $\ram_{\beta}(b + m\alpha)\in \tilde{\mathbb{S}}$.
+    which implies that $b \not\in \mathbb{S}$, conflicts with the hypothesis. Therefore, it indicates that there must be $\rel_{\beta}(b + m\alpha)\in \tilde{\mathbb{S}}$.
 \end{proof}
 \begin{remark}
-    Notice that $\beta^{k}$ are periodic modulo $\alpha$, here we should pick a large enough $k$ to make sure $k - \fac_{\beta}(b + m\alpha) \ge 0$.
+    Notice that $\beta^{k}$ are periodic modulo $\alpha$, here we should pick a large enough $k$ to make sure $k - \val_{\beta}(b + m\alpha) \ge 0$.
 \end{remark}
 In fact, not only the original source, but all source values that preserve the reversible structure (reduction sequence) follow a rule similar to \cref{thm:primitive-source-are-periodic}. This is why we discuss $\Phi_{k+1} \mid \alpha\Phi_{k}$, where these source values that preserve the reversible structure are distributed at intervals of some factor of $\alpha$. If we expand our perspective from $\mathbb{N}$ to $\mathbb{Q}$ but those denominator is a power of $\alpha$, then we can find that $b + m\alpha$ also preserves a reduction sequence centered at $b$.

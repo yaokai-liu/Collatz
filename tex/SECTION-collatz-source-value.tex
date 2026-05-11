@@ -1,15 +1,16 @@
 % !TEX root = main.tex
 \section{Collatz Source Value}\label{sec:collatz-source-value}
 
-\begin{definition}
+\begin{definition}~\label{def:source-value-function}\nomenclature{$f_{n}(\bm{v};b)$, $f_n(\bm{v})$}{Source value function of $\bm{v}$ from $b$, \cref{def:source-value-function}}
 From \cref{theorem:any-presequence}, with the same arguments $\alpha$, $\beta$ and $\gamma$, and target value $b\in \widehat{\mathbb{Q}}_{{\beta}}[b]$, for any finite vector $\bm{v} = (v_{1}, v_{2}, \cdots, v_{n}) \in \mathbb{N}^{n}$, we can derive a sequence $\{v_i\}_{i=1}^{n}$ and its accmulation $\mathcal{A}$. With this we can also derive Collatz complement $\mathfrak{V}$ and reduced Collatz complement $\mathfrak{v}$ by arguments $(\alpha, \beta, \gamma)$. And then we have a function $f_n : \mathbb{N}^{n} \to \mathbb{Q}$, that defined as
 \[ f_{n}(\bm{v};b) = b \cdot \frac{\beta^{\mathcal{V}_{n}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot \mathfrak{v}_{n} \in \widehat{\mathbb{Q}}_{{\beta}}[b] \]
 is called the source value from $b$ by $\bm{v}$. In the absence of ambiguity, we denote $f_{n}(\bm{v}) = f_{n}(\bm{v};b)$.
 \end{definition}
 
+\nomenclature{$a \overset{k}{\rightsquigarrow} b$, $a \rightsquigarrow b$}{$a$ will convergent to $b$ (by $k$ steps)}
 And to describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
-If it $k$ doesn't matter, we denote $a \rightsquigarrow b$.
-Immediately, we have
+If it $k$ doesn't matter, we denote $a \rightsquigarrow b$. Notice that we always suppose the step count of $a \rightsquigarrow b$ will never be $0$. If we need to represent $a_0 = b$, we will denote it precisely as $a \overset{0}{\rightsquigarrow} b$.
+With these we have
 \begin{proposition}
     $f_{n}(\bm{v}) \overset{n}{\rightsquigarrow} b$.
 \end{proposition}
@@ -125,11 +126,11 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
     \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
     where the basic adjust fuction is defined as
-    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\raf_{\alpha}\gamma)}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
+    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
     and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
     \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}\beta} - 1)},
     \]
-    and $\delta = \fac_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
+    and $\delta = \val_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
 \end{theorem}
 \begin{proof}
     From \cref{cor:single-vary-rule}, we have
@@ -138,16 +139,16 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     \[\alpha^{k} \mid \gamma\cdot\mathfrak{V}_{k}\cdot(\beta^{s} - 1).\]
     Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
-    We just consider when $\alpha^{k} \nmid \gamma$.
+    When $\alpha^{k} \nmid \gamma$.
     By the Fundamental Theorem of Arithmetic, we have that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
     Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
-    \[ k\cdot\fac_{p}\alpha \le \fac_{p}\gamma + \fac_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \fac_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
-    Here $\delta_2(\beta) = \fac_2(\beta + 1) - 1$ if $p = 2$ else $0$.
-    Rearranging for $\fac_{p}\left(\frac{s}{\ord_{p}\beta}\right)$, we obtain
-    \[ \fac_{p}\left(\frac{s}{\ord_{p}\beta}\right) \ge \fac_{p}(\alpha^{k}) - \fac_{p}\gamma - \fac_{p}(\beta^{\ord_{p}\beta} - 1) - \delta_2(\beta). \]
+    \[ k\cdot\val_{p}\alpha \le \val_{p}\gamma + \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \val_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
+    Here $\delta_2(\beta) = \val_2(\beta + 1) - 1$ if $p = 2$ else $0$.
+    Rearranging for $\val_{p}\left(\frac{s}{\ord_{p}\beta}\right)$, we obtain
+    \[ \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) \ge \val_{p}(\alpha^{k}) - \val_{p}\gamma - \val_{p}(\beta^{\ord_{p}\beta} - 1) - \delta_2(\beta). \]
     Isolating the valuation of $s$, we obtain
-    \[ \fac_{p}s \ge \fac_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right), \]
+    \[ \val_{p}s \ge \val_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right), \]
     which equivalents
     \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right)\ \right\vert\ s. \]
     From \cref{prop:raf-completely-multiplicative}, we have
@@ -157,7 +158,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     Besides, we've assumed $\ord_{p}\beta \mid s$. Aggregate these all $p$ conditions, it follows
     \[ \left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s. \]
     Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s$. So we let
-    \[ \left.\lcm_{p\mid (\alpha^{k}/\raf_{\alpha}\gamma)}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\ \right\vert\ s, \]
+    \[ \left.\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\ \right\vert\ s, \]
     which contains both conditions of $\alpha^{k}\mid \gamma$ or $\alpha^{k}\nmid \gamma$.
     Finally, sum up, we have $\Phi(\alpha,\beta,\gamma;k) \mid s$.
 \end{proof}
@@ -172,7 +173,7 @@ From the proof, we can deduce that
     $\forall i \ge j \ge 0$, we have $\Phi_j \mid \Phi_i$ and $\Phi_i \mid \alpha \Phi_j$.
 \end{corollary}
 \begin{example}~\label{exm:sequence-of-Phi}
-    Suppose $\alpha\in\mathbb{P}$ and $\fac_{\alpha}(\gamma) = k$, then we have
+    Suppose $\alpha\in\mathbb{P}$ and $\val_{\alpha}(\gamma) = k$, then we have
     \[ \{\Phi_i\}_{i=1}^{n} = \{\underbrace{1, 1, \cdots, 1}_{k \text{ count}}, \Phi_{k+1}, \alpha\Phi_{k+1}, \alpha^{2}\Phi_{k+1}, \cdots, \alpha^{n-k-1}\Phi_{k+1}\}. \]
 \end{example}
 \begin{example}
@@ -204,11 +205,11 @@ However, such generalizations are beyond the scope of this paper, which will con
 
 
 Besides these varies in source value, just from the definition of source value, we have a two kinds of important sets.
-\begin{definition}
+\begin{definition}~\label{def:source-value-set}\nomenclature{$\mathbb{F}_{n}(B)$, $\mathbb{F}_{n}(b)$}{All numbers in $\widehat{\mathbb{N}}_{\beta}$ those convergent into $B$, or to $b$ by $n$ steps, \cref{def:source-value-set}}\nomenclature{$\mathbb{V}_{n}(B)$, $\mathbb{V}_{n}(b)$}{All $n$-dim reduce vectors such that source value convergent into $B$, or to $b$, \cref{def:source-value-set}}\nomenclature{$\mathbb{F}(B)$, $\mathbb{F}(b)$}{All numbers in $\widehat{\mathbb{N}}_{\beta}$ those convergent into $B$, or to $b$, include the targets self, \cref{def:source-value-set}}
 Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
-    \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \mathbb{N} \right\},\\
-    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\}.
+    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\},\\
+    \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \widehat{\mathbb{N}}_{\beta} \right\}.
 \end{align*}
 And denote
 \[\mathbb{F}(B) = B\cup\bigcup_{b\in B}\{ a\in \widehat{\mathbb{N}}_{\beta} \mid a\rightsquigarrow b \} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(B)\]
@@ -237,9 +238,20 @@ But since we are calculating the source value, the positive direction of the vec
 Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end.
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
 
-\begin{definition}~\label{def:collatz-character}
-    Denote $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$.
+\begin{definition}~\label{def:collatz-character}\nomenclature{$\chr b$}{Collatz character of $b$, \cref{def:collatz-character}}
+    Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = 0$.
 \end{definition}
+\begin{proposition}
+    If $\alpha \mid \gamma$, then $\chr b = \left\{\begin{aligned}
+        &\beta b, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
+        &0, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
+    \end{aligned}\right.$
+    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = 0$.
+\end{proposition}
+This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $\beta \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = 0$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, it will be discussing in \cref{sec:distribution-of-def:collatz-primitive-source}.
+\begin{proposition}
+    $\chr(a + m\alpha) = \chr a + m\alpha\cdot\pow(\beta\mid\chr a)$.
+\end{proposition}
 From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we can derive
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
@@ -248,7 +260,7 @@ From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, w
         \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \right\}\\
         &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}} \left\{ \left.\sum_{i=1}^{n+1}(k_i\Phi_i + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
-    Here the $\mathbb{S}$ is all primitive source defined as \cref{collatz-primitive-source}.
+    Here the $\mathbb{S}$ is all primitive source defined as \cref{def:collatz-primitive-source}.
 \end{theorem}
 \begin{corollary}~\label{cor:modulo-alpha-of-layers}
    $A_k \equiv\left\{\begin{aligned}
@@ -277,7 +289,7 @@ From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, w
     \end{align*}
 \end{proof}
 \begin{corollary}
-    Let $B = \left\{\beta^{k\Phi}\mid k\in\mathbb{N}\right\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
+    Let $B = \{\beta^{k\Phi}\mid k\in\mathbb{N}\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
     \[ \mathbb{F}_{1}(b) = \frac{\chr b}{\alpha} B - \frac{\gamma}{\alpha}. \]
 \end{corollary}
 
@@ -295,13 +307,13 @@ And the two theorems reveal that elements of $F_{1}(b)$ is in a same class and t
 \begin{definition}
 Denote
 \begin{align*}
-    &\rdu\val(a;i) = \frac{1}{\Phi_1}(\val(a;i) - s_i), \\
+    &\rdu\val(a;i) = \frac{1}{\Phi_1}(\val(a;i) - \val_{\beta}\chr a_i), \\
     &\rdu\mathcal{A}_n = \sum_{k=0}^{n-1}\mathrm{red}\val(a;k + 1).
 \end{align*}
 are the reduced Collatz reduce and reduced Collatz accumulation of $a$.
 \end{definition}
 \begin{proposition}
-    $a_{i} \cdot \beta^{\Phi_1\cdot\rdu\val(a;i) + s_i} = \alpha \cdot a_{i-1} + \gamma$.
+    $\beta^{\Phi_1\cdot\rdu\val(a;i)}\cdot \chr a_{i} = \alpha \cdot a_{i-1} + \gamma$.
 \end{proposition}
 We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\rdu\val(a;n+1)$. $\rdu\mathcal{A}_n$ functions similarly to a $\beta$ power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of the Collatz system.
 
