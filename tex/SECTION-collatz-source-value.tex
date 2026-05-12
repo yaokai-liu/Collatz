@@ -209,20 +209,22 @@ Besides these varies in source value, just from the definition of source value, 
 Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
     \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\},\\
-    \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \widehat{\mathbb{N}}_{\beta} \right\}.
+    \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \mathbb{N} \right\}.
 \end{align*}
 And denote
-\[\mathbb{F}(B) = B\cup\bigcup_{b\in B}\{ a\in \widehat{\mathbb{N}}_{\beta} \mid a\rightsquigarrow b \} = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(B)\]
+\[\mathbb{F}(B) = B\cup\bigcup_{b\in B}\{ a\in \widehat{\mathbb{N}}_{\beta} \mid a\rightsquigarrow b \}\]
 as all numbers that will fall into to $B$.
 Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. When $B = \{b\}$, that's $B$ contains only one number, we also denote as $\mathbb{V}_n(b)$ and $\mathbb{F}_n(b)$.
 \end{definition}
+\begin{proposition}
+    $\mathbb{F}(B) = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(B)$
+\end{proposition}
 \begin{proposition}~\label{prop:source-set-include}
     If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
 \end{proposition}
 \begin{proposition}~\label{prop:source-set-disjoint}
     If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
 \end{proposition}
-For those $b\not\in \mathbb{S}$, we have the two propositions:
 \begin{proposition}~\label{prop:non-cycle-layer-independent}
     If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{F}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{F}_{k}(b) = \varnothing$.
 \end{proposition}
@@ -230,7 +232,7 @@ For those $b\not\in \mathbb{S}$, we have the two propositions:
     If $\exists m \le n$, $\mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
 \end{proof}
 \begin{proposition}~\label{prop:cycle-layer-included}
-If $b \rightsquigarrow b$ in a cycle which period is $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, thus $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
+If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, and hence $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
 \end{proposition}
 
 Actually we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$.
@@ -238,30 +240,52 @@ But since we are calculating the source value, the positive direction of the vec
 Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end.
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
 
+To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we define a special value, which we will see it plays a very important part in consist of source value set.
 \begin{definition}~\label{def:collatz-character}\nomenclature{$\chr b$}{Collatz character of $b$, \cref{def:collatz-character}}
-    Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = 0$.
+    Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = \infty$.
 \end{definition}
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\chr b = \left\{\begin{aligned}
         &\beta b, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
-        &0, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
+        &\infty, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
     \end{aligned}\right.$
-    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = 0$.
+    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = \infty$.
 \end{proposition}
-This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $\beta \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = 0$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, it will be discussing in \cref{sec:distribution-of-def:collatz-primitive-source}.
+This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = \infty$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
 \begin{proposition}
     $\chr(a + m\alpha) = \chr a + m\alpha\cdot\pow(\beta\mid\chr a)$.
 \end{proposition}
-From \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we can derive
+With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
         \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left. A_0 = \frac{\chr a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\chr a - \gamma\right)\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \right\}\\
+        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\chr a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \text{ that } f_{n}(\bm{v};b) = a\right\}\\
         &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}} \left\{ \left.\sum_{i=1}^{n+1}(k_i\Phi_i + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
     Here the $\mathbb{S}$ is all primitive source defined as \cref{def:collatz-primitive-source}.
 \end{theorem}
+\begin{proof}
+    Trivial for $\mathbb{F}_{n}(b) - \mathbb{S} = \varnothing$.\newline
+    Suppose $\mathbb{F}_{n}(b) - \mathbb{S} \ne \varnothing$, which means $\forall a\in \mathbb{F}_{n}(b) - \mathbb{S}$, we have $\chr a < \infty$. Then $A_0 = \frac{\chr a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\val_{\beta}\chr a);b)\in \mathbb{F}_{1}(a)\subset \mathbb{F}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
+    \begin{align*}
+        A_{k+1} &= f_{1}(((k+1)\Phi_1 + \val_{\beta}\chr a);b) \\
+        &= f_{1}((\Phi_1 + (k\Phi_1 + \val_{\beta}\chr a));b) \\
+        &= \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1) \\
+        &= \beta^{(k+1)\Phi_1} A_{0} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
+        &= \beta^{(k+1)\Phi_1}\cdot \frac{\chr a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
+        &= \beta^{(k+1)\Phi_1}\cdot \frac{\chr a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
+        &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\chr a - \frac{\gamma}{\alpha}
+    \end{align*}
+    From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{F}_{n+1}(b)$. \newline
+    On the other hand, $\forall a\in\mathbb{F}_{n+1}(b)$, from \cref{prop:rewritten-collatz-rule}, we have
+    \[\beta^{\rdu\val(a;1)\Phi_1}\chr a_1 = \alpha a + \gamma. \]
+    And $a_1\in\mathbb{F}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\rdu\val(a;1)\Phi_1}\cdot\chr a_1 - \frac{\gamma}{\alpha}$ in the set of right side.\newline
+    In conclusion, the theorem holds for $\mathbb{F}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
+\end{proof}
+\begin{remark}
+    Notice that in $\sum_{i=1}^{n+1}(k_i\Phi_i + \chr a_i)\bm{e}_{i}$, the start number $a$ is in $\mathbb{F}_{n+1}(b)$ instead of $\mathbb{F}_{n}(b)$, thus $a_i\in\mathbb{F}_{n-i+1}(b)$.
+\end{remark}
 \begin{corollary}~\label{cor:modulo-alpha-of-layers}
    $A_k \equiv\left\{\begin{aligned}
         &k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\alpha \nmid \gamma,\\
@@ -312,7 +336,7 @@ Denote
 \end{align*}
 are the reduced Collatz reduce and reduced Collatz accumulation of $a$.
 \end{definition}
-\begin{proposition}
+\begin{proposition}~\label{prop:rewritten-collatz-rule}
     $\beta^{\Phi_1\cdot\rdu\val(a;i)}\cdot \chr a_{i} = \alpha \cdot a_{i-1} + \gamma$.
 \end{proposition}
 We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\rdu\val(a;n+1)$. $\rdu\mathcal{A}_n$ functions similarly to a $\beta$ power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of the Collatz system.
