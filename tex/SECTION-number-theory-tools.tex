@@ -10,7 +10,7 @@ Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they 
     $\frac{p_1}{q_1}\mid \frac{p_2}{q_2} \Longleftrightarrow p_1\mid p_2$.
 \end{proposition}
 \begin{proposition}
-    If $a \mid c$ and $b \mid c$, then $ ab \mid c$.
+    If $a \mid c$ and $b \mid c$, and $\gcd(a, b) = 1$, then $ ab \mid c$.
 \end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}~\label{def:order-under-modulo}\nomenclature{$\ord_{a}b$}{The order of $b$ modulo $a$, \cref{def:order-under-modulo}}
@@ -39,7 +39,7 @@ Otherwise, we denote $\Log_{a, b}x = \varnothing$.
 And we denote
 \[- \Log_{a, b}x = \ord_a(b)\mathbb{Z} - \log_{a, b}x.\]
 \end{definition}
-We call $\log_{a, b}(x)$ the principal logarithm of $x$ based on $b$ modulo $a$, and $\Log_{a, b}(x)$ the logarithms of $x$ based on $b$ modulo $a$, and define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
+We call $\log_{a, b}(x)$ the principal logarithm of $x$ based on $b$ modulo $a$, and $\Log_{a, b}(x)$ the logarithms of $x$ based on $b$ modulo $a$, and we will define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
 Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and $\Log_{a,b}x$.
 \begin{proposition}
     $x^{\log_{a, b}x} \equiv x \pmod{b}$.
@@ -63,7 +63,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \begin{proposition}
     If $c \mid a$ and $a \mid b$, then $\val_{c}b \ge \val_{c}a \cdot \val_{a}b$.
 \end{proposition}
-\begin{definition}~\label{def:radical}\nomenclature{$\rad a$}{radical of $a$, \cref{def:order-under-modulo}}\nomenclature{$\Pi(S\mid a)$}{all factors of $a$ in $S$, \cref{def:order-under-modulo}}
+\begin{definition}~\label{def:radical}\nomenclature{$\rad a$}{Radical of $a$, \cref{def:order-under-modulo}}\nomenclature{$\Pi(S\mid a)$}{All factors of $a$ in $S$, \cref{def:radical}}
     Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Pi(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$.
 \end{definition}
 \begin{proposition}

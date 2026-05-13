@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 % \usepackage{arxiv}
 \usepackage{xeCJK}
-\usepackage{amsmath,amssymb,amsthm,stackrel,nccmath,bm}
+\usepackage{amsmath,amssymb,amsthm,stackrel,nccmath,bm,mathtools}
 \usepackage{color,xcolor}
 \usepackage{fontspec}
 \usepackage[lite,subscriptcorrection,slantedGreek]{mtpro2}
@@ -68,6 +68,8 @@
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\card}{card}
 \DeclareMathOperator*{\chr}{chr}
+\DeclareMathOperator{\st}{st}
+\newcommand\nonstd[1]{\prescript{*}{}{#1}}
 
 % \title{{On Dynamical Systems With $a_{k+1}\cdot\beta^{\Delta_{k+1}} = \alpha\cdot a_{k} + \gamma$ as Recursive Rule}}
 \title{On the General Collatz Sequence: $\alpha \cdot a + \gamma$ reduced by $\beta$}
@@ -77,8 +79,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    This paper explores various properties of generalized Collatz sequences of the form $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$, and extends this form to the rational number field $\mathbb{Q}$ and finds it's a kind of $(\sigma, \tau)$-derivation of groupoid. We construct a hierarchical model for the source value set in $\mathbb{N}$. We prove that the logarithmic density of the latent algebraic structure in these sets can be preserved, thus providing a comprehensive algebraic landscape for discrete iterative processes. We analyze a certain sub-type of general Collatz system, they are similar to the $3n+1$ problem, and give a classification of its source value sets. In particular, we provide a positive results for the original conjecture. Finally, this paper also explores the power difference problem from the perspective of dynamical systems.
-    % And a proof of the $3n + 1$ conjecture is then provided.
+    This paper explores the algebraic and dynamic properties of general Collatz systems governed by the relation $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$. We discover the periodic properties of the reduce sequences and subsequently construct a hierarchical model for the corresponding source value sets. Furthermore, we prove that the underlying algebraic structure of these sets exhibits strong rigidity, remaining invariant under a specific class of arithmetic densities; this establishes that the densities of these source value sets are proportional. Leveraging these invariants, we classify the source value landscapes for a simple class of general Collatz systems, thereby offering measure-theoretic insights toward the original conjecture. Finally, we formalize the Collatz system as a $(\sigma, \tau)$-derivation over a groupoid structure. This formulation reveals a connection between general Collatz systems and the power difference problem, thus providing a dynamical systems perspective for Diophantine approximation analysis.
 \end{abstract}
 \newpage
 \printnomenclature

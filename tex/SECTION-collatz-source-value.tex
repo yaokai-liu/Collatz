@@ -47,8 +47,7 @@ Where
     \[ \mathfrak{u}_{n} = \sum_{k=0}^{n-1}\frac{\beta^{\mathcal{U}_k}}{\alpha^{k}} = \sum_{k=0}^{n-1}\frac{\beta^{\mathcal{V}_k + \Delta\mathcal{V}_k}}{\alpha^{k}}. \]
     Then
     \begin{align*}
-        & f_{n}(\bm{u}) - \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) \\
-        =& \frac{\gamma}{\alpha}\cdot\left(\beta^{\Delta\mathcal{V}_{n}}\cdot\mathfrak{v}_{n} - \mathfrak{u}_{n} \right) \\
+        & f_{n}(\bm{u}) - \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) = \frac{\gamma}{\alpha}\cdot\left(\beta^{\Delta\mathcal{V}_{n}}\cdot\mathfrak{v}_{n} - \mathfrak{u}_{n} \right) \\
         =&\frac{\gamma}{\alpha^{n}}\cdot\left(\beta^{\Delta\mathcal{V}_{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k}}\cdot\alpha^{n-k-1} - \sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k}+\Delta\mathcal{V}_{k}}\cdot\alpha^{n-k-1} \right) \\
         =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k}}\cdot(\beta^{\Delta\mathcal{V}_{n}} - \beta^{\Delta\mathcal{V}_{k}})\cdot\alpha^{n-k-1} \\
         =&\frac{\gamma}{\alpha^{n}}\cdot\sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k}}\cdot\alpha^{n-k-1}\cdot\beta^{\Delta\mathcal{V}_{k}}\cdot(\beta^{\Delta\mathcal{V}_{n}^{k}} - 1) \\
@@ -122,7 +121,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
 %     If $f_{n}(\bm{v}) = \frac{q}{\alpha^{m}}$, then $f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}$ only when $s$ holds
 %     \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{V}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 % \end{corollary}
-\begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
+\begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}\nomenclature{$\Phi(\alpha,\beta,\gamma;k)$, $\Phi(k)$}{Basic adjust fuction of reduce sequence, \cref{thm:the-periodic-rule-of-reduce-sequence}}\nomenclature{$\Psi(\alpha,\beta,\gamma)$}{Auxiliary part of the basic adjust fuction of reduce sequence, \cref{thm:the-periodic-rule-of-reduce-sequence}}
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
     \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
     where the basic adjust fuction is defined as
@@ -140,7 +139,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
     When $\alpha^{k} \nmid \gamma$.
-    By the Fundamental Theorem of Arithmetic, we have that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
     Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
     \[ k\cdot\val_{p}\alpha \le \val_{p}\gamma + \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \val_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
@@ -164,7 +163,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
 \end{proof}
 In the absence of ambiguity, we denote $\Phi(k) = \Phi(\alpha, \beta, \gamma; k)$.
 We have to mention that the divisibility in this proof is not the common divisibility between integers, instead of the \cref{def:extend-divisibility}. It implies that, although the derived value of $\Phi(k)$ may be a fraction, we require $s \in \mathbb{N}$, and $s$ must be a multiple of the numerator of that fractional value in its reduced form. Since the denumerator of all $\Phi(k)$ are $\Psi(\alpha,\beta,\gamma)$ and we will not pay too much attention on it.
-Thus we denote $\Phi_k$ as the numerator of $\Phi(k)$'s reduced form.
+Thus we denote $\Phi_k$ as the numerator of $\Phi(k)$'s reduced form.\nomenclature{$\Phi_k$}{Then basic adjust value of reduce sequence}
 From the proof, we can deduce that
 \begin{corollary}
     $\forall s \in\mathbb{N}$, we have $\alpha^{k} \mid \gamma\cdot(\beta^{s\cdot\Phi_k} - 1)$.
@@ -241,19 +240,23 @@ Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimens
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
 
 To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we define a special value, which we will see it plays a very important part in consist of source value set.
-\begin{definition}~\label{def:collatz-character}\nomenclature{$\chr b$}{Collatz character of $b$, \cref{def:collatz-character}}
-    Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = \infty$.
+\begin{definition}~\label{def:collatz-character}\nomenclature{$\chr b$, $\chr B$}{Collatz character of $b$ or of elements in set $B$, not includes $0$, \cref{def:collatz-character}}
+Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = 0$. All numbers that Collatz character is $\infty$ are denoted as $\mathbb{S}$.
+And given $B \subset \widehat{\mathbb{N}}_\beta$, we denote that $\chr B = \{ \chr b \mid b\in B \} - \{ 0 \}$.
 \end{definition}
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\chr b = \left\{\begin{aligned}
         &\beta b, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
-        &\infty, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
+        &0, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
     \end{aligned}\right.$
-    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = \infty$.
+    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = 0$.
 \end{proposition}
-This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = \infty$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
+This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = 0$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
 \begin{proposition}
-    $\chr(a + m\alpha) = \chr a + m\alpha\cdot\pow(\beta\mid\chr a)$.
+    If $a\not\in\mathbb{S}$, then $\val_{\beta} \chr a = \log_{\beta,\alpha}(a^{-1}\cdot \gamma)$. And we have $\chr a = \pow(\beta\mid \chr a) \cdot a$.
+\end{proposition}
+\begin{proposition}
+    $\val_{\beta}\chr a = \val_{\beta}\chr (a+m\alpha)$. Here $m\in\mathbb{N}$. Thus we have $\chr(a + m\alpha) = \chr a + m\alpha\cdot\pow(\beta\mid\chr a) = \pow(\beta\mid\chr a) \cdot (a + m\alpha)$.
 \end{proposition}
 With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
@@ -315,6 +318,9 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
 \begin{corollary}
     Let $B = \{\beta^{k\Phi}\mid k\in\mathbb{N}\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
     \[ \mathbb{F}_{1}(b) = \frac{\chr b}{\alpha} B - \frac{\gamma}{\alpha}. \]
+\end{corollary}
+\begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-chr-set}
+    $\mathbb{F}_{n+1}(b) = \bigcup_{k=0}^{\infty}\frac{1}{\alpha}\beta^{k\Phi_1}\chr\mathbb{F}_{n}(b) - \frac{\gamma}{\alpha}$
 \end{corollary}
 
 \cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
