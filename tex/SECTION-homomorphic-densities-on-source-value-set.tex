@@ -19,7 +19,7 @@ In this section, we will always suppose arguments follows \cref{thm:source-set-d
 
 From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{F}(b)\cap\mathbb{F}(1) = \varnothing$, that means the logarithm density of $\mathbb{F}(b)$ will be $0$. Since $\mathbb{F}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
 
-Summary, if we can find a such homomorphic density and prove the density of $\mathbb{F}(1)$ is almost $\frac{1}{2}$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture. 
+Summary, if we can find a such homomorphic density and prove the density of $\mathbb{F}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture. 
 At the same time, we have to say, under the general condition of \cref{thm:source-set-dijoint-primitive-source} instead of $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
 
 Now let's introduce a kind of density:
@@ -29,8 +29,8 @@ Now let's introduce a kind of density:
 	\begin{itemize}
 		\item[1.] $\mu\mathbb{H}_{\ge 1} = 1$, $\mu\varnothing = 0$ and $\forall a\in \mathbb{H}_{\ge 1}$, $\mu\{a\} = \st\omega(a)$\nomenclature{$\st a$}{Standard part of a non-standard number};
 		\item[2.] If $A, B \in \mathcal{L}(\mathbb{H}_{\ge 1})$ and $A \cap B = \varnothing$, then $\mu(A\cup B) = \mu A + \mu B$;
-		\item[3.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$, given $a \in \mathbb{N}$, $\mu(aA) = \frac{1}{a}\mu{A}$;
-		\item[4.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$, given $b \in \mathbb{N}$, $\mu(A + b) = \mu{A}$;
+		\item[3.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$ is infinite set, given $a \in \mathbb{N}$, $\mu(aA) = \frac{1}{a}\mu{A}$;
+		\item[4.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$ is infinite set, given $b \in \mathbb{N}$, $\mu(A + b) = \mu{A}$;
 		\item[5.] Given a sequence of pairwise disjoint sets $\{A_{n}\}_{n=1}^{\infty} \subset \mathcal{L}(\mathbb{H}_{\ge 1})$, we have $\mu\bigcup_{n=1}^{\infty}A_n = \sum_{n=1}^{\infty}\mu A_n$.
 	\end{itemize}
 \end{definition}
@@ -75,32 +75,59 @@ Now let's introduce a kind of density:
 \end{example}
 \begin{theorem}~\label{thm:proportional-of-density-of-source-value-set}
 	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$, there is
-	\[ \chr a\cdot\mu\mathbb{F}(a) = \chr b\cdot\mu\mathbb{F}(b). \]
+	\[\chr a \cdot\mu\mathbb{F}(a) = \chr b \cdot\mu\mathbb{F}(b). \]
 \end{theorem}
 \begin{lemma}
-	If $b\not\rightsquigarrow b$, then $\mu\mathbb{F}(b) = \frac{\alpha \beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\cdot \mu\chr\mathbb{F}(b)$.
+	If $b\not\rightsquigarrow b$, then $\forall n\in\mathbb{N}$, $\mu\mathbb{F}_{n+1}(b) = \frac{\alpha \beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\cdot \mu\chr\mathbb{F}_{n}(b)$.
 \end{lemma}
 \begin{proof}
-	Since $b\not\rightsquigarrow b$, we have $\forall i, j \in \mathbb{N}$, $\mathbb{F}_{i}(b)\cap\mathbb{F}_{j}(b) = \varnothing$.
+	Since $b\not\rightsquigarrow b$, we have $\forall n \in \mathbb{N}$, $\mathbb{F}_{n+1}(b)\cap\chr\mathbb{F}_{n}(b) = \varnothing$.
 	Then from \cref{cor:source-value-set-equivlants-its-pre-chr-set}, we have
 	\begin{align*}
 		\mu\mathbb{F}_{n+1}(b) &= \mu\bigcup_{k=0}^{\infty}\frac{1}{\alpha}\beta^{k\Phi_1}\chr\mathbb{F}_{n}(b) - \frac{\gamma}{\alpha} \\
-		&= \sum_{k=0}^{\infty}\mu\left(\frac{1}{\alpha}\beta^{k\Phi_1}\chr\mathbb{F}_{n}(b) - \frac{\gamma}{\alpha}\right) \\
+		% &= \sum_{k=0}^{\infty}\mu\left(\frac{1}{\alpha}\beta^{k\Phi_1}\chr\mathbb{F}_{n}(b) - \frac{\gamma}{\alpha}\right) \\
 		&= \sum_{k=0}^{\infty}\alpha\beta^{-k\Phi_1}\mu\chr\mathbb{F}_{n}(b) \\
-		&= \mu\chr\mathbb{F}_{n}(b)\cdot\sum_{k=0}^{\infty}\alpha\beta^{-k\Phi_1} \\
+		&= \mu\chr\mathbb{F}_{n}(b)\cdot\alpha\sum_{k=0}^{\infty}\beta^{-k\Phi_1} \\
 		&= \frac{\alpha \beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\cdot \mu\chr\mathbb{F}_{n}(b).
 	\end{align*}
-	Thus we have
+\end{proof}
+\begin{lemma}
+	$\forall n \ge 1$, we have
+	\[\mu\chr\mathbb{F}_{n}(b) = \mu\mathbb{F}_{n}(b)\cdot\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\cdot\beta^{(\alpha-1)\Phi_1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}.\]
+	Here $v(i)$ only depends on the distribution of remainder of power of $\beta$ modulo $\alpha$.
+\end{lemma}
+\begin{proof}
 	\begin{align*}
-		\mu\mathbb{F}(b) &= \mu\left(\{b\}\cup\bigcup_{n=1}^{\infty}\mathbb{F}_{n}(b)\right) \\
-		&= \sum_{n=1}^{\infty}\mu\mathbb{F}_{n}(b) \\
-		&= \frac{\alpha \beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\cdot \sum_{n=0}^{\infty}\mu\chr\mathbb{F}_{n}(b) \\
-		&= \frac{\alpha \beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\cdot \mu\chr\mathbb{F}(b).
+		\mu\chr\mathbb{F}_{n}(b) &= \mu\{ \beta^{v(a\fmod\alpha)}\cdot a \mid a\in \mathbb{F}_{n}(b) \} \\
+		&= \mu\bigcup_{i=1}^{\alpha-1}\{\beta^{v(i)}\cdot a \mid a\in \mathbb{F}_{n}(b), a\equiv i\pmod{\alpha}\} \\
+		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\mu\{a\in \mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}
+	\end{align*}
+	Denote $\widetilde{\mathbb{F}_{n}(b)}_{i} = \{a\in \mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}$.
+	From \cref{thm:source-set-dijoint-primitive-source}, the elements of $\mathbb{F}_{n}(b)$ are cycled and ergodic modulo $\alpha$. Thus $\forall i , j < \alpha$, we have
+	\[ \beta^{i\Phi_1}\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \beta^{j\Phi_1}\widetilde{\mathbb{F}_{n}(b)}_{j}. \]
+	Let $x = \beta^{i\Phi_1}\widetilde{\mathbb{F}_{n}(b)}_{i}$, we have
+	\[\mu\mathbb{F}_{n}(b) = \sum_{i=0}^{\alpha-1}\beta^{-i\Phi_1}x = \frac{x}{\beta^{(\alpha-1)\Phi_1}}\cdot\frac{\beta^{\alpha\Phi_1} - 1}{\beta^{\Phi_1} - 1}.\]
+	Thus $\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \frac{\beta^{\alpha\Phi_1}}{\beta^{(i+1)\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)$. And then we have
+	\begin{align*}
+		\mu\chr\mathbb{F}_{n}(b) &= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\mu\widetilde{\mathbb{F}_{n}(b)}_{i} \\
+		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\frac{\beta^{\alpha\Phi_1}}{\beta^{(i+1)\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)\\
+		&= \mu\mathbb{F}_{n}(b)\cdot\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\cdot\beta^{(\alpha-1)\Phi_1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}
 	\end{align*}
 \end{proof}
-% \begin{proof}[Proof of \cref{thm:proportional-of-density-of-source-value-set}]
-	
-% \end{proof}
+\begin{lemma}
+	If $b\not\rightsquigarrow b$, $\forall n\ge 1$, we have
+	\[ \mu\mathbb{F}_{n+1}(b) =  \mu\mathbb{F}_{n}(b)\cdot\frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}. \]
+\end{lemma}
+\begin{proof}[Proof of \cref{thm:proportional-of-density-of-source-value-set}]
+	Denote $\mathcal{K} = \frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}$, we have
+	\[ \mathcal{K} < \frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-i\Phi_1} = \frac{\alpha \cdot\beta ^{\Phi _{1}}}{\beta ^{\Phi _{1}}-1}\cdot\frac{\beta^{(\alpha -1)\Phi _{1}}-1}{\beta ^{\alpha \Phi _{1}}-1} < 1. \]
+	And we have
+	\[ \mu\mathbb{F}(b) = \mu\left(\{b\}\cup\bigcup_{n=1}^{\infty}\mathbb{F}_{n}(b)\right) = \sum_{n=1}^{\infty}\mathcal{K}^{n-1}\mu\mathbb{F}_{1}(b) = \frac{1}{1 - \mathcal{K}}\cdot\mu\mathbb{F}_{1}(b). \]
+	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$.
+	From \cref{cor:form-of-1-step-source-value-set}, we can derive that $\frac{\mu\mathbb{F}_{1}(a)}{\mu\mathbb{F}_{1}(a)} = \frac{\chr b}{\chr a}$, thus we have $\frac{\mu\mathbb{F}(a)}{\mu\mathbb{F}(b)} = \frac{\chr b}{\chr a}$, which exactly is
+	\[ \chr a \cdot\mu\mathbb{F}(a) = \chr b \cdot\mu\mathbb{F}(b). \]
+\end{proof}
 \begin{corollary}
 	$\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$ we have $\mu\mathbb{F}(b) \ne 0$.
 \end{corollary}
+We have to recall that, all conclusions of $\mathbb{F}(b)$ in this section are base on the condition of \cref{thm:source-set-dijoint-primitive-source}.

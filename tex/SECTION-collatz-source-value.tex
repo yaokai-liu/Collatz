@@ -241,17 +241,17 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
 
 To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we define a special value, which we will see it plays a very important part in consist of source value set.
 \begin{definition}~\label{def:collatz-character}\nomenclature{$\chr b$, $\chr B$}{Collatz character of $b$ or of elements in set $B$, not includes $0$, \cref{def:collatz-character}}
-Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = 0$. All numbers that Collatz character is $\infty$ are denoted as $\mathbb{S}$.
-And given $B \subset \widehat{\mathbb{N}}_\beta$, we denote that $\chr B = \{ \chr b \mid b\in B \} - \{ 0 \}$.
+Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = \infty$. All numbers that Collatz character is $\infty$ are denoted as $\mathbb{S}$.
+And given $B \subset \widehat{\mathbb{N}}_\beta$, we denote that $\chr B = \{ \chr b \mid b\in B \} - \{ \infty \}$.
 \end{definition}
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\chr b = \left\{\begin{aligned}
         &\beta b, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
-        &0, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
+        &\infty, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
     \end{aligned}\right.$
-    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = 0$.
+    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = \infty$.
 \end{proposition}
-This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = 0$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
+This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = \infty$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
 \begin{proposition}
     If $a\not\in\mathbb{S}$, then $\val_{\beta} \chr a = \log_{\beta,\alpha}(a^{-1}\cdot \gamma)$. And we have $\chr a = \pow(\beta\mid \chr a) \cdot a$.
 \end{proposition}
@@ -315,7 +315,7 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
         \equiv& \beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.   &&\pmod{\alpha}
     \end{align*}
 \end{proof}
-\begin{corollary}
+\begin{corollary}~\label{cor:form-of-1-step-source-value-set}
     Let $B = \{\beta^{k\Phi}\mid k\in\mathbb{N}\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
     \[ \mathbb{F}_{1}(b) = \frac{\chr b}{\alpha} B - \frac{\gamma}{\alpha}. \]
 \end{corollary}
