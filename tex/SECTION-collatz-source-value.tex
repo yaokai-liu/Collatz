@@ -127,7 +127,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     where the basic adjust fuction is defined as
     \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
     and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
-    \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}\beta} - 1)},
+    \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\pow(p\mid\gamma\cdot2^{\delta})\cdot\pow(p\mid\beta^{\ord_{p}\beta} - 1)},
     \]
     and $\delta = \val_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
 \end{theorem}
@@ -149,11 +149,11 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     Isolating the valuation of $s$, we obtain
     \[ \val_{p}s \ge \val_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right), \]
     which equivalents
-    \[ \left.\raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right)\ \right\vert\ s. \]
+    \[ \left.\pow\left(p\mid\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right)\ \right\vert\ s. \]
     From \cref{prop:raf-completely-multiplicative}, we have
-    \[ \raf_{p}\left(\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right) = \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}\beta}{\raf_{p}(\beta^{\ord_{p}\beta} - 1)}, \]
-    which implies the divisibility
-    \[ \left. \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})}\cdot\frac{\raf_{p}\ord_{p}\beta}{\raf_{p}(\beta^{\ord_{p}\beta} - 1)} = \frac{(\raf_{p}\alpha)^{k}}{\raf_{p}(\gamma\cdot2^{\delta})\cdot\raf_{p}(\beta^{\ord_{p}\beta} - 1)}\ \right\vert\ s. \]
+    \[ \pow\left(p\mid\frac{\alpha^{k}\cdot\ord_{p}\beta}{\gamma\cdot(\beta^{\ord_{p}\beta} - 1)\cdot2^{\delta}}\right) = \frac{\pow(p\mid\alpha)^{k}}{\pow(p\mid\gamma\cdot2^{\delta})}\cdot\frac{\pow(p\mid\ord_{p}\beta)}{\pow(p\mid\beta^{\ord_{p}\beta} - 1)}. \]
+    Notice that $\pow(p\mid\ord_{p}\beta) = 1$， thus we have
+    \[ \left. \frac{\pow(p\mid\alpha)^{k}}{\pow(p\mid\gamma\cdot2^{\delta})\cdot\pow(p\mid\beta^{\ord_{p}\beta} - 1)}\ \right\vert\ s. \]
     Besides, we've assumed $\ord_{p}\beta \mid s$. Aggregate these all $p$ conditions, it follows
     \[ \left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s. \]
     Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s$. So we let
@@ -252,7 +252,7 @@ And given $B \subset \widehat{\mathbb{N}}_\beta$, we denote that $\chr B = \{ \c
     If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = \infty$.
 \end{proposition}
 This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = \infty$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
-\begin{proposition}
+\begin{proposition}~\label{prop:collatz-character-1}
     If $a\not\in\mathbb{S}$, then $\val_{\beta} \chr a = \log_{\beta,\alpha}(a^{-1}\cdot \gamma)$. And we have $\chr a = \pow(\beta\mid \chr a) \cdot a$.
 \end{proposition}
 \begin{proposition}
@@ -316,8 +316,8 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
     \end{align*}
 \end{proof}
 \begin{corollary}~\label{cor:form-of-1-step-source-value-set}
-    Let $B = \{\beta^{k\Phi}\mid k\in\mathbb{N}\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
-    \[ \mathbb{F}_{1}(b) = \frac{\chr b}{\alpha} B - \frac{\gamma}{\alpha}. \]
+    Denote $\mathbb{B} = \{\beta^{k\Phi}\mid k\in\mathbb{N}\}$. $\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have
+    \[ \mathbb{F}_{1}(b) = \frac{\chr b}{\alpha}\mathbb{B} - \frac{\gamma}{\alpha}. \]
 \end{corollary}
 \begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-chr-set}
     $\mathbb{F}_{n+1}(b) = \bigcup_{k=0}^{\infty}\frac{1}{\alpha}\beta^{k\Phi_1}\chr\mathbb{F}_{n}(b) - \frac{\gamma}{\alpha}$

@@ -31,7 +31,7 @@ Now let's introduce a kind of density:
 		\item[2.] If $A, B \in \mathcal{L}(\mathbb{H}_{\ge 1})$ and $A \cap B = \varnothing$, then $\mu(A\cup B) = \mu A + \mu B$;
 		\item[3.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$ is infinite set, given $a \in \mathbb{N}$, $\mu(aA) = \frac{1}{a}\mu{A}$;
 		\item[4.] Suppose $A \in \mathcal{L}(\mathbb{H}_{\ge 1})$ is infinite set, given $b \in \mathbb{N}$, $\mu(A + b) = \mu{A}$;
-		\item[5.] Given a sequence of pairwise disjoint sets $\{A_{n}\}_{n=1}^{\infty} \subset \mathcal{L}(\mathbb{H}_{\ge 1})$, we have $\mu\bigcup_{n=1}^{\infty}A_n = \sum_{n=1}^{\infty}\mu A_n$.
+		\item[5.] Given a sequence of pairwise disjoint infinite sets $\{A_{n}\}_{n=1}^{\infty} \subset \mathcal{L}(\mathbb{H}_{\ge 1})$, we have $\mu\bigcup_{n=1}^{\infty}A_n = \sum_{n=1}^{\infty}\mu A_n$.
 	\end{itemize}
 \end{definition}
 \begin{remark}
@@ -74,7 +74,7 @@ Now let's introduce a kind of density:
 	Sum up we proved $\delta$ is an non-standard arithmetic density.
 \end{example}
 \begin{theorem}~\label{thm:proportional-of-density-of-source-value-set}
-	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$, there is
+	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$, there is
 	\[\chr a \cdot\mu\mathbb{F}(a) = \chr b \cdot\mu\mathbb{F}(b). \]
 \end{theorem}
 \begin{lemma}
@@ -97,37 +97,40 @@ Now let's introduce a kind of density:
 	Here $v(i)$ only depends on the distribution of remainder of power of $\beta$ modulo $\alpha$.
 \end{lemma}
 \begin{proof}
+	From \cref{prop:collatz-character-1}, we have $\val_{\beta}\chr a$ only depends on the distribution of remainder of power of $\beta$ modulo $\alpha$, denote it as $v(a \fmod \alpha)$, we have
 	\begin{align*}
 		\mu\chr\mathbb{F}_{n}(b) &= \mu\{ \beta^{v(a\fmod\alpha)}\cdot a \mid a\in \mathbb{F}_{n}(b) \} \\
 		&= \mu\bigcup_{i=1}^{\alpha-1}\{\beta^{v(i)}\cdot a \mid a\in \mathbb{F}_{n}(b), a\equiv i\pmod{\alpha}\} \\
-		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\mu\{a\in \mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}
+		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\mu\{a\in \mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}.
 	\end{align*}
 	Denote $\widetilde{\mathbb{F}_{n}(b)}_{i} = \{a\in \mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}$.
-	From \cref{thm:source-set-dijoint-primitive-source}, the elements of $\mathbb{F}_{n}(b)$ are cycled and ergodic modulo $\alpha$. Thus $\forall i , j < \alpha$, we have
-	\[ \beta^{i\Phi_1}\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \beta^{j\Phi_1}\widetilde{\mathbb{F}_{n}(b)}_{j}. \]
+	From \cref{thm:source-set-dijoint-primitive-source}, the elements of $\mathbb{F}_{n}(b)$ are cycled and ergodic modulo $\alpha$. Thus $\forall i , j$ that $\alpha \ge i, j > 0$, we have
+	\[ \beta^{i\Phi_1}\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \beta^{j\Phi_1}\mu\widetilde{\mathbb{F}_{n}(b)}_{j}. \]
 	Let $x = \beta^{i\Phi_1}\widetilde{\mathbb{F}_{n}(b)}_{i}$, we have
-	\[\mu\mathbb{F}_{n}(b) = \sum_{i=0}^{\alpha-1}\beta^{-i\Phi_1}x = \frac{x}{\beta^{(\alpha-1)\Phi_1}}\cdot\frac{\beta^{\alpha\Phi_1} - 1}{\beta^{\Phi_1} - 1}.\]
-	Thus $\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \frac{\beta^{\alpha\Phi_1}}{\beta^{(i+1)\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)$. And then we have
+	\[\mu\mathbb{F}_{n}(b) = \sum_{i=1}^{\alpha}\beta^{-i\Phi_1}x = \frac{x}{\beta^{\alpha\Phi_1}}\cdot\frac{\beta^{\alpha\Phi_1} - 1}{\beta^{\Phi_1} - 1}.\]
+	Thus $\mu\widetilde{\mathbb{F}_{n}(b)}_{i} = \frac{\beta^{\alpha\Phi_1}}{\beta^{i\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)$. And then we have
 	\begin{align*}
 		\mu\chr\mathbb{F}_{n}(b) &= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\mu\widetilde{\mathbb{F}_{n}(b)}_{i} \\
-		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\frac{\beta^{\alpha\Phi_1}}{\beta^{(i+1)\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)\\
-		&= \mu\mathbb{F}_{n}(b)\cdot\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\cdot\beta^{(\alpha-1)\Phi_1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}
+		&= \sum_{i=1}^{\alpha-1}\beta^{-v(i)}\frac{\beta^{\alpha\Phi_1}}{\beta^{i\Phi_1}}\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\mu\mathbb{F}_{n}(b)\\
+		&= \mu\mathbb{F}_{n}(b)\cdot\frac{\beta^{\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1}\cdot\beta^{\alpha\Phi_1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}.
 	\end{align*}
 \end{proof}
 \begin{lemma}
 	If $b\not\rightsquigarrow b$, $\forall n\ge 1$, we have
-	\[ \mu\mathbb{F}_{n+1}(b) =  \mu\mathbb{F}_{n}(b)\cdot\frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}. \]
+	\[ \mu\mathbb{F}_{n+1}(b) =  \mu\mathbb{F}_{n}(b)\cdot\frac{\alpha\beta^{(\alpha+1)\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}. \]
 \end{lemma}
 \begin{proof}[Proof of \cref{thm:proportional-of-density-of-source-value-set}]
-	Denote $\mathcal{K} = \frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}$, we have
-	\[ \mathcal{K} < \frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-i\Phi_1} = \frac{\alpha \cdot\beta ^{\Phi _{1}}}{\beta ^{\Phi _{1}}-1}\cdot\frac{\beta^{(\alpha -1)\Phi _{1}}-1}{\beta ^{\alpha \Phi _{1}}-1} < 1. \]
-	And we have
-	\[ \mu\mathbb{F}(b) = \mu\left(\{b\}\cup\bigcup_{n=1}^{\infty}\mathbb{F}_{n}(b)\right) = \sum_{n=1}^{\infty}\mathcal{K}^{n-1}\mu\mathbb{F}_{1}(b) = \frac{1}{1 - \mathcal{K}}\cdot\mu\mathbb{F}_{1}(b). \]
-	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$.
-	From \cref{cor:form-of-1-step-source-value-set}, we can derive that $\frac{\mu\mathbb{F}_{1}(a)}{\mu\mathbb{F}_{1}(a)} = \frac{\chr b}{\chr a}$, thus we have $\frac{\mu\mathbb{F}(a)}{\mu\mathbb{F}(b)} = \frac{\chr b}{\chr a}$, which exactly is
+	Denote $\mathcal{K} = \frac{\alpha\beta^{(\alpha+1)\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}$, we have
+	\[ \mu\mathbb{F}(b) = \mu\left(\{b\}\cup\bigcup_{n=1}^{\infty}\mathbb{F}_{n}(b)\right) = \mu\mathbb{F}_{1}(b)\cdot\sum_{n=0}^{\infty}\mathcal{K}^{n} = \frac{\alpha}{\chr b}\cdot\mu \mathbb{B}\sum_{n=0}^{\infty}\mathcal{K}^{n}. \]
+	Since $\mu \mathbb{B}\sum_{n=0}^{\infty}\mathcal{K}^{n}$ is always a constant value, thus, given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$, we can derive that $\frac{\mu\mathbb{F}(a)}{\mu\mathbb{F}(b)} = \frac{\chr b}{\chr a}$, which exactly is
 	\[ \chr a \cdot\mu\mathbb{F}(a) = \chr b \cdot\mu\mathbb{F}(b). \]
 \end{proof}
-\begin{corollary}
-	$\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$ we have $\mu\mathbb{F}(b) \ne 0$.
-\end{corollary}
+
+Now let's consider $\mu \mathbb{B}\sum_{n=0}^{\infty}\mathcal{K}^{n}$. It radically determines the density of $\mathbb{F}(b)$ and thus the distribution of this Collatz system. $\mu \mathbb{B}$ is a infinitismal, and if $\mathcal{K}\ge 1$, then $\sum_{n=0}^{\infty}\mathcal{K}^{n}$ goes to infinity, but $\mu \mathbb{B}\sum_{n=0}^{\infty}\mathcal{K}^{n}$ is a multiply of they two, we may guass for some arguments $(\alpha, \beta, \gamma)$, it is finite and non-zero. In fact, if $v(i)$ is well distributed, such that
+\[ \mathcal{K} \ge \frac{\alpha\beta^{(\alpha+1)\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v-i\Phi_1} = \frac{\alpha}{\beta^{v}}\cdot\frac{\beta^{2\Phi_1}}{\beta^{\Phi_1} - 1}\cdot\frac{\beta^{(\alpha - 1)\Phi_1} - 1}{\beta^{\alpha\Phi_1} - 1} > 1, \]
+then we may guass $\mu \mathbb{B}\sum_{n=0}^{\infty}\mathcal{K}^{n}$ is finite and non-zero, thus $\mu\mathbb{F}(b)$ will have a exactly value.
+
+% \begin{corollary}
+% 	$\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$ we have $\mu\mathbb{F}(b) \ne 0$.
+% \end{corollary}
 We have to recall that, all conclusions of $\mathbb{F}(b)$ in this section are base on the condition of \cref{thm:source-set-dijoint-primitive-source}.
