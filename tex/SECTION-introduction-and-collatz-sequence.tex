@@ -33,13 +33,12 @@ We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the
 So it is the time to explore what the arguments of these equations has a stability solution.
 
 At first we define an auxity notation:
-\begin{definition}~\label{def:exclude-beta-times}\nomenclature{$\widehat{\mathbb{K}}_{{\beta}}$}{Numbers of $\mathbb{K}$ those not dividable by $\beta$, \cref{def:exclude-beta-times}}
+\begin{definition}~\label{def:exclude-beta-times}
     For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
  \end{definition}
 Here the divisibility follows \cref{def:extend-divisibility}, and any divisibility appearing in this text follows this definition.
 With these we have
-\nomenclature{$\alpha$, $\beta$, $\gamma$}{Arguments participate the Collatz system. Requires that $\gcd(\alpha, \beta) = 1$, $\gcd(\beta, \gamma) = 1$, and $\alpha \ne 1, \beta\ne 1$}
-\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}\nomenclature{$a_k$}{The $k$-th item of Collatz sequence of $a$, \cref{definition:collatz-sequence}}\nomenclature{$\val(a;k)$}{The $k$-th item of Collatz reduce sequence of $a$, \cref{definition:collatz-sequence}}
+\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
     Given three arguments $\alpha, \beta, \gamma \in \mathbb{N}_{\ge1}$ that $\gcd(\alpha, \beta) = 1$, $\gcd(\beta, \gamma) = 1$, and $\alpha \ne 1, \beta\ne 1$.\newline
     For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
@@ -51,7 +50,7 @@ With these we have
 \end{definition}
 Actually, $\val(a;k+1)$ is exactly the $\beta$-adic valuation of $\alpha\cdot a_{k} + \gamma$. In common, we will always lower latter like $a$, $b$, $c$, $\cdots$ to present numbers of a field.
 
-\begin{definition}~\label{def:collatz-accumulation}\nomenclature{$\mathcal{V}_n^m$, $\mathcal{A}_n^m$}{Accumulation from $m$ to $n$ of a sequence, \cref{def:collatz-accumulation}}\nomenclature{$\mathcal{V}_n$, $\mathcal{A}_n$}{Accumulation from $0$ to $n$ of a sequence, \cref{def:collatz-accumulation}}
+\begin{definition}~\label{def:collatz-accumulation}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
     Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
 \end{definition}
@@ -131,7 +130,7 @@ for any odd number $a \in \widehat{\mathbb{N}}_{2}$, it's Collatz sequence will 
 \end{conjecture}
 
 This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define a notation to represent them:
-\begin{definition}~\label{definition:collatz-complement}\nomenclature{$\mathfrak{V}_n^{m}$,$\mathfrak{A}_n^{m}$}{Collatz complement of a sequence from $m$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{v}_n^{m}$, $\mathfrak{a}_n^{m}$}{Reduced Collatz complement of a sequence from $m$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{V}_n$,$\mathfrak{A}_n$}{Collatz complement of a sequence from $0$ to $n$, \cref{definition:collatz-complement}}\nomenclature{$\mathfrak{v}_n$, $\mathfrak{a}_n$}{Reduced Collatz complement of a sequence from $0$ to $n$, \cref{definition:collatz-complement}}
+\begin{definition}~\label{definition:collatz-complement}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms, we have $\mathcal{A}_{n}^{m}$. Now we define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
     And define $\mathfrak{a}_n^{m}$ called reduced Collatz complement of $a$ at $n$ relative to $m$ with

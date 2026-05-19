@@ -40,19 +40,30 @@ def CollatzChr(a):
             return min(
                 (beta ** v) * a for v in range(1, ord(alpha, beta) + 1) if ((beta ** v) * a - gamma) % alpha == 0)
 
+def OneStepSourceValueArray(a, _range):
+    if a % beta == 0:
+        raise ValueError(a)
+    if a % alpha == 0:
+        return []
+    return [Fraction(1, alpha) * (beta ** (x * Phi_1)) * CollatzChr(a) - Fraction(gamma, alpha) for x in _range]
+
 if __name__ == '__main__':
     Phi_1 = Phi(1)
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(7, 4.5))
     ax.set_yscale('log')
     ax.grid(True, which="both", linestyle="--", alpha=0.5)
-    A = [Fraction(1, alpha)*(beta**(x*Phi_1))*CollatzChr(1) - Fraction(gamma, alpha) for x in range(5)]
-    B = [Fraction(1, alpha)*(beta**(x*Phi_1))*CollatzChr(247) - Fraction(gamma, alpha) for x in range(5)]
-    for a in A + B:
-        if a % alpha == 0:
-            continue
-        X = range(1, 101)
-        Y = [Fraction(1, alpha)*(beta**(x*Phi_1))*CollatzChr(a) - Fraction(gamma, alpha) for x in X]
-        ax.plot(X, Y, label=f'{a}')
-    ax.legend()
+    A = OneStepSourceValueArray(163, range(100))
+    B = OneStepSourceValueArray(5, range(100))
+    C = OneStepSourceValueArray(7, range(100))
+    D = OneStepSourceValueArray(11, range(100))
+    S = {"red": (A, 13), "blue": (B, 5), "green": (C, 7), "cyan": (D, 11)}
+    for c, L in S.items():
+        for a in L[0]:
+            if a % alpha == 0:
+                continue
+            X = range(0, 50)
+            Y = [(Fraction(1, alpha)*(beta**(x*Phi_1))*CollatzChr(a) - Fraction(gamma, alpha)) for x in X]
+            ax.plot(X, Y, color=c, label=f'{a}')
+    # ax.legend()
     plt.show()

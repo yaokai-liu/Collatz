@@ -6,7 +6,7 @@ We will introduce a new kind of form to subsume those properties above. It's the
 
 Let $\mathbb{G}(+, G)$ be a groupoid and $\mathbb{R}(+, \cdot, R)$ be a ring.
 With these, we can define groupoid homomorphisms and their derivtions from $\mathbb{G}$ to $\mathbb{R}$.
-\begin{definition}[Cauchy homomorphism on groupoid]
+\begin{definition}[Cauchy homomorphism]
     Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $a + b \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
 \end{definition}
 If $\forall b \in \mathbb{G}$, there is $\mathcal{A}(b) = 0$, we called that $\mathcal{A}$ is a zero groupoid homomorphism, and denote $\mathcal{A} = 0$.
@@ -50,7 +50,7 @@ However, we need another restriction of ($\mathcal{A}$, $\mathcal{B}$)-derivatio
 We say $p \in\mathbb{G}$ is inseparable, if $\forall a, b \in\mathbb{G}$, $p$ cannot be represented by $a + b$.
 And we denote $\mathbb{P}(\mathbb{G}) = \{ AB \in\mathbb{G} \mid p \text{ is inseparable}\}$. With this we have
 \begin{definition}[kernel of ($\mathcal{A}$, $\mathcal{B}$)-derivation]
-    We say $\mathfrak{U}(p)$ is a kernel on $p$ of $\mathfrak{U}$ if $p \in \mathbb{P}(\mathbb{G})$. When $\mathbb{P}(\mathbb{G}) = \varnothing$, we define all kernels of $\mathfrak{U}$ are same.
+    We say $\mathfrak{U}(p)$ is a kernel on $p$ of $\mathfrak{U}$ if $p \in \mathbb{P}(\mathbb{G})$.
 \end{definition}
 Now suppose there is a homoomorphism in $\mathbb{G}^{I}$ such that $s \mapsto p(s)$ and $s + t \mapsto p(s) + p(t)$, here $I$ is some index set.
 If $\exists t\in I$ such that $\forall p(s)\in \mathbb{P}(\mathbb{G})$, such that $F:\mathbb{G} \to \mathbb{R}$ satisfied $F(p(s + t)) = F(p(s))$, then we say $F$ is periodic on $\mathbb{G}^{I}$ with $t$ is one period of it.
@@ -106,18 +106,18 @@ Specially, For the kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivation,
     If $\mathfrak{U} \in \partial(\mathcal{A}, \mathcal{B})$ that $\mathfrak{U}(p) = \gamma$, then
     \[ \mathfrak{U}(c) = \gamma \cdot\sum_{p \in \mathbb{P}(a)}\mathcal{A}(a\backslash p)\cdot\mathcal{B}(p/a). \]
 \end{corollary}
-This corollary also holds on those continuous system.
+This theorem also holds on those continuous system.
 \begin{example}
     All closed interval compose a groupoid
     \[G = \left\{[a, b] \text{ : $[a, b]$ is closed interval on real number field $R$}\right\}.\]
-    We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\mathrm{d}x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\mathrm{d}x}$ are both in $\mathrm{Cauchy}(G, R)$. Define
-    \[ \mathfrak{U}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\mathcal{G}[x,b]\cdot(f(x) - g(x))\mathrm{d}x. \]
-    We can verify that  $\mathfrak{U}\in \partial_{*}(\mathcal{F}, \mathcal{G})$. Its kernel is $f(x)\mathrm{d}x - g(x)\mathrm{d}x$.
+    We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\rmd x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\rmd x}$ are both in $\mathrm{Cauchy}(G, R)$. Define
+    \[ \mathfrak{U}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\cdot\mathcal{G}[x,b]\cdot(f(x) - g(x))\rmd x. \]
+    We can verify that  $\mathfrak{U}\in \partial_{*}(\mathcal{F}, \mathcal{G})$. Its kernel is $f(x)\rmd x - g(x)\rmd x$.
 
-    Now let $F(x) = \int_{a}^{x}f(x)\mathrm{d}x$ and $G(x) = - \int_{x}^{b}g(x)\mathrm{d}x$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
+    Now let $F(x) = \int_{a}^{x}f(x)\rmd x$ and $G(x) = - \int_{x}^{b}g(x)\rmd x$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
     \begin{align}~\label{equ:better-kernel}
-        \mathfrak{U}([a, b]) &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\mathrm{d}x \nonumber \\
-        &= \int_{a}^{b}\exp(F(x)-G(x))\mathrm{d}(F(x) - G(x)) \nonumber \\
+        \mathfrak{U}([a, b]) &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\rmd x \nonumber \\
+        &= \int_{a}^{b}\exp(F(x)-G(x))\rmd(F(x) - G(x)) \nonumber \\
         &= \frac{\exp F(b)}{\exp G(b)} - \frac{\exp F(a)}{\exp G(a)} \nonumber\\
         &= \mathcal{F}[a, b] - \mathcal{G}[b, a]
     \end{align}
@@ -125,8 +125,8 @@ This corollary also holds on those continuous system.
 \end{example}
 \begin{example}
     Also using the groupoid and functions. Define
-    \[ \mathfrak{V}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\mathcal{G}[x,b]\mathrm{d}x. \]
-    Then $\mathfrak{V} \in \partial(\mathcal{F}, \mathcal{G})$. Its kernel is exactly $\mathrm{d}x$. However,we can not get a simple result like \cref{equ:better-kernel}. But  from \cref{theorem:inductive-formula} we still speculate that it can be expressed as the difference of two powers with some coefficients.
+    \[ \mathfrak{V}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\mathcal{G}[x,b]\rmd x. \]
+    Then $\mathfrak{V} \in \partial(\mathcal{F}, \mathcal{G})$. Its kernel is exactly $\rmd x$. However,we can not get a simple result like \cref{equ:better-kernel}. But  from \cref{theorem:inductive-formula} we still speculate that it can be expressed as the difference of two powers with some coefficients.
 \end{example}
 
 \begin{definition}[varied derivation and varities of derivation]~\label{def:varied-derivation-and-varities-of-derivation}

@@ -3,8 +3,8 @@
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
 
 Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$, at first, we have to clarify the definition of divisibility.
-\begin{definition}~\label{def:extend-divisibility}\nomenclature{$a \mid b$}{Extended divisibility from integers to other number fields, \cref{def:order-under-modulo}}
-Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}[X]$, $\frac{p_1}{q_1}\mid 0$. For $\mathbb{N}$, we treate as that $q = 1$.
+\begin{definition}~\label{def:extend-divisibility}
+Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}[X]$, $\frac{p_1}{q_1}\mid 0$. For $\mathbb{N}$, we treat as that $q = 1$.
 \end{definition}
 \begin{proposition}
     $\frac{p_1}{q_1}\mid \frac{p_2}{q_2} \Longleftrightarrow p_1\mid p_2$.
@@ -13,7 +13,7 @@ Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they 
     If $a \mid c$ and $b \mid c$, and $\gcd(a, b) = 1$, then $ ab \mid c$.
 \end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
-\begin{definition}~\label{def:order-under-modulo}\nomenclature{$\ord_{a}b$}{The order of $b$ modulo $a$, \cref{def:order-under-modulo}}
+\begin{definition}~\label{def:order-under-modulo}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}b = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
     called the discrete order of $b$ modulo $a$.
@@ -24,55 +24,66 @@ Below are number theory tools we introduced in this paper and their propositions
 \begin{proposition}
     If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
-\begin{definition}~\label{def:log-under-modulo}\nomenclature{$\log_{a, b}x$}{The principal logarithm of $x$ based on $b$ modulo $a$, \cref{def:log-under-modulo}}
+\begin{definition}~\label{def:log-under-modulo}
 Given $x\in \mathbb{N}_{>1}$.
-If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_ba$, then we denote $\log_{a, b}x = y$.
-Otherwise, we say that $\log_{a, b}x$ does not exist.
+If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_{b}a$, then we denote $\log_{a, b}x = y$.
+If there not exists a such $y$, we will always regard $\log_{a, b}x = \infty$.
 \end{definition}
 \begin{proposition}
-    $\log_{a, b}(x^{-1}) = \ord_{a}b - \log_{a,b}x$.
+    $a^{\log_{a, b}x} \equiv x \pmod{b}$.
 \end{proposition}
-\begin{definition}~\label{def:log-set-under-modulo}\nomenclature{$\Log_{a, b}x$}{A branch of numbers equivalent to the principal logarithm of $x$ based on $b$ modulo $a$, \cref{def:log-set-under-modulo}}
-If $\log_{a, b}x$ exists, then we denote that
-\[ \Log_{a, b}x = \ord_a(b)\mathbb{Z} + \log_{a, b}x. \]
-Otherwise, we denote $\Log_{a, b}x = \varnothing$.
-And we denote
-\[- \Log_{a, b}x = \ord_a(b)\mathbb{Z} - \log_{a, b}x.\]
-\end{definition}
-We call $\log_{a, b}(x)$ the principal logarithm of $x$ based on $b$ modulo $a$, and $\Log_{a, b}(x)$ the logarithms of $x$ based on $b$ modulo $a$, and we will define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
-Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and $\Log_{a,b}x$.
 \begin{proposition}
-    $x^{\log_{a, b}x} \equiv x \pmod{b}$.
+    $\forall n\in\mathbb{N}$, we have $\log_{a, b}(x + nb) = \log_{a,b}x$.
+\end{proposition}
+\begin{proposition}
+    $\forall n \in \mathbb{N}$ we have $\log_{a+nb, b}x = \log_{a, b}x$.
+\end{proposition}
+\begin{proposition}
+    Suppose $\log_{a, b}x < \infty$ and $\log_{a, b}y < \infty$, then we have
+    \[ \log_{a, b}(x \cdot y) = (\log_{a, b}x + \log_{a, b}y) \mod{\ord_{a}b}. \]
+\end{proposition}
+\begin{proposition}
+    Suppose $\log_{a, b}x < \infty$.
+    Given $n \in \mathbb{N}$, we have
+    \[ \log_{a, b}(x ^{n}) = n\log_{a, b}x \mod{\ord_{a}b}. \]
+\end{proposition}
+\begin{proposition}
+    Suppose $\log_{a,b}x < \infty$, then $\log_{a, b}(x^{-1}) = \ord_{a}b - \log_{a,b}x$.
+\end{proposition}
+\begin{definition}~\label{def:log-set-under-modulo}
+If $\log_{a, b}x < \infty$, then we denote that
+\begin{align*}
+    \Log_{a, b}x &= \ord_a(b)\mathbb{Z} + \log_{a, b}x, \\
+    - \Log_{a, b}x &= \ord_a(b)\mathbb{Z} - \log_{a, b}x.
+\end{align*}
+If $\log_{a, b}x = \infty$, we denote $\Log_{a, b}x = \varnothing$.
+\end{definition}
+We call $\log_{a, b}(x)$ the principal logarithm of $x$ on $b$ modulo $a$, and $\Log_{a, b}(x)$ the logarithms of $x$ based on $b$ modulo $a$, and we will define $\log_{a, b}1 = 0$ and $\Log_{a, b}1 = \ord_{b}(a)\mathbb{Z}$.
+Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and $\Log_{a,b}x$.
+
+\begin{proposition}
+    $\forall n\in \Log_{a,b}x$, we have $a^{n} \equiv x \pmod{b}$.
 \end{proposition}
 \begin{proposition}
     $\Log_{a,b}(x^{-1}) = -\Log_{a,b}x$.
 \end{proposition}
-\begin{proposition}
-    $\log_{a, b}(x \cdot y) \equiv \log_{a, b}x + \log_{a, b}y \pmod{\ord_{a}b}$.
-\end{proposition}
-\begin{proposition}
-    Given $n \in \mathbb{N}$, we have $\log_{a, b}(x ^{n}) \equiv n\log_{a, b}x \pmod{\ord_{a}b}$.
-\end{proposition}
-\begin{proposition}
-    $\forall c \in \mathbb{N}$ we have $\log_{a+cb, b}x \equiv \log_{a, b}x \pmod{\ord_{a}b}$.
-\end{proposition}
-\begin{definition}~\label{def:power-and-power-count}\nomenclature{$\pow(a\mid b)$}{Maximum power of $a$ that dividing $b$, \cref{def:power-and-power-count}}\nomenclature{$\val_{a}b$}{Exponent of maximum power of $b$ dividing $a$, \cref{def:power-and-power-count}}\nomenclature{$\rel_{a}b$}{Remainder part of $b$ with respect to power of $a$, \cref{def:power-and-power-count}}
-    Define $\pow(a\mid b) = \max_{n \in \mathbb{N}}\{a^{n}: a^{n} \mid b\}$ as the maximum power of $a$ in $b$. Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
+\begin{definition}~\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
+    Define $\pow(a\mid b) = a^{\val_{a}b}$ as the maximum power of $a$ in $b$. 
     And we define $\rel_{a}b = \frac{b}{\pow(a\mid b)}$ called the remainder part of $b$ with respect to power of $a$.
 \end{definition}
 \begin{proposition}
     If $c \mid a$ and $a \mid b$, then $\val_{c}b \ge \val_{c}a \cdot \val_{a}b$.
 \end{proposition}
-\begin{definition}~\label{def:radical}\nomenclature{$\rad a$}{Radical of $a$, \cref{def:order-under-modulo}}\nomenclature{$\Pi(S\mid a)$}{All factors of $a$ in $S$, \cref{def:radical}}
+\begin{definition}~\label{def:radical}
     Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Pi(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$.
+\end{definition}
+\begin{definition}~\label{def:filtered-radical-powers}
+    Define $\raf_{a}b = \prod_{p \in \Pi(\mathbb{P}\mid a)}\pow(p\mid b)$ as the filtered radical power of $b$ with respect to $a$. And we also call it the $a$-filtered radical powers of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
+    And same like to the $\rel$,  we define $\ram_{a}b = \frac{b}{\raf_{a}b}$ called the remainder part of $b$ with respect to radical $a$-part.
 \end{definition}
 \begin{proposition}
     $\rad a = \prod_{p \in \Pi(\mathbb{P}\mid a)}p$
 \end{proposition}
-\begin{definition}~\label{def:filtered-radical-powers}\nomenclature{$\raf_{a}b$}{Radical $a$-part of $b$, \cref{def:filtered-radical-powers}}\nomenclature{$\ram_{a}b$}{Remainder part of $b$ with respect to radical $a$-part, \cref{def:filtered-radical-powers}}
-    Define $\raf_{a}b = \prod_{p \in \Pi(\mathbb{P}\mid a)}p^{\val_{p}b}$ as the filtered radical power of $b$ with respect to $a$. It is also called the $a$-filtered radical powers of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
-    And we define $\ram_{a}b = \frac{b}{\raf_{a}b}$ called the remainder part of $b$ with respect to radical $a$-part.
-\end{definition}
 \begin{proposition}~\label{prop:self-containment}
     $\raf_{a}b \mid b$.
 \end{proposition}
@@ -121,7 +132,103 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \begin{theorem}~\label{thm:lte-radical-theorem}
     If $p \in \mathbb{P}$ and $p\mid (b - 1)$, then
     \[\raf_{p}(b^{n} - 1) = \left\{ \begin{aligned}
-        &\raf_{p}(b - 1) \cdot \raf_{p}n, & p \in \mathbb{P}_{>2}, \\
+        &\raf_{p}(b - 1) \cdot \raf_{p}n, & p > 2, \\
         &\raf_{2}(b - 1) \cdot \raf_{2}n + \raf_{2}(b + 1) - 1, & p = 2.
     \end{aligned} \right.\]
 \end{theorem}
+Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
+\begin{definition}
+    Define $\pi(A;x) = \card\{ A \le x \}$ that $x\in\mathbb{R}_{>1}$. And we define the Perron form
+    \[\widetilde{\pi}(A;x) = \left\{\begin{aligned}
+    &\pi(A;x), && x\not\in A, \\
+    &\frac{1}{2}\left[\pi(A;x^{-}) + \pi(A;x^{+})\right], && x\in A.
+\end{aligned}\right.\]
+\end{definition}
+\begin{proposition}
+    $\sum_{t\in A}^{t\le x}f(t) = \int_{1}^{x}f(t)\rmd{\pi(A;t)}$.
+\end{proposition}
+\begin{proposition}
+    $\pi(A\cup B;x) = \pi(A;x) + \pi(B; x) - \pi(A\cap B; x)$. So does for $\widetilde{\pi}(A;x)$.
+\end{proposition}
+\begin{definition}
+    Define $D(A;s) = \sum_{x\in A}x^{-s}$ as the Dirichlet series of $A$.
+\end{definition}
+\begin{proposition}
+    $D(aA;s) = a^{-s}D(A;s)$.
+\end{proposition}
+\begin{proposition}
+    If $A\otimes B$ is uniqe decomposed, then we have
+    \[ D(A \otimes B; s) = D(A;s)\cdot D(B;s). \]
+\end{proposition}
+\begin{theorem}~\label{thm:count-function-from-dirichlet-series}
+    For large enough $c > 0$, we have
+    \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd{s}. \]
+\end{theorem}
+\begin{lemma}[Perron's formula]
+For $y > 0$, we have
+\[ P(x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{x^{s}}{s}\rmd s = \left\{\begin{aligned}
+    &1, &&y > 1,\\
+    &1/2, &&y = 1,\\
+    &0, &&y < 1.
+\end{aligned}\right. \]
+\end{lemma}
+\begin{proof}[Proof of \cref{thm:count-function-from-dirichlet-series}]
+    \begin{align*}
+        &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd s \\
+        =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}t^{-s}\frac{x^{s}}{s}\rmd s \\
+        =&\sum_{t\in A}\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t}\right)^{s}\frac{1}{s}\rmd s \\
+        =&\sum_{t\in A}P(x/t) \\
+        =&\widetilde{\pi}(A;x).
+    \end{align*}
+\end{proof}
+\begin{definition}
+    Define $\Pi(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})$ and also the Perron form $\widetilde{\Pi}(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m})$.
+\end{definition}
+\begin{definition}
+    Finally, for $s > 0$, we define $L(A;s) = \prod_{x\in A}(1-x^{-s})^{-1}$.
+\end{definition}
+\begin{proposition}
+    $\ln L(A;s) = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x$.
+\end{proposition}
+\begin{proof}
+At first, we have
+\[ \ln L(A;s) = -\sum_{x\in A}\ln(1 - x^{-s}) = \sum_{x\in A}-\ln(1 - x^{-s}). \]
+From Maclaurin's formula, $- \ln (1 - z) = \sum_{m=1}^{\infty}\frac{x^{m}}{m}$, we have
+\begin{align*}
+    \ln L(A;s) &= \sum_{x\in A}\sum_{m=1}^{\infty}\frac{x^{-sm}}{m} = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} \\
+    &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-sm}\rmd\pi(A;x) \\
+    &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-s}\rmd\pi(A;x^{1/m}) \\
+    &= \int_{1}^{\infty}x^{-s}\rmd\left(\sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})\right) \\
+    &= \int_{1}^{\infty}x^{-s}\rmd\Pi(A;x)
+\end{align*}
+According the rule of integration by parts, we have
+\begin{align*}
+    \ln L(A;s) &= \left[x^{-s}\Pi(A;x)\right]\bigg\vert_{1}^{\infty} - \int_{1}^{\infty}\Pi(A;x)\rmd x^{-s} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x.
+\end{align*}
+\end{proof}
+\begin{theorem}
+    Let $\mu(m)$ be the Möbius function, for $c > 0$ large enough, we have
+    \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s. \]
+\end{theorem}
+\begin{proof}
+    Since we have Perron's formula, we are supported to have
+\begin{align*}
+    &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s}}{s}\rmd s \\
+    =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}\sum_{m=1}^{\infty}\frac{t^{-sm}}{m}\left(\frac{x^{s}}{s}\right)\rmd s \\
+    =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t^{m}}\right)^{s}\frac{1}{s}\rmd s \right] \\
+    =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}P(x/t^{m}) \\
+    % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid \frac{x}{t^{m}} > 1 \} \\
+    % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid t^{m} < x \} \\
+    =&\sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m}) \\
+    =&\widetilde{\Pi}(A;x).
+\end{align*}
+Using the Möbius inversion, we have
+\begin{align*}
+    \widetilde{\pi}(A;x) &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\widetilde{\Pi}(A;x^{1/m}) \\
+    &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s/m}}{s}\rmd s \right] \\
+    &= \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s.
+\end{align*}
+
+
+
+\end{proof}

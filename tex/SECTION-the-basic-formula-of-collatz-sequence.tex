@@ -8,7 +8,11 @@ $\forall a \in \widehat{\mathbb{N}}_{{\beta}}$, $\forall k \in \mathbb{N}$ we ha
 \end{theorem}
 % \begin{proof} Trivial. \end{proof}
 \begin{proof}
-    First, we have $a_0 \cdot \beta^{\mathcal{A}_0} = a = a \cdot \alpha^{0} + \gamma \cdot \mathfrak{A}_0$ and $a_1 \cdot \beta^{\mathcal{A}_1} = \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1$.\newline
+    First, we have
+    \begin{align*}
+        a_0 \cdot \beta^{\mathcal{A}_0} &= a = a \cdot \alpha^{0} + \gamma \cdot \mathfrak{A}_0, \\
+        a_1 \cdot \beta^{\mathcal{A}_1} &= \alpha \cdot a + \gamma = a \cdot \alpha^{1} + \gamma \cdot \mathfrak{A}_1.
+    \end{align*}
     Second, if $a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}$, then
     \begin{align*}
         a_{k+1} \cdot \beta^{\mathcal{A}_{k+1}}
@@ -30,7 +34,7 @@ $\forall m, n \ge 0$ we have
     $a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = \alpha^{n}\cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n+m}^{m}\right)$.
 \end{corollary}
 \begin{corollary}~\label{cor:beta-nmid-collatz-complement}
-Given $a\in\widehat{\mathbb{N}}_\beta$, $\mathfrak{A}$ is of $a$, we have $\beta \nmid \mathfrak{A}_n^m$.
+Given $a\in\widehat{\mathbb{N}}_\beta$, if $\mathfrak{A}$ is of $a$, then $\forall m\ne n$, we have $\beta \nmid \mathfrak{A}_n^m$.
 \end{corollary}
 \begin{corollary}~\label{corollary:congerunce-with-collatz-complement}
 If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = - \frac{\gamma}{\alpha^k}\cdot\mathfrak{A}_k \pmod{\beta^{\mathcal{A}_k}}$.
@@ -68,7 +72,7 @@ If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_
 
 It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
 Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
-\begin{definition}~\label{def:elements-reduce-m-val-by-n-step}\nomenclature{$[m\mid n]$}{ Set of numbers those do not reduce in $n-1$ steps, but reduce at least $m$ valuation by $n$-th step, \cref{def:elements-reduce-m-val-by-n-step}}
+\begin{definition}~\label{def:elements-reduce-m-val-by-n-step}
 Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
 \[ [m\mid n] = \{a \in \widehat{\mathbb{N}}_{\beta} \mid \mathcal{A}_{n-1} = 0 \text{ and } \mathcal{A}_n \ge m \}. \]
 \end{definition}
