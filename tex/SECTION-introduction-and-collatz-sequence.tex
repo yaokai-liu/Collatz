@@ -156,19 +156,19 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
         \mathfrak{a}_n^{m} &= \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^{k} + \mathfrak{a}_k^m. 
     \end{align*}
 \end{proposition}
-\begin{proof}
-\begin{align*}
-    \mathfrak{A}_n^{m} =&\sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
-    \mathfrak{a}_n^{m} =&\sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =&\ \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
-\end{align*}
-\end{proof}
+% \begin{proof}
+% \begin{align*}
+%     \mathfrak{A}_n^{m} =&\sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
+%     =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
+%     =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
+%     \mathfrak{a}_n^{m} =&\sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+%     =&\ \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
+% \end{align*}
+% \end{proof}
 
 Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
 More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).

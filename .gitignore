@@ -23,6 +23,7 @@
 *.nlo
 *.nls
 *.out
+*.csv
 *.pdfsync
 *.ps
 *.run.xml

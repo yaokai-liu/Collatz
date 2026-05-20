@@ -100,27 +100,27 @@ If $m \ge 1$, then
 \[ [m\mid n] = \left\{a \in \widehat{\mathbb{N}}_{\beta}\ \left|\  a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i \equiv 0 \pmod{\beta^{m}}\right.\right\}. \]
 When $m = 0$, the $[0\mid n] = \widehat{\mathbb{N}}_{\beta}$.
 \end{proposition}
-\begin{proof}
-    $\Rightarrow$): $\forall a \in [m\mid n]$, we have $\mathcal{A}_{n-1} = 0$ and $\mathcal{A}_n \ge m$, thus $\forall 0 \le k\le n$, $\beta^{\mathcal{A}_{k}} = 1$, thus $\mathfrak{A}_{n} = \sum_{i = 0}^{n-1}\alpha^i$, from \cref{theorem:inductive-formula}, we have
-    \[ a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i = a_{n} \cdot \beta^{\mathcal{A}_n} \equiv 0 \pmod{\beta^{m}}. \]
-    $\Leftarrow$):
-    If $m = 0$ or $n = 1$, trivial. Suppose $m > 0$. Since
-    \begin{align*}
-        a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i
-        &=\alpha^{n-1}(\alpha a + \gamma) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
-        &=\alpha^{n-1}(a_1\cdot\beta^{\mathcal{A}_1}) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
-        &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
-        &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1} && \\
-        &\equiv 0 && \pmod{\beta^{m}}
-    \end{align*}
-    Thus we have $\beta^{\min\{m, \mathcal{A}_1\}}\ \left\vert\ \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}\right.$.
+% \begin{proof}
+%     $\Rightarrow$): $\forall a \in [m\mid n]$, we have $\mathcal{A}_{n-1} = 0$ and $\mathcal{A}_n \ge m$, thus $\forall 0 \le k\le n$, $\beta^{\mathcal{A}_{k}} = 1$, thus $\mathfrak{A}_{n} = \sum_{i = 0}^{n-1}\alpha^i$, from \cref{theorem:inductive-formula}, we have
+%     \[ a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i = a_{n} \cdot \beta^{\mathcal{A}_n} \equiv 0 \pmod{\beta^{m}}. \]
+%     $\Leftarrow$):
+%     If $m = 0$ or $n = 1$, trivial. Suppose $m > 0$. Since
+%     \begin{align*}
+%         a\cdot\alpha^n + \gamma\cdot\sum_{i = 0}^{n-1}\alpha^i
+%         &=\alpha^{n-1}(\alpha a + \gamma) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
+%         &=\alpha^{n-1}(a_1\cdot\beta^{\mathcal{A}_1}) + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
+%         &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} && \\
+%         &=\alpha^{n-1}a_1\cdot\beta^{\mathcal{A}_1} + \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1} && \\
+%         &\equiv 0 && \pmod{\beta^{m}}
+%     \end{align*}
+%     Thus we have $\beta^{\min\{m, \mathcal{A}_1\}}\ \left\vert\ \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}\right.$.
 
-    Since $n < \ord_{\beta(\alpha-1)}(\alpha)$, we have $\beta\nmid \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}$. Then we can derive that $\min\{m, \mathcal{A}_1\}=0$. Since $m > 0$, thus $\mathcal{A}_1 = 0$. With this we have
-    \[ \alpha^{n-1}a_1 + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} \equiv 0 \pmod{\beta^{m}}. \]
-    Recursively, we can proof $\forall i < n$, there is $\mathcal{A}_i = 0$, and then we can get that $\mathfrak{A}_n = \sum_{i = 0}^{n-1}\alpha^i$. Thus we have
-    \[ \beta^{m}\ \left\vert\ a \cdot \alpha^{n} + \gamma  \sum_{i = 0}^{n-1}\alpha^i \right. = a_n\cdot \beta^{\mathcal{A}_n}, \]
-    which means $\mathcal{A}_n \ge m$. Thus $a\in [m \mid n]$.
-\end{proof}
+%     Since $n < \ord_{\beta(\alpha-1)}(\alpha)$, we have $\beta\nmid \gamma\cdot\frac{\alpha^{n-1} - 1}{\alpha - 1}$. Then we can derive that $\min\{m, \mathcal{A}_1\}=0$. Since $m > 0$, thus $\mathcal{A}_1 = 0$. With this we have
+%     \[ \alpha^{n-1}a_1 + \gamma\cdot\sum_{i=0}^{n-2}\alpha^{i} \equiv 0 \pmod{\beta^{m}}. \]
+%     Recursively, we can proof $\forall i < n$, there is $\mathcal{A}_i = 0$, and then we can get that $\mathfrak{A}_n = \sum_{i = 0}^{n-1}\alpha^i$. Thus we have
+%     \[ \beta^{m}\ \left\vert\ a \cdot \alpha^{n} + \gamma  \sum_{i = 0}^{n-1}\alpha^i \right. = a_n\cdot \beta^{\mathcal{A}_n}, \]
+%     which means $\mathcal{A}_n \ge m$. Thus $a\in [m \mid n]$.
+% \end{proof}
 \begin{proposition}~\label{prop:classes-equiv-congruence}
     $a \in [m\mid n] \Longleftrightarrow a\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n-1}\alpha^{-i} \pmod{\beta^{m}}$.
 \end{proposition}
