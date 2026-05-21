@@ -60,9 +60,9 @@ From this point onward, unless otherwise specified, we shall always assume sets 
 	\begin{align*}
 		&\mu'(\mathbb{F}_{1}(a), \mathbb{F}_{1}(b)) \\
 		=&\lim_{N\to\infty}\frac{\card\{\mathbb{F}_{1}(a) \le N\}}{\card\{\mathbb{F}_{1}(b) \le N\}} \\
-		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\chr a - \frac{\gamma}{\alpha} \le N\}}{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\chr b - \frac{\gamma}{\alpha} \le N\}} \\
-		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr a\}}{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr b\}} \\
-		=&\lim_{N\to\infty}\frac{\lfloor\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr a\rfloor}{\lfloor \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr b\rfloor} \\
+		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\ker a - \frac{\gamma}{\alpha} \le N\}}{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\ker b - \frac{\gamma}{\alpha} \le N\}} \\
+		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\ker a\}}{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\ker b\}} \\
+		=&\lim_{N\to\infty}\frac{\lfloor\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\ker a\rfloor}{\lfloor \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\ker b\rfloor} \\
 		=&\lim_{N\to\infty}\frac{\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma)}{\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma)} \\
 		=&1. 
 	\end{align*}
@@ -106,30 +106,15 @@ From this point onward, unless otherwise specified, we shall always assume sets 
 	% Here $B(t;n) = \prod_{k=0}^{n-1}\sum_{i=1}^{\alpha-1}\beta^{v(i;t_{-k})}$ only depends on the distribution of source value of $t$ modulo $\alpha$.
 \end{theorem}
 \begin{lemma}
-	If $\card\{\mathbb{F}_{n}(a) \le N\} > 0$, then $\frac{\alpha^{n} N + \gamma\cdot \chr\mathfrak{A}_{n}}{a\beta^{\chr\mathcal{A}_{n}}} \ge 1$.
+	$\card\{\mathbb{F}_{n}(a) \le N\} = \card\{\bm{v} \in \mathbb{V}_{n}(a) \mid Z_{n}(N;\bm{v}) \ge 1 \}$. Actually, we are more conserned about the count of $\simp\bm{v}$.
 \end{lemma}
-\begin{proof}
-	Trivial from \cref{prop:condition-of-source-value-le-N} and \cref{cor:minial-of-n-layer}.
-\end{proof}
-% \begin{proof}[Proof of \cref{thm:proportional-of-density-of-source-value-set}]
-% 	Denote $\widetilde{\log}_{n}(N;\bm{x}) = \log_{\beta}\left(\frac{\alpha^{n}N + \mathfrak{X}_{n}}{x\beta^{\mathcal{X}_{n}}}\right)$, we have
-% 	\begin{align*}
-% 		&\mu'(\mathbb{F}_{n}(a), \mathbb{F}_{n}(b)) \\
-% 		=&\lim_{N\to\infty}\frac{\card\{\mathbb{F}_{n+1}(a) \le N\}}{\card\{\mathbb{F}_{n+1}(b) \le N\}} \\
-% 		=&\lim_{N\to\infty}\frac{\card\bigcup_{x\in\mathbb{F}_{n}(a) - \mathbb{S}}\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\chr x - \frac{\gamma}{\alpha} \le N\}}{\card\bigcup_{y\in\mathbb{F}_{n}(b) - \mathbb{S}}\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\chr y - \frac{\gamma}{\alpha} \le N\}} \\
-% 		=&\lim_{N\to\infty}\frac{\card\bigcup_{x\in\mathbb{F}_{n}(a) - \mathbb{S}}\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr x\}}{\card\bigcup_{y\in\mathbb{F}_{n}(b) - \mathbb{S}}\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr y\}} \\
-% 		=&\lim_{N\to\infty}\frac{\sum_{x\in\mathbb{F}_{n}(a) - \mathbb{S}}^{x\le \widetilde{\log}_{n}(N;\bm{a}_{-})}\lfloor\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr x\rfloor}{\sum_{y\in\mathbb{F}_{n}(b) - \mathbb{S}}^{y\le \widetilde{\log}_{n}(N;\bm{b}_{-})}\lfloor \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\chr y\rfloor} \\
-% 		=&\lim_{N\to\infty}\frac{\frac{\alpha-1}{\alpha}\widetilde{\log}_{n}(N;\bm{a}_{-})\log_{\beta}(\alpha N + \gamma) - \sum_{x\in\mathbb{F}_{n}(a) - \mathbb{S}}^{x\le \widetilde{\log}_{n}(N;\bm{a}_{-})}\log_{\beta}\chr x}{\frac{\alpha-1}{\alpha}\widetilde{\log}_{n}(N;\bm{b}_{-})\log_{\beta}(\alpha N + \gamma) - \sum_{y\in\mathbb{F}_{n}(b) - \mathbb{S}}^{y\le \widetilde{\log}_{n}(N;\bm{b}_{-})}\log_{\beta}\chr y}.
-% 	\end{align*}
-% 	while the reduce vector is $\bm{a} = (\val_{\beta}\chr a_{-n}, \cdots, \val_{\beta}\chr a_{-1}, \val_{\beta}\chr a)$ and.
-% \end{proof}
 \begin{lemma}~\label{lem:finite-layers-le-M}
 	Suppose $b\not\rightsquigarrow b$.
 	$\forall M > 0$, $\exists H > 0$ depends on $M$ such that $\forall n \ge H$, there is $\card\{ \mathbb{F}_{n}(b)\le M \} = 0$.
 \end{lemma}
 \begin{proof}
 	Since $b\not\rightsquigarrow b$, thus $\forall i, j \ge 0$, $\mathbb{F}_{i}(b)\cap \mathbb{F}_{j}(b) = \varnothing$.
-	We can construct a sequence of set that $A_{n} = \{x\in\mathbb{N} \mid x \le M\} - \bigcup_{k=0}^{n-1}\mathbb{F}_{k}(b)$. We have $A_{n+1} \subset A_{n}$. Thus $\{A_n\}_{n=1}^{\infty}$ has a minimal element. Suppose it's $A_m$. Thus let $ H = \min\{k\in\mathbb{N}\mid A_{k} = A_{m}\}$, $\forall n\ge H$, we have $\card\{\mathbb{F}_{n}(b)\le M\} = 0$.
+	We can construct a sequence of set that $A_{n} = \{x\in\mathbb{N} \mid x \le M\} - \bigcup_{k=0}^{n-1}\mathbb{F}_{k}(b)$. We have $A_{n+1} \subset A_{n}$. Thus $\{A_n\}_{n=1}^{\infty}$ has a minimal element. Suppose it's $A_m$. Then let $ H = \min\{k\in\mathbb{N}\mid A_{k} = A_{m}\}$, $\forall n\ge H$, we have $\card\{\mathbb{F}_{n}(b)\le M\} = 0$.
 
 	Mow let's consider the relationship between $H$ and $M$. Since $F_{n}(b)$ is a infinite set, thus given $ M' > M$, if $\forall n > H(M)$, there is $\{M < F_{n}(b) \le M' \} = \varnothing$ that $\card\{\mathbb{F}_{n}(b)\le M'\} = \card\{\mathbb{F}_{n}(b)\le M\}$, then $H(M') = H(M)$. If $\exists n\ge H(M)$ such that $\{M < F_{n}(b) \le M' \} \ne \varnothing$, then we have $H(M') > H(M)$. Sum up, we have $H(M') \ge H(M)$, thus $H$ is increasing according to $M$.
 \end{proof}
@@ -139,16 +124,16 @@ From this point onward, unless otherwise specified, we shall always assume sets 
 \end{lemma}
 % \begin{lemma}
 % 	If $b\not\rightsquigarrow b$, then $\forall n\in\mathbb{N}$, we have
-% 	\[ \frac{\mu\mathbb{F}_{n+1}(b)}{\mu\chr\mathbb{F}_{n}(b)} = \alpha\frac{(\beta^{H(n)} - 1)\beta^{\Phi_1}}{\beta^{H(n)}(\beta^{\Phi_1} - 1)} = \frac{\alpha\beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\left(1-\frac{1}{\beta^{H(n)\Phi_1}}\right). \]
+% 	\[ \frac{\mu\mathbb{F}_{n+1}(b)}{\mu\ker\mathbb{F}_{n}(b)} = \alpha\frac{(\beta^{H(n)} - 1)\beta^{\Phi_1}}{\beta^{H(n)}(\beta^{\Phi_1} - 1)} = \frac{\alpha\beta^{\Phi_1}}{\beta^{\Phi_1} - 1}\left(1-\frac{1}{\beta^{H(n)\Phi_1}}\right). \]
 % 	Here $H(n)$ keeps all $\mathbb{F}_{n}(b)$ less than given limit.
 % \end{lemma}
 % \begin{proof}
-% 	Since $b\not\rightsquigarrow b$, we have $\forall n \in \mathbb{N}$, $\mathbb{F}_{n+1}(b)\cap\chr\mathbb{F}_{n}(b) = \varnothing$.
-% 	Then from \cref{cor:source-value-set-equivlants-its-pre-chr-set}, we have $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes \chr\mathbb{F}_{n}(b)$. Thus we have
+% 	Since $b\not\rightsquigarrow b$, we have $\forall n \in \mathbb{N}$, $\mathbb{F}_{n+1}(b)\cap\ker\mathbb{F}_{n}(b) = \varnothing$.
+% 	Then from \cref{cor:source-value-set-equivlants-its-pre-ker-set}, we have $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes \ker\mathbb{F}_{n}(b)$. Thus we have
 % 	\begin{align*}
-% 		\mu(\alpha\mathbb{F}_{n+1}(b) + \gamma) &= \mu\mathbb{B}\otimes \chr\mathbb{F}_{n}(b) \\
-% 		&= \frac{1}{N}\sum_{x\in\mathbb{B}}^{x\le N} \card\left\{\chr\mathbb{F}_{n}(b) \le \frac{N}{x} \right\} \\
-% 		&= \frac{1}{N}\sum_{k=0}^{\frac{1}{\Phi_1}\log_{\beta}N} \card\left\{\chr\mathbb{F}_{n}(b) \le \frac{N}{\beta^{k\Phi_1}} \right\} \\
+% 		\mu(\alpha\mathbb{F}_{n+1}(b) + \gamma) &= \mu\mathbb{B}\otimes \ker\mathbb{F}_{n}(b) \\
+% 		&= \frac{1}{N}\sum_{x\in\mathbb{B}}^{x\le N} \card\left\{\ker\mathbb{F}_{n}(b) \le \frac{N}{x} \right\} \\
+% 		&= \frac{1}{N}\sum_{k=0}^{\frac{1}{\Phi_1}\log_{\beta}N} \card\left\{\ker\mathbb{F}_{n}(b) \le \frac{N}{\beta^{k\Phi_1}} \right\} \\
 % 		&= \frac{1}{N}\sum_{k=0}^{\frac{1}{\Phi_1}\log_{\beta}N}\sum_{i=1}^{\alpha-1} \card\left\{\widetilde{\mathbb{F}_{n}(b)}_i \le \frac{N}{\beta^{k\Phi_1}}\big/\beta^{v(i)} \right\} \\
 % 		&= \frac{1}{N}\sum_{k=0}^{\frac{1}{\Phi_1}\log_{\beta}N}\sum_{i=1}^{\alpha-1} \beta^{-v(i)}\card\left\{\widetilde{\mathbb{F}_{n}(b)}_i \le \frac{N}{\beta^{k\Phi_1}} \right\} \\
 % 		&= \frac{1}{N}\sum_{k=0}^{\frac{1}{\Phi_1}\log_{\beta}N}\sum_{i=1}^{\alpha-1} \beta^{-v(i)}\card\left\{\widetilde{\mathbb{F}_{n}(b)}_i \le \frac{N}{\beta^{k\Phi_1}} \right\}
@@ -160,9 +145,9 @@ From this point onward, unless otherwise specified, we shall always assume sets 
 % 	here $\eta = \frac{\alpha\beta^{\alpha\Phi_1}}{\beta^{\alpha\Phi_1} - 1}\sum_{i=1}^{\alpha-1}\beta^{-v(i)-i\Phi_1}$ is a constant.
 % \end{lemma}
 % \begin{proof}[Proof of \cref{thm:proportional-of-density-of-source-value-set}]
-% 	\[ \frac{\mu\mathbb{F}(b)}{\mu \mathbb{B}} = \frac{\alpha}{\chr b}\cdot\frac{\mu\mathbb{F}(b)}{\mu\mathbb{F}_{1}(b)} = \frac{\alpha}{\chr b}\cdot\sum_{n=0}^{\infty}\prod_{m=0}^{n}k(m). \]
-% 	Denote $K = \sum_{n=0}^{\infty}\prod_{m=0}^{n}k(m)$ is a constant. Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$, we can derive that $\frac{\mu\mathbb{F}(a)}{\mu\mathbb{F}(b)} = \frac{\chr b}{\chr a}$, which exactly is
-% 	\[ \chr a \cdot\mu\mathbb{F}(a) = \chr b \cdot\mu\mathbb{F}(b). \]
+% 	\[ \frac{\mu\mathbb{F}(b)}{\mu \mathbb{B}} = \frac{\alpha}{\ker b}\cdot\frac{\mu\mathbb{F}(b)}{\mu\mathbb{F}_{1}(b)} = \frac{\alpha}{\ker b}\cdot\sum_{n=0}^{\infty}\prod_{m=0}^{n}k(m). \]
+% 	Denote $K = \sum_{n=0}^{\infty}\prod_{m=0}^{n}k(m)$ is a constant. Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$ that $a\not\rightsquigarrow a$ and $b\not\rightsquigarrow b$, we can derive that $\frac{\mu\mathbb{F}(a)}{\mu\mathbb{F}(b)} = \frac{\ker b}{\ker a}$, which exactly is
+% 	\[ \ker a \cdot\mu\mathbb{F}(a) = \ker b \cdot\mu\mathbb{F}(b). \]
 % \end{proof}
 
 % Now let's consider $K\mu\mathbb{B}$. It radically determines the density of $\mathbb{F}(b)$ and thus the distribution of this Collatz system. $\mu \mathbb{B}$ is a infinitismal, and if $k(m) \ge 1$, then $K$ goes to infinity, thus $K\mu \mathbb{B}$ is indeterminate form, we may guass for certain arguments $(\alpha, \beta, \gamma)$, it is finite and non-zero.
@@ -177,20 +162,20 @@ We have to recall that, all conclusions of $\mathbb{F}(b)$ in this section are b
 From \cref{thm:count-function-from-dirichlet-series} we have
 \begin{corollary}
     For large enough $c > 0$, we have
-    \[ \widetilde{\pi}(\alpha\mathbb{F}_{n+1}(b) + \gamma;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{D(\chr\mathbb{F}_{n}(b);s)}{1- \beta^{s\Phi_1}}\cdot\frac{x^{s}}{s}\rmd{s}. \]
+    \[ \widetilde{\pi}(\alpha\mathbb{F}_{n+1}(b) + \gamma;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{D(\ker\mathbb{F}_{n}(b);s)}{1- \beta^{s\Phi_1}}\cdot\frac{x^{s}}{s}\rmd{s}. \]
 \end{corollary}
 \begin{proof}
-	From \cref{cor:source-value-set-equivlants-its-pre-chr-set}, we have 
+	From \cref{cor:source-value-set-equivlants-its-pre-ker-set}, we have 
 	\begin{align*}
-		D(\alpha\mathbb{F}_{n+1}(b) + \gamma; s) &= D(\mathbb{B}\otimes \chr\mathbb{F}_{n}(b); s) \\
-		&= D(\mathbb{B};s)\cdot D(\chr\mathbb{F}_{n}(b);s) \\
-		&= \sum_{k=0}^{\infty}\beta^{ks\Phi}\cdot D(\chr\mathbb{F}_{n}(b);s) \\
-		&= \frac{D(\chr\mathbb{F}_{n}(b);s)}{1 - \beta^{s\Phi}}.
+		D(\alpha\mathbb{F}_{n+1}(b) + \gamma; s) &= D(\mathbb{B}\otimes \ker\mathbb{F}_{n}(b); s) \\
+		&= D(\mathbb{B};s)\cdot D(\ker\mathbb{F}_{n}(b);s) \\
+		&= \sum_{k=0}^{\infty}\beta^{ks\Phi}\cdot D(\ker\mathbb{F}_{n}(b);s) \\
+		&= \frac{D(\ker\mathbb{F}_{n}(b);s)}{1 - \beta^{s\Phi}}.
 	\end{align*}
 	Thus from \cref{thm:count-function-from-dirichlet-series}, we have
 	\begin{align*}
 		\widetilde{\pi}(\alpha\mathbb{F}_{n+1}(b) + \gamma;x) &= \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(\alpha\mathbb{F}_{n+1}(b) + \gamma; s)\cdot\frac{x^{s}}{s}\rmd{s} \\
-		&= \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{D(\chr\mathbb{F}_{n}(b);s)}{1- \beta^{s\Phi_1}}\cdot\frac{x^{s}}{s}\rmd{s}.
+		&= \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{D(\ker\mathbb{F}_{n}(b);s)}{1- \beta^{s\Phi_1}}\cdot\frac{x^{s}}{s}\rmd{s}.
 	\end{align*}
 \end{proof}
 

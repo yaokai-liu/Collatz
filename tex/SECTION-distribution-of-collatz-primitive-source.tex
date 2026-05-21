@@ -44,7 +44,7 @@ Immidiately, we have
     Let $b \in \mathbb{S}$. $\forall m \in \mathbb{Z}$, if $b + m\alpha > 0$, then $b + m\alpha \in \mathbb{S}$.
 \end{proposition}
 \begin{proof}
-    Trivial from \cref{prop:valchr-are-periodic}.
+    Trivial from \cref{prop:chr-are-periodic}.
 \end{proof}
 \begin{proposition}~\label{prop:primitive-source-of-prime-alpha}
     If $\alpha \in \mathbb{P}$ and $\ord_{\alpha}\beta = \alpha - 1$, then $\tilde{\mathbb{S}} = \varnothing$.
@@ -83,5 +83,5 @@ We can  verify that arguments $(\alpha, \beta, \gamma) = (3,2,1)$ follow the req
 In fact, not only the original source, but all source values that preserve the reversible structure (reduction sequence) follow a rule similar to \cref{prop:primitive-source-are-periodic}. This is why we discuss $\Phi_{k+1} \mid \alpha\Phi_{k}$, where these source values that preserve the reversible structure are distributed at intervals of some factor of $\alpha$. If we expand our perspective from $\mathbb{N}$ to $\mathbb{Q}$ but those denominator is a power of $\alpha$, then we can find that $b + m\alpha$ also preserves a reduction sequence centered at $b$.
 \begin{theorem}
     Denote $\widetilde{\mathbb{F}_{n}(b)}_{i} = \{a\in\mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}$, we have
-    $\chr \mathbb{F}_{n}(b) = \bigcup_{i=1}^{\alpha - 1}\beta^{v(i)}\widetilde{\mathbb{F}_{n}(b)}_{i}$.
+    $\ker \mathbb{F}_{n}(b) = \bigcup_{i=1}^{\alpha - 1}\beta^{v(i)}\widetilde{\mathbb{F}_{n}(b)}_{i}$.
 \end{theorem}

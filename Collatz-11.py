@@ -112,7 +112,7 @@ def dump_count_rational(a, b, M, layer_range):
 
 
 if __name__ == '__main__':
-    dump_count_rational(5, 13, 1 << 64, range(1, 15))
+    dump_count_rational(5, 13, 1 << 256, range(1, 8))
     # dump_den1_by_den1(5, 13, _range)
     # dump_den1_by_den1(5, 53, _range)
     # dump_den1_by_den1(5, 85, _range)

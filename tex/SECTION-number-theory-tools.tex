@@ -136,7 +136,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
         &\raf_{2}(b - 1) \cdot \raf_{2}n + \raf_{2}(b + 1) - 1, & p = 2.
     \end{aligned} \right.\]
 \end{theorem}
-Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
+Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$ from analytic number theory. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
 \begin{definition}
     Define $\pi(A;x) = \card\{ A \le x \}$ that $x\in\mathbb{R}_{>1}$. And we define the Perron form
     \[\widetilde{\pi}(A;x) = \left\{\begin{aligned}
@@ -185,7 +185,7 @@ For $y > 0$, we have
     Define $\Pi(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})$ and also the Perron form $\widetilde{\Pi}(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m})$.
 \end{definition}
 \begin{definition}
-    Finally, for $s > 0$, we define $L(A;s) = \prod_{x\in A}(1-x^{-s})^{-1}$.
+    For $s > 0$, we define $L(A;s) = \prod_{x\in A}(1-x^{-s})^{-1}$.
 \end{definition}
 \begin{proposition}
     $\ln L(A;s) = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x$.

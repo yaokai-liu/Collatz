@@ -28,14 +28,14 @@ With these we have
 \begin{proposition}~\label{prop:condition-of-source-value-le-N}
     Given $N > 0$, $f_{n}(\bm{v}) \le N \Longleftrightarrow \frac{\alpha^{n}\cdot N + \gamma\cdot\mathfrak{V}_{n}}{a\cdot \beta^{\mathcal{V}_{n}}} \ge 1$.
 \end{proposition}
-We denote $Z_{n}(N;\bm{v}) = \frac{\alpha^{n}\cdot N + \gamma\cdot\mathfrak{V}_{n}}{a\cdot \beta^{\mathcal{V}_{n}}}$, it will be very import in \cref{sec:homomorphic-densities-on-source-value-set}.
+We denote $Z_{n}(N;\bm{v}) = \frac{\alpha^{n}\cdot N + \gamma\cdot\mathfrak{V}_{n}}{a\cdot \beta^{\mathcal{V}_{n}}}$, and we will see, it will play very import role in \cref{sec:homomorphic-densities-on-source-value-set}.
 \begin{theorem}~\label{thm:vary-rule}
 Given $\Delta\bm{v} \in \mathbb{Z}^{n}$, view it as a $n$-length Collatz reduce sequence. Then we have
 \[ f_{n}(\bm{v} + \Delta\bm{v}) = \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha^{n}} \cdot \nabla\cdot\mathfrak{V}_{n} = \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha} \cdot \nabla\cdot\mathfrak{v}_{n}. \]
 Here
 \begin{align*}
     \nabla\cdot\mathfrak{V}_{n} &= \sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k} + \Delta\mathcal{V}_{k}}\cdot\alpha^{n-k-1}\cdot(\beta^{\Delta\mathcal{V}_{n}^{k}} - 1),\\
-    \nabla\cdot\mathfrak{v}_{n} &= \sum_{k=0}^{n-1}\frac{\beta^{\mathcal{V}_{k} + \Delta\mathcal{V}_{k}}}{\alpha^{k}}\cdot(\beta^{\Delta\mathcal{V}_{n}^{k}} - 1).
+    \nabla\cdot\mathfrak{v}_{n} &= \sum_{k=0}^{n-1}\beta^{\mathcal{V}_{k} + \Delta\mathcal{V}_{k}}\cdot\frac{\beta^{\Delta\mathcal{V}_{n}^{k}} - 1}{\alpha^{k}}.
 \end{align*}
 \end{theorem}
 \begin{proof}
@@ -100,23 +100,23 @@ Now let's revisit \cref{thm:vary-rule}. Analyzing the full $\Delta\bm{v}$ is too
 \begin{corollary}~\label{cor:single-vary-rule}
 $f_{n}(\bm{v}+s\bm{e}_{k}) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1)$.
 \end{corollary}
-\begin{corollary}
-    Let $\bm{u} = \bm{v}+s\bm{e}_{k}$. Suppose $m\le n$, we have
-    \begin{align*}
-        \mathcal{U}_{n}^{m} &= \left\{\begin{aligned}
-        &\mathcal{V}_{n}^{m} + s, & m\le k < n, \\
-        &\mathcal{V}_{n}^{m}, & \text{otherwise},
-    \end{aligned}\right. \\
-    \mathfrak{U}_{n}^{m} &= \left\{\begin{aligned}
-        &\mathfrak{V}_{k}^{m} + \beta^{s}\cdot \mathfrak{V}_{n}^{k}, & m\le k \le n, \\
-        &\mathfrak{V}_{n}^{m}, & \text{otherwise},
-    \end{aligned}\right. \\
-    \mathfrak{u}_{n}^{m} &= \left\{\begin{aligned}
-        &\mathfrak{v}_{k}^{m}\cdot\alpha^{k-n} + \beta^{s}\cdot \mathfrak{v}_{n}^{k}, & m\le k \le n, \\
-        &\mathfrak{v}_{n}^{m}, & \text{otherwise}.
-    \end{aligned}\right.
-    \end{align*}
-\end{corollary}
+% \begin{corollary}
+%     Let $\bm{u} = \bm{v}+s\bm{e}_{k}$. Suppose $m\le n$, we have
+%     \begin{align*}
+%         \mathcal{U}_{n}^{m} &= \left\{\begin{aligned}
+%         &\mathcal{V}_{n}^{m} + s, & m\le k < n, \\
+%         &\mathcal{V}_{n}^{m}, & \text{otherwise},
+%     \end{aligned}\right. \\
+%     \mathfrak{U}_{n}^{m} &= \left\{\begin{aligned}
+%         &\mathfrak{V}_{k}^{m} + \beta^{s}\cdot \mathfrak{V}_{n}^{k}, & m\le k \le n, \\
+%         &\mathfrak{V}_{n}^{m}, & \text{otherwise},
+%     \end{aligned}\right. \\
+%     \mathfrak{u}_{n}^{m} &= \left\{\begin{aligned}
+%         &\mathfrak{v}_{k}^{m}\cdot\alpha^{k-n} + \beta^{s}\cdot \mathfrak{v}_{n}^{k}, & m\le k \le n, \\
+%         &\mathfrak{v}_{n}^{m}, & \text{otherwise}.
+%     \end{aligned}\right.
+%     \end{align*}
+% \end{corollary}
 \begin{corollary}
 $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - \beta^{s}\cdot f_{n}(\bm{v})}{\beta^{s} - 1}$.
 \end{corollary}
@@ -127,7 +127,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
 \begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
     \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s, \]
-    where the basic adjust fuction is defined as
+    where the basic adjust function is defined as
     \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
     and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
     \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\pow(p\mid\gamma\cdot2^{\delta})\cdot\pow(p\mid\beta^{\ord_{p}\beta} - 1)},
@@ -198,15 +198,84 @@ From the proof, we can deduce that
 \begin{example}
     $\Psi(5,2,1) = \frac{1}{5}$, and $\Phi(5, 2, 1; k) = 4 \cdot 5^{k - 1}$.
 \end{example}
+\begin{corollary}
+    Suppose $\gcd(\alpha, \gamma) = 1$.
+    If $f_{n}(\bm{v}) \in \mathbb{N}$, then $\forall s\in \mathbb{N}$, we have
+    \[ f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) \equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). \]
+\end{corollary}
+\begin{proof}
+    From \cref{cor:single-vary-rule}, we have
+    \begin{align*}
+        f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s\Phi_k} - 1) \\
+        &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \mathfrak{V}_{k}\cdot\frac{\gamma}{\alpha^{k}}\cdot(\beta^{s\Phi_k} - 1).
+    \end{align*}
+    Since $\beta^{s\Phi_k} \equiv 1\pmod{\alpha}$ and $\mathfrak{V}_{k} \equiv 1 \pmod{\alpha}$, thus
+    \[ f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) \equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). \]
+\end{proof}
 
-\cref{thm:the-periodic-rule-of-reduce-sequence} presents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
+In fact, \cref{thm:the-periodic-rule-of-reduce-sequence} presents the changes $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
 
+Back to \cref{thm:vary-rule}, we have
+\begin{corollary}
+    Suppose $f_{n}(\bm{v})\in\mathbb{N}$, then $f_{n}(\bm{v} + \Delta\bm{v})\in\mathbb{N} \Longleftrightarrow \Phi_i\mid\Delta{v}_{i}$.
+\end{corollary}
+This corollary present that, the effect of adjust vector just equivalents to the result of adjust every component in steps. With this, we can decompose the reduce vectors. But before that, we have to introduce two operators.
+\begin{definition}~\label{def:collatz-character}
+Given $b \in\widehat{\mathbb{N}}_\beta$, define
+\[ \chr b = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}b-\gamma) \text{ and } \beta\nmid(\beta^{v}b-\gamma)/\alpha \} \]
+called the Collatz cahracter of $b$. If the set is empty, we say $b$ is a primitive source and define $\chr b = \infty$. We denote all primitive sources as $\mathbb{S}$, they will be discussed in \cref{sec:distribution-of-collatz-primitive-source}.
+If $b$ is not primitive source, we define $\ker b = \beta^{\chr b}b$ as the source kernel of $b$.
+Given $B \subset \widehat{\mathbb{N}}_\beta$, we denote
+\begin{align*}
+    \chr B &= \{ \chr b \mid b\in B - \mathbb{S}\}, \\
+    \ker B &= \{ \ker b \mid b\in B - \mathbb{S}\}.
+\end{align*}
+\end{definition}
+\begin{proposition}
+    If $\alpha \mid \gamma$, then $\Phi_1 = 1$, and then $\chr b = \left\{\begin{aligned}
+        &\beta, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
+        &\infty, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
+    \end{aligned}\right.$
+    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $b \in \mathbb{S}$.
+\end{proposition}
+This proposition states that whether $\alpha \mid \gamma$ or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases.
+\begin{proposition}~\label{prop:collatz-character-1}
+    if $a\not\in \mathbb{S}$, we have $\chr a = \log_{\beta,\alpha}(a^{-1}\cdot \gamma)$.
+\end{proposition}
+And according properties of the discrete logarithm, we have
+\begin{proposition}~\label{prop:chr-are-periodic}
+    $\forall m\in\mathbb{N}$, there is $\chr a = \chr (a+m\alpha)$.
+\end{proposition}
 
-Besides these varies in source value, just from the definition of source value, we have a two kinds of important sets.
+\begin{definition}~\label{def:chr-vector}
+    Given $a \in \widehat{\mathbb{N}}_{\beta}$, define
+    \[ \chr\bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n), \]
+    and then we can naturally derive the definitions of $\chr\mathcal{A}$, $\chr\mathfrak{A}$, and $\chr\mathfrak{a}$.
+\end{definition}
+\begin{definition}~\label{def:red-vector}
+Denote
+\[ \simp\val(a;i) = \frac{1}{\Phi_1}(\val(a;i) - \chr a_i), \]
+and then we denote
+\[ \simp\bm{a} = (\simp\val(a;1), \simp\val(a;2), \cdots, \simp\val(a;n)). \]
+% And we can naturally derive the definitions of $\simp\mathcal{A}$, $\simp\mathfrak{A}$ and $\simp\mathfrak{a}$. We call them simplified.
+\end{definition}
+\begin{remark}~\label{rem:not-all-character-vectors-are-valid}
+    However, not all character vectors are valid. For example, for $5$ in $(3,2,1)$ system, the character vector $(1, 1)$, is not valid. Because $f_{n}((1);5) = 3$ which has no source value any more. And hence we can tell that not all simplified reduce vectors are valid.
+\end{remark}
+\begin{proposition}~\label{prop:rewritten-collatz-rule}
+    $\beta^{\Phi_1\cdot\simp\val(a;i)}\cdot \chr a_{i} = \alpha \cdot a_{i-1} + \gamma$.
+\end{proposition}
+We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\simp\val(a;n+1)$. $\simp\mathcal{A}_n$ functions similarly to a $\beta$ power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of the Collatz system. Formally, we have
+\begin{align}
+    \bm{a} = \Phi_1\simp\bm{a} + \chr\bm{a}.
+\end{align}
+However, as \cref{rem:not-all-character-vectors-are-valid} say, not all characteristic vectors are valid; therefore, the above equality holds only formally. To render it a strictly rigorous formula, we would have to introduce certain special elements that do not exist in reality to modify the definition of Collatz character of those primitive sources, or put our view into more big field like $\mathbb{Q}$. Nevertheless, we shall not delve too deeply into this matter here.
+
+Now let's from the definition of source value, derive two kinds of sets.
 \begin{definition}~\label{def:source-value-set}
 Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
@@ -243,63 +312,43 @@ Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimens
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
 
 To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we define a special value, which we will see it plays a very important part in consist of source value set.
-\begin{definition}~\label{def:collatz-character}
-Given $b \in\widehat{\mathbb{N}}_\beta$, define $\chr b = \min_{v\in\mathbb{N}_{\ge1}}\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\}$ called the Collatz cahracter of $b$. If $\{\beta^{v}b: \alpha\mid(\beta^{v}b-\gamma)\} = \varnothing$, we define $\chr b = \infty$. All numbers that Collatz character is $\infty$ are denoted as $\mathbb{S}$.
-And given $B \subset \widehat{\mathbb{N}}_\beta$, we denote that $\chr B = \{ \chr b \mid b\in B \} - \{ \infty \}$.
-\end{definition}
-\begin{proposition}
-    If $\alpha \mid \gamma$, then $\chr b = \left\{\begin{aligned}
-        &\beta b, &&b\in\alpha\widehat{\mathbb{N}}_\beta, \\
-        &\infty, &&b\in\widehat{\mathbb{N}}_\beta-\alpha\widehat{\mathbb{N}}_\beta.
-    \end{aligned}\right.$
-    If $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $\chr b = \infty$.
-\end{proposition}
-This proposition states that whether $\alpha \mid \gamma$, or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. And if $\chr b = \infty$, we call them primitive sources, and denote all primitive sources as $\mathbb{S}$, they will be discussing in \cref{sec:distribution-of-collatz-primitive-source}.
-\begin{proposition}~\label{prop:collatz-character-1}
-    $\val_{\beta} \chr a = \log_{\beta,\alpha}(a^{-1}\cdot \gamma)$. Thus if $\chr a < \infty$, we have $\chr a = \pow(\beta\mid \chr a) \cdot a$.
-\end{proposition}
-And according properties of the discrete logarithm, we have
-\begin{proposition}~\label{prop:valchr-are-periodic}
-    $\forall m\in\mathbb{N}$, there is $\val_{\beta}\chr a = \val_{\beta}\chr (a+m\alpha)$. Thus we have $\chr(a + m\alpha) = \chr a + m\alpha\cdot\pow(\beta\mid\chr a) = \pow(\beta\mid\chr a) \cdot (a + m\alpha)$.
-\end{proposition}
-\begin{remark}
-    If $\chr a = \infty$, then we treat $\pow(\beta\mid \chr a) = \infty$. In fact, $m$ may be a negative number, provided that $a+m\alpha > 0$.
-\end{remark}
+
 With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
-        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left. A_0 = \frac{\chr a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\chr a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, \bm{v} \in \mathbb{V}_{n}(b) \text{ that } f_{n}(\bm{v};b) = a\right\}\\
-        &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}} \left\{ \left.\sum_{i=1}^{n+1}(k_i\Phi_i + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left. A_0 = \frac{\ker a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\} \\
+        &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}} \left\{ \left.\sum_{i=1}^{n+1}(k_i\Phi_i + \delta(a_i)\Phi_1 + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
-    Here the $\mathbb{S}$ is all primitive source defined in \cref{def:collatz-primitive-source}.
+    Here $\delta(x) = \left\{\begin{aligned}
+        &1, && (\ker x - \gamma)/\alpha \in\mathbb{S}, \\
+        &0, &&\text{ otherwise}.
+    \end{aligned}\right.$
+    And the $\mathbb{S}$ is all primitive source defined in \cref{def:collatz-primitive-source}.
 \end{theorem}
 \begin{proof}
     Trivial for $\mathbb{F}_{n}(b) - \mathbb{S} = \varnothing$.\newline
-    Suppose $\mathbb{F}_{n}(b) - \mathbb{S} \ne \varnothing$, which means $\forall a\in \mathbb{F}_{n}(b) - \mathbb{S}$, we have $\chr a < \infty$. Then $A_0 = \frac{\chr a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\val_{\beta}\chr a);b)\in \mathbb{F}_{1}(a)\subset \mathbb{F}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
+    Suppose $\mathbb{F}_{n}(b) - \mathbb{S} \ne \varnothing$, which means $\forall a\in \mathbb{F}_{n}(b) - \mathbb{S}$, we have $\chr a < \infty$. Then $A_0 = \frac{\ker a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\chr a);b)\in \mathbb{F}_{1}(a)\subset \mathbb{F}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
     \begin{align*}
-        A_{k+1} &= f_{1}(((k+1)\Phi_1 + \val_{\beta}\chr a);b) \\
-        &= f_{1}((\Phi_1 + (k\Phi_1 + \val_{\beta}\chr a));b) \\
+        A_{k+1} &= f_{1}(((k+1)\Phi_1 + \chr a);b) \\
+        &= f_{1}((\Phi_1 + (k\Phi_1 + \chr a));b) \\
         &= \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1) \\
         &= \beta^{(k+1)\Phi_1} A_{0} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
-        &= \beta^{(k+1)\Phi_1}\cdot \frac{\chr a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
-        &= \beta^{(k+1)\Phi_1}\cdot \frac{\chr a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
-        &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\chr a - \frac{\gamma}{\alpha}
+        &= \beta^{(k+1)\Phi_1}\cdot \frac{\ker a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
+        &= \beta^{(k+1)\Phi_1}\cdot \frac{\ker a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
+        &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}
     \end{align*}
     From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{F}_{n+1}(b)$. \newline
     On the other hand, $\forall a\in\mathbb{F}_{n+1}(b)$, from \cref{prop:rewritten-collatz-rule}, we have
-    \[\beta^{\rdu\val(a;1)\Phi_1}\chr a_1 = \alpha a + \gamma. \]
-    And $a_1\in\mathbb{F}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\rdu\val(a;1)\Phi_1}\cdot\chr a_1 - \frac{\gamma}{\alpha}$ in the set of right side.\newline
+    \[\beta^{\simp\val(a;1)\Phi_1}\ker a_1 = \alpha a + \gamma. \]
+    We have $\simp\val(a;1) \ge 0$. If not, then $\val(a;1) - \chr a_1 < 0$, which means $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So we have $\simp\val(a;1) \ge 0$.
+    And $a_1\in\mathbb{F}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\simp\val(a;1)\Phi_1}\cdot\ker a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
     In conclusion, the theorem holds for $\mathbb{F}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
 \end{proof}
 \begin{remark}
-    Notice that in $\sum_{i=1}^{n+1}(k_i\Phi_i + \chr a_i)\bm{e}_{i}$, the start number $a$ is in $\mathbb{F}_{n+1}(b)$ instead of $\mathbb{F}_{n}(b)$, thus $a_i\in\mathbb{F}_{n-i+1}(b)$.
+    Notice that in $\sum_{i=1}^{n+1}(k_i\Phi_i + \delta(a_i)\Phi_1 + \chr a_i)\bm{e}_{i}$, the start number $a$ is in $\mathbb{F}_{n+1}(b)$ instead of $\mathbb{F}_{n}(b)$, thus $a_i\in\mathbb{F}_{n-i+1}(b)$.
 \end{remark}
-\begin{corollary}~\label{cor:minial-of-n-layer}
-    $\min\mathbb{F}_{n}(b) = f_{n}(\chr\bm{b};b)$. Here
-    \[ \chr\bm{b} = (\val_{\beta}\chr b_{-n+1}, \cdots, \val_{\beta}\chr b_{-1}, \val_{\beta}\chr b). \]
-\end{corollary}
 \begin{corollary}~\label{cor:modulo-alpha-of-layers}
    $A_k \equiv\left\{\begin{aligned}
         &k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\alpha \nmid \gamma,\\
@@ -309,9 +358,9 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
 \begin{proof}
     If $\alpha \nmid \gamma$, then $\Phi_1 > 1$, $\alpha \mid (\beta^{\Phi_1} - 1)$. Then we have
     \begin{align*}
-        A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\chr a - \gamma\right)  &&\ \\
-        =& \frac{1}{\alpha}\cdot \beta^{k\Phi_1}\cdot\chr a - \frac{\gamma}{\alpha}   &&\ \\
-        \equiv& \frac{1}{\alpha}\cdot (P\alpha + 1)^{k}\cdot\chr a - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
+        A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\ker a - \gamma\right)  &&\ \\
+        =& \frac{1}{\alpha}\cdot \beta^{k\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}   &&\ \\
+        \equiv& \frac{1}{\alpha}\cdot (P\alpha + 1)^{k}\cdot\ker a - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
         \equiv& \frac{1}{\alpha}\cdot (kP\alpha + 1)\cdot (\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
         \equiv& kP\cdot\gamma + \frac{1}{\alpha}\cdot(\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
         \equiv& kP\cdot\gamma + A_0 &&\pmod{\alpha} \\
@@ -320,13 +369,14 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
     where $P = \frac{\beta^{\Phi_1} - 1}{\alpha}$.\newline
     If $\alpha \mid \gamma$, then from \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
     \begin{align*}
-        A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\chr a - \gamma\right)  &&\ \\
-        =& \frac{1}{\alpha}\cdot \beta^{k}\cdot\chr a - \frac{\gamma}{\alpha}   &&\ \\
+        A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\ker a - \gamma\right)  &&\ \\
+        =& \frac{1}{\alpha}\cdot \beta^{k}\cdot\ker a - \frac{\gamma}{\alpha}   &&\ \\
         \equiv& \frac{1}{\alpha}\cdot \beta^{k}\cdot (\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
         \equiv& \beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.   &&\pmod{\alpha}
     \end{align*}
 \end{proof}
-We need to introduce some symbols to simplify our expressions.
+
+At the last of this section, we introduce some symbols to simplify our expressions.
 \begin{definition}
     We denote $A + b = \{ x + b \mid x \in A \}$ and $aA = \{ ax \mid x \in A \}$,
     denote $A \oplus B = \{ x + y \mid x \in A, y \in B \}$ and $A \otimes B = \{ xy \mid x \in A, y \in B \}$.
@@ -336,8 +386,8 @@ We need to introduce some symbols to simplify our expressions.
     $A \oplus B = B \oplus A$ and $A \otimes B = B \otimes A$.
 \end{proposition}
 If $\forall s\in C = A \otimes B$, there exists a unique pair $x \in A$ and $y \in B$ such that $s = xy$, then $C$ is said to multiplily decompose into $A$ and $B$ uniqely. If $\forall s\in D = A \otimes B$, there exists a unique pair $x \in A$ and $y \in B$ such that $s = x + y$, then $D$ is said to additively decompose into $A$ and $B$ uniqely. With these notations, we have
-\begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-chr-set}
-    $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes\chr\mathbb{F}_{n}(b)$. And the decomposition is uniqe.
+\begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-ker-set}
+    $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes\ker\mathbb{F}_{n}(b)$. And the decomposition is uniqe.
 \end{corollary}
 
 \cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
@@ -348,29 +398,16 @@ That's because they are still based on $\mathbb{F}_{n}(b)$, and therefore still 
 We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{F}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
 
 Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, we are actually changing one number in $\mathbb{F}_{n-k}(b)$ to another, while keeping the beginning and subsequent parts of the reduction sequence unchanged. It also explains the role of $\gamma$. It shows that $\gamma$ doesn't participate much in the construction of the source value set, but it determines the size of the jump steps. Although we might find it seems that only $\Phi_1$ participates in the construction of the source value set, in reality, all $\Phi(k)$ are power of $\alpha$ multiplied by $\Phi(1)$. Therefore, $\Phi_k$ not only represents the construction of the source value set but also tells us about the cyclic structure of the source value set in the form of factors of $\alpha$.
-
 Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
-And the two theorems reveal that elements of $F_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
-\begin{definition}
-Denote
-\begin{align*}
-    &\rdu\val(a;i) = \frac{1}{\Phi_1}(\val(a;i) - \val_{\beta}\chr a_i), \\
-    &\rdu\mathcal{A}_n = \sum_{k=0}^{n-1}\mathrm{red}\val(a;k + 1).
-\end{align*}
-are the reduced Collatz reduce and reduced Collatz accumulation of $a$.
-\end{definition}
-\begin{proposition}~\label{prop:rewritten-collatz-rule}
-    $\beta^{\Phi_1\cdot\rdu\val(a;i)}\cdot \chr a_{i} = \alpha \cdot a_{i-1} + \gamma$.
-\end{proposition}
-We can observe that $k$ in $\mathbb{F}_{n+1}(b)$ is exactly $\rdu\val(a;n+1)$. $\rdu\mathcal{A}_n$ functions similarly to a $\beta$ power, but the difference lies in the fact that because the Collatz system multiplier $\alpha$ is coprime to $\beta$ and has a $\gamma$ term, it can only release $\beta$-related information in stages, and each release requires adjustment by subtracting $s_i$. This may be the essential behavior of the Collatz system.
+And the two theorems reveal that elements of $\mathbb{F}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
 
 Now look the classic Collatz problem, we have
 \begin{example}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
     Suppose $(\alpha, \beta, \gamma) = (3,2,1)$.
     \begin{align*}
-        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{f_0 = \frac{\chr a  - 1}{3}, a_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{4^{k}}{3}\cdot\chr a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}}\left\{ \left.\sum_{i=1}^{n+1}(2k_i\cdot 3^{i-1} + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{A_0 = (\ker a  - 1)/3, A_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{4^{k}}{3}\cdot\ker a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},\\
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}}\left\{ \left.\sum_{i=1}^{n+1}(2k_i\cdot3^{i-1} + 2\delta(a_{i}) + \chr a_i)\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
 \end{example}
 With this, we have
