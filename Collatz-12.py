@@ -117,13 +117,16 @@ if __name__ == '__main__':
     # ax.plot(X, Y_pred, color='red', linewidth=2)
     # plt.show()
 
-    csv_filename = f"count_rational_results-5-13.csv"
-    headers = ["layer", "source value count (1)", "source value count (2)", "rational"]
+    csv_filename = f"numbers_under_16384_15.csv"
+    headers = ["number", "vector"]
     df = pd.read_csv(csv_filename)
-    range_data = df["layer"].values.tolist()
-    full_cover_data = df["rational"].values.tolist()
-    plt.plot(range_data, full_cover_data)
-    plt.axhline(y=1, color='r', linestyle='--', linewidth=1.5, label='Baseline')
-    plt.axhline(y=2, color='r', linestyle='--', linewidth=1.5, label='Baseline')
-
+    range_data = df["number"].values.tolist()
+    Y = [1 for i in range_data]
+    plt.scatter(range_data, Y)
+    not_in = [x for x in range(16384) if x not in range_data]
+    Y = [0 for i in not_in]
+    plt.scatter(not_in, Y)
+    # plt.axhline(y=1, color='r', linestyle='--', linewidth=1.5, label='Baseline')
+    # plt.axhline(y=2, color='r', linestyle='--', linewidth=1.5, label='Baseline')
     plt.show()
+    print(len(range_data) / (16384/2))

@@ -10,7 +10,7 @@ With these, we can define groupoid homomorphisms and their derivtions from $\mat
     Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $a + b \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
 \end{definition}
 If $\forall b \in \mathbb{G}$, there is $\mathcal{A}(b) = 0$, we called that $\mathcal{A}$ is a zero groupoid homomorphism, and denote $\mathcal{A} = 0$.
-    Otherwise, we say $\mathcal{A} \ne 0$.
+Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homomorphisms hereafter are supposed non-zero.
 \begin{proposition}
     If $\mathcal{A} \ne 0$, then $\forall a \in \mathbb{G}$, there is $\mathcal{A}(a)\cdot\mathcal{A}(-a) = \mathcal{A}(0) = 1$. In other words, $\mathcal{A}(-a) = \mathcal{A}(a)^{-1}$. This requires the ring $\mathbb{R}$ at least is a division ring.
 \end{proposition}
@@ -45,32 +45,35 @@ Given $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, we have
     \[ (s\mathfrak{U} + t\mathfrak{V})(a) = s\mathfrak{U}(a) + t\mathfrak{V}(a). \]
 \end{proposition}
 Also, we denote $\mathfrak{U} = 0$ if it is a zero ($\mathcal{A}$, $\mathcal{B}$)-derivation.
+And unless otherwise specified, all derivations hereafter are supposed non-zero.
 However, we need another restriction of ($\mathcal{A}$, $\mathcal{B}$)-derivations to describe our problem.
 
-We say $p \in\mathbb{G}$ is inseparable, if $\forall a, b \in\mathbb{G}$, $p$ cannot be represented by $a + b$.
-And we denote $\mathbb{P}(\mathbb{G}) = \{ AB \in\mathbb{G} \mid p \text{ is inseparable}\}$. With this we have
+We say $p \in\mathbb{G}$ is inseparable, if $\forall a, b \in\mathbb{G}-\{p, 0\}$, $p$ cannot be represented by $a + b$.
+And we denote $\mathbb{P}(\mathbb{G}) = \{ p \in\mathbb{G} \mid p \text{ is inseparable}\}$. With this we have
 \begin{definition}[kernel of ($\mathcal{A}$, $\mathcal{B}$)-derivation]
-    We say $\mathfrak{U}(p)$ is a kernel on $p$ of $\mathfrak{U}$ if $p \in \mathbb{P}(\mathbb{G})$.
+    Suppose $p \in \mathbb{P}(\mathbb{G})$. We say $\mathfrak{U}(p)$ is a kernel on $p$ of $\mathfrak{U}$.
 \end{definition}
-Now suppose there is a homoomorphism in $\mathbb{G}^{I}$ such that $s \mapsto p(s)$ and $s + t \mapsto p(s) + p(t)$, here $I$ is some index set.
+\begin{definition}[periodic mapping]
+Now suppose there is a homomorphism in $\mathbb{G}^{I}$ such that $s \mapsto p(s)$ and $s + t \mapsto p(s) + p(t)$, here $I$ is some index set.
 If $\exists t\in I$ such that $\forall p(s)\in \mathbb{P}(\mathbb{G})$, such that $F:\mathbb{G} \to \mathbb{R}$ satisfied $F(p(s + t)) = F(p(s))$, then we say $F$ is periodic on $\mathbb{G}^{I}$ with $t$ is one period of it.
+\end{definition}
 \begin{definition}
-    All periodic groupoid homomorphism with period $t$ denote as $\mathrm{Cauchy}_{\circ(t)}(\mathbb{G},\mathbb{R})$.
-    And all periodic kernel ($\mathcal{A}$, $\mathcal{B}$)-derivations with period $t$ denote as $\partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$.
+    We  denote all periodic Cauchy homomorphism with period $t$ as $\mathrm{Cauchy}_{\circ(t)}(\mathbb{G},\mathbb{R})$.
+    And all ($\mathcal{A}$, $\mathcal{B}$)-derivations with periodic kernel that period $t$ denote as $\partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$.
 \end{definition}
 \begin{proposition}
-    If $\mathcal{A}, \mathcal{B} \in \mathrm{Cauchy}_{\circ(t)}(\mathbb{G}, \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$, $\forall a \in\mathbb{G}$, we have
-    \[ \mathfrak{U}(a(s + t)) = \mathfrak{U}(a(s)) \]
+    If $\mathcal{A}, \mathcal{B} \in \mathrm{Cauchy}_{\circ(t)}(\mathbb{G}, \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{\circ(t)}(\mathcal{A}, \mathcal{B})$, $\forall a \in\mathbb{G}$, we have $\mathfrak{U}(a(s + t)) = \mathfrak{U}(a(s))$.
 \end{proposition}
 \begin{definition}
     Given a ($\mathcal{A}$, $\mathcal{B}$)-derivation $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, if $\forall p, q\in \mathbb{P}(\mathbb{G})$, there is $\mathfrak{U}(p) = \mathfrak{U}(q)$, we say $\mathfrak{U}$ is kernel independent.
-    All kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivations are denoted as $\partial(\mathcal{A}, \mathcal{B})$.
+    We denote all kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivations as $\partial(\mathcal{A}, \mathcal{B})$.
 \end{definition}
 \begin{proposition}
     $\partial(\mathcal{A}, \mathcal{B}) = \partial_{\circ(1)}(\mathcal{A}, \mathcal{B})$.
 \end{proposition}
-
-We say a sequence $\mathbb{T}(a)$ on $\mathbb{G}$ is a partition of $a \in \mathbb{G}$, if $\forall c \in \mathbb{T}(a)$, $\exists b, d \in \mathbb{G}$, such that $a = b + c + d$ and nd $\sum_{c\in \mathbb{T}(a)}c = a$.  We call $c$ is a part of $a$, and denote $c\subset a$, denote $a\backslash c = b$ and $c/a = d$. If $\forall c \in \mathbb{T}(a)$, there is $c\in\mathbb{P}(\mathbb{G})$, then we also denote the partition as $\mathbb{P}(a)$.
+\begin{definition}
+    We say a sequence $\mathbb{T}(a)$ on $\mathbb{G}$ is a partition of $a \in \mathbb{G}$, if $\forall c \in \mathbb{T}(a)$, $\exists b, d \in \mathbb{G}$, such that $a = b + c + d$ and $\sum_{c\in \mathbb{T}(a)}c = a$.  We call $c$ is a part of $a$, and denote $c\subset a$, denote $a\backslash c = b$ and $c/a = d$. If $\forall c \in \mathbb{T}(a)$, there is $c\in\mathbb{P}(\mathbb{G})$, then we also denote the partition as $\mathbb{P}(a)$.
+\end{definition}
 \begin{theorem}
     $\forall \mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, $\forall \mathbb{T}$, we have
     \[ \mathfrak{U}(a) = \sum_{c \in \mathbb{T}(a)}\mathcal{A}(a\backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a). \]
@@ -79,7 +82,7 @@ We say a sequence $\mathbb{T}(a)$ on $\mathbb{G}$ is a partition of $a \in \math
     Use induction. \newline
     $\forall b \in\mathbb{G}$, we have $\mathfrak{U}(c) = \mathcal{A}(c\backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/c)$ because $\mathcal{A}(c\backslash c) = \mathcal{A}(0) = 1$ and $\mathcal{B}(c/c) = \mathcal{B}(0) = 1$.
     Suppose $\forall b \subset a$, it holds.
-    And for $\cdot\backslash\cdot$ and $\cdot/\cdot$, they each construct two well-ordered sequences.
+    And for $\cdot\backslash\cdot$ and $\cdot/\cdot$, they each construct a well-ordered sequences.
     Then for $a$, we have
     \begin{align*}
         \mathfrak{U}(a) = &\mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c + c/a) + \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c+c/a) \\
@@ -91,9 +94,10 @@ We say a sequence $\mathbb{T}(a)$ on $\mathbb{G}$ is a partition of $a \in \math
     \end{align*}
     Notice that \begin{align*}
         &a \backslash c + c + (c/a)\backslash d = a - (d + d/(c/a)) = a\backslash d,\\
-        &e/(a\backslash c) + c + c/a = a - ((a\backslash c)\backslash e + e) = e/a, \\
-        &d/(c/a) = d/a, (a\backslash c)\backslash e = a \backslash e,
+        &e/(a\backslash c) + c + c/a = a - ((a\backslash c)\backslash e + e) = e/a,
     \end{align*}
+    and
+    \[   d/(c/a) = d/a,\quad (a\backslash c)\backslash e = a \backslash e, \]
     we have
     \begin{align*}
         \mathfrak{U}(a) = & \sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}(a\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
@@ -116,7 +120,7 @@ This theorem also holds on those continuous system.
 
     Now let $F(x) = \int_{a}^{x}f(x)\rmd x$ and $G(x) = - \int_{x}^{b}g(x)\rmd x$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
     \begin{align}~\label{equ:better-kernel}
-        \mathfrak{U}([a, b]) &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\rmd x \nonumber \\
+        \mathfrak{U}[a, b] &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\rmd x \nonumber \\
         &= \int_{a}^{b}\exp(F(x)-G(x))\rmd(F(x) - G(x)) \nonumber \\
         &= \frac{\exp F(b)}{\exp G(b)} - \frac{\exp F(a)}{\exp G(a)} \nonumber\\
         &= \mathcal{F}[a, b] - \mathcal{G}[b, a]
@@ -144,8 +148,12 @@ are the $\sigma$-varied derivation and $\tau$-varied derivation. Define
 \end{align*}
 are the $\sigma$-varities of the derivation and $\tau$-varities of the derivation.
 \end{definition}
+\begin{proposition}
+    Since $\mathcal{A}, \mathcal{B}$ and $\mathcal{C}$ are non-zero, and $\mathfrak{U}\ne 0$, we have $\delta_{\sigma}\mathfrak{U} \ne 0$, $\delta_{\tau}\mathfrak{U} \ne 0$. 
+\end{proposition}
 
-% In \cref{sec:collatz-source-value} and \cref{sec:homomorphic-densities-on-source-value-set}, we deduce that the Collatz source values are hierarchical, and that there is an isomorphism between the source value sets of two numbers within the same hierarchical layer. Not only with that, 
+
+% In \cref{sec:collatz-source-value} and \cref{sec:distribution-of-source-value-set}, we deduce that the Collatz source values are hierarchical, and that there is an isomorphism between the source value sets of two numbers within the same hierarchical layer. Not only with that, 
 % $\partial(\mathcal{A}, \mathcal{B})$ also separates $\mathfrak{U}(\mathbb{G})$ into distinct layers.
 
 Finially back to the Collatz complement. With arguments $(\alpha, \beta, \gamma)$, all Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{-*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.

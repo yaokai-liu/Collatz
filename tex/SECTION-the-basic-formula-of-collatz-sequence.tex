@@ -44,15 +44,15 @@ If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_
     If there are two numbers $a, b \in \widehat{\mathbb{N}}_{{\beta}}$ such that $\exists n \ge 0$, $\forall m \le n$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
 \end{corollary}
 % \begin{proof} Trivial with \cref{theorem:inductive-formula}. \end{proof}
-\begin{proof}
-    Since $\mathcal{A}_m = \mathcal{B}_m$, we have $\mathfrak{A}_{m} = \mathfrak{B}_{m}$.
-    With the \cref{theorem:inductive-formula}, we have
-    \[ (a_{m} - b_{m}) \cdot \beta^{\mathcal{A}_m} = (a - b) \cdot \alpha^{m}. \]
-    Since $\gcd(\alpha, \beta) = 1$, then $\gcd(\beta^{\mathcal{A}_m}, \alpha^{m}) = 1$.
-    So we have
-    \[\beta^{\mathcal{A}_m} \mid (a - b), \quad \alpha^{m} \mid (a_m - b_m) \]
-    holds for all $m\le n$.
-\end{proof}
+% \begin{proof}
+%     Since $\mathcal{A}_m = \mathcal{B}_m$, we have $\mathfrak{A}_{m} = \mathfrak{B}_{m}$.
+%     With the \cref{theorem:inductive-formula}, we have
+%     \[ (a_{m} - b_{m}) \cdot \beta^{\mathcal{A}_m} = (a - b) \cdot \alpha^{m}. \]
+%     Since $\gcd(\alpha, \beta) = 1$, then $\gcd(\beta^{\mathcal{A}_m}, \alpha^{m}) = 1$.
+%     So we have
+%     \[\beta^{\mathcal{A}_m} \mid (a - b), \quad \alpha^{m} \mid (a_m - b_m) \]
+%     holds for all $m\le n$.
+% \end{proof}
 \begin{corollary}
     If $\forall m \ge 0$, there is $\mathcal{A}_m = \mathcal{B}_m$, then we have $a = b$.
 \end{corollary}
@@ -82,18 +82,18 @@ Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
 \begin{proposition}
     If $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $[m\mid n] = \varnothing$.
 \end{proposition}
-\begin{proof}
-    If not, then
-    $\forall a\in [m \mid n]$, we have $\forall i \le n - 1$, $\mathcal{A}_i = 0$, thus $\forall 0 < k \le n$, we have
-    \[ \mathfrak{A}_k = \sum_{i=0}^{k-1}\beta^{\mathcal{A}_i}\cdot\alpha^{n-i-1} = \sum_{i=0}^{k-1}\alpha^{i} = \frac{\alpha^{k} - 1}{\alpha - 1}. \]
-    Since $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $\exists k \le n$ such that $k = \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
-    \begin{align*}
-        \mathfrak{A}_k &= \frac{\alpha^{t \cdot \ord_{\beta(\alpha - 1)}(\alpha)} - 1}{\alpha - 1} &&\\
-        &\equiv \frac{t\cdot\beta(\alpha - 1) + 1 - 1}{\alpha - 1} &&\pmod{\beta}\\
-        &\equiv 0. &&\pmod{\beta}
-    \end{align*}
-    It conflict with \cref{cor:beta-nmid-collatz-complement}. Thus $[m\mid n] = \varnothing$.
-\end{proof}
+% \begin{proof}
+%     If not, then
+%     $\forall a\in [m \mid n]$, we have $\forall i \le n - 1$, $\mathcal{A}_i = 0$, thus $\forall 0 < k \le n$, we have
+%     \[ \mathfrak{A}_k = \sum_{i=0}^{k-1}\beta^{\mathcal{A}_i}\cdot\alpha^{n-i-1} = \sum_{i=0}^{k-1}\alpha^{i} = \frac{\alpha^{k} - 1}{\alpha - 1}. \]
+%     Since $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $\exists k \le n$ such that $k = \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
+%     \begin{align*}
+%         \mathfrak{A}_k &= \frac{\alpha^{t \cdot \ord_{\beta(\alpha - 1)}(\alpha)} - 1}{\alpha - 1} &&\\
+%         &\equiv \frac{t\cdot\beta(\alpha - 1) + 1 - 1}{\alpha - 1} &&\pmod{\beta}\\
+%         &\equiv 0. &&\pmod{\beta}
+%     \end{align*}
+%     It conflict with \cref{cor:beta-nmid-collatz-complement}. Thus $[m\mid n] = \varnothing$.
+% \end{proof}
 That means we can just consider $n < \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
 \begin{proposition}
 If $m \ge 1$, then
@@ -127,33 +127,33 @@ When $m = 0$, the $[0\mid n] = \widehat{\mathbb{N}}_{\beta}$.
 \begin{theorem}~\label{thm:avaliable-in-finity-step}
     $\exists P \in \mathbb{N}_{\ge1}$, such that if there is $[m\mid n + P]\ne\varnothing$, then we have $[m\mid n + P] = [m\mid n]$.
 \end{theorem}
-\begin{proof}
-    Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)$.
+% \begin{proof}
+%     Let $P = \ord_{\beta^{m}}(\alpha) \cdot \prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)$.
 
-    First, since $\gcd(\alpha, \beta) = 1$, for those $p \in \mathbb{P}$ that $p \mid \beta$, we have
-    \begin{align*}
-        \val_{p}(\alpha^P - 1) & \ge \val_{p}\left(\prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)\right) + \val_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
-                                 & \ge \val_{p}(\alpha-1) + m \cdot \val_{p}\beta,
-    \end{align*}
-    Then we have
-    \begin{align*}
-        \val_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \val_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
-                &= \val_{p}(\alpha^P - 1) - \val_{p}(\alpha-1) \\
-                &\ge m \cdot \val_{p}\beta.
-    \end{align*}
-    That means $(\raf_{p_i}\beta)^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
-    Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
-    Here, $\alpha^{-1}$ is defined in terms of modulo $\beta^{m}$. \newline
-    Now suppose $a \in [m \mid n + P]$.
-    From \cref{prop:classes-equiv-congruence}, we have
-    \begin{align*}
-        a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-            &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{-P} \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
-            &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}.    &&\pmod{\beta^{m}}
-    \end{align*}
-    From \cref{prop:classes-equiv-congruence}, we proved $[m\mid n + P] = [m\mid n]$.
-\end{proof}
+%     First, since $\gcd(\alpha, \beta) = 1$, for those $p \in \mathbb{P}$ that $p \mid \beta$, we have
+%     \begin{align*}
+%         \val_{p}(\alpha^P - 1) & \ge \val_{p}\left(\prod_{p\in\Pi(\mathbb{P} \mid \beta)}\raf_{p}(\alpha-1)\right) + \val_{p}(\alpha^{\ord_{\beta^{m}}(\alpha)} - 1) \\
+%                                  & \ge \val_{p}(\alpha-1) + m \cdot \val_{p}\beta,
+%     \end{align*}
+%     Then we have
+%     \begin{align*}
+%         \val_{p}\left(\sum_{i=0}^{P - 1}\alpha^{-i}\right) & = \val_{p}\left(\frac{\alpha(\alpha^{P} - 1)}{\alpha^{P}(\alpha - 1)}\right) \\
+%                 &= \val_{p}(\alpha^P - 1) - \val_{p}(\alpha-1) \\
+%                 &\ge m \cdot \val_{p}\beta.
+%     \end{align*}
+%     That means $(\raf_{p_i}\beta)^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+%     Thus, we have $\beta^{m} \left\vert\ \sum_{i=0}^{P - 1}\alpha^{-i} \right. $.
+%     Here, $\alpha^{-1}$ is defined in terms of modulo $\beta^{m}$. \newline
+%     Now suppose $a \in [m \mid n + P]$.
+%     From \cref{prop:classes-equiv-congruence}, we have
+%     \begin{align*}
+%         a   &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P+n-1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+%             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{P - 1}\alpha^{-i} - \frac{\gamma}{\alpha}\cdot\sum_{i=P}^{P + n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+%             &\equiv - \frac{\gamma}{\alpha}\cdot\alpha^{-P} \cdot\sum_{i=0}^{n - 1}\alpha^{-i}    &&\pmod{\beta^{m}} \\
+%             &\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n - 1}\alpha^{-i}.    &&\pmod{\beta^{m}}
+%     \end{align*}
+%     From \cref{prop:classes-equiv-congruence}, we proved $[m\mid n + P] = [m\mid n]$.
+% \end{proof}
 \begin{remark}
 It should be noted that this $P$ is not always the minimum period. However, it ultimately shows that we can determine whether a number can be simplified in a finite number of steps.
 \end{remark}
@@ -173,15 +173,15 @@ Compared to the above, we may not need to consider the number of dry-run steps b
     $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
 \end{theorem}
 \begin{proof}
-\begin{itemize}
-    \item[$\Rightarrow$)]
-        If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\val(a;k + n_{k}) > 0$,
-        that means $a_{k} \in [\val(a;k + n_{k}) \mid n_{k}] \subset [1]$.
-    \item[$\Leftarrow$)] 
-        If $\forall k \in \mathbb{N}$, there is $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{thm:avaliable-in-finity-step} we can suppose $n_k \le P$,
-        such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
-        Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
-\end{itemize}
+% \begin{itemize}
+%     \item[$\Rightarrow$)]
+%         If $\lim_{k\to\infty} \mathcal{A}_k = \infty$, then $\forall k \in \mathbb{N}$, $\exists n_{k} \in \mathbb{N}_{\ge1}$, $\val(a;k + n_{k}) > 0$,
+%         that means $a_{k} \in [\val(a;k + n_{k}) \mid n_{k}] \subset [1]$.
+%     \item[$\Leftarrow$)] 
+%         If $\forall k \in \mathbb{N}$, there is $a_k \in [1]$, then $\exists n_{k} \in \mathbb{N}_{\ge1}$ and from \cref{thm:avaliable-in-finity-step} we can suppose $n_k \le P$,
+%         such that $a_k \in [1 \mid n_{k}]$ for all $k \in \mathbb{N}$.
+%         Thus, we have $\mathcal{A}_k \ge \frac{k}{P} \to \infty\ (k \to \infty)$.
+% \end{itemize}
 Sum up, we proved this theorem.
 \end{proof}
 \begin{corollary}

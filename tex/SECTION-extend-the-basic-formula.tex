@@ -77,45 +77,47 @@ For these won't fall in to cycles, there is also a conjecture:
 Anyway, we now finally extended the problem from integers to the rational numbers, and at the same time, the exploration of Collatz sequences has turned to the exploration of Collatz reduces.
 This implies that the Collatz reduces is the more fundamental aspect of this process.
 
-We now return to the subscript component of our notation. If these subscripts were restricted solely to the set of natural numbers $\mathbb{N}$, they would be insufficient to form a groupoid. Consequently, we must define their "inverse" forms. Fortunately, Theorem \cref{theorem:any-presequence} informs us that, within the domain of the rational numbers $\mathbb{Q}$, we are indeed able to trace Collatz sequences in reverse.
-However, under the conditions stipulated by Theorem \cref{theorem:any-presequence}, this reverse-tracing operation is constrained by a finite limit on the number of reduction steps.
-To ensure consistency with the content of Section \cref{sec:a-kind-of-derivation-on-groupoid}, we must extend the scope of summation to infinity. Accordingly, we have redefined the summation symbol to incorporate the directional characteristics illustrated below:
-\begin{definition}
-    Let's modified the definition of $\sum$ operator. The sum $S$ of $s$ from $m$ to $n$ is defined as
-    \[ S = \left\{\begin{aligned}
-    &\sum_{i=m}^{n-1}s_i, &&n > m, \\
-    &0, &&n = m, \\
-    -&\sum_{i=n}^{m-1}s_i, &&n < m.
-\end{aligned}\right. \]
-\end{definition}
-With this we have
-\begin{proposition}
-    $\mathcal{A}_{n}^{m} = -\mathcal{A}_{m}^{n}$.
-\end{proposition}
-\begin{proposition}
-    $\alpha^{n-m} \cdot \mathfrak{A}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{A}_{n}^{m} = 0$ and $\mathfrak{a}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{a}_{n}^{m} = 0$.
-\end{proposition}
-It is easy to verify that those propositions of Collatz accumulation and complement still holds.
-And with these definitions, we have
-\begin{theorem}~\label{theorem:final-inductive-formula}
-Given $a \in \widehat{\mathbb{Q}}_{{\beta}}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
-Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
-\[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
-\end{theorem}
+% We have to note that the remainder of this section bears little direct relevance to our main line of reasoning; it has been included solely to satisfy the algebraic requirements outlined in \cref{sec:a-kind-of-derivation-on-groupoid}. Consequently, readers who are not interested in the underlying algebraic phenomena may safely skip this portion and proceed directly to the next section.
 
-\begin{corollary}
-    $a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = \alpha^{n-m} \cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n}^{m}\right)$.
-\end{corollary}
-\begin{corollary}
-    If $\forall i$ that $k \ge i > 0$, there is $v_{-i} = t$, denote $\sigma = \frac{\gamma}{\alpha-\beta^{t}}$, then we have
-    $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$.
-\end{corollary}
-Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$ has only one form of solution:
-\[\left\{\begin{aligned}
-    a_{0} &= t \cdot \alpha^k - \sigma, \\
-    a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
-\end{aligned}\right.\]
-where $t \in \mathbb{Q}$.
-To ensure both $a_{-k}$ and $a_0$ are integers, we require
-\[ t \in \{s\cdot\sigma+n \mid n \in \mathbb{N}, s \equiv \alpha^{-k} \equiv \beta^{-kt} \pmod{\alpha - \beta^{t}}\}. \]
-Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.
+% Now we return to the subscripts used in our notation.
+% If these subscripts were restricted exclusively to the set of natural numbers $\mathbb{N}$, they would be insufficient to constitute a groupoid. Therefore, we must define their "inverse" forms. Fortunately, Theorem \cref{theorem:any-presequence} informs us that, within the domain of rational numbers $\mathbb{Q}$, it is indeed possible to trace Collatz sequences in reverse.
+% However, under the conditions stipulated by Theorem \cref{theorem:any-presequence}, this reverse-tracing operation is constrained by the finite nature of the reduction steps involved. Now,
+% in order to endow the aforementioned supplementary material with "directional algebraic closure," we must modify the traditional summation operator into one that is sensitive to direction. Accordingly, we have redefined the summation symbol to incorporate the directional characteristics illustrated below:
+% \begin{definition}
+%     Let's modified the definition of $\sum$ operator. The sum $S$ of $s$ from $m$ to $n$ is defined as
+%     \[ S = \left\{\begin{aligned}
+%     &\sum_{i=m}^{n-1}s_i, &&n > m, \\
+%     &0, &&n = m, \\
+%     -&\sum_{i=n}^{m-1}s_i, &&n < m.
+% \end{aligned}\right. \]
+% \end{definition}
+% With this we have
+% \begin{proposition}
+%     $\mathcal{A}_{n}^{m} = -\mathcal{A}_{m}^{n}$.
+% \end{proposition}
+% \begin{proposition}
+%     $\alpha^{n-m} \cdot \mathfrak{A}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{A}_{n}^{m} = 0$ and $\mathfrak{a}_{m}^{n} + \beta^{\mathcal{A}_m^n} \cdot \mathfrak{a}_{n}^{m} = 0$.
+% \end{proposition}
+% It is easy to verify that those propositions of Collatz accumulation and complement still holds.
+% And with these definitions, we have
+% \begin{theorem}~\label{theorem:final-inductive-formula}
+% Given $a \in \widehat{\mathbb{Q}}_{{\beta}}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
+% Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
+% \[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]
+% \end{theorem}
+% \begin{corollary}
+%     $a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = \alpha^{n-m} \cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n}^{m}\right)$.
+% \end{corollary}
+% \begin{corollary}
+%     If $\forall i$ that $k \ge i > 0$, there is $v_{-i} = t$, denote $\sigma = \frac{\gamma}{\alpha-\beta^{t}}$, then we have
+%     $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$.
+% \end{corollary}
+% Equation $(a_{-k} + \sigma) \cdot \alpha^k  = \beta^{kt} \cdot (a_0 + \sigma)$ has only one form of solution:
+% \[\left\{\begin{aligned}
+%     a_{0} &= t \cdot \alpha^k - \sigma, \\
+%     a_{-k} &= t \cdot \beta^{k\Delta} - \sigma,
+% \end{aligned}\right.\]
+% where $t \in \mathbb{Q}$.
+% To ensure both $a_{-k}$ and $a_0$ are integers, we require
+% \[ t \in \{s\cdot\sigma+n \mid n \in \mathbb{N}, s \equiv \alpha^{-k} \equiv \beta^{-kt} \pmod{\alpha - \beta^{t}}\}. \]
+% Unfortunately, in this case, not all solutions of the equation guarantee that $\beta \nmid a_0$.

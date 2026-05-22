@@ -172,15 +172,15 @@ For $y > 0$, we have
     &0, &&y < 1.
 \end{aligned}\right. \]
 \end{lemma}
-\begin{proof}[Proof of \cref{thm:count-function-from-dirichlet-series}]
-    \begin{align*}
-        &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd s \\
-        =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}t^{-s}\frac{x^{s}}{s}\rmd s \\
-        =&\sum_{t\in A}\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t}\right)^{s}\frac{1}{s}\rmd s \\
-        =&\sum_{t\in A}P(x/t) \\
-        =&\widetilde{\pi}(A;x).
-    \end{align*}
-\end{proof}
+% \begin{proof}[Proof of \cref{thm:count-function-from-dirichlet-series}]
+%     \begin{align*}
+%         &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd s \\
+%         =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}t^{-s}\frac{x^{s}}{s}\rmd s \\
+%         =&\sum_{t\in A}\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t}\right)^{s}\frac{1}{s}\rmd s \\
+%         =&\sum_{t\in A}P(x/t) \\
+%         =&\widetilde{\pi}(A;x).
+%     \end{align*}
+% \end{proof}
 \begin{definition}
     Define $\Pi(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})$ and also the Perron form $\widetilde{\Pi}(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m})$.
 \end{definition}
@@ -190,45 +190,42 @@ For $y > 0$, we have
 \begin{proposition}
     $\ln L(A;s) = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x$.
 \end{proposition}
-\begin{proof}
-At first, we have
-\[ \ln L(A;s) = -\sum_{x\in A}\ln(1 - x^{-s}) = \sum_{x\in A}-\ln(1 - x^{-s}). \]
-From Maclaurin's formula, $- \ln (1 - z) = \sum_{m=1}^{\infty}\frac{x^{m}}{m}$, we have
-\begin{align*}
-    \ln L(A;s) &= \sum_{x\in A}\sum_{m=1}^{\infty}\frac{x^{-sm}}{m} = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} \\
-    &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-sm}\rmd\pi(A;x) \\
-    &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-s}\rmd\pi(A;x^{1/m}) \\
-    &= \int_{1}^{\infty}x^{-s}\rmd\left(\sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})\right) \\
-    &= \int_{1}^{\infty}x^{-s}\rmd\Pi(A;x)
-\end{align*}
-According the rule of integration by parts, we have
-\begin{align*}
-    \ln L(A;s) &= \left[x^{-s}\Pi(A;x)\right]\bigg\vert_{1}^{\infty} - \int_{1}^{\infty}\Pi(A;x)\rmd x^{-s} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x.
-\end{align*}
-\end{proof}
+% \begin{proof}
+% At first, we have
+% \[ \ln L(A;s) = -\sum_{x\in A}\ln(1 - x^{-s}) = \sum_{x\in A}-\ln(1 - x^{-s}). \]
+% From Maclaurin's formula, $- \ln (1 - z) = \sum_{m=1}^{\infty}\frac{x^{m}}{m}$, we have
+% \begin{align*}
+%     \ln L(A;s) &= \sum_{x\in A}\sum_{m=1}^{\infty}\frac{x^{-sm}}{m} = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} \\
+%     &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-sm}\rmd\pi(A;x) \\
+%     &= \sum_{m=1}^{\infty}\frac{1}{m}\int_{1}^{\infty}x^{-s}\rmd\pi(A;x^{1/m}) \\
+%     &= \int_{1}^{\infty}x^{-s}\rmd\left(\sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})\right) \\
+%     &= \int_{1}^{\infty}x^{-s}\rmd\Pi(A;x)
+% \end{align*}
+% According the rule of integration by parts, we have
+% \begin{align*}
+%     \ln L(A;s) &= \left[x^{-s}\Pi(A;x)\right]\bigg\vert_{1}^{\infty} - \int_{1}^{\infty}\Pi(A;x)\rmd x^{-s} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x.
+% \end{align*}
+% \end{proof}
 \begin{theorem}
     Let $\mu(m)$ be the Möbius function, for $c > 0$ large enough, we have
     \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s. \]
 \end{theorem}
-\begin{proof}
-    Since we have Perron's formula, we are supported to have
-\begin{align*}
-    &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s}}{s}\rmd s \\
-    =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}\sum_{m=1}^{\infty}\frac{t^{-sm}}{m}\left(\frac{x^{s}}{s}\right)\rmd s \\
-    =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t^{m}}\right)^{s}\frac{1}{s}\rmd s \right] \\
-    =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}P(x/t^{m}) \\
-    % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid \frac{x}{t^{m}} > 1 \} \\
-    % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid t^{m} < x \} \\
-    =&\sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m}) \\
-    =&\widetilde{\Pi}(A;x).
-\end{align*}
-Using the Möbius inversion, we have
-\begin{align*}
-    \widetilde{\pi}(A;x) &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\widetilde{\Pi}(A;x^{1/m}) \\
-    &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s/m}}{s}\rmd s \right] \\
-    &= \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s.
-\end{align*}
-
-
-
-\end{proof}
+% \begin{proof}
+%     Since we have Perron's formula, we are supported to have
+% \begin{align*}
+%     &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s}}{s}\rmd s \\
+%     =&\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\sum_{t\in A}\sum_{m=1}^{\infty}\frac{t^{-sm}}{m}\left(\frac{x^{s}}{s}\right)\rmd s \\
+%     =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\left(\frac{x}{t^{m}}\right)^{s}\frac{1}{s}\rmd s \right] \\
+%     =&\sum_{m=1}^{\infty}\sum_{t\in A}\frac{1}{m}P(x/t^{m}) \\
+%     % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid \frac{x}{t^{m}} > 1 \} \\
+%     % =&\sum_{m=1}^{\infty}\frac{1}{m}\card\{t\in A \mid t^{m} < x \} \\
+%     =&\sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m}) \\
+%     =&\widetilde{\Pi}(A;x).
+% \end{align*}
+% Using the Möbius inversion, we have
+% \begin{align*}
+%     \widetilde{\pi}(A;x) &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\widetilde{\Pi}(A;x^{1/m}) \\
+%     &= \sum_{m=1}^{\infty}\frac{\mu(m)}{m}\left[ \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;s)}\frac{x^{s/m}}{s}\rmd s \right] \\
+%     &= \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s.
+% \end{align*}
+% \end{proof}

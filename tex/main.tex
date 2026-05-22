@@ -68,6 +68,8 @@
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\card}{card}
 \DeclareMathOperator*{\chr}{chr}
+\DeclareMathOperator*{\wchr}{\overline{\chr}}
+\DeclareMathOperator*{\wker}{\overline{\ker}}
 \DeclareMathOperator{\st}{st}
 \newcommand{\rmd}{\mathop{}\!\mathrm{d}}
 \newcommand{\rme}{\mathrm{e}}
@@ -86,15 +88,16 @@
 \end{abstract}
 \newpage
 \input{nomenclature}
-\printnomenclature
+% \printnomenclature
 \tableofcontents
 \newpage
 \input{SECTION-introduction-and-collatz-sequence}
 \input{SECTION-the-basic-formula-of-collatz-sequence}
 \input{SECTION-extend-the-basic-formula}
 \input{SECTION-collatz-source-value}
-\input{SECTION-distribution-of-collatz-primitive-source}
-\input{SECTION-homomorphic-densities-on-source-value-set}
+\input{SECTION-collatz-character-and-collatz-kernel}
+\input{SECTION-source-value-set}
+\input{SECTION-distribution-of-source-value-set}
 \input{SECTION-a-dynamical-view-on-power-difference-problem}
 
 \appendix
