@@ -70,32 +70,6 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
 \begin{remark}
     Notice that in $\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i}$, the start number $a$ is in $\mathbb{F}_{n+1}(b)$ instead of $\mathbb{F}_{n}(b)$, thus $a_i\in\mathbb{F}_{n-i+1}(b)$.
 \end{remark}
-\begin{corollary}~\label{cor:modulo-alpha-of-layers}
-   $A_k \equiv\left\{\begin{aligned}
-        &k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\alpha \nmid \gamma,\\
-        &\beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}, &&\alpha \mid \gamma,
-   \end{aligned}\right. \pmod{\alpha}$.
-\end{corollary}
-% \begin{proof}
-%     If $\alpha \nmid \gamma$, then $\Phi_1 > 1$, $\alpha \mid (\beta^{\Phi_1} - 1)$. Then we have
-%     \begin{align*}
-%         A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\ker a - \gamma\right)  &&\ \\
-%         =& \frac{1}{\alpha}\cdot \beta^{k\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}   &&\ \\
-%         \equiv& \frac{1}{\alpha}\cdot (P\alpha + 1)^{k}\cdot\ker a - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
-%         \equiv& \frac{1}{\alpha}\cdot (kP\alpha + 1)\cdot (\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
-%         \equiv& kP\cdot\gamma + \frac{1}{\alpha}\cdot(\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
-%         \equiv& kP\cdot\gamma + A_0 &&\pmod{\alpha} \\
-%         \equiv& k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0, &&\pmod{\alpha}
-%     \end{align*}
-%     where $P = \frac{\beta^{\Phi_1} - 1}{\alpha}$.\newline
-%     If $\alpha \mid \gamma$, then from \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
-%     \begin{align*}
-%         A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\ker a - \gamma\right)  &&\ \\
-%         =& \frac{1}{\alpha}\cdot \beta^{k}\cdot\ker a - \frac{\gamma}{\alpha}   &&\ \\
-%         \equiv& \frac{1}{\alpha}\cdot \beta^{k}\cdot (\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
-%         \equiv& \beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.   &&\pmod{\alpha}
-%     \end{align*}
-% \end{proof}
 
 \cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
 However, although we have provided expressions for $\mathbb{V}_{n+1}(b)$ and $\mathbb{F}_{n+1}(b)$, they are still complex and difficult to use.
@@ -122,50 +96,38 @@ If $\forall s\in C = A \otimes B$, there exists a unique pair $x \in A$ and $y \
     $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes\ker\mathbb{F}_{n}(b)$. And the decomposition is uniqe.
 \end{corollary}
 
-Now let's looking back \cref{cor:modulo-alpha-of-layers}. This corollary tell us the distribution of any layer of source value set. Specially, it provide the distribution of primitive source in source value set.
+Now let's looking back \cref{lem:modulo-alpha-of-f_1}. This corollary tell us the distribution of any layer of source value set. Specially, it provide the distribution of primitive source in source value set.
 \begin{corollary}
-    If $\alpha \mid \gamma$, $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
+    If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}$, we have $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
 \end{corollary}
-Suppose $\alpha \nmid \gamma$. From \cref{cor:modulo-alpha-of-layers}, we have
-\begin{corollary}
-    If $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$ and $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
-\end{corollary}
-\begin{corollary}
-    If $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\exists d \in \Pi(\mathbb{N}\mid\alpha)$ that $d > 1$, such that $d\alpha\mid \gamma (\beta^{\Phi_1} - 1)$.
+\begin{corollary}~\label{cor:gcd-1-derive-not-all-primitive}
+    Suppose $\gcd(\alpha, \gamma(\beta^{\Phi_1} - 1)/\alpha) = 1$. Then $\forall b\not\in\mathbb{S}$, $\forall n\ge 1$, we have $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
 \end{corollary}
 % \begin{proof}
-%     Denote $P = \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)$. Let $d = \gcd(P, \alpha)$.
-%     From \cref{cor:modulo-alpha-of-layers} we have $A_k \equiv kP + A_0 \pmod{\alpha} \in \mathbb{S}$. If $d = 1$ then $A_k$ runs all remainder modulo $\alpha$. From \cref{prop:chr-are-periodic}, we will derive that $\mathbb{N}\subset\mathbb{S}$. That's impossiable. Thus $d > 1$. Let
-%     \[ d = \gcd(P\cdot\gamma, \alpha) \in \Pi(\mathbb{N}\mid\alpha), \]
-%     we have $d \mid P\cdot\gamma = \frac{\beta^{\Phi_1} - 1}{\alpha}\cdot \gamma$, i.e. $d\alpha\mid \gamma (\beta^{\Phi_1} - 1)$.
+%     We prove $n=1$ at first.\newline
+%     Denote $P = \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)$. Then we have $\gcd(\alpha, P) = 1$. Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv kP + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{F}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
+%     Now consider any layer $n$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
 % \end{proof}
-\begin{corollary}~\label{cor:all-source-value-set-has-primitive-source}
-    For $b \not\in\mathbb{S}$, if there is $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$, then we have $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$.
-\end{corollary}
-\begin{corollary}
-	Suppose $\alpha\in\mathbb{P}$, $\alpha^{2}\nmid (\beta^{\Phi_1} - 1)$ and $\alpha\nmid\gamma$.
-    Denote $\widetilde{\mathbb{F}_{n}(b)}_{i} = \{a\in\mathbb{F}_{n}(b) \mid a\equiv i\pmod{\alpha}\}$, we have
-    $\ker \mathbb{F}_{n}(b) = \bigcup_{i=1}^{\alpha - 1}\beta^{v(i)}\widetilde{\mathbb{F}_{n}(b)}_{i}$.
-\end{corollary}
-And from \cref{cor:modulo-alpha-of-layers}, we also have
-\begin{corollary}~\label{cor:source-set-dijoint-primitive-source}
-    Suppose $\alpha\in\mathbb{P}$, $\alpha^{2}\nmid (\beta^{\Phi_1} - 1)$ and $\alpha\nmid\gamma$.
-    For $b\not\in\mathbb{S}$, we have $\forall n\ge 1$, $\mathbb{F}_{n}(b) \not\subset \mathbb{S}$ and $\mathbb{F}_{n}(b) \cap \mathbb{S} \ne \varnothing$ and $\forall a \rightsquigarrow b$, $\mathbb{F}_{1}(a)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+\begin{corollary}~\label{cor:have-primitive-derive-all-primitive}
+    Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
 \end{corollary}
 % \begin{proof}
-%     Since $\gcd(\alpha, \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)) = 1$, then from \cref{cor:modulo-alpha-of-layers}, we can derive that
-%     \[ A_k \equiv k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + A_0 \equiv k + A_0 \pmod{\alpha}. \]
-%     Thus this proposition holds.
+%     Denote $P = \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)$. Then we have $\alpha \mid P$. Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
+%     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv kP + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
+%     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{F}_{1}(b)$, thus $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
 % \end{proof}
-We call the Collatz system that arguments follow requirements in \cref{cor:source-set-dijoint-primitive-source} as primitive Collatz system or simple Collatz system. And they are precisely the type of Collatz systems we will be discussing in next section.
-We can also verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. 
-For simple Collatz systems, we have
+\begin{corollary}~\label{cor:all-primitive-derive-gcd-ge-1}
+    If $\exists b\not\in\mathbb{S}$ such taht $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\gcd(\alpha, \gamma(\beta^{\Phi_1} - 1)/\alpha) > 1$.
+\end{corollary}
+\begin{proof} Trivial according to the proof of \cref{cor:have-primitive-derive-all-primitive}. \end{proof}
 \begin{theorem}~\label{thm:infinite-layers}
-	For $b\not\in\mathbb{S}$, we have $\forall N > 0$, $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
+	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}$, we have $\forall N > 0$, there is $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
 \end{theorem}
 % \begin{proof}
 % 	Divide into two situations:\newline
-% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{cor:source-set-dijoint-primitive-source}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{cor:gcd-1-derive-not-all-primitive}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
 % 	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
 % 	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
 % 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can not be covered within finity layers, thus the $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
