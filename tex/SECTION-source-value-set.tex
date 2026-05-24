@@ -31,6 +31,32 @@ Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. 
 \begin{proposition}~\label{prop:cycle-layer-included}
 If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, and hence $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
 \end{proposition}
+From \cref{lem:modulo-alpha-of-f_1}, we still have
+\begin{proposition}
+    If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}$, we have $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
+\end{proposition}
+\begin{proposition}~\label{prop:gcd-1-derive-not-all-primitive}
+    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}$, $\forall n\ge 1$, we have $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+\end{proposition}
+% \begin{proof}
+%     We prove $n=1$ at first.\newline
+%     Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{F}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
+%     Now consider any layer $n$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+% \end{proof}
+\begin{proposition}~\label{prop:have-primitive-derive-all-primitive}
+    Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
+\end{proposition}
+% \begin{proof}
+%     Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
+%     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
+%     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{F}_{1}(b)$, thus $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
+% \end{proof}
+\begin{proposition}~\label{prop:all-primitive-derive-gcd-ge-1}
+    If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\gcd(\alpha, \nabla_1) > 1$.
+\end{proposition}
+% \begin{proof} Trivial according to the proof of \cref{prop:have-primitive-derive-all-primitive}. \end{proof}
 
 Actually we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$.
 But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value.
@@ -96,38 +122,12 @@ If $\forall s\in C = A \otimes B$, there exists a unique pair $x \in A$ and $y \
     $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes\ker\mathbb{F}_{n}(b)$. And the decomposition is uniqe.
 \end{corollary}
 
-Now let's looking back \cref{lem:modulo-alpha-of-f_1}. This corollary tell us the distribution of any layer of source value set. Specially, it provide the distribution of primitive source in source value set.
-\begin{corollary}
-    If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}$, we have $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
-\end{corollary}
-\begin{corollary}~\label{cor:gcd-1-derive-not-all-primitive}
-    Suppose $\gcd(\alpha, \gamma(\beta^{\Phi_1} - 1)/\alpha) = 1$. Then $\forall b\not\in\mathbb{S}$, $\forall n\ge 1$, we have $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
-\end{corollary}
-% \begin{proof}
-%     We prove $n=1$ at first.\newline
-%     Denote $P = \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)$. Then we have $\gcd(\alpha, P) = 1$. Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv kP + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{F}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
-%     Now consider any layer $n$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
-% \end{proof}
-\begin{corollary}~\label{cor:have-primitive-derive-all-primitive}
-    Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
-\end{corollary}
-% \begin{proof}
-%     Denote $P = \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1)$. Then we have $\alpha \mid P$. Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
-%     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv kP + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
-%     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{F}_{1}(b)$, thus $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
-% \end{proof}
-\begin{corollary}~\label{cor:all-primitive-derive-gcd-ge-1}
-    If $\exists b\not\in\mathbb{S}$ such taht $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\gcd(\alpha, \gamma(\beta^{\Phi_1} - 1)/\alpha) > 1$.
-\end{corollary}
-\begin{proof} Trivial according to the proof of \cref{cor:have-primitive-derive-all-primitive}. \end{proof}
 \begin{theorem}~\label{thm:infinite-layers}
 	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}$, we have $\forall N > 0$, there is $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
 \end{theorem}
 % \begin{proof}
 % 	Divide into two situations:\newline
-% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{cor:gcd-1-derive-not-all-primitive}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:gcd-1-derive-not-all-primitive}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
 % 	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
 % 	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
 % 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can not be covered within finity layers, thus the $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.

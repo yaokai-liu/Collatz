@@ -187,29 +187,27 @@ From the proof, we can deduce that
 \begin{example}
     $\Psi(5,2,1) = \frac{1}{5}$, and $\Phi(5, 2, 1; k) = 4 \cdot 5^{k - 1}$.
 \end{example}
+
+We can observe that if $\Delta\bm{v}$ is only $1$-dimensional, then $\nabla\cdot\mathfrak{V}_1$ and $\nabla\cdot\mathfrak{v}_1$ do not depend on $\bm{v}$ in \cref{thm:vary-rule}; they depend only on $\Delta\bm{v}$. Therefore, if $\Delta\bm{v} = (s\Phi_1)$, we can always perform variational analysis with an integer number of hops. Thus, we can consider the minimum number of hops, $\frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1$, and denote it as
+\[ \nabla_1 = \frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1 = \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1). \]
+We can find it will play a crucial role in later sections.
+
+
 \begin{corollary}~\label{cor:remainder-after-change-reduce-vector-modulo-alpha}
-    Suppose $\gcd(\alpha, \gamma) = 1$.
+    Suppose $\gcd(\alpha,\gamma) = 1$.
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then $\forall s\in \mathbb{N}$, we have
     \[ f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) \equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). \pmod{\alpha} \]
 \end{corollary}
-% \begin{proof}
-%     From \cref{cor:single-vary-rule}, we have
-%     \begin{align*}
-%         f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s\Phi_k} - 1) \\
-%         &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \mathfrak{V}_{k}\cdot\frac{\gamma}{\alpha^{k}}\cdot(\beta^{s\Phi_k} - 1).
-%     \end{align*}
-%     Since $\beta^{s\Phi_k} \equiv 1\pmod{\alpha}$ and $\mathfrak{V}_{k} \equiv 1 \pmod{\alpha}$, thus
-%     \[ f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) \equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). \]
-% \end{proof}
+\begin{proof}
+    Since $\gcd(\alpha, \gamma) = 1$, then $\alpha\mid(\beta^{s\Phi_k} - 1)$. And we  have $\mathfrak{V}_{k} \equiv 1 \pmod{\alpha}$, thus from \cref{cor:single-vary-rule}, we have
+    \begin{align*}
+        f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s\Phi_k} - 1) &&\\
+        &= \beta^{s\Phi_k}\cdot f_{n}(\bm{v}) + \mathfrak{V}_{k}\cdot\frac{\gamma}{\alpha^{k}}\cdot(\beta^{s\Phi_k} - 1) &&\\ 
+        &\equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). &&\pmod{\alpha}
+    \end{align*}
+\end{proof}
 
-In fact, \cref{thm:the-periodic-rule-of-reduce-sequence} presents the variaty of $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
+Back to \cref{thm:the-periodic-rule-of-reduce-sequence}. In fact, it presents the variaty of $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
-
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
-
-% Back to \cref{thm:vary-rule}, we have
-% \begin{corollary}
-%     Suppose $f_{n}(\bm{v})\in\mathbb{N}$, then $f_{n}(\bm{v} + \Delta\bm{v})\in\mathbb{N} \Longleftrightarrow \Phi_i\mid\Delta{v}_{i}$.
-% \end{corollary}
-% This corollary present that, the effect of adjust vector just equivalents to the result of adjust every component in steps.

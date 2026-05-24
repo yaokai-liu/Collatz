@@ -40,9 +40,10 @@ For primitive sources, this conclusion also holds, and we have $\mathbb{S}_{\inf
     And thus $\mathbb{S} = \{b \in \widehat{\mathbb{N}}_\beta: a\nmid b\}$.
     But if $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $b \in \mathbb{S}$.
 \end{proposition}
+
 This proposition states that whether $\alpha \mid \gamma$ or $\alpha \nmid \gamma$ but $b \in \alpha\widehat{\mathbb{N}}_\beta$, these are all trivial cases. Thus when $\alpha \nmid \gamma$, given $b \in \mathbb{S}$. Or it is not reversible modulo $\alpha$, or
 \[\Log_{\beta, \alpha}(b^{-1} \cdot \gamma) = \varnothing. \]
-And $b$ is not reversible modulo $\alpha$ equivalents $\gcd(b, \alpha) > 1$. Hence, with these, we have
+And $b$ is not reversible modulo $\alpha$ equivalents $\gcd(b, \alpha) > 1$. Hence we have
 \begin{definition}
     Suppose $\alpha \nmid \gamma$. If $\gcd(b, \alpha) > 1$, we say they are normal primitive source.
     Others we call them abnormal primitive source.
@@ -56,11 +57,8 @@ Immidiately, we have
     $\mathbb{S} = \tilde{\mathbb{S}} \cup \hat{\mathbb{S}}$.
 \end{proposition}
 \begin{proposition}~\label{prop:primitive-source-of-simple-collatz-system}
-    If $\alpha\in\mathbb{P}$, $\alpha^{2}\nmid (\beta^{\Phi_1} - 1)$ and $\alpha\nmid\gamma$, then $\tilde{\mathbb{S}} = \varnothing$.
+    If $\alpha\in\mathbb{P}$ and $\alpha\nmid\gamma$, then $\tilde{\mathbb{S}} = \varnothing$.
 \end{proposition}
-
-We call the Collatz system that arguments follow requirements in \cref{prop:primitive-source-of-simple-collatz-system} as primitive Collatz system or simple Collatz system, They have a lot of better propoties than other Collatz system. And they are precisely the type of Collatz systems we will be discussing in next section.
-We can also verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system.
 
 Now let's consider how to decompose the reduce vector. We may expected there's a minimal reduce vector at first, and then apply the \cref{cor:single-vary-rule} to adjust to approch our target. We may consider the Collatz characters definitely are the most suitable choice, such that
 \[ \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n) + \text{ an adjust vector}. \]
@@ -100,20 +98,35 @@ called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number 
 
 Let us examine the character vector $\wchr\bm{a}$ of $a$. We observe that it depends solely on $a$ itself; within a given Collatz system, it reflects the intrinsic characteristics of $a$. However, we must point out that, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds true, $\Phi_k$ does not always divide $\Phi_1 \cdot \simp a_i$. In other words, the growth of these $\simp a_i$ does not adhere to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" alters the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), the adjusted character vector changes accordingly. In light of this, it is necessary for us to consider the impact that the adjustment operation exerts upon $\wchr\bm{a}$.
 
+However, not all Collatz systems are suitable for analyzing character vectors. Here we propose a simple kind and view it as the main object of analysis.
+\begin{definition}
+    If $\alpha\in\mathbb{P}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_1$, then we say the Collatz system is simple or primitive.
+\end{definition}
+We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system.
+For those simple Collatz system, we have
+\begin{theorem}
+    
+\end{theorem}
 \begin{lemma}~\label{lem:modulo-alpha-of-f_1}
-    Suppose $\simp a_1 = \chr a$, then
-    \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv\left\{\begin{aligned}
-        &k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + f_{n}(\bm{a}), &&\alpha \nmid \gamma,\\
-        &\beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}, &&\alpha \mid \gamma.
-   \end{aligned}\right. \pmod{\alpha} \]
+    If $\simp a_1 = 0$, we have
+    \[f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{n}(\bm{a}).\pmod{\alpha}\]
 \end{lemma}
-\begin{proof}
-    If $\alpha \nmid \gamma$, trivial from \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}.\newline
-    If $\alpha \mid \gamma$, then from \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
-    \begin{align*}
-        A_{k} =& \frac{1}{\alpha}\left(\beta^{k\Phi_1}\cdot\ker a - \gamma\right)  &&\ \\
-        =& \frac{1}{\alpha}\cdot \beta^{k}\cdot\ker a - \frac{\gamma}{\alpha}   &&\ \\
-        \equiv& \frac{1}{\alpha}\cdot \beta^{k}\cdot (\alpha A_0 + \gamma) - \frac{\gamma}{\alpha}   &&\pmod{\alpha}\\
-        \equiv& \beta^{k}\left(A_0 + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.   &&\pmod{\alpha}
-    \end{align*}
-\end{proof}
+% \begin{proof}
+%     From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we have
+%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + f_{n}(\bm{a}) \equiv k\nabla
+%     _1 + f_{n}(\bm{a}).  \pmod{\alpha} \]
+% \end{proof}
+\begin{corollary}
+    $f_{n}(\wchr\bm{a}) = \min\{f_{n}(\bm{v})\mid f_{n}(\bm{v}) \in\mathbb{N}\}$.
+\end{corollary}
+
+
+% Finally, for some kind of systems that are not simple, we also have
+% \begin{proposition}
+%     Suppose $\alpha \mid \gamma$. If $\simp a_1 = 0$, we have
+%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv\beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.\pmod{\alpha} \]
+% \end{proposition}
+% \begin{proof}
+%     From \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
+%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) = \frac{1}{\alpha}\cdot \beta^{k}\cdot\ker a - \frac{\gamma}{\alpha} \equiv \beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}. \pmod{\alpha} \]
+% \end{proof}

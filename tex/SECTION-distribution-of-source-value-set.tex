@@ -17,13 +17,7 @@ Theorem 6.2 blocks all case-analysis methods for solving the Collatz problem, th
 	Suppose $b\not\rightsquigarrow b$. For $H$ in \cref{thm:finite-layers-le-M}, we have
 	\[ \card\{\mathbb{F}(b) \le N\} = \card\left\{\bigcup_{n=0}^{H-1}\mathbb{F}_{n}(b)\le N\right\} = \sum_{n=0}^{H-1}\card\{\mathbb{F}_{n}(b) \le N\}. \]
 \end{corollary}
-
-From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{F}(b)\cap\mathbb{F}(1) = \varnothing$, that means the logarithm density of $\mathbb{F}(b)$ will be $0$. Since $\mathbb{F}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
-
-In other words, if we can find a such homomorphic density and prove the density of $\mathbb{F}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture.
-At the same time, we have to say, for general simple Collatz system instead of just $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
-
-In this section, we will only disscuss the simple Collatz system.
+\cref{thm:finite-layers-le-M} Tell us that we can by explore how $H$ increase with $M$ and the density of $\mathbb{F}(b)$ to predic how many top branches in this system. 
 
 \begin{theorem}
 	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{F}_{1}(a) \le N\}}{\card\{\mathbb{F}_{1}(b) \le N\}} = 1$.
@@ -41,11 +35,14 @@ In this section, we will only disscuss the simple Collatz system.
 \begin{corollary}
 	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{F}_{n}(a) \le N\}}{\card\{\mathbb{F}_{n}(b) \le N\}} > 0$.
 \end{corollary}
-\begin{corollary}
-	If $\exists a \in \widehat{\mathbb{N}}_\beta - \mathbb{S}$ such that $\lim_{N\to\infty}\mu\mathbb{F}(a) \ne 0$ , then
-	$\forall b\in\widehat{\mathbb{N}}_\beta - \mathbb{S}$ we have $\lim_{N\to\infty}\mu\mathbb{F}(b) \ne 0$.
-\end{corollary}
-We have to recall that, all conclusions of $\mathbb{F}(b)$ in this section are base on suppose of the system is simple.
+
+From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{F}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{F}(b)\cap\mathbb{F}(1) = \varnothing$, that means the logarithm density of $\mathbb{F}(b)$ will be $0$. Since $\mathbb{F}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
+
+In other words, if we can find a such homomorphic density and prove the density of $\mathbb{F}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture.
+At the same time, we have to say, for general simple Collatz system instead of just $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
+
+In this section, we will only disscuss the simple Collatz system.
+
 From \cref{thm:count-function-from-dirichlet-series} we have
 \begin{corollary}
     For large enough $c > 0$, we have
