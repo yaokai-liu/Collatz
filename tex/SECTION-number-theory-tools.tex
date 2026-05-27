@@ -40,21 +40,21 @@ If there not exists a such $y$, we will always regard $\log_{a, b}x = \infty$.
 \end{proposition}
 \begin{proposition}
     Suppose $\log_{a, b}x < \infty$ and $\log_{a, b}y < \infty$, then we have
-    \[ \log_{a, b}(x \cdot y) = (\log_{a, b}x + \log_{a, b}y) \mod{\ord_{a}b}. \]
+    \[ \log_{a, b}(x \cdot y) = (\log_{a, b}x + \log_{a, b}y) \pmod{\ord_{b}a}. \]
 \end{proposition}
 \begin{proposition}
     Suppose $\log_{a, b}x < \infty$.
     Given $n \in \mathbb{N}$, we have
-    \[ \log_{a, b}(x ^{n}) = n\log_{a, b}x \mod{\ord_{a}b}. \]
+    \[ \log_{a, b}(x ^{n}) = n\log_{a, b}x \pmod{\ord_{b}a}. \]
 \end{proposition}
 \begin{proposition}
-    Suppose $\log_{a,b}x < \infty$, then $\log_{a, b}(x^{-1}) = \ord_{a}b - \log_{a,b}x$.
+    Suppose $\log_{a,b}x < \infty$, then $\log_{a, b}(x^{-1}) = \ord_{b}a - \log_{a,b}x$.
 \end{proposition}
 \begin{definition}~\label{def:log-set-under-modulo}
 If $\log_{a, b}x < \infty$, then we denote that
 \begin{align*}
-    \Log_{a, b}x &= \ord_a(b)\mathbb{Z} + \log_{a, b}x, \\
-    - \Log_{a, b}x &= \ord_a(b)\mathbb{Z} - \log_{a, b}x.
+    \Log_{a, b}x &= \ord_b(a)\mathbb{Z} + \log_{a, b}x, \\
+    - \Log_{a, b}x &= \ord_b(a)\mathbb{Z} - \log_{a, b}x.
 \end{align*}
 If $\log_{a, b}x = \infty$, we denote $\Log_{a, b}x = \varnothing$.
 \end{definition}
@@ -67,6 +67,23 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \begin{proposition}
     $\Log_{a,b}(x^{-1}) = -\Log_{a,b}x$.
 \end{proposition}
+\begin{definition}~\label{def:generated-subgroup}
+    We define $G(a;b) = \{ a^{x} \mid 0 \le x < \ord_{b}(a) \}$ as the generated subgroup of $a$ modulo $b$.
+\end{definition}
+\begin{definition}
+    Given $A\subset \mathbb{Z}$ and $a\in \mathbb{N}$. We define
+    \[ A/a = \frac{A}{a} = \{ x\fmod a\mid x\in A \} \]
+    as the remainders of $A$ modulo $a$.
+\end{definition}
+\begin{proposition}
+    $G(a^{-1};b)/b = G(a;b)/b$.
+\end{proposition}
+\begin{proposition}
+    $G(a;b)/b \le (\mathbb{Z}/b)^{*}$ by multiplication.
+\end{proposition}
+\begin{proof}
+    $1 = a^{0} \in G(a;b)$. $a^{-x} \equiv a^{\ord_{b} a - x} \pmod{b}$ and $a^{\ord_{b} a - x}\in G(a;b)$. $a^{x} \cdot a^{y} = a^{x + y} \equiv a^{(x + y) \fmod\ord_{b}a} \pmod{b}$ and $a^{(x + y) \fmod\ord_{b}a}\in G(a;b)$. Thus $G(a;b) \le (\mathbb{Z}/b)^{*}$.
+\end{proof}
 \begin{definition}~\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
     Define $\pow(a\mid b) = a^{\val_{a}b}$ as the maximum power of $a$ in $b$. 
     And we define $\rel_{a}b = \frac{b}{\pow(a\mid b)}$ called the remainder part of $b$ with respect to power of $a$.
@@ -136,42 +153,42 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
         &\raf_{2}(b - 1) \cdot \raf_{2}n + \raf_{2}(b + 1) - 1, & p = 2.
     \end{aligned} \right.\]
 \end{theorem}
-Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$ from analytic number theory. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
-\begin{definition}
-    Define $\pi(A;x) = \card\{ A \le x \}$ that $x\in\mathbb{R}_{>1}$. And we define the Perron form
-    \[\widetilde{\pi}(A;x) = \left\{\begin{aligned}
-    &\pi(A;x), && x\not\in A, \\
-    &\frac{1}{2}\left[\pi(A;x^{-}) + \pi(A;x^{+})\right], && x\in A.
-\end{aligned}\right.\]
-\end{definition}
-\begin{proposition}
-    $\sum_{t\in A}^{t\le x}f(t) = \int_{1}^{x}f(t)\rmd{\pi(A;t)}$.
-\end{proposition}
-\begin{proposition}
-    $\pi(A\cup B;x) = \pi(A;x) + \pi(B; x) - \pi(A\cap B; x)$. So does for $\widetilde{\pi}(A;x)$.
-\end{proposition}
-\begin{definition}
-    Define $D(A;s) = \sum_{x\in A}x^{-s}$ as the Dirichlet series of $A$.
-\end{definition}
-\begin{proposition}
-    $D(aA;s) = a^{-s}D(A;s)$.
-\end{proposition}
-\begin{proposition}
-    If $A\otimes B$ is uniqe decomposed, then we have
-    \[ D(A \otimes B; s) = D(A;s)\cdot D(B;s). \]
-\end{proposition}
-\begin{theorem}~\label{thm:count-function-from-dirichlet-series}
-    For large enough $c > 0$, we have
-    \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd{s}. \]
-\end{theorem}
-\begin{lemma}[Perron's formula]
-For $y > 0$, we have
-\[ P(x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{x^{s}}{s}\rmd s = \left\{\begin{aligned}
-    &1, &&y > 1,\\
-    &1/2, &&y = 1,\\
-    &0, &&y < 1.
-\end{aligned}\right. \]
-\end{lemma}
+% Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$ from analytic number theory. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
+% \begin{definition}
+%     Define $\pi(A;x) = \card\{ A \le x \}$ that $x\in\mathbb{R}_{>1}$. And we define the Perron form
+%     \[\widetilde{\pi}(A;x) = \left\{\begin{aligned}
+%     &\pi(A;x), && x\not\in A, \\
+%     &\frac{1}{2}\left[\pi(A;x^{-}) + \pi(A;x^{+})\right], && x\in A.
+% \end{aligned}\right.\]
+% \end{definition}
+% \begin{proposition}
+%     $\sum_{t\in A}^{t\le x}f(t) = \int_{1}^{x}f(t)\rmd{\pi(A;t)}$.
+% \end{proposition}
+% \begin{proposition}
+%     $\pi(A\cup B;x) = \pi(A;x) + \pi(B; x) - \pi(A\cap B; x)$. So does for $\widetilde{\pi}(A;x)$.
+% \end{proposition}
+% \begin{definition}
+%     Define $D(A;s) = \sum_{x\in A}x^{-s}$ as the Dirichlet series of $A$.
+% \end{definition}
+% \begin{proposition}
+%     $D(aA;s) = a^{-s}D(A;s)$.
+% \end{proposition}
+% \begin{proposition}
+%     If $A\otimes B$ is uniqe decomposed, then we have
+%     \[ D(A \otimes B; s) = D(A;s)\cdot D(B;s). \]
+% \end{proposition}
+% \begin{theorem}~\label{thm:count-function-from-dirichlet-series}
+%     For large enough $c > 0$, we have
+%     \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd{s}. \]
+% \end{theorem}
+% \begin{lemma}[Perron's formula]
+% For $y > 0$, we have
+% \[ P(x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{x^{s}}{s}\rmd s = \left\{\begin{aligned}
+%     &1, &&y > 1,\\
+%     &1/2, &&y = 1,\\
+%     &0, &&y < 1.
+% \end{aligned}\right. \]
+% \end{lemma}
 % \begin{proof}[Proof of \cref{thm:count-function-from-dirichlet-series}]
 %     \begin{align*}
 %         &\frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd s \\
@@ -181,15 +198,15 @@ For $y > 0$, we have
 %         =&\widetilde{\pi}(A;x).
 %     \end{align*}
 % \end{proof}
-\begin{definition}
-    Define $\Pi(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})$ and also the Perron form $\widetilde{\Pi}(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m})$.
-\end{definition}
-\begin{definition}
-    For $s > 0$, we define $L(A;s) = \prod_{x\in A}(1-x^{-s})^{-1}$.
-\end{definition}
-\begin{proposition}
-    $\ln L(A;s) = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x$.
-\end{proposition}
+% \begin{definition}
+%     Define $\Pi(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\pi(A;x^{1/m})$ and also the Perron form $\widetilde{\Pi}(A;x) = \sum_{m=1}^{\infty}\frac{1}{m}\widetilde{\pi}(A;x^{1/m})$.
+% \end{definition}
+% \begin{definition}
+%     For $s > 0$, we define $L(A;s) = \prod_{x\in A}(1-x^{-s})^{-1}$.
+% \end{definition}
+% \begin{proposition}
+%     $\ln L(A;s) = \sum_{m=1}^{\infty}\frac{1}{m}\sum_{x\in A}x^{-sm} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x$.
+% \end{proposition}
 % \begin{proof}
 % At first, we have
 % \[ \ln L(A;s) = -\sum_{x\in A}\ln(1 - x^{-s}) = \sum_{x\in A}-\ln(1 - x^{-s}). \]
@@ -206,10 +223,10 @@ For $y > 0$, we have
 %     \ln L(A;s) &= \left[x^{-s}\Pi(A;x)\right]\bigg\vert_{1}^{\infty} - \int_{1}^{\infty}\Pi(A;x)\rmd x^{-s} = s\int_{1}^{\infty}\frac{\Pi(A;x)}{x^{s+1}}\rmd x.
 % \end{align*}
 % \end{proof}
-\begin{theorem}
-    Let $\mu(m)$ be the Möbius function, for $c > 0$ large enough, we have
-    \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s. \]
-\end{theorem}
+% \begin{theorem}
+%     Let $\mu(m)$ be the Möbius function, for $c > 0$ large enough, we have
+%     \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\sum_{m=1}^{\infty}\frac{\mu(m)}{m}\int_{c-\rmi\infty}^{c+\rmi\infty}\ln{L(A;ms)}\frac{x^{s}}{s}\rmd s. \]
+% \end{theorem}
 % \begin{proof}
 %     Since we have Perron's formula, we are supported to have
 % \begin{align*}

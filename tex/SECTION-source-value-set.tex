@@ -5,56 +5,53 @@ Now let's from the definition of source value, derive two kinds of sets.
 \begin{definition}~\label{def:source-value-set}
 Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
-    \mathbb{F}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\},\\
+    \mathbb{S}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\},\\
     \mathbb{V}_n(B) &= \bigcup_{b\in B}\left\{ \bm{v} \in \mathbb{N}^{n} \mid f_{n}(\bm{v};b) \in \mathbb{N} \right\}.
 \end{align*}
-And denote
-\[\mathbb{F}(B) = B\cup\bigcup_{b\in B}\{ a\in \widehat{\mathbb{N}}_{\beta} \mid a\rightsquigarrow b \}\]
-as all numbers that will fall into to $B$.
-Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{F}_0(B) = B$. When $B = \{b\}$, that's $B$ contains only one number, we also denote as $\mathbb{V}_n(b)$ and $\mathbb{F}_n(b)$.
+Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{S}_0(B) = B$. When $B = \{b\}$ contains only one number, we also denote as $\mathbb{V}_n(b)$ and $\mathbb{S}_n(b)$.
 \end{definition}
 \begin{proposition}
-    $\mathbb{F}(B) = \bigcup_{n = 0}^{\infty}\mathbb{F}_{n}(B)$
+    $\mathbb{S}(B) = \bigcup_{n = 0}^{\infty}\mathbb{S}_{n}(B)$
 \end{proposition}
 \begin{proposition}~\label{prop:source-set-include}
-    If $a\rightsquigarrow b$, $\mathbb{F}(a) \subset \mathbb{F}(b)$.
+    If $a\rightsquigarrow b$, $\mathbb{S}(a) \subset \mathbb{S}(b)$.
 \end{proposition}
 \begin{proposition}~\label{prop:source-set-disjoint}
-    If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{F}(a) \cap \mathbb{F}(b) = \varnothing$.
+    If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{S}(a) \cap \mathbb{S}(b) = \varnothing$.
 \end{proposition}
 \begin{proposition}~\label{prop:non-cycle-layer-independent}
-    If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{F}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{F}_{k}(b) = \varnothing$.
+    If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{S}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{S}_{k}(b) = \varnothing$.
 \end{proposition}
 % \begin{proof}
-%     If $\exists m \le n$, $\mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{F}_{m}(b) \cap \mathbb{F}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
+%     If $\exists m \le n$, $\mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
 % \end{proof}
 \begin{proposition}~\label{prop:cycle-layer-included}
-If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{F}_{kt}(b)$, and hence $\mathbb{F}_{kt}(b)\subset \mathbb{F}_{(k+1)\cdot t}(b)$.
+If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{S}_{kt}(b)$, and hence $\mathbb{S}_{kt}(b)\subset \mathbb{S}_{(k+1)\cdot t}(b)$.
 \end{proposition}
 From \cref{lem:modulo-alpha-of-f_1}, we still have
 \begin{proposition}
-    If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}$, we have $\mathbb{F}_{1}(b) \not\subset \mathbb{S}$.
+    If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}_{\infty}$, we have $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$.
 \end{proposition}
 \begin{proposition}~\label{prop:gcd-1-derive-not-all-primitive}
-    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}$, $\forall n\ge 1$, we have $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
 \end{proposition}
 % \begin{proof}
 %     We prove $n=1$ at first.\newline
-%     Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{F}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
-%     Now consider any layer $n$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{F}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+%     Suppose $a \in\mathbb{S}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
+%     Now consider any layer $n$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{S}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
 % \end{proof}
 \begin{proposition}~\label{prop:have-primitive-derive-all-primitive}
-    Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \cap \mathbb{S} \ne \varnothing$, then $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
+    Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne \varnothing$, then $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proposition}
 % \begin{proof}
-%     Suppose $a \in\mathbb{F}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
+%     Suppose $a \in\mathbb{S}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
 %     From \cref{lem:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
 %     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
-%     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{F}_{1}(b)$, thus $\mathbb{F}_{1}(b) \subset \mathbb{S}$.
+%     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}$.
 % \end{proof}
 \begin{proposition}~\label{prop:all-primitive-derive-gcd-ge-1}
-    If $\exists b\not\in\mathbb{S}$ such that $\mathbb{F}_{1}(b) \subset \mathbb{S}$, then $\gcd(\alpha, \nabla_1) > 1$.
+    If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$, then $\gcd(\alpha, \nabla_1) > 1$.
 \end{proposition}
 % \begin{proof} Trivial according to the proof of \cref{prop:have-primitive-derive-all-primitive}. \end{proof}
 
@@ -68,83 +65,72 @@ To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we defi
 With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
-        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left. A_0 = \frac{\ker a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}} \left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\} \\
+        &= \bigcup_{a\in \mathbb{S}_{n+1}(b) - \mathbb{S}_{\infty}} \left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
 \end{theorem}
 % \begin{proof}
-%     Trivial for $\mathbb{F}_{n}(b) - \mathbb{S} = \varnothing$.\newline
-%     Suppose $\mathbb{F}_{n}(b) - \mathbb{S} \ne \varnothing$, which means $\forall a\in \mathbb{F}_{n}(b) - \mathbb{S}$, we have $\chr a < \infty$. Then $A_0 = \frac{\ker a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\chr a);b)\in \mathbb{F}_{1}(a)\subset \mathbb{F}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
+%     Trivial for $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} = \varnothing$.\newline
+%     Suppose $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} \ne \varnothing$, which means $\forall a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}$, we have $\chr a < \infty$. Then $A_0 = \frac{\cor a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\chr a);b)\in \mathbb{S}_{1}(a)\subset \mathbb{S}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
 %     \begin{align*}
 %         A_{k+1} &= f_{1}(((k+1)\Phi_1 + \chr a);b) \\
 %         &= f_{1}((\Phi_1 + (k\Phi_1 + \chr a));b) \\
 %         &= \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1) \\
 %         &= \beta^{(k+1)\Phi_1} A_{0} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
-%         &= \beta^{(k+1)\Phi_1}\cdot \frac{\ker a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
-%         &= \beta^{(k+1)\Phi_1}\cdot \frac{\ker a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
-%         &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\ker a - \frac{\gamma}{\alpha}
+%         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
+%         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
+%         &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}.
 %     \end{align*}
-%     From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{F}_{n+1}(b)$. \newline
-%     On the other hand, $\forall a\in\mathbb{F}_{n+1}(b)$, from \cref{prop:rewritten-collatz-rule}, we have
-%     \[\beta^{\simp\val(a;1)\Phi_1}\ker a_1 = \alpha a + \gamma. \]
+%     From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{S}_{n+1}(b)$. \newline
+%     On the other hand, $\forall a\in\mathbb{S}_{n+1}(b)$, from \cref{prop:rewritten-collatz-rule}, we have
+%     \[\beta^{\simp\val(a;1)\Phi_1}\cor a_1 = \alpha a + \gamma. \]
 %     We have $\simp\val(a;1) \ge 0$. If not, then $\val(a;1) - \chr a_1 < 0$, which means $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So we have $\simp\val(a;1) \ge 0$.
-%     And $a_1\in\mathbb{F}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\simp\val(a;1)\Phi_1}\cdot\ker a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
-%     In conclusion, the theorem holds for $\mathbb{F}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
+%     And $a_1\in\mathbb{S}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\simp\val(a;1)\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
+%     In conclusion, the theorem holds for $\mathbb{S}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
 % \end{proof}
 \begin{remark}
-    Notice that in $\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i}$, the start number $a$ is in $\mathbb{F}_{n+1}(b)$ instead of $\mathbb{F}_{n}(b)$, thus $a_i\in\mathbb{F}_{n-i+1}(b)$.
+    Notice that in $\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i}$, the start number $a$ is in $\mathbb{S}_{n+1}(b)$ instead of $\mathbb{S}_{n}(b)$, thus $a_i\in\mathbb{S}_{n-i+1}(b)$.
 \end{remark}
-
-\cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
-However, although we have provided expressions for $\mathbb{V}_{n+1}(b)$ and $\mathbb{F}_{n+1}(b)$, they are still complex and difficult to use.
-They are merely another equivalent expression of the original problem and are hard to use for finding counter examples.
-That's because they are still based on $\mathbb{F}_{n}(b)$, and therefore still require recursively representing all the first $n$ $\mathbb{F}$s to represent the $(n+1)$-th.
-
-We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{F}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
-
-Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, we are actually changing one number in $\mathbb{F}_{n-k}(b)$ to another, while keeping the beginning and subsequent parts of the reduction sequence unchanged. It also explains the role of $\gamma$. It shows that $\gamma$ doesn't participate much in the construction of the source value set, but it determines the size of the jump steps. Although we might find it seems that only $\Phi_1$ participates in the construction of the source value set, in reality, all $\Phi(k)$ are power of $\alpha$ multiplied by $\Phi(1)$. Therefore, $\Phi_k$ not only represents the construction of the source value set but also tells us about the cyclic structure of the source value set in the form of factors of $\alpha$.
-Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
-And the two theorems reveal that elements of $\mathbb{F}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
-
-The two conclusions tell us not only the structure of the source value set, but also the distribution of them modulo $\alpha$. However, they are too complex to express. Now let's introduce some symbols to simplify our expressions.
-\begin{definition}
-    We denote $A + b = \{ x + b \mid x \in A \}$ and $aA = \{ ax \mid x \in A \}$,
-    denote $A \oplus B = \{ x + y \mid x \in A, y \in B \}$ and $A \otimes B = \{ xy \mid x \in A, y \in B \}$.
-    Finally, we denote $\{ A < s \} = \{ x \in A \mid x < s \}$; the definitions for the cases involving $>, \le,$ and $\ge$ are analogous.
-\end{definition}
-\begin{proposition}
-    $A \oplus B = B \oplus A$ and $A \otimes B = B \otimes A$.
-\end{proposition}
-If $\forall s\in C = A \otimes B$, there exists a unique pair $x \in A$ and $y \in B$ such that $s = xy$, then $C$ is said to multiplily decompose into $A$ and $B$ uniqely. If $\forall s\in D = A \otimes B$, there exists a unique pair $x \in A$ and $y \in B$ such that $s = x + y$, then $D$ is said to additively decompose into $A$ and $B$ uniqely. With these notations, we have
 \begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-ker-set}
-    $\alpha\mathbb{F}_{n+1}(b) + \gamma = \mathbb{B}\otimes\ker\mathbb{F}_{n}(b)$. And the decomposition is uniqe.
+    $\alpha\mathbb{S}_{n+1}(b) + \gamma = \mathbb{B}\otimes\cor\mathbb{S}_{n}(b)$. And the decomposition is uniqe.
 \end{corollary}
 
+\cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
+However, although we have provided expressions for $\mathbb{V}_{n+1}(b)$ and $\mathbb{S}_{n+1}(b)$, they are still complex and difficult to use.
+They are merely another equivalent expression of the original problem and are hard to use for finding counter examples.
+That's because they are still based on $\mathbb{S}_{n}(b)$, and therefore still require recursively representing all the first $n$ $\mathbb{S}$s to represent the $(n+1)$-th.
+
+We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{S}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
+
+Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, we are actually changing one number in $\mathbb{S}_{n-k}(b)$ to another, while keeping the beginning and subsequent parts of the reduction sequence unchanged. It also explains the role of $\gamma$. It shows that $\gamma$ doesn't participate much in the construction of the source value set, but it determines the size of the jump steps. Although we might find it seems that only $\Phi_1$ participates in the construction of the source value set, in reality, all $\Phi(k)$ are power of $\alpha$ multiplied by $\Phi(1)$. Therefore, $\Phi_k$ not only represents the construction of the source value set but also tells us about the cyclic structure of the source value set in the form of factors of $\alpha$.
+Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
+And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
+
 \begin{theorem}~\label{thm:infinite-layers}
-	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}$, we have $\forall N > 0$, there is $\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \ne \varnothing$.
+	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
 \end{theorem}
 % \begin{proof}
 % 	Divide into two situations:\newline
-% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:gcd-1-derive-not-all-primitive}, we have $\mathbb{F}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{F}_{N + 1}(b) \ne \varnothing$.
+% 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}$, from \cref{prop:gcd-1-derive-not-all-primitive}, we have $\mathbb{S}_{N}(b) \not\subset \mathbb{S}$. That means $\mathbb{S}_{N + 1}(b) \ne \varnothing$.
 % 	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
-% 	\[\mathbb{F}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) \supset \mathbb{F}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{F}_{n}(b) = \mathbb{F}_{N+1}(b) \ne \varnothing.\]
-% 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{F}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{F}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{F}(a)$ can not be covered within finity layers, thus the $\mathbb{F}(b) \supset \mathbb{F}(a)$ also can't be covered within finity layers.
+% 	\[\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \supset \mathbb{S}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) = \mathbb{S}_{N+1}(b) \ne \varnothing.\]
+% 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{S}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{S}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{S}(a)$ can not be covered within finity layers, thus the $\mathbb{S}(b) \supset \mathbb{S}(a)$ also can't be covered within finity layers.
 % \end{proof}
-\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
+\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis by number's patterns, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
 
 At last of this section, looking back the classic Collatz problem, we have
 \begin{example}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
     Suppose $(\alpha, \beta, \gamma) = (3,2,1)$.
     \begin{align*}
-        \mathbb{F}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{A_0 = (\ker a  - 1)/3, A_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
-        &= \bigcup_{a\in \mathbb{F}_{n}(b) - \mathbb{S}} \left\{\left.\frac{4^{k}}{3}\cdot\ker a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{F}_{n+1}(b) - \mathbb{S}}\left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}2k_i\cdot3^{i-1}\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{A_0 = (\cor a  - 1)/3, A_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
+        &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{4^{k}}{3}\cdot\cor a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},\\
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n+1}(b) - \mathbb{S}_{\infty}}\left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}2k_i\cdot3^{i-1}\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
     \end{align*}
 \end{example}
 With this, we have
 \begin{conjecture}~\label{conj:source-value-of-1-cover-all-odd-numbers}
-    $\bigcup_{n=0}^{\infty}\mathbb{F}_n(1) = \lim_{n\to\infty}\mathbb{F}_n(1) = \widehat{\mathbb{N}}_{{2}}$.
+    $\bigcup_{n=0}^{\infty}\mathbb{S}_n(1) = \lim_{n\to\infty}\mathbb{S}_n(1) = \widehat{\mathbb{N}}_{{2}}$.
 \end{conjecture}
 We can verify it equivalents to the classic Collatz problem.

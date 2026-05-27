@@ -147,7 +147,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 \end{definition}
 \begin{definition}
     Denote all $t$-periodic Cauchy homomorphisms on $a$ as $\mathrm{O}_{t}(\mathbb{P}(a),\mathbb{R})$.
-    And all ($\mathcal{A}$, $\mathcal{B}$)-derivations with $t$-periodic kernel denote as $\partial_{t}(\mathcal{A}, \mathcal{B})$.
+    And all derivations with $t$-periodic kernel denote as $\partial_{t}(\mathbb{P}(a),\mathbb{R})$.
 \end{definition}
 \begin{proposition}
     If $\mathcal{A} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\mathcal{A}(a_{i+t}^{j+t}) = \mathcal{A}(a_{i}^{j})$.
@@ -155,16 +155,60 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 \begin{proof}
     \[ \mathcal{A}(a_{i+t}^{j+t}) = \mathcal{A}(\sum_{j+t < k}^{k \le i+t}a_k) = \prod_{j+t < k}^{k \le i+t}\mathcal{A}(a_k) = \prod_{j < k}^{k \le i}\mathcal{A}(a_{k}) = \mathcal{A}(a_{i}^{j}). \]
 \end{proof}
+\begin{proposition}
+    If $\mathcal{A} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\mathcal{A}(a_{i+j+t}^{i+j}) = \mathcal{A}(a_{i+t}^{i})$.
+\end{proposition}
+% \begin{proof}
+%     \begin{align*}
+%         \mathcal{A}(a_{i+j+t}^{i+j}) &= \prod_{i+j < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
+%         &= \prod_{i+j < k}^{k\le i+t}\mathcal{A}(a_{k+1}^{k}) \cdot \prod_{i+t < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
+%         &= \mathcal{A}(a_{i+t}^{i+j}) \cdot \prod_{i < k}^{k\le i+j}\mathcal{A}(a_{k+1}^{k}) \\
+%         &= \mathcal{A}(a_{i+t}^{i+j})\cdot \mathcal{A}(a_{i+j}^{i}) \\
+%         &= \mathcal{A}(a_{i+t}^{i}).
+%     \end{align*}
+% \end{proof}
 \begin{theorem}~\label{thm:cycles-derive-cycle}
-    Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathcal{A}, \mathcal{B})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
+    Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
+\end{theorem}
+% \begin{proof}
+%     \begin{align*}
+%         \mathfrak{U}(a_{i+t}^{j+t}) &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k}^{j+t})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i+t}^{k}) \\
+%         &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k-t}^{j})\cdot\mathfrak{U}(a_{k-t})\cdot\mathcal{B}(a_{i}^{k-t}) \\
+%         &= \sum_{j< k \le i}\mathcal{A}(a_{k}^{j})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i}^{k}) \\
+%         &= \mathfrak{U}(a_{i}^{j}).
+%     \end{align*}
+% \end{proof}
+\begin{theorem}~\label{thm:derivation-periodic-rule}
+    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Given $\{r_{i}\}_{i=0}^{\infty}\subset\mathbb{R}$, we have
+    \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
+    holds for all $i\ge 0$ equivalents to for all these $i$, there is
+    \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
+    And these $r_i$ are also $t$-periodic.
 \end{theorem}
 \begin{proof}
+    $\Longleftarrow$: similar with \cref{theorem:inductive-formula}. \newline
+    $\Longrightarrow$: At first, consider $\mathfrak{U}(a_{i+t+1}^{i})$. Split it at $i+1$, we have
     \begin{align*}
-        \mathfrak{U}(a_{i+t}^{j+t}) &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k}^{j+t})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i+t}^{k}) \\
-        &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k-t}^{j})\cdot\mathfrak{U}(a_{k-t})\cdot\mathcal{B}(a_{i}^{k-t}) \\
-        &= \sum_{j< k \le i}\mathcal{A}(a_{k}^{j})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i}^{k}) \\
-        &= \mathfrak{U}(a_{i}^{j}).
+        \mathfrak{U}(a_{i+t+1}^{i}) &= \mathcal{A}(a_{i+1}^{i})\mathfrak{U}(a_{i+t+1}^{i+1}) + \mathfrak{U}(a_{i+1}^{i})\mathcal{B}(a_{i+t+1}^{i+1}) \\
+        &= \mathcal{A}(a_{i+1}^{i})\mathfrak{U}(a_{i+t+1}^{i+1}) + \mathfrak{U}(a_{i+1}^{i})\mathcal{B}(a_{i+t}^{i}).
     \end{align*}
+    And then split it at $i+t$, we have
+    \begin{align*}
+        \mathfrak{U}(a_{i+t+1}^{i}) &= \mathcal{A}(a_{i+t}^{i})\mathfrak{U}(a_{i+t+1}^{i+t}) + \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+t+1}^{i+t}) \\
+        &= \mathcal{A}(a_{i+t}^{i})\mathfrak{U}(a_{i+1}^{i}) + \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+1}^{i}).
+    \end{align*}
+    Thus we have
+    \[ \mathfrak{U}(a_{i+1}^{i})\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathcal{A}(a_{i+1}^{i})\mathfrak{U}(a_{i+t+1}^{i+1}) - \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+1}^{i}).\]
+    Conpair with target equation, we have
+    \begin{align*}
+        &\mathfrak{U}(a_{i+1}^{i})\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] \\
+        =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+1+t}^{i+1}) - \mathcal{B}(a_{i+1+t}^{i+1})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
+        =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
+        =&\left[\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i})\right]\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right].
+    \end{align*}
+    Thus just let $r_i$ sutisfy the iterative equation
+    \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}), \]
+    we have $r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i})$. Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.\newline
 \end{proof}
 \begin{definition}
     Given a ($\mathcal{A}$, $\mathcal{B}$)-derivation $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, if $\forall p, q\in \mathbb{P}(\mathbb{G})$, there is $\mathfrak{U}(p) = \mathfrak{U}(q)$, we say $\mathfrak{U}$ is kernel independent.
@@ -173,7 +217,9 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 \begin{proposition}
     $\partial(\mathcal{A}, \mathcal{B}) = \partial_{1}(\mathcal{A}, \mathcal{B})$.
 \end{proposition}
-
+% \begin{proof}
+%     For any partition $\mathbb{P}(a) = \{a_i\}_{i\in I}$. We have $\mathfrak{U}(a_{i+1}) = \mathfrak{U}(a_{i})$, thus $\mathfrak{U}$ is 1-periodic on $a$.
+% \end{proof}
 Finially back to the Collatz complement. From \cref{proposition:collatz-complement-basic-prop2}, we can verify that, with arguments $(\alpha, \beta, \gamma)$, all Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.
 Inseparable elements of it is $\mathbb{P}([\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}) = \{i \rightsquigarrow (i + 1) \mid i \in \mathbb{Z}\}$. And the kernel $\mathfrak{A}(i \rightsquigarrow i + 1) = \gamma \cdot \mathfrak{A}_{i+1}^{i} = \gamma$.
 Besides, the Collatz complement of Conway's extension of Collatz problem is actually those $\partial_{*}(\mathcal{A}, \mathcal{B})$, they are not kernel independent, but its kernels are $\beta$-periodic. Hence, no matter our Collatz complement, or Collatz complement of Conway's extension, just let $\mathcal{A}$ and $\mathcal{B}$ are $\beta$-periodic, they will all be periodic.
