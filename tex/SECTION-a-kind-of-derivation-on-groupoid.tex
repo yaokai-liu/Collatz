@@ -60,40 +60,40 @@ And we denote $\mathbb{P}(\mathbb{G}) = \{ p \in\mathbb{G} \mid p \text{ is inse
     $\forall \mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, $\forall \mathbb{T}$, we have
     \[ \mathfrak{U}(a) = \sum_{c \in \mathbb{T}(a)}\mathcal{A}(a\backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a). \]
 \end{theorem}
-% \begin{proof}
-%     Use induction. \newline
-%     $\forall b \in\mathbb{G}$, we have $\mathfrak{U}(c) = \mathcal{A}(c\backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/c)$ because $\mathcal{A}(c\backslash c) = \mathcal{A}(0) = 1$ and $\mathcal{B}(c/c) = \mathcal{B}(0) = 1$.
-%     Suppose $\forall b \subset a$, it holds.
-%     And for $\cdot\backslash\cdot$ and $\cdot/\cdot$, they each construct a well-ordered sequences.
-%     Then for $a$, we have
-%     \begin{align*}
-%         \mathfrak{U}(a) = &\mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c + c/a) + \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c+c/a) \\
-%             = &\mathcal{A}(a \backslash c + c)\cdot\mathfrak{U}(c/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
-%             &+ \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c + c/a) \\
-%             = &\mathcal{A}(a \backslash c + c)\cdot\sum_{d \in \mathbb{T}(c/a)}\mathcal{A}((c/a)\backslash d)\cdot\mathfrak{U}(d)\cdot\mathcal{B}(d/(c/a)) \\
-%               &+ \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a)  \\
-%               &+\sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}((a\backslash c)\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/(a\backslash c))\cdot\mathcal{B}(c + c/a)
-%     \end{align*}
-%     Notice that \begin{align*}
-%         &a \backslash c + c + (c/a)\backslash d = a - (d + d/(c/a)) = a\backslash d,\\
-%         &e/(a\backslash c) + c + c/a = a - ((a\backslash c)\backslash e + e) = e/a,
-%     \end{align*}
-%     and
-%     \[   d/(c/a) = d/a,\quad (a\backslash c)\backslash e = a \backslash e, \]
-%     we have
-%     \begin{align*}
-%         \mathfrak{U}(a) = & \sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}(a\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
-%             &+\sum_{d \in \mathbb{T}(c/a)}\mathcal{A}(a\backslash d)\cdot\mathfrak{U}(d)\cdot\mathcal{B}(d/a)\\
-%             = &\sum_{c \in \mathbb{T}(a)}\mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a).
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    Use induction. \newline
+    $\forall b \in\mathbb{G}$, we have $\mathfrak{U}(c) = \mathcal{A}(c\backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/c)$ because $\mathcal{A}(c\backslash c) = \mathcal{A}(0) = 1$ and $\mathcal{B}(c/c) = \mathcal{B}(0) = 1$.
+    Suppose $\forall b \subset a$, it holds.
+    And for $\cdot\backslash\cdot$ and $\cdot/\cdot$, they each construct a well-ordered sequences.
+    Then for $a$, we have
+    \begin{align*}
+        \mathfrak{U}(a) = &\mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c + c/a) + \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c+c/a) \\
+            = &\mathcal{A}(a \backslash c + c)\cdot\mathfrak{U}(c/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
+            &+ \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c + c/a) \\
+            = &\mathcal{A}(a \backslash c + c)\cdot\sum_{d \in \mathbb{T}(c/a)}\mathcal{A}((c/a)\backslash d)\cdot\mathfrak{U}(d)\cdot\mathcal{B}(d/(c/a)) \\
+              &+ \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a)  \\
+              &+\sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}((a\backslash c)\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/(a\backslash c))\cdot\mathcal{B}(c + c/a)
+    \end{align*}
+    Notice that \begin{align*}
+        &a \backslash c + c + (c/a)\backslash d = a - (d + d/(c/a)) = a\backslash d,\\
+        &e/(a\backslash c) + c + c/a = a - ((a\backslash c)\backslash e + e) = e/a,
+    \end{align*}
+    and
+    \[   d/(c/a) = d/a,\quad (a\backslash c)\backslash e = a \backslash e, \]
+    we have
+    \begin{align*}
+        \mathfrak{U}(a) = & \sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}(a\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
+            &+\sum_{d \in \mathbb{T}(c/a)}\mathcal{A}(a\backslash d)\cdot\mathfrak{U}(d)\cdot\mathcal{B}(d/a)\\
+            = &\sum_{c \in \mathbb{T}(a)}\mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a).
+    \end{align*}
+\end{proof}
 Specially, For the kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivation, we have
 \begin{corollary}
     If $\mathfrak{U} \in \partial(\mathcal{A}, \mathcal{B})$ that $\mathfrak{U}(p) = \gamma$, then
     \[ \mathfrak{U}(c) = \gamma \cdot\sum_{p \in \mathbb{P}(a)}\mathcal{A}(a\backslash p)\cdot\mathcal{B}(p/a). \]
 \end{corollary}
 This theorem also holds on those continuous system.
-\begin{example}
+\begin{example}~\label{exa:continous-situation-with-exact-differential}
     All closed interval compose a groupoid
     \[G = \left\{[a, b] \text{ : $[a, b]$ is closed interval on real number field $R$}\right\}.\]
     We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\rmd x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\rmd x}$ are both in $\mathrm{Cauchy}(G, R)$. Define
@@ -109,7 +109,7 @@ This theorem also holds on those continuous system.
     \end{align}
     which is also a difference of powers.
 \end{example}
-\begin{example}
+\begin{example}~\label{exa:continous-situation-with-kernel-independent}
     Also using the groupoid and functions. Define
     \[ \mathfrak{V}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\mathcal{G}[x,b]\rmd x. \]
     Then $\mathfrak{V} \in \partial(\mathcal{F}, \mathcal{G})$. Its kernel is exactly $\rmd x$. However,we can not get a simple result like \cref{equ:better-kernel}. But  from \cref{theorem:inductive-formula} we still speculate that it can be expressed as the difference of two powers with some coefficients.
@@ -167,9 +167,9 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 %         &= \mathcal{A}(a_{i+t}^{i}).
 %     \end{align*}
 % \end{proof}
-\begin{theorem}~\label{thm:cycles-derive-cycle}
+\begin{proposition}~\label{prop:cycles-derive-cycle}
     Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
-\end{theorem}
+\end{proposition}
 % \begin{proof}
 %     \begin{align*}
 %         \mathfrak{U}(a_{i+t}^{j+t}) &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k}^{j+t})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i+t}^{k}) \\
@@ -179,7 +179,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 %     \end{align*}
 % \end{proof}
 \begin{theorem}~\label{thm:derivation-periodic-rule}
-    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Given $\{r_{i}\}_{i=0}^{\infty}\subset\mathbb{R}$, we have
+    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
     \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
     holds for all $i\ge 0$ equivalents to for all these $i$, there is
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
@@ -208,8 +208,14 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
     \end{align*}
     Thus just let $r_i$ sutisfy the iterative equation
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}), \]
-    we have $r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i})$. Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.\newline
+    we have $r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i})$. Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.
 \end{proof}
+In \cref{exa:continous-situation-with-exact-differential}, we see that for continuous systems, if the given derivative kernel is an appropriate differential, the result is a difference of exponents with equal coefficients. For general systems, given a specific $\{r_{i}\}$, we also have this result. Therefore, we
+\begin{definition}
+    Say $\mathfrak{U}$ is an exact derivation of $\mathcal{A}$ and $\mathcal{B}$, when
+    \[ \left.\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\ \right\vert \mathfrak{U}(a_{i+t}^{i}). \]
+    And $\mathfrak{U}_{i+1}^{i}$ is called the $i$-step differential.
+\end{definition}
 \begin{definition}
     Given a ($\mathcal{A}$, $\mathcal{B}$)-derivation $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, if $\forall p, q\in \mathbb{P}(\mathbb{G})$, there is $\mathfrak{U}(p) = \mathfrak{U}(q)$, we say $\mathfrak{U}$ is kernel independent.
     We denote all kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivations as $\partial(\mathcal{A}, \mathcal{B})$.
@@ -217,9 +223,9 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 \begin{proposition}
     $\partial(\mathcal{A}, \mathcal{B}) = \partial_{1}(\mathcal{A}, \mathcal{B})$.
 \end{proposition}
-% \begin{proof}
-%     For any partition $\mathbb{P}(a) = \{a_i\}_{i\in I}$. We have $\mathfrak{U}(a_{i+1}) = \mathfrak{U}(a_{i})$, thus $\mathfrak{U}$ is 1-periodic on $a$.
-% \end{proof}
+\begin{proof}
+    For any partition $\mathbb{P}(a) = \{a_i\}_{i\in I}$. We have $\mathfrak{U}(a_{i+1}) = \mathfrak{U}(a_{i})$, thus $\mathfrak{U}$ is 1-periodic on $a$.
+\end{proof}
 Finially back to the Collatz complement. From \cref{proposition:collatz-complement-basic-prop2}, we can verify that, with arguments $(\alpha, \beta, \gamma)$, all Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.
 Inseparable elements of it is $\mathbb{P}([\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}) = \{i \rightsquigarrow (i + 1) \mid i \in \mathbb{Z}\}$. And the kernel $\mathfrak{A}(i \rightsquigarrow i + 1) = \gamma \cdot \mathfrak{A}_{i+1}^{i} = \gamma$.
 Besides, the Collatz complement of Conway's extension of Collatz problem is actually those $\partial_{*}(\mathcal{A}, \mathcal{B})$, they are not kernel independent, but its kernels are $\beta$-periodic. Hence, no matter our Collatz complement, or Collatz complement of Conway's extension, just let $\mathcal{A}$ and $\mathcal{B}$ are $\beta$-periodic, they will all be periodic.

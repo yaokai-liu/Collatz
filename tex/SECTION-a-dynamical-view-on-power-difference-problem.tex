@@ -13,16 +13,17 @@ In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is alw
 	\[ a_k\cdot\beta^{\mathcal{B}_k^{k-1}} = a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k. \]
 	Thus, just let $b = a_n$, the theorem holds.
 \end{proof}
-\begin{definition}~\label{def:derivation-of-power-diff}
-	We denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ in \cref{thm:power-diff-system-exists}.
-	We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{-*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$.
-\end{definition}
 \begin{remark}
 	Notice that the system in \cref{thm:power-diff-system-exists} is built from reduce sequence, thus we have no result like $\beta \nmid b$ and $\beta\nmid \mathfrak{U}_n$.
 \end{remark}
-\begin{corollary}~\label{cor:power-diff-to-dynamical-system}
-	Suppose $\alpha^{A} - \beta^{B} = C\in\mathbb{N}$. Then $\exists t\in\mathbb{N}$ and sequence $\{a_i\}_{i=1}^{t} \subset\mathbb{N}, \{b_i\}_{i=1}^{t} \subset\mathbb{N}$, such that $A = \mathcal{A}_t$, $B = \mathcal{B}_t$, and $C\mid \mathfrak{U}_t$.
-\end{corollary}
+\begin{theorem}~\label{def:derivation-of-power-diff}
+	We denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ in \cref{thm:power-diff-system-exists}.
+	We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$.
+\end{theorem}
+\begin{theorem}~\label{cor:power-diff-to-dynamical-system}
+	Given two arguments $\alpha, \beta \in \mathbb{N}_{\ge2}$ such that $\gcd(\alpha, \beta) = 1$.\newline
+	$\alpha^{A} - \beta^{B} = C\in\mathbb{N}$ has integer solution $(A, B)$ for given $C$, if and only if $\exists t\in\mathbb{N}$ and sequence $\{a_i\}_{i=1}^{t} \subset\mathbb{N}, \{b_i\}_{i=1}^{t} \subset\mathbb{N}$ such that when $A = \mathcal{A}_t$, $B = \mathcal{B}_t$, there is $C\mid \mathfrak{U}_t$.
+\end{theorem}
 \begin{proof}
 	Let $r_i, \gamma_i\in\mathbb{Z}$ follow this equations:
 	\[ \left\{\begin{aligned}
@@ -32,6 +33,8 @@ In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is alw
 		&\cdots \\
 		&\beta^{\mathcal{B}_{t}^{t-1}}\cdot r_{0} - \alpha^{\mathcal{A}_{t-1}^{t-1}} \cdot r_{t-1} = \gamma_{t-1}.
 	\end{aligned}\right. \]
-	Then trivial from \cref{thm:derivation-periodic-rule}.
+	Then trivial from \cref{thm:derivation-periodic-rule}. And we can find that $\mathfrak{U}$ is the exact derivation of $(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$, and $\gamma_i$ is the $i$-step differential.
 \end{proof}
-\cref{cor:power-diff-to-dynamical-system} provide a view that given $C$, we can find the solution $A$ and $B$ by search the partition of exponents. however, this conclusion is a little trivial, since $\gamma_k$ are flexiable, the corollary seems like telling nothing. We can count how many top branches in this system using the method like \cref{sec:distribution-of-source-value-set} says. These top branches contains all cycles of the system which exactly correspond the solutions of the power-difference equation.
+\cref{cor:power-diff-to-dynamical-system} provide a view that given $C$, we can find the solution $A$ and $B$ by search the partition of exponents.
+We can count how many top branches in this system using the method like \cref{sec:distribution-of-source-value-set} says.
+These top branches contains all cycles of the system which exactly correspond the solutions of the power-difference equation.

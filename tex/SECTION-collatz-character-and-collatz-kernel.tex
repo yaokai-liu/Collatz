@@ -3,11 +3,11 @@
 
 Although the periodicity of reduce vectors constitutes a significant result, we cannot stop there. As we learned in the previous section, not all reduce vectors lead to positive integers; indeed, many reduce vectors eventually resolve into fractions as the depth of the backtracking increases. Consequently, we are more interested in determining the conditions under which a number can be traced back to an integer, as well as the distribution of the resulting values.
 
-To deal with this, we have to introduce two opetators.
+To deal with this, we have to introduce two operators.
 \begin{definition}~\label{def:collatz-character-and-collatz-kernel}
 Given $b \in\widehat{\mathbb{N}}_\beta$, define
 \[ \chr b = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}b-\gamma) \text{ and } \beta\nmid(\beta^{v}b-\gamma)/\alpha \} \]
-called the Collatz cahracter of $b$. If the set is empty, we say $b$ is a primitive source and define $\chr b = \infty$.
+called the Collatz character of $b$. If the set is empty, we say $b$ is a primitive source and define $\chr b = \infty$.
 If $b$ is not primitive source, we define
 \[ \cor b = \beta^{\chr b}b \]
 as the source core of $b$.
@@ -51,10 +51,14 @@ With these, we have
     $\mathbb{S}(b) = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}(b)_{i}$. $\widehat{\mathbb{N}}_{\beta} = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}_{i}$.
 \end{proposition}
 Actually, $\mathbb{S}_{\infty}$ is exactly the set of all primitive sources. And we have
-\begin{proposition}
+\begin{proposition}~\label{prop:chr-are-periodic}
     If $i = \chr a$, then $\mathbb{S}_{i} = \{ b\in\widehat{\mathbb{N}}_{\beta} \mid b \equiv a \pmod{\alpha} \}$.
 \end{proposition}
-Furthermore, from \cref{lem:modulo-alpha-of-f_1}, we have
+And hence we also denote $\mathbb{S}[a] = \mathbb{S}_i$. We have
+\begin{proposition}
+    $\chr \mathbb{S}[a] = \{\chr a\}$.
+\end{proposition}
+Furthermore, from \cref{cor:modulo-alpha-of-f_1}, we have
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\Phi_1 = 1$, and then $\chr b = \left\{\begin{aligned}
         &1, &&\alpha\mid b, \\
@@ -82,89 +86,3 @@ Immidiately, we have
 \begin{proposition}~\label{prop:primitive-source-of-simple-collatz-system}
     If $\alpha\in\mathbb{P}$ and $\alpha\nmid\gamma$, then $\tilde{\mathbb{S}}_{\infty} = \varnothing$ and $\hat{\mathbb{S}}_{\infty} = \alpha\mathbb{N}_{\ge 1}$.
 \end{proposition}
-
-Now let's consider how to decompose the reduce vector. We may expected there's a minimal reduce vector at first, and then apply the \cref{cor:single-vary-rule} to adjust to approch our target. We may consider the Collatz characters definitely are the most suitable choice, such that
-\[ \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n) + \text{ an adjust vector}. \]
-However, not all character vectors are valid. For example, for $5$ in $(3,2,1)$ system. Since $f_{n}((1);5) = 3$ has no source value any more, we can't write the $2$-dim character vectors of $5$. To render it a strictly rigorous formula, we would have to introduce certain special elements that do not exist in reality to modify the definition of Collatz character of those primitive sources, or put our view into more big field like $\mathbb{Q}$. Nevertheless, we do not intend to delve deeply into this matter here. We provide another way to bypass this issue.
-\begin{definition}~\label{def:chr-vector}
-    Define
-    \[ \wchr a = \left\{\begin{aligned}
-        &\chr a, && (\cor a - \gamma)/\alpha \not\in \mathbb{S}_{\infty}, \\
-        &\chr a + \Phi_1, && (\cor a - \gamma)/\alpha \in \mathbb{S}_{\infty}.
-    \end{aligned}\right. \]
-    Also we define $\wcor a = \beta^{\wchr a}a$. Finally, we define
-    \[ \wchr\bm{a} = (\chr a_1, \wchr a_2, \wchr a_3, \cdots, \wchr a_n), \]
-    and then we can naturally derive the definitions of $\wchr\mathcal{A}$, $\wchr\mathfrak{A}$, and $\wchr\mathfrak{a}$. We call them are adjusted. Finally, we define
-    \[ \Chr_{n}(b) = \{ \wchr \bm{v} \mid f_{n}(\wchr\bm{v}; b) \in\mathbb{N} \} \]
-    as the set of adjusted character reduce vectors.
-\end{definition}
-Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do not need trace it back any more.
-With these, we have
-\begin{proposition}
-    $\Phi_1\mid (\bm{a} - \wchr\bm{a})$.
-\end{proposition}
-\begin{proposition}
-    Suppose $\bm{b} = \bm{a} + \sum_{i=1}^{n}k_i\Phi_i\bm{e}_i$, then $\wchr \bm{b} = \wchr \bm{a}$.
-\end{proposition}
-\begin{definition}~\label{def:red-vector}
-Define
-\[ \simp\bm{a} = \frac{1}{\Phi_1}(\bm{a} - \wchr\bm{a}) \]
-called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number $a$, then the $i$-th component of it we also denote $\simp a_i$.
-\end{definition}
-\begin{proposition}
-    $\bm{a} = \Phi_1\simp\bm{a} + \wchr\bm{a}$.
-\end{proposition}
-% \begin{proposition}
-%     $\Phi_1\simp a_i + \wchr a_i = \left\{\begin{aligned}
-%         &\val(a;i), && (\cor a - \gamma)/\alpha \not\in \mathbb{S}, \\
-%         &\val(a;i) + \Phi_1, && (\cor a - \gamma)/\alpha \in \mathbb{S}.
-%     \end{aligned}\right.$.
-% \end{proposition}
-\begin{proposition}~\label{prop:rewritten-collatz-rule}
-    If $i > 1$, then $\beta^{\Phi_1\cdot\simp a_i}\cdot \wcor a_{i} = \alpha \cdot a_{i-1} + \gamma$. And if $i = 1$, then $\beta^{\Phi_1\cdot\simp a_1}\cdot \cor a_{1} = \alpha \cdot a + \gamma$.
-\end{proposition}
-
-Let us examine the character vector $\wchr\bm{a}$ of $a$. We observe that it depends solely on $a$ itself; within a given Collatz system, it reflects the intrinsic characteristics of $a$. However, we must point out that, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds true, $\Phi_k$ does not always divide $\Phi_1 \cdot \simp a_i$. In other words, the growth of these $\simp a_i$ does not adhere to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" alters the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), the adjusted character vector changes accordingly. In light of this, it is necessary for us to consider the impact that the adjustment operation exerts upon $\wchr\bm{a}$.
-
-However, not all Collatz systems are suitable for analyzing character vectors.
-For those simple Collatz system, we have
-\begin{theorem}
-    
-\end{theorem}
-\begin{lemma}~\label{lem:modulo-alpha-of-f_1}
-    Given a reduce vector $\bm{a}$, we have
-    \[f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{n}(\bm{a}).\pmod{\alpha}\]
-\end{lemma}
-% \begin{proof}
-%     From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we have
-%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\cdot\frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) + f_{n}(\bm{a}) \equiv k\nabla
-%     _1 + f_{n}(\bm{a}).  \pmod{\alpha} \]
-% \end{proof}
-For simple systems, we have $\gcd(\alpha, \nabla_1) = 1$. Then, according to \cref{lem:modulo-alpha-of-f_1}, $f_{n}(\bm{a})$ will iterate through all remainders modulo $\alpha$.
-\begin{corollary}
-    Suppose $b\not\in\mathbb{S}_{\infty}$. Suppose $f_{n}(\bm{a};b) = \min\{f_{n}(\bm{v};b) \in\mathbb{N}\}$, then $\bm{a} \in \Chr_{n}(b)$.
-\end{corollary}
-% \begin{proof}
-%     At first we have 
-%     \begin{align*}
-%         f_{n}((\chr b + k\Phi_1); b) &= \beta^{k\Phi_1}f_{1}((\chr b);b) + \frac{\gamma}{\alpha}\cdot(\beta^{k\Phi_1} - 1) \\
-%         &> f_{1}((\chr b);b).
-%     \end{align*}
-%     Thus $f_{1}((\chr b); b) = \min\{f_{1}(\bm{v})\mid f_{1}(\bm{v}) \in\mathbb{N}\}$.
-
-%     If $f_{n}(\wchr\bm{a}_{n}) = \min\{f_{n}(\bm{v})\mid f_{n}(\bm{v}) \in\mathbb{N}\}$. Let $a = f_{n}(\wchr\bm{a}_{n})$. Then for $c = f_{n+1}(\wchr\bm{c}; b)$, we have:\newline
-%     \[ \wchr\bm{c} = \left\{\begin{aligned}
-%         &(\chr c_1, &\Phi_1\bm{e}_1 + \wchr\bm{a}&), && a\in\mathbb{S}_{\infty}, \\
-%         &(\chr c_1, &\wchr\bm{a}&), && a\not\in\mathbb{S}_{\infty}.
-%     \end{aligned}\right. \]
-%     Thus 
-% \end{proof}
-% Finally, for some kind of systems that are not simple, we also have
-% \begin{proposition}
-%     Suppose $\alpha \mid \gamma$. If $\simp a_1 = 0$, we have
-%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv\beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.\pmod{\alpha} \]
-% \end{proposition}
-% \begin{proof}
-%     From \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
-%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) = \frac{1}{\alpha}\cdot \beta^{k}\cdot\cor a - \frac{\gamma}{\alpha} \equiv \beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}. \pmod{\alpha} \]
-% \end{proof}

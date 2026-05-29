@@ -28,7 +28,7 @@ follows the Collatz conjecture.
 We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
 So it is the time to explore what the arguments of these equations has a stability solution.
 
-At first we define an auxity notation:
+At first we define an auxiliary notation:
 \begin{definition}~\label{def:exclude-beta-times}
     For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
 \end{definition}
@@ -44,7 +44,7 @@ With these we have
         &\val(a;k+1) = \val_{\beta}(\alpha\cdot a_k + \gamma).
     \end{align*}
 \end{definition}
-Actually, this definition is exactly follow the Syracuse function\cite{wikipediaCollatzConjecture}. 
+In fact, this definition is precisely the generalization of the Syracuse function\cite{wikipediaCollatzConjecture} to arbitrary arguments. 
 \begin{definition}~\label{def:collatz-accumulation}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
     Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
@@ -59,26 +59,26 @@ And to avoid repeating the explanation each time, unless otherwise specified, we
 \begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
 If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\val(a;k) = \val(b;k)$ and $\mathcal{A}_k = \mathcal{B}_k$.
 \end{proposition}
-% \begin{proof}
-%     First, we have
-%     \begin{align*}
-%         a = b &\Rightarrow a_0 = b_0, \\
-%         a_1 \cdot \beta^{\val(a;1)} &= b_1 \cdot \beta^{\val(b;1)}, \\
-%         \mathcal{A}_1 = \val(a;1) &= \val(b;1) = \mathcal{B}_1.
-%     \end{align*}
-%     Second, if $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$, we have
-%     \[a_{k+1} \cdot \beta^{\val(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val(b;k + 1)}.\]
-%     That means
-%     \[a_{k+1} = b_{k+1} \cdot \beta^{\val(b;k + 1) - \val(a;k + 1)}. \]
-%     But there is $a_{k+1} \in \widehat{\mathbb{N}}_{{\beta}}$ as definition that $\beta \nmid a_{k+1}$, which means
-%     \[\val(a;k + 1) = \val(b;k + 1), \]
-%     and then
-%     \begin{align*}
-%         a_{k+1} &= b_{k+1}, \\
-%         \mathcal{A}_{k+1} = \mathcal{A}_{k} + \val(a;k+1) &= \mathcal{B}_{k} + \val(b;k+1) = \mathcal{B}_{k+1}.
-%     \end{align*}
-%     Sum up, we proved this proposition.
-% \end{proof}
+\begin{proof}
+    First, we have
+    \begin{align*}
+        a = b &\Rightarrow a_0 = b_0, \\
+        a_1 \cdot \beta^{\val(a;1)} &= b_1 \cdot \beta^{\val(b;1)}, \\
+        \mathcal{A}_1 = \val(a;1) &= \val(b;1) = \mathcal{B}_1.
+    \end{align*}
+    Second, if $a_k = b_k$ and $\mathcal{A}_k = \mathcal{B}_k$, we have
+    \[a_{k+1} \cdot \beta^{\val(a;k + 1)} = \alpha\cdot a_{_k} + \gamma = \alpha\cdot b_{_k} + \gamma = b_{k+1} \cdot \beta^{\val(b;k + 1)}.\]
+    That means
+    \[a_{k+1} = b_{k+1} \cdot \beta^{\val(b;k + 1) - \val(a;k + 1)}. \]
+    But there is $a_{k+1} \in \widehat{\mathbb{N}}_{{\beta}}$ as definition that $\beta \nmid a_{k+1}$, which means
+    \[\val(a;k + 1) = \val(b;k + 1), \]
+    and then
+    \begin{align*}
+        a_{k+1} &= b_{k+1}, \\
+        \mathcal{A}_{k+1} = \mathcal{A}_{k} + \val(a;k+1) &= \mathcal{B}_{k} + \val(b;k+1) = \mathcal{B}_{k+1}.
+    \end{align*}
+    Sum up, we proved this proposition.
+\end{proof}
 \begin{proposition}
     If $\exists t > 0$ that $a_{t} = a_0 = a$, 
     then $\forall k > 0$, and $s = 1, 2, 3, \cdots, t$, there are
@@ -91,29 +91,23 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\val(a;k)
 Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$.
 For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conjecture:original-conjecture} and $a_k$ be the $k$-th element of Collatz sequence of $a$, then $\forall k \in \mathbb{N}$,  we have $a_{k} = a'_{i_{k}}$.
 \end{proposition}
-% \begin{proof} Trivial. \end{proof}
-% \begin{proof}
-%     Let $a'_{i}$ be the $i$-th number in \cref{conjecture:original-conjecture}, and $a'_{i_k}$ be the $k$-th odd number in it.\newline
-%     First, we have $a_{0} = a = a'_0 = a'_{i_0}$;\newline
-%     Second, if $a_{k} = a'_{i_k}$. Suppose $s_{k+1} = \val_{\beta}(3a'_{i_k} + 1)$. We have
-%     \[ s_{k+1} = \val_{\beta}(3a_k + 1) = \val(a;k+1). \]
-%     For $a'_{i_k}$, we have
-%     \begin{align*}
-%         a'_{i_k+1} &= (3a'_{i_k} + 1) / 2 \in 2\mathbb{N},   \\
-%         a'_{i_k+2} &= (3a'_{i_k} + 1) / 2^2 \in 2\mathbb{N}, \\
-%         &\cdots \\
-%         a'_{i_k+s_k} &= (3a'_{i_k} + 1) / 2^{s_{k+1}}  \in \widehat{\mathbb{N}}_{2}.
-%     \end{align*}
-%     That means $a'_{i_k+s_k}$ is the $(k+1)$-th odd number,  in other words, $a'_{i_k+s_k} = a'_{i_{k+1}}$.
-%     Hence we have
-%     \begin{align*}
-%         a_{k+1} &= (3a_k + 1) / 2^{\val(a;k+1)} \\
-%         &= (3a'_{i_k} + 1) / 2^{s_{k+1}} \\
-%         & = a'_{i_k+s_k} \\
-%         &= a'_{i_{k+1}}.
-%     \end{align*}
-%     Sum up, we proved this proposition.
-% \end{proof}
+\begin{proof}
+    Let $a'_{i}$ be the $i$-th number in \cref{conjecture:original-conjecture}, and $a'_{i_k}$ be the $k$-th odd number in it.\newline
+    First, we have $a_{0} = a = a'_0 = a'_{i_0}$;\newline
+    Second, if $a_{k} = a'_{i_k}$. Suppose $s_{k+1} = \val_{\beta}(3a'_{i_k} + 1)$. We have
+    \[ s_{k+1} = \val_{\beta}(3a_k + 1) = \val(a;k+1). \]
+    For $a'_{i_k}$, we have
+    \begin{align*}
+        a'_{i_k+1} &= (3a'_{i_k} + 1) / 2 \in 2\mathbb{N},   \\
+        a'_{i_k+2} &= (3a'_{i_k} + 1) / 2^2 \in 2\mathbb{N}, \\
+        &\cdots \\
+        a'_{i_k+s_k} &= (3a'_{i_k} + 1) / 2^{s_{k+1}}  \in \widehat{\mathbb{N}}_{2}.
+    \end{align*}
+    That means $a'_{i_k+s_k}$ is the $(k+1)$-th odd number,  in other words, $a'_{i_k+s_k} = a'_{i_{k+1}}$.
+    Hence we have
+    \[ a_{k+1} = (3a_k + 1) / 2^{\val(a;k+1)} = (3a'_{i_k} + 1) / 2^{s_{k+1}} = a'_{i_k+s_k} = a'_{i_{k+1}}. \]
+    Sum up, we proved this proposition.
+\end{proof}
 \cref{proposition:equivalent-between-collatz-conjecture-and-our-definition} ensures our definition of Collatz sequence is equivalent with the iterative function in \cref{conjecture:original-conjecture}.
 Because for even numbers, we can easily figure out that every even number will reduce to an odd number at first.
 In that situation, the proposition holds as well.
@@ -151,19 +145,19 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
         \mathfrak{a}_n^{m} &= \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^{k} + \mathfrak{a}_k^m. 
     \end{align*}
 \end{proposition}
-% \begin{proof}
-% \begin{align*}
-%     \mathfrak{A}_n^{m} =&\sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-%     =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
-%     =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
-%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
-%     \mathfrak{a}_n^{m} =&\sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-%     =&\ \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
-%     =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
-% \end{align*}
-% \end{proof}
+\begin{proof}
+\begin{align*}
+    \mathfrak{A}_n^{m} =&\sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
+    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \\
+    =&\ \sum_{i = k}^{n - 1}\beta^{\mathcal{A}_k^{m}}\cdot\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\beta^{\mathcal{A}_i^{k}}\cdot\alpha^{n-i-1} + \sum_{i = m}^{k - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{k-i-1}\cdot\alpha^{n-k} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
+    \mathfrak{a}_n^{m} =&\sum_{i = m}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+    =&\ \sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\sum_{i = k}^{n - 1}\frac{\beta^{\mathcal{A}_i^{k}}}{\alpha^{i}} + \sum_{i = m}^{k - 1}\frac{\beta^{\mathcal{A}_i^{m}}}{\alpha^{i}} \\
+    =&\ \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{a}_n^k + \mathfrak{a}_k^m.
+\end{align*}
+\end{proof}
 
 Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
 More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).

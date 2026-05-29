@@ -1,0 +1,89 @@
+% !TEX root = main.tex
+\section{Decomposition of Reduce Vector}\label{sec:decomposition-of-reduce-vector}
+
+Now let's consider how to decompose the reduced vector. We might initially expect the existence of a minimum reduced vector, and then apply \cref{cor:single-vary-rule} to adjust it to approximate the target vector. We might consider the Collatz character set to be the most suitable choice, such that:
+\[ \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n) + \text{ an adjusted vector}. \]
+However, not all character vectors are valid. For example, for $5$ in the (3,2,1) system, since $f_{n}((1);5) = 3$ no longer has source values, we cannot write a two-dimensional character vector for $5$. To make it a strictly valid formula, we might need to introduce some special elements that do not exist in reality to modify the definition of the Collatz features of these original sources, or expand our vision to a larger domain, such as $\mathbb{Q}$. However, we do not intend to delve into this issue here. We have provided another way to work around this problem, but in this section, we will always assume that all systems are simple.
+
+For convenience, according to \cref{thm:layers-of-reduce-space-and-source-value-set}, we denote
+\begin{definition}
+    $S(k; a) = \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}$, which is the $m$-th element of $\mathbb{S}_1(a)$.
+\end{definition}
+\begin{definition}~\label{def:chr-vector}
+    Suppose $a\not\in\mathbb{S}_{\infty}$. Define
+    \[ \wchr a = \min_{k\in\mathbb{N}}\{\chr a + k\Phi_1 \mid S(k;a)\in\mathbb{N} - \mathbb{S}_{\infty}\}. \]
+    If
+    Also we define $\wcor a = \beta^{\wchr a}a$.
+\end{definition}
+Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do not need trace it back any more.
+With these, we have
+\begin{proposition}
+    $\wchr a = \left\{\begin{aligned}
+        & \chr a + \Phi, && S(0;a) \in\mathbb{S}_{\infty}, \\
+        & \chr a, && S(0;a) \not\in\mathbb{S}_{\infty}.
+    \end{aligned}\right.$
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+With this, we have
+\begin{definition}
+    Suppose $f_{n}(\bm{a}; b)\in\mathbb{N}$, define
+    \[ \wchr\bm{a} = (\chr a_1, \wchr a_2, \wchr a_3, \cdots, \wchr a_n), \]
+    and then we can naturally derive the definitions of $\wchr\mathcal{A}$, $\wchr\mathfrak{A}$, and $\wchr\mathfrak{a}$. We call them are adjusted. Finally, we define
+    \[ \Chr_{n}(b) = \{ \wchr \bm{v} \mid f_{n}(\wchr\bm{v}; b) \in\mathbb{N} \} \]
+    as the set of adjusted character reduce vectors.
+\end{definition}
+\begin{proposition}
+    $\Phi_1\mid (\bm{a} - \wchr\bm{a})$.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+\begin{proposition}
+    Suppose $\gcd(\gamma, \alpha) = 1$. If $\bm{b} = \bm{a} + \alpha\Phi_i\bm{e}_i$, then $\wchr \bm{b} = \wchr \bm{a}$.
+\end{proposition}
+\begin{definition}~\label{def:red-vector}
+Define
+\[ \simp\bm{a} = \frac{1}{\Phi_1}(\bm{a} - \wchr\bm{a}) \]
+called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number $a$, then the $i$-th component of it we also denote $\simp a_i$.
+\end{definition}
+\begin{proposition}
+    $\bm{a} = \Phi_1\simp\bm{a} + \wchr\bm{a}$.
+\end{proposition}
+% \begin{proposition}
+%     $\Phi_1\simp a_i + \wchr a_i = \left\{\begin{aligned}
+%         &\val(a;i), && (\cor a - \gamma)/\alpha \not\in \mathbb{S}, \\
+%         &\val(a;i) + \Phi_1, && (\cor a - \gamma)/\alpha \in \mathbb{S}.
+%     \end{aligned}\right.$.
+% \end{proposition}
+\begin{proposition}~\label{prop:rewritten-collatz-rule}
+    If $i > 1$, then $\beta^{\Phi_1\cdot\simp a_i}\cdot \wcor a_{i} = \alpha \cdot a_{i-1} + \gamma$. And if $i = 1$, then $\beta^{\Phi_1\cdot\simp a_1}\cdot \cor a_{1} = \alpha \cdot a + \gamma$.
+\end{proposition}
+\begin{theorem}
+    Suppose $k_i$ is the exponents of $\Phi$ in \cref{thm:f_n-by-F-and-Phi}, then we have
+    \[ \simp\bm{a} = (k_1, k_2, \cdots, k_n) + \bm{\delta}. \]
+    Here $\bm{\delta} = (\delta_{i})\in\{0,\pm 1\}^{n}$.
+\end{theorem}
+
+Let us examine the $\wchr\bm{a}$ of $a$. We observe that while it depends on $a$, it is insensitive to the adjustments given in \cref{thm:the-periodic-rule-of-reduce-sequence} of the reduced vector; it means that in a given Collatz system, it reflects the common characteristics of the source values of this series of $a$. However, we must point out that for a broader adjustment, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds, $\Phi_k$ is not always divisible by $\Phi_1 \cdot \simp a_i$. In other words, these growths of $\simp a_i$ do not conform to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" changes the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), adjustments other than those given in \cref{thm:the-periodic-rule-of-reduce-sequence} will alter the character vectors. Therefore, considering the effect of the adjustment operation on $\wchr\bm{a}$ is crucial for us.
+
+% For those simple Collatz system, we have
+% \begin{corollary}
+%     Suppose $b\not\in\mathbb{S}_{\infty}$. Suppose $f_{n}(\bm{a};b) = \min\{f_{n}(\bm{v};b) \in\mathbb{N}\}$, then $\bm{a} \in \Chr_{n}(b)$.
+% \end{corollary}
+% \begin{proof}
+%     At first we have 
+%     \begin{align*}
+%         f_{n}((\chr b + k\Phi_1); b) &= \beta^{k\Phi_1}f_{1}((\chr b);b) + \frac{\gamma}{\alpha}\cdot(\beta^{k\Phi_1} - 1) \\
+%         &> f_{1}((\chr b);b).
+%     \end{align*}
+%     Thus $f_{1}((\chr b); b) = \min\{f_{1}(\bm{v})\mid f_{1}(\bm{v}) \in\mathbb{N}\}$.
+
+%     If $f_{n}(\wchr\bm{a}_{n}) = \min\{f_{n}(\bm{v})\mid f_{n}(\bm{v}) \in\mathbb{N}\}$. Let $a = f_{n}(\wchr\bm{a}_{n})$. Then for $c = f_{n+1}(\wchr\bm{c}; b)$, we have:\newline
+%     \[ \wchr\bm{c} = \left\{\begin{aligned}
+%         &(\chr c_1, &\Phi_1\bm{e}_1 + \wchr\bm{a}&), && a\in\mathbb{S}_{\infty}, \\
+%         &(\chr c_1, &\wchr\bm{a}&), && a\not\in\mathbb{S}_{\infty}.
+%     \end{aligned}\right. \]
+%     Thus 
+% \end{proof}
