@@ -4,37 +4,67 @@
 In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. If we make the exponent of $\alpha$ is also a accumulation of a reduce sequence, then we have
 \begin{theorem}~\label{thm:power-diff-system-exists}
 	Given two arguments $\alpha, \beta \in \mathbb{N}_{\ge2}$ such that $\gcd(\alpha, \beta) = 1$.\newline
-	Given two sequence $\{a_i\}_{i=1}^{n}, \{b_i\}_{i=1}^{n}\subset\mathbb{N}$ and $a\in \mathbb{N}$, then $\exists \{\gamma_i\}_{i=1}^{n}\subset\mathbb{N}$ and $b \in\mathbb{N}$, such that
+	Given two sequence $\{a_i\}_{i=1}^{n}, \{b_i\}_{i=1}^{n}\subset\mathbb{N}$ and $a\in \mathbb{Z}^{*}$, then $\exists \{\gamma_i\}_{i=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}$, such that
 	\[ b\cdot\beta^{\mathcal{B}_n} - a\cdot\alpha^{\mathcal{A}_n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k. \]
 	We call these systems as general power-difference system.
 \end{theorem}
 \begin{proof}
-	Similar with \cref{theorem:inductive-formula}. Let $\gamma_k = a_k\cdot\beta^{\mathcal{B}_k^{k-1}} - a\cdot\alpha^{\mathcal{A}_{k}^{k-1}}$, then we have 
-	\[ a_k\cdot\beta^{\mathcal{B}_k^{k-1}} = a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k. \]
-	Thus, just let $b = a_n$, the theorem holds.
+	Similar with \cref{theorem:inductive-formula}. Just let $\gamma_k$ and $a_k$ satisifies
+	\[ a_k\cdot\beta^{\mathcal{B}_k^{k-1}} = a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k, \]
+	Then let $b = a_n$, the theorem holds.
 \end{proof}
 \begin{remark}
 	Notice that the system in \cref{thm:power-diff-system-exists} is built from reduce sequence, thus we have no result like $\beta \nmid b$ and $\beta\nmid \mathfrak{U}_n$.
 \end{remark}
-\begin{theorem}~\label{def:derivation-of-power-diff}
+\begin{remark}
 	We denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ in \cref{thm:power-diff-system-exists}.
 	We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$.
-\end{theorem}
+\end{remark}
 \begin{theorem}~\label{cor:power-diff-to-dynamical-system}
-	Given two arguments $\alpha, \beta \in \mathbb{N}_{\ge2}$ such that $\gcd(\alpha, \beta) = 1$.\newline
-	$\alpha^{A} - \beta^{B} = C\in\mathbb{N}$ has integer solution $(A, B)$ for given $C$, if and only if $\exists t\in\mathbb{N}$ and sequence $\{a_i\}_{i=1}^{t} \subset\mathbb{N}, \{b_i\}_{i=1}^{t} \subset\mathbb{N}$ such that when $A = \mathcal{A}_t$, $B = \mathcal{B}_t$, there is $C\mid \mathfrak{U}_t$.
-\end{theorem}
-\begin{proof}
-	Let $r_i, \gamma_i\in\mathbb{Z}$ follow this equations:
+	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{N}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists t \in \mathbb{N}$ and sequences $\{a_i\}, \{b_i\} \subset \mathbb{N}_{\ge1}$ and $\{r_i\}, \{\gamma_i\} \in\mathbb{Z}^{*}$ of length $t$, such that whenever $A = \sum_{i=0}^{t-1}a_i$ and $B = \sum_{i=0}^{t-1}b_i$, the divisibility condition $C \mid \sum_{i=0}^{t-1}\beta^{\mathcal{B}_i}\alpha^{\mathcal{A}_{t-1}^{i}}\gamma_i$ holds. This is also equivalent to the sequences $\{a_i\}, \{b_i\}, \{r_i\}, \{\gamma_i\}$ satisfying the following system of equations:
 	\[ \left\{\begin{aligned}
-		&\beta^{\mathcal{B}_{1}^{0}}\cdot r_{1} - \alpha^{\mathcal{A}_{t-1}^{0}} \cdot r_{0} = \gamma_{0},\\
-		&\beta^{\mathcal{B}_{2}^{1}}\cdot r_{2} - \alpha^{\mathcal{A}_{t-1}^{1}} \cdot r_{1} = \gamma_{1},\\
+		&\beta^{b_{0}}\cdot r_{1} - \alpha^{a_{0}} \cdot r_{0} = \gamma_{0},\\
+		&\beta^{b_{1}}\cdot r_{2} - \alpha^{a_{1}} \cdot r_{1} = \gamma_{1},\\
 		% &\beta^{\mathcal{B}_{3}^{2}}\cdot r_{3} - \alpha^{\mathcal{A}_{t-1}^{2}} \cdot r_{2} = \gamma_{2},\\
 		&\cdots \\
-		&\beta^{\mathcal{B}_{t}^{t-1}}\cdot r_{0} - \alpha^{\mathcal{A}_{t-1}^{t-1}} \cdot r_{t-1} = \gamma_{t-1}.
-	\end{aligned}\right. \]
-	Then trivial from \cref{thm:derivation-periodic-rule}. And we can find that $\mathfrak{U}$ is the exact derivation of $(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$, and $\gamma_i$ is the $i$-step differential.
+		&\beta^{b_{t-1}}\cdot r_{0} - \alpha^{a_{t-1}} \cdot r_{t-1} = \gamma_{t-1}.
+	\end{aligned}\right.\label{equ:equation-system-of-power-diff-to-dynamical-system} \]
+\end{theorem}
+\begin{proof}
+	$\Longrightarrow$: We can always participate $A$, $B$ at first, thus we suppose the sequence $\{a_i\}, \{b_i\}$ are already exists.\newline
+	If for given $r_0 > 0$, there's $r_t \ne r_0$, then let $r_t \cdot \beta^{B} - r_0 \cdot \alpha^{A} = \mathfrak{U}$. With this we have $(r_t - r_0)\cdot \beta^{B} = \mathfrak{U} - r_0\cdot C$. Now let $\Delta\gamma_k = (r_t - r_0)\cdot \beta^{B} / \beta^{\mathcal{B}_{t-1}} = (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}}$ and $\gamma'_k = \gamma_k - \Delta\gamma_k$. From \cref{thm:power-diff-system-exists} we can derive $r'_t$ with $\gamma'_k$ by
+	\begin{align*}
+		r'_t\cdot\beta^{\mathcal{B}_k^{k-1}} &= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma'_k \\
+		&= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k - (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}} \\
+		&= r_t \cdot\beta^{\mathcal{B}_k^{k-1}} - (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}} \\
+		&= r_0 \cdot \beta^{\mathcal{B}_k^{k-1}}.
+	\end{align*}
+	Which means we find a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_t = r_0$. 
+	\newline
+	$\Longleftarrow$: Trivial from \cref{thm:derivation-periodic-rule}.
 \end{proof}
+\begin{remark}
+	we can always suppose $\gcd(\gamma_0, \gamma_1, \cdots, \gamma_{t-1}) = 1$. And suppose $\forall i < t$, $a_i$, $b_i$ not both $0$.
+\end{remark}
+Actually, if $a_{j} = b_{j} = 0$. Then from $\beta^{b_{j}}\cdot r_{j+1} - \alpha^{a_{j}} \cdot r_{j} = r_{j+1} - r_{j} = \gamma_{j}$ we have $\beta^{b_{j+1}}\cdot r_{j+2} - \alpha^{a_{j+1}} \cdot r_{i} = \gamma_{j+1} + \alpha^{a_{j+1}}\gamma_{i}$. Then let
+\begin{align*}
+	u_k &= \left\{\begin{aligned}
+		&a_{k},  &&k < j, \\
+		&a_{k+1}, && j < k < t-1,
+	\end{aligned}\right.\\
+	v_k &= \left\{\begin{aligned}
+		&b_{k},  &&k < j, \\
+		&b_{k+1}, && j < k < t-1,
+	\end{aligned}\right.\\
+	\eta_k &= \left\{\begin{aligned}
+		&\gamma_{k},  &&k < j, \\
+		&\gamma_{j+1} + \alpha^{a_{j+1}}\gamma_{j}, && k = j+1, \\
+		&\gamma_{k+1}, && j+1 < k < t-1.
+	\end{aligned}\right.
+\end{align*}
+We can build a same equation system for $\{u_i\}, \{v_i\}, \{r_i\}, \{\eta_i\}$ like \cref{equ:equation-system-of-power-diff-to-dynamical-system}, and $u_{j}, v_{j}$ are not both $0$. Repeat this operation, we can replace all $a_{j} = b_{j} = 0$, that's why we can always suppose $a_i$, $b_i$ not both $0$.
+
 \cref{cor:power-diff-to-dynamical-system} provide a view that given $C$, we can find the solution $A$ and $B$ by search the partition of exponents.
+Actually, from the analysis in previous sections, we know that, every a such equation like in \cref{cor:power-diff-to-dynamical-system} corresponds a top branch of a such $t$-peridic power-difference system.
 We can count how many top branches in this system using the method like \cref{sec:distribution-of-source-value-set} says.
 These top branches contains all cycles of the system which exactly correspond the solutions of the power-difference equation.
