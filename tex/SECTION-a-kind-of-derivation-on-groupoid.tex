@@ -12,12 +12,29 @@ With these, we can define groupoid homomorphisms and their derivtions from $\mat
 If $\forall b \in \mathbb{G}$, there is $\mathcal{A}(b) = 0$, we called that $\mathcal{A}$ is a zero groupoid homomorphism, and denote $\mathcal{A} = 0$.
 Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homomorphisms hereafter are supposed non-zero.
 \begin{proposition}
-    If $\mathcal{A} \ne 0$, then $\forall a \in \mathbb{G}$, there is $\mathcal{A}(a)\cdot\mathcal{A}(-a) = \mathcal{A}(0) = 1$. In other words, $\mathcal{A}(-a) = \mathcal{A}(a)^{-1}$. This requires the ring $\mathbb{R}$ at least is a division ring.
+    If $\mathcal{A} \ne 0$, then $\forall a \in \mathbb{G}$, there is $\mathcal{A}(a)\cdot\mathcal{A}(-a) = \mathcal{A}(0) = 1$. In other words, $\mathcal{A}(-a) = \mathcal{A}(a)^{-1}$.
 \end{proposition}
+\begin{remark}
+    This proposition requires the ring $\mathbb{R}$ at least is a division ring. But if we our result does not involse the inverse elements of $\mathbb{G}$, we don't need to a division ring. Most conclusions in this section don't need $\mathbb{R}$ be a division ring. 
+\end{remark}
 \begin{proposition}
     Denote $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ as the set of all groupoid homomorphisms on $\mathbb{R}$, then $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ is a group by
     \[ (\mathcal{A}\cdot\mathcal{B})(a) = \mathcal{A}(a)\cdot\mathcal{B}(a). \]
 \end{proposition}
+\begin{example}
+    Given number $\alpha$ and a sequence $\{a_i\}$, we have
+    \begin{align*}
+        \alpha^{\sum_{k=i}^{j-1}a_k}&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
+        [i, j) &\mapsto \alpha^{\sum_{k=i}^{j}a_k}.
+    \end{align*}
+\end{example}
+\begin{example}
+    Given a prime sequence $\{p_i\}\subset\mathbb{P}$, we have
+    \begin{align*}
+        \prod_{k=i}^{j-1}p_k&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
+        [i, j) &\mapsto \prod_{k=i}^{j-1}p_k.
+    \end{align*}
+\end{example}
 \begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]~\label{def:quasi-derivation-on-groupoid}
     Given $\mathcal{A}, \mathcal{B}\in\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$.
     There's another function $\mathfrak{F}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
@@ -39,7 +56,6 @@ Given $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, we have
 \begin{proposition}
     $\mathcal{A}(a)\cdot\mathfrak{U}(-a) + \mathfrak{U}(a)\cdot\mathcal{B}(-a) = 0$.
 \end{proposition}
-
 \begin{proposition}
     $\partial_{*}(\mathcal{A}, \mathcal{B})$ is a $\mathbb{R}$-module by
     \[ (s\mathfrak{U} + t\mathfrak{V})(a) = s\mathfrak{U}(a) + t\mathfrak{V}(a). \]
@@ -158,32 +174,31 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
 \begin{proposition}
     If $\mathcal{A} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\mathcal{A}(a_{i+j+t}^{i+j}) = \mathcal{A}(a_{i+t}^{i})$.
 \end{proposition}
-% \begin{proof}
-%     \begin{align*}
-%         \mathcal{A}(a_{i+j+t}^{i+j}) &= \prod_{i+j < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
-%         &= \prod_{i+j < k}^{k\le i+t}\mathcal{A}(a_{k+1}^{k}) \cdot \prod_{i+t < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
-%         &= \mathcal{A}(a_{i+t}^{i+j}) \cdot \prod_{i < k}^{k\le i+j}\mathcal{A}(a_{k+1}^{k}) \\
-%         &= \mathcal{A}(a_{i+t}^{i+j})\cdot \mathcal{A}(a_{i+j}^{i}) \\
-%         &= \mathcal{A}(a_{i+t}^{i}).
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    \begin{align*}
+        \mathcal{A}(a_{i+j+t}^{i+j}) &= \prod_{i+j < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
+        &= \prod_{i+j < k}^{k\le i+t}\mathcal{A}(a_{k+1}^{k}) \cdot \prod_{i+t < k}^{k\le i+j+t}\mathcal{A}(a_{k+1}^{k}) \\
+        &= \mathcal{A}(a_{i+t}^{i+j}) \cdot \prod_{i < k}^{k\le i+j}\mathcal{A}(a_{k+1}^{k}) \\
+        &= \mathcal{A}(a_{i+t}^{i+j})\cdot \mathcal{A}(a_{i+j}^{i}) \\
+        &= \mathcal{A}(a_{i+t}^{i}).
+    \end{align*}
+\end{proof}
 \begin{proposition}~\label{prop:cycles-derive-cycle}
     Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
 \end{proposition}
-% \begin{proof}
-%     \begin{align*}
-%         \mathfrak{U}(a_{i+t}^{j+t}) &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k}^{j+t})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i+t}^{k}) \\
-%         &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k-t}^{j})\cdot\mathfrak{U}(a_{k-t})\cdot\mathcal{B}(a_{i}^{k-t}) \\
-%         &= \sum_{j< k \le i}\mathcal{A}(a_{k}^{j})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i}^{k}) \\
-%         &= \mathfrak{U}(a_{i}^{j}).
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    \begin{align*}
+        \mathfrak{U}(a_{i+t}^{j+t}) &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k}^{j+t})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i+t}^{k}) \\
+        &= \sum_{j+t< k \le i+t}\mathcal{A}(a_{k-t}^{j})\cdot\mathfrak{U}(a_{k-t})\cdot\mathcal{B}(a_{i}^{k-t}) \\
+        &= \sum_{j< k \le i}\mathcal{A}(a_{k}^{j})\cdot\mathfrak{U}(a_{k})\cdot\mathcal{B}(a_{i}^{k}) \\
+        &= \mathfrak{U}(a_{i}^{j}).
+    \end{align*}
+\end{proof}
 \begin{theorem}~\label{thm:derivation-periodic-rule}
-    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
+    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
     \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
-    holds for all $i\ge 0$ equivalents to for all these $i$, there is
+    holds for all $i\ge 0$ equivalents to $r_t =r_0$ and $\forall i \le t$, there is
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
-    And these $r_i$ are also $t$-periodic.
 \end{theorem}
 \begin{proof}
     $\Longleftarrow$: similar with \cref{theorem:inductive-formula}. \newline
@@ -203,16 +218,16 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
     \begin{align*}
         &\mathfrak{U}(a_{i+1}^{i})\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] \\
         =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+1+t}^{i+1}) - \mathcal{B}(a_{i+1+t}^{i+1})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
-        =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
+        % =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
         =&\left[\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i})\right]\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right].
     \end{align*}
-    Thus just let $r_i$ sutisfy the iterative equation
+    Thus we have
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}), \]
     we have $r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i})$. Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.
 \end{proof}
-In \cref{exa:continous-situation-with-exact-differential}, we see that for continuous systems, if the given derivative kernel is an appropriate differential, the result is a difference of exponents with equal coefficients. For general systems, given a specific $\{r_{i}\}$, we also have this result. Therefore, we
+In \cref{exa:continous-situation-with-exact-differential}, we see that for continuous systems, if the given derivative kernel is an appropriate differential, the result is a difference of exponents with equal coefficients. For general systems, given a specific $\{r_{i}\}$, we also expect to have same result.
 \begin{definition}
-    Say $\mathfrak{U}$ is an exact derivation of $\mathcal{A}$ and $\mathcal{B}$, when
+    Say $\mathfrak{U}$ is an exact derivation of $\mathcal{A}$ and $\mathcal{B}$ that in \cref{thm:derivation-periodic-rule}, when
     \[ \left.\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\ \right\vert \mathfrak{U}(a_{i+t}^{i}). \]
     And $\mathfrak{U}_{i+1}^{i}$ is called the $i$-step differential.
 \end{definition}

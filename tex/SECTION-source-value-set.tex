@@ -33,17 +33,17 @@ From \cref{cor:modulo-alpha-of-f_1}, we still have
     If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}_{\infty}$, we have $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$.
 \end{proposition}
 \begin{proposition}~\label{prop:gcd-1-derive-not-all-primitive}
-    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$. And hence $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$ and $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne\varnothing$.
 \end{proposition}
 \begin{proof}
     We prove $n=1$ at first.\newline
     Suppose $a \in\mathbb{S}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-    From \cref{cor:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.\newline
-    Now consider any layer $n > 1$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{S}_{n}(b)/\alpha\mathbb{Z} = \mathbb{Z}/\alpha\mathbb{Z}$.
+    From \cref{cor:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha = \mathbb{Z}/\alpha$.\newline
+    Now consider any layer $n > 1$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$.
 \end{proof}
-\begin{remark}
-    Here $\mathbb{S}_{n}(b)/\alpha\mathbb{Z}$ only represents the remainders modulo  $\alpha$. Generally, $\mathbb{S}_{n}(b)$ will not be a group.
-\end{remark}
+\begin{proposition}~\label{prop:all-primitive-derive-gcd-ge-1}
+    If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$, then $\gcd(\alpha, \nabla_1) > 1$.
+\end{proposition}
 \begin{proposition}~\label{prop:have-primitive-derive-all-primitive}
     Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne \varnothing$, then $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proposition}
@@ -53,30 +53,21 @@ From \cref{cor:modulo-alpha-of-f_1}, we still have
     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}_{\infty}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proof}
-\begin{proposition}~\label{prop:all-primitive-derive-gcd-ge-1}
-    If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$, then $\gcd(\alpha, \nabla_1) > 1$.
-\end{proposition}
-\begin{proof} Trivial according to the proof of \cref{prop:have-primitive-derive-all-primitive}. \end{proof}
 
-Actually we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$.
+Actually, we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$ and derive $\mathbb{S}_{n+1}(b)$ from $\mathbb{S}_{n}(b)$.
 But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value.
 Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end.
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
-
-To explore how to derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$, we define a special value, which we will see it plays a very important part in consist of source value set.
-
-With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodic-rule-of-reduce-sequence}, we have
 \begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
         \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
         &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\} \\
-        &= \bigcup_{a\in \mathbb{S}_{n+1}(b) - \mathbb{S}_{\infty}} \left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\}.
     \end{align*}
 \end{theorem}
 \begin{proof}
-    Trivial for $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} = \varnothing$.\newline
-    Suppose $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} \ne \varnothing$, which means $\forall a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}$, we have $\chr a < \infty$. Then $A_0 = \frac{\cor a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\chr a);b)\in \mathbb{S}_{1}(a)\subset \mathbb{S}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
+    If $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} = \varnothing$, then trivial.\newline
+    Suppose $\mathbb{S}_{n}(b) - \mathbb{S}_{\infty} \ne \varnothing$. Then $\forall a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}$, we have $\chr a < \infty$. Then $A_0 = \frac{\cor a - \gamma}{\alpha} \in\widehat{\mathbb{N}}_{\beta}$, and hence $A_0 = f_{1}((\chr a);b)\in \mathbb{S}_{1}(a)\subset \mathbb{S}_{n+1}(b)$. From \cref{cor:single-vary-rule}, we have
     \begin{align*}
         A_{k+1} &= f_{1}(((k+1)\Phi_1 + \chr a);b) \\
         &= f_{1}((\Phi_1 + (k\Phi_1 + \chr a));b) \\
@@ -87,26 +78,20 @@ With the Collatz characters, from \cref{thm:vary-rule} and \cref{thm:the-periodi
         &= \frac{1}{\alpha}\cdot\beta^{(k+1)\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}.
     \end{align*}
     From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{S}_{n+1}(b)$. \newline
-    On the other hand, $\forall a\in\mathbb{S}_{n+1}(b)$, from \cref{prop:rewritten-collatz-rule}, we have
-    \[\beta^{\simp\val(a;1)\Phi_1}\cor a_1 = \alpha a + \gamma. \]
-    We have $\simp\val(a;1) \ge 0$. If not, then $\val(a;1) - \chr a_1 < 0$, which means $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So we have $\simp\val(a;1) \ge 0$.
-    And $a_1\in\mathbb{S}_{n}(b)$ by definition, thus $a = \frac{1}{\alpha}\cdot\beta^{\simp\val(a;1)\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
+    On the other hand, $\forall a\in\mathbb{S}_{n+1}(b)$, we have
+    \[\beta^{\val(a;1) - \chr a_1}\cor a_1 = \alpha a + \gamma. \]
+    We have $\val(a;1) - \chr a_1 \ge 0$. If not, then $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So $\val(a;1) - \chr a_1 \ge 0$. And from \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $\Phi_1\mid (\val(a;1) - \chr a_1)$. Denote $k = (\val(a;1) - \chr a_1)/\Phi_1$, then since $a_1\in\mathbb{S}_{n}(b)$ by definition, we have $a = \frac{1}{\alpha}\cdot\beta^{k\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
     In conclusion, the theorem holds for $\mathbb{S}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
 \end{proof}
-\begin{remark}
-    Notice that in $\wchr\bm{a} + \sum_{i=1}^{n+1}k_i\Phi_i\bm{e}_{i}$, the start number $a$ is in $\mathbb{S}_{n+1}(b)$ instead of $\mathbb{S}_{n}(b)$, thus $a_i\in\mathbb{S}_{n-i+1}(b)$.
-\end{remark}
 \begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-ker-set}
-    $\alpha\mathbb{S}_{n+1}(b) + \gamma = \mathbb{B}\otimes\cor\mathbb{S}_{n}(b)$. And the decomposition is uniqe.
+    $\alpha\mathbb{S}_{n+1}(b) + \gamma = \mathbb{B}\otimes\cor\mathbb{S}_{n}(b)$. The decomposition is uniqe.
 \end{corollary}
-
-Here we provide the result of \cref{thm:layers-of-reduce-space-and-source-value-set} in the classic Collatz problem.
 \begin{example}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
     Suppose $(\alpha, \beta, \gamma) = (3,2,1)$.
     \begin{align*}
         \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{A_0 = (\cor a  - 1)/3, A_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
         &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{4^{k}}{3}\cdot\cor a - \frac{1}{3}\right\vert k\in \mathbb{N}\right\},\\
-        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n+1}(b) - \mathbb{S}_{\infty}}\left\{ \left.\wchr\bm{a} + \sum_{i=1}^{n+1}2k_i\cdot3^{i-1}\bm{e}_{i} \right\vert  \forall k_i\in \mathbb{N} \right\}.
+        \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n+1}(b) - \mathbb{S}_{\infty}}\left\{ (2k + \bm{v}) \mid k\in \mathbb{N}, f_{n}(\bm{v};b) = a \right\}.
     \end{align*}
 \end{example}
 With this, we have
@@ -140,7 +125,13 @@ And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same cl
 
 Finally, let us introduce two notations to provide a perspective on a single source value and reinterpret the theorem \cref{thm:layers-of-reduce-space-and-source-value-set}.
 \begin{definition}
-    Define $F: \mathbb{S}_n(b)\to\mathbb{S}_{n+1}(b)$ that $F(a) = S(0; a)$ and define $\Phi: \mathbb{S}_1(b)\to \mathbb{S}_1(b)$ that $\Phi(S(m;b)) = S(m + 1;b)$.
+    $S(k; b) = \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor b - \frac{\gamma}{\alpha}$, which is the $k$-th element of $\mathbb{S}_1(b)$.
+\end{definition}
+\begin{proposition}
+    $S(k + 1; b) > S(k; b)$.
+\end{proposition}
+\begin{definition}
+    Define $F: \mathbb{S}_n(b)\to\mathbb{S}_{n+1}(b)$ that $F(a) = S(0; a)$ and define $\Phi: \mathbb{S}_1(a)\to \mathbb{S}_1(a)$ that $\Phi(S(m;a)) = S(m + 1;a)$.
 \end{definition}
 \begin{theorem}~\label{thm:f_n-by-F-and-Phi}
     $\forall f_{n}(\bm{a};b)\in\mathbb{S}(b)$, we have $f_{n}(\bm{a};b) = \Phi^{k_{1}}F\Phi^{k_{2}}\cdots F\Phi^{k_{n}}F(b)$.
