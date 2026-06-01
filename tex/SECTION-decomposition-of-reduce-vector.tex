@@ -34,14 +34,13 @@ Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do 
     Suppose $\gcd(\gamma, \alpha) = 1$. If $\bm{b} = \bm{a} + \Phi_k\bm{e}_k$, then $\wchr \bm{b} = \wchr \bm{a}$.
 \end{proposition}
 \begin{proof}
-    Since $\gcd(\gamma, \alpha) = 1$, then $\Phi_k = \alpha^{k-1} \Phi_1$. 
+    Since $\gcd(\gamma, \alpha) = 1$, then $\Phi_k = \alpha^{k-1} \Phi_1$. TODO.
 \end{proof}
 \begin{proposition}
     For simple systems, we have $\Phi_1\mid (\bm{a} - \wchr\bm{a})$.
 \end{proposition}
-\begin{definition}~\label{def:red-vector}
-Define
-\[ \simp\bm{a} = \frac{1}{\Phi_1}(\bm{a} - \wchr\bm{a}) \]
+\begin{definition}~\label{def:simp-vector}
+Define $\simp\bm{a} = \frac{1}{\Phi_1}(\bm{a} - \wchr\bm{a})$
 called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number $a$, then the $i$-th component of it we also denote $\simp a_i$.
 \end{definition}
 \begin{proposition}~\label{prop:rewritten-collatz-rule}
@@ -55,22 +54,4 @@ called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number 
 
 Let us examine the $\wchr\bm{a}$ of $a$. We observe that while it depends on $a$, it is insensitive to the adjustments given in \cref{thm:the-periodic-rule-of-reduce-sequence} of the reduced vector; it means that in a given Collatz system, it reflects the common characteristics of the source values of this series of $a$. However, we must point out that for a broader adjustment, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds, $\Phi_k$ is not always divisible by $\Phi_1 \cdot \simp a_i$. In other words, these growths of $\simp a_i$ do not conform to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" changes the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), adjustments other than those given in \cref{thm:the-periodic-rule-of-reduce-sequence} will alter the character vectors. Therefore, considering the effect of the adjustment operation on $\wchr\bm{a}$ is crucial for us.
 
-% For those simple Collatz system, we have
-% \begin{corollary}
-%     Suppose $b\not\in\mathbb{S}_{\infty}$. Suppose $f_{n}(\bm{a};b) = \min\{f_{n}(\bm{v};b) \in\mathbb{N}\}$, then $\bm{a} \in \Chr_{n}(b)$.
-% \end{corollary}
-% \begin{proof}
-%     At first we have 
-%     \begin{align*}
-%         f_{n}((\chr b + k\Phi_1); b) &= \beta^{k\Phi_1}f_{1}((\chr b);b) + \frac{\gamma}{\alpha}\cdot(\beta^{k\Phi_1} - 1) \\
-%         &> f_{1}((\chr b);b).
-%     \end{align*}
-%     Thus $f_{1}((\chr b); b) = \min\{f_{1}(\bm{v})\mid f_{1}(\bm{v}) \in\mathbb{N}\}$.
-
-%     If $f_{n}(\wchr\bm{a}_{n}) = \min\{f_{n}(\bm{v})\mid f_{n}(\bm{v}) \in\mathbb{N}\}$. Let $a = f_{n}(\wchr\bm{a}_{n})$. Then for $c = f_{n+1}(\wchr\bm{c}; b)$, we have:\newline
-%     \[ \wchr\bm{c} = \left\{\begin{aligned}
-%         &(\chr c_1, &\Phi_1\bm{e}_1 + \wchr\bm{a}&), && a\in\mathbb{S}_{\infty}, \\
-%         &(\chr c_1, &\wchr\bm{a}&), && a\not\in\mathbb{S}_{\infty}.
-%     \end{aligned}\right. \]
-%     Thus 
-% \end{proof}
+TODO.

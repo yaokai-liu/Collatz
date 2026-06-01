@@ -5,7 +5,7 @@ Now let's forget those definitions before.
 We will introduce a new kind of form to subsume those properties above. It's the extend of $(\sigma, \tau)$-derivation on groupoids.
 
 Let $\mathbb{G}(+, G)$ be a groupoid and $\mathbb{R}(+, \cdot, R)$ be a ring.
-With these, we can define groupoid homomorphisms and their derivtions from $\mathbb{G}$ to $\mathbb{R}$.
+With these, we can define groupoid homomorphisms and their derivations from $\mathbb{G}$ to $\mathbb{R}$.
 \begin{definition}[Cauchy homomorphism]
     Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $a + b \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
 \end{definition}
@@ -15,21 +15,21 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
     If $\mathcal{A} \ne 0$, then $\forall a \in \mathbb{G}$, there is $\mathcal{A}(a)\cdot\mathcal{A}(-a) = \mathcal{A}(0) = 1$. In other words, $\mathcal{A}(-a) = \mathcal{A}(a)^{-1}$.
 \end{proposition}
 \begin{remark}
-    This proposition requires the ring $\mathbb{R}$ at least is a division ring. But if we our result does not involse the inverse elements of $\mathbb{G}$, we don't need to a division ring. Most conclusions in this section don't need $\mathbb{R}$ be a division ring. 
+    This proposition requires the ring $\mathbb{R}$ at least is a division ring. But if our result does not involve the inverse elements of $\mathbb{G}$, we don't need to a division ring. Most conclusions in this section don't need $\mathbb{R}$ be a division ring. 
 \end{remark}
 \begin{proposition}
     Denote $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ as the set of all groupoid homomorphisms on $\mathbb{R}$, then $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ is a group by
     \[ (\mathcal{A}\cdot\mathcal{B})(a) = \mathcal{A}(a)\cdot\mathcal{B}(a). \]
 \end{proposition}
-\begin{example}
+\begin{example}~\label{exa:power-to-cauchy-homo}
     Given number $\alpha$ and a sequence $\{a_i\}$, we have
     \begin{align*}
         \alpha^{\sum_{k=i}^{j-1}a_k}&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
         [i, j) &\mapsto \alpha^{\sum_{k=i}^{j}a_k}.
     \end{align*}
 \end{example}
-\begin{example}
-    Given a prime sequence $\{p_i\}\subset\mathbb{P}$, we have
+\begin{example}~\label{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
+    Given a number $a\in\mathbb{N}_{\ge1}$, from Fundamental Theorem of Arithmetic, we have $a = \prod_{i=1}^{n} p_i$. Then we have
     \begin{align*}
         \prod_{k=i}^{j-1}p_k&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
         [i, j) &\mapsto \prod_{k=i}^{j-1}p_k.
@@ -195,7 +195,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
     \end{align*}
 \end{proof}
 \begin{theorem}~\label{thm:derivation-periodic-rule}
-    Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
+    Suppose $\mathbb{R}$ is an integral ring. Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Finally suppose $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
     \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
     holds for all $i\ge 0$ equivalents to $r_t =r_0$ and $\forall i \le t$, there is
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
@@ -212,22 +212,28 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
         \mathfrak{U}(a_{i+t+1}^{i}) &= \mathcal{A}(a_{i+t}^{i})\mathfrak{U}(a_{i+t+1}^{i+t}) + \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+t+1}^{i+t}) \\
         &= \mathcal{A}(a_{i+t}^{i})\mathfrak{U}(a_{i+1}^{i}) + \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+1}^{i}).
     \end{align*}
-    Thus we have
-    \[ \mathfrak{U}(a_{i+1}^{i})\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathcal{A}(a_{i+1}^{i})\mathfrak{U}(a_{i+t+1}^{i+1}) - \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+1}^{i}).\]
-    Conpair with target equation, we have
+    Compare the two equations, we have
+    \[ \mathfrak{U}(a_{i+1}^{i})\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathcal{A}(a_{i+1}^{i})\mathfrak{U}(a_{i+t+1}^{i+1}) - \mathfrak{U}(a_{i+t}^{i})\mathcal{B}(a_{i+1}^{i}). \]
+    From the assumption, we have
+    \begin{align*}
+        \mathfrak{U}(a_{i+t+1}^{i+1}) &= r_{i+1}\cdot \left[\mathcal{A}(a_{i+1+t}^{i+1}) - \mathcal{B}(a_{i+1+t}^{i+1})\right], \\
+        \mathfrak{U}(a_{i+t}^{i}) &= r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right].
+    \end{align*}
+    Thus
     \begin{align*}
         &\mathfrak{U}(a_{i+1}^{i})\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] \\
-        =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+1+t}^{i+1}) - \mathcal{B}(a_{i+1+t}^{i+1})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
+        =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+1+t}^{i+1}) - \mathcal{B}(a_{i+1+t}^{i+1})\right] \\
+        &\quad\quad\quad\quad- r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
         % =&\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1}\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] - r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\cdot\mathcal{B}(a_{i+1}^{i})\\
         =&\left[\mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i})\right]\cdot\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right].
     \end{align*}
-    Thus we have
-    \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}), \]
-    we have $r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i})$. Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.
+    Since $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$, we have
+    \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
+    Besides, since $\mathcal{A}$, $\mathcal{B}$ and $\mathcal{U}$ are all $t$-periodic, the $r_{i}$ should be $t$-periodic.
 \end{proof}
 In \cref{exa:continous-situation-with-exact-differential}, we see that for continuous systems, if the given derivative kernel is an appropriate differential, the result is a difference of exponents with equal coefficients. For general systems, given a specific $\{r_{i}\}$, we also expect to have same result.
 \begin{definition}
-    Say $\mathfrak{U}$ is an exact derivation of $\mathcal{A}$ and $\mathcal{B}$ that in \cref{thm:derivation-periodic-rule}, when
+    Say $\mathfrak{U}$ is an integral derivation of $\mathcal{A}$ and $\mathcal{B}$ that in \cref{thm:derivation-periodic-rule} that equivalents to
     \[ \left.\left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right]\ \right\vert \mathfrak{U}(a_{i+t}^{i}). \]
     And $\mathfrak{U}_{i+1}^{i}$ is called the $i$-step differential.
 \end{definition}
@@ -241,6 +247,6 @@ In \cref{exa:continous-situation-with-exact-differential}, we see that for conti
 \begin{proof}
     For any partition $\mathbb{P}(a) = \{a_i\}_{i\in I}$. We have $\mathfrak{U}(a_{i+1}) = \mathfrak{U}(a_{i})$, thus $\mathfrak{U}$ is 1-periodic on $a$.
 \end{proof}
-Finially back to the Collatz complement. From \cref{proposition:collatz-complement-basic-prop2}, we can verify that, with arguments $(\alpha, \beta, \gamma)$, all Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.
+Finally back to the Collatz complement. From \cref{proposition:collatz-complement-basic-prop2}, we can verify that, with arguments $(\alpha, \beta, \gamma)$, Collatz complement $\mathfrak{A} \in \partial(\beta^{\mathcal{A}_{*}}, \alpha^{*})$, where the groupoid is $[\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}$ that $i \rightsquigarrow j$ as its element.
 Inseparable elements of it is $\mathbb{P}([\mathbb{Z}\times\mathbb{Z}]_{\rightsquigarrow}) = \{i \rightsquigarrow (i + 1) \mid i \in \mathbb{Z}\}$. And the kernel $\mathfrak{A}(i \rightsquigarrow i + 1) = \gamma \cdot \mathfrak{A}_{i+1}^{i} = \gamma$.
 Besides, the Collatz complement of Conway's extension of Collatz problem is actually those $\partial_{*}(\mathcal{A}, \mathcal{B})$, they are not kernel independent, but its kernels are $\beta$-periodic. Hence, no matter our Collatz complement, or Collatz complement of Conway's extension, just let $\mathcal{A}$ and $\mathcal{B}$ are $\beta$-periodic, they will all be periodic.

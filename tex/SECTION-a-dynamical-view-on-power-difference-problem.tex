@@ -1,15 +1,15 @@
 % !TEX root = main.tex
-\section{A Dynamical View on Power Difference Problem}~\label{sec:a-dynamical-view-on-power-difference-problem}
+\section{A Dynamical View on Power Difference Problem and ABC conjecture}~\label{sec:a-dynamical-view-on-power-difference-problem}
 
 In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. If we make the exponent of $\alpha$ is also a accumulation of a reduce sequence, then we have
 \begin{theorem}~\label{thm:power-diff-system-exists}
-	Given two arguments $\alpha, \beta \in \mathbb{N}_{\ge2}$ such that $\gcd(\alpha, \beta) = 1$.\newline
-	Given two sequence $\{a_i\}_{i=1}^{n}, \{b_i\}_{i=1}^{n}\subset\mathbb{N}$ and $a\in \mathbb{Z}^{*}$, then $\exists \{\gamma_i\}_{i=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}$, such that
+	Given $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime.\newline
+	Given two sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n}\subset\mathbb{N}$ and $a\in \mathbb{Z}^{*}$, then $\exists \{\gamma_k\}_{k=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}^{*}$, such that
 	\[ b\cdot\beta^{\mathcal{B}_n} - a\cdot\alpha^{\mathcal{A}_n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k. \]
 	We call these systems as general power-difference system.
 \end{theorem}
 \begin{proof}
-	Similar with \cref{theorem:inductive-formula}. Just let $\gamma_k$ and $a_k$ satisifies
+	Similar to \cref{theorem:inductive-formula}. Just let $\gamma_k$ and $a_k$ satisfy
 	\[ a_k\cdot\beta^{\mathcal{B}_k^{k-1}} = a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k, \]
 	Then let $b = a_n$, the theorem holds.
 \end{proof}
@@ -21,54 +21,76 @@ In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is alw
 	We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$.
 \end{remark}
 \begin{theorem}~\label{thm:power-diff-to-dynamical-system}
-	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists t \in \mathbb{N}$ and sequences $\{a_k\}, \{b_k\} \subset \mathbb{N}_{\ge1}$ and $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $t$, such that whenever $A = \sum_{i=0}^{t-1}a_k$ and $B = \sum_{i=0}^{t-1}b_k$, the divisibility condition $C \mid \sum_{i=0}^{t-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{t-1}^{i}}\gamma_k$ holds. This is also equivalent to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
-	\[ \left\{\begin{aligned}
+	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n} \subset \mathbb{N}$ and $\{r_k\}_{k=1}^{n}, \{\gamma_k\}_{k=1}^{n} \subset\mathbb{Z}^{*}$, such that whenever $A = \sum_{k=0}^{n-1}a_k$ and $B = \sum_{k=0}^{n-1}b_k$, the divisibility condition $C \mid \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ holds. This also equivalents to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
+	\begin{equation}~\label{equ:equation-system-of-power-diff-to-dynamical-system}
+		\left\{\begin{aligned}
 		&\beta^{b_{0}}\cdot r_{1} - \alpha^{a_{0}} \cdot r_{0} = \gamma_{0},\\
 		&\beta^{b_{1}}\cdot r_{2} - \alpha^{a_{1}} \cdot r_{1} = \gamma_{1},\\
-		% &\beta^{\mathcal{B}_{3}^{2}}\cdot r_{3} - \alpha^{\mathcal{A}_{t-1}^{2}} \cdot r_{2} = \gamma_{2},\\
+		% &\beta^{\mathcal{B}_{3}^{2}}\cdot r_{3} - \alpha^{\mathcal{A}_{n-1}^{2}} \cdot r_{2} = \gamma_{2},\\
 		&\cdots \\
-		&\beta^{b_{t-1}}\cdot r_{0} - \alpha^{a_{t-1}} \cdot r_{t-1} = \gamma_{t-1}.
-	\end{aligned}\right.\label{equ:equation-system-of-power-diff-to-dynamical-system} \]
+		&\beta^{b_{n-1}}\cdot r_{0} - \alpha^{a_{n-1}} \cdot r_{n-1} = \gamma_{n-1}.
+	\end{aligned}\right.
+	\end{equation}
 \end{theorem}
 \begin{proof}
-	$\Longrightarrow$: We can always participate $A$, $B$ at first, thus we suppose the sequence $\{a_k\}, \{b_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we always have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_t \ne r_0$, then let $r_t \cdot \beta^{B} - r_0 \cdot \alpha^{A} = \mathfrak{U}$. With this we have $(r_t - r_0)\cdot \beta^{B} = \mathfrak{U} - r_0\cdot C$. Now let
-	\[ \gamma'_k = \gamma_k - (r_t - r_0)\cdot \beta^{B} / \beta^{\mathcal{B}_{t-1}} = \gamma_k -  (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}}. \]
+	$\Longrightarrow$: We can always partition $A$, $B$ at first, thus we suppose the sequences $\{a_k\}, \{b_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we always have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_n \ne r_0$, then let $r_n \cdot \beta^{B} - r_0 \cdot \alpha^{A} = \mathfrak{U}$. With this we have $(r_n - r_0)\cdot \beta^{B} = \mathfrak{U} - r_0\cdot C$. Now let
+	\[ \gamma'_k = \gamma_k - (r_n - r_0)\cdot \beta^{B} / \beta^{\mathcal{B}_{n-1}} = \gamma_k -  (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}}. \]
 	From \cref{thm:power-diff-system-exists} we can derive $r'_t$ with $\gamma'_k$ by
 	\begin{align*}
 		r'_t\cdot\beta^{\mathcal{B}_k^{k-1}} &= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma'_k \\
-		&= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k - (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}} \\
-		&= r_t \cdot\beta^{\mathcal{B}_k^{k-1}} - (r_t - r_0)\cdot \beta^{\mathcal{B}_{t}^{t-1}} \\
+		&= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k - (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}} \\
+		&= r_n \cdot\beta^{\mathcal{B}_k^{k-1}} - (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}} \\
 		&= r_0 \cdot \beta^{\mathcal{B}_k^{k-1}},
 	\end{align*}
-	which means we find a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_t = r_0$. 
+	which means we find a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_n = r_0$. 
 	\newline
 	$\Longleftarrow$: Trivial from \cref{thm:derivation-periodic-rule}.
 \end{proof}
 \begin{remark}
-	we can always suppose $\gcd(\gamma_0, \gamma_1, \cdots, \gamma_{t-1}) = 1$. And suppose $\forall k < t$, $a_k$, $b_k$ not both $0$.
+	we can always suppose $\gcd(\gamma_0, \gamma_1, \cdots, \gamma_{n-1}) = 1$. And suppose $\forall k < n$, $a_k$, $b_k$ not both $0$.
 \end{remark}
 Actually, if $a_{j} = b_{j} = 0$. Then from $\beta^{b_{j}}\cdot r_{j+1} - \alpha^{a_{j}} \cdot r_{j} = r_{j+1} - r_{j} = \gamma_{j}$ we have $\beta^{b_{j+1}}\cdot r_{j+2} - \alpha^{a_{j+1}} \cdot r_{i} = \gamma_{j+1} + \alpha^{a_{j+1}}\gamma_{i}$. Then let
 \begin{align*}
 	u_k &= \left\{\begin{aligned}
 		&a_{k},  &&k < j, \\
-		&a_{k+1}, && j < k < t-1,
+		&a_{k+1}, && j < k < n-1,
 	\end{aligned}\right.\\
 	v_k &= \left\{\begin{aligned}
 		&b_{k},  &&k < j, \\
-		&b_{k+1}, && j < k < t-1,
+		&b_{k+1}, && j < k < n-1,
 	\end{aligned}\right.\\
 	\eta_k &= \left\{\begin{aligned}
 		&\gamma_{k},  &&k < j, \\
 		&\gamma_{j+1} + \alpha^{a_{j+1}}\gamma_{j}, && k = j+1, \\
-		&\gamma_{k+1}, && j+1 < k < t-1.
+		&\gamma_{k+1}, && j+1 < k < n-1.
 	\end{aligned}\right.
 \end{align*}
 We build a same system of equations for $\{u_k\}, \{v_k\}, \{r_k\}, \{\eta_k\}$ like \cref{equ:equation-system-of-power-diff-to-dynamical-system}, and $u_j, v_j$ are not both $0$. Repeat this operation, we can replace all $a_{j} = b_{j} = 0$, that's why we can always suppose $a_k$, $b_k$ not both $0$.
 \begin{remark}
-	We observe that if the system of equations in \cref{thm:power-diff-to-dynamical-system} exists for a given $T$, then a similar system of equations also exists for all $t$ such that $0 < t \le T$.
+	We observe that if \cref{equ:equation-system-of-power-diff-to-dynamical-system} exists for a given $N$, then similar systems of equations also exist for all $n$ that $0 < n \le N$.
 \end{remark}
 
 \cref{thm:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
 Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{thm:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
 We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system.
-These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation. Nevertheless, the undecidability principle proposed by Conway remains a Sword of Damocles hanging over our heads. If the values $\gamma_k$ are chosen arbitrarily, the branching structure of this system cannot be determined via a single, deterministic algorithm. However—as defined in \cref{sec:a-kind-of-derivation-on-groupoid}—the specific $\gamma_k$ values we seek constitute a discrete, exact differential form; this fact allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
+These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation. Nevertheless, the undecidability principle proposed by Conway remains a Sword of Damocles hanging over our heads. If the values $\gamma_k$ are chosen arbitrarily, the branching structure of this system cannot be determined via a single, deterministic algorithm. Fortunately, as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential form; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
+
+Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}, alternatively, we have
+\begin{theorem}~\label{thm:arithmetic-decomposition-to-dynamical-system}
+	For given $\mathcal{P}, \mathcal{Q}, \mathcal{S} \in \mathbb{Z}$ that $\mathcal{Q} - \mathcal{P} = \mathcal{S}$.\newline
+	When $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$, there are $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $n$ such that $\mathcal{S} \mid \sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k$. In this condition, we have
+	\begin{equation}~\label{equ:equation-system-of-power-diff-to-dynamical-system}
+		\left\{\begin{aligned}
+		&q_{0}\cdot r_{1} - p_{0} \cdot r_{0} = \gamma_{0},\\
+		&q_{1}\cdot r_{2} - p_{1} \cdot r_{1} = \gamma_{1},\\
+		% &q_{2}\cdot r_{3} - p_{2} \cdot r_{2} = \gamma_{2},\\
+		&\cdots \\
+		&q_{n-1}\cdot r_{0} - p_{n-1} \cdot r_{n-1} = \gamma_{n-1}.
+	\end{aligned}\right.
+	\end{equation}
+\end{theorem}
+\cref{thm:arithmetic-decomposition-to-dynamical-system} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. And this, in turn, compels us to investigate the number-theoretic properties of $\gamma_k$.
+
+A good thought is consider $\bm{s} = (r_0, \cdots, r_{n-1}, \gamma_0, \cdots, \gamma_{n-1}) \in\mathbb{Z}^{2n}$ or $\bm{r} = (r_k + \rmi \gamma_k)\in\mathbb{Z}[i]^{n}$.
+
+TODO.
