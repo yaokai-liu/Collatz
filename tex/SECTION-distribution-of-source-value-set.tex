@@ -1,7 +1,7 @@
 % !TEX root = main.tex
 \section{Distribution of Source Value Set}~\label{sec:distribution-of-source-value-set}
 
-Theorem 6.2 blocks all case-analysis methods for solving the Collatz problem, therefore, we have to instead attempt to identify certain homomorphisms in the hope of capturing specific measure-theoretic or distribution properties that may ultimately aid us in unraveling this conjecture.
+\cref{thm:infinite-layers} blocks all case-analysis methods for solving the Collatz problem, therefore, we have to instead attempt to identify certain homomorphisms in the hope of capturing specific measure-theoretic or distribution properties that may ultimately aid us in unraveling this conjecture.
 
 \begin{theorem}~\label{thm:finite-layers-le-M}
 	Suppose $b\not\rightsquigarrow b$.
@@ -9,39 +9,31 @@ Theorem 6.2 blocks all case-analysis methods for solving the Collatz problem, th
 \end{theorem}
 \begin{proof}
 	Since $b\not\rightsquigarrow b$, thus $\forall i, j \ge 0$, $\mathbb{S}_{i}(b)\cap \mathbb{S}_{j}(b) = \varnothing$.
-	We can construct a sequence of set that $A_{n} = \{x\in\mathbb{N} \mid x \le M\} - \bigcup_{k=0}^{n-1}\mathbb{S}_{k}(b)$. We have $A_{n+1} \subset A_{n}$. Thus $\{A_n\}_{n=1}^{\infty}$ has a minimal element. Suppose it's $A_m$. Then let $ H = \min\{k\in\mathbb{N}\mid A_{k} = A_{m}\}$, $\forall n\ge H$, we have $\card\{\mathbb{S}_{n}(b)\le M\} = 0$.
+	We can construct a sequence of set that $A_{n} = \{x\in\mathbb{N} \mid x \le M\} - \bigcup_{k=0}^{n-1}\mathbb{S}_{k}(b)$. We have $A_{n+1} \subset A_{n}$. Thus $\{A_n\}_{n=1}^{\infty}$ has a minimal element. Suppose it's $A_m$. Then let $ H = \min\{k\in\mathbb{N}\mid A_{k} = A_{m}\}$. $\forall n\ge H$, we have $\{\mathbb{S}_{n}(b)\le M\} = \varnothing$.
 
-	Now let's consider the relationship between $H$ and $M$. Since $F_{n}(b)$ is a infinite set, thus given $ M' > M$, if $\forall n > H(M)$, there is $\{M < F_{n}(b) \le M' \} = \varnothing$ that $\card\{\mathbb{S}_{n}(b)\le M'\} = \card\{\mathbb{S}_{n}(b)\le M\}$, then $H(M') = H(M)$. If $\exists n\ge H(M)$ such that $\{M < F_{n}(b) \le M' \} \ne \varnothing$, then we have $H(M') > H(M)$. Sum up, we have $H(M') \ge H(M)$, thus $H$ is increasing according to $M$.
+	Now let's consider the relationship between $H$ and $M$. Since $\mathbb{S}_{n}(b)$ is a infinite set, thus given $ M' > M$, if $\forall n > H(M)$, there is $\{M < \mathbb{S}_{n}(b) \le M' \} = \varnothing$ that $\{\mathbb{S}_{n}(b)\le M'\} = \{\mathbb{S}_{n}(b)\le M\}$, then $H(M') = H(M)$. If $\exists n\ge H(M)$ such that $\{M < F_{n}(b) \le M' \} \ne \varnothing$, then we have $H(M') > H(M)$. Sum up, we have $H(M') \ge H(M)$, thus $H$ is increasing according to $M$.
 \end{proof}
 \begin{corollary}~\label{cor:source-value-set-finite-decomposition}
 	Suppose $b\not\rightsquigarrow b$. For $H$ in \cref{thm:finite-layers-le-M}, we have
-	\[ \card\{\mathbb{S}(b) \le N\} = \card\left\{\bigcup_{n=0}^{H-1}\mathbb{S}_{n}(b)\le N\right\} = \sum_{n=0}^{H-1}\card\{\mathbb{S}_{n}(b) \le N\}. \]
+	\[ \{\mathbb{S}(b) \le M\} =  \left\{\bigcup_{n=0}^{H-1}\mathbb{S}_{n}(b)\le M\right\} = \bigcup_{n=0}^{H-1}\{\mathbb{S}_{n}(b) \le M\}. \]
 \end{corollary}
 \cref{thm:finite-layers-le-M} Tell us that we can explore how $H$ increase with $M$ and the density of $\mathbb{S}(b)$ to predic how many top branches in this system. From result in \cref{sec:collatz-character-and-collatz-kernel}, we can resolve the $H$ and calculate how many source values less than $M$.
 
 \begin{lemma}
-	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le N\}}{\card\{\mathbb{S}_{1}(b) \le N\}} = 1$.
+	$\card\{ \mathbb{S}_{1}(a) \le \beta^{M} \} = \frac{1}{\Phi_1}(M - \lfloor\log_{\beta}S(0;a)\rfloor - 1)$.
 \end{lemma}
-% \begin{proof}
-% 	\begin{align*}
-% 		&\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le N\}}{\card\{\mathbb{S}_{1}(b) \le N\}} \\
-% 		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\cor a - \frac{\gamma}{\alpha} \le N\}}{\card\{k\in\mathbb{N} \mid \frac{1}{\alpha}\beta^{k\Phi_1}\cor b - \frac{\gamma}{\alpha} \le N\}} \\
-% 		=&\lim_{N\to\infty}\frac{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\cor a\}}{\card\{k\in\mathbb{N} \mid k \le \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\cor b\}} \\
-% 		=&\lim_{N\to\infty}\frac{\lfloor\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\cor a\rfloor}{\lfloor \frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma) - \frac{1}{\Phi_1}\log_{\beta}\cor b\rfloor} \\
-% 		=&\lim_{N\to\infty}\frac{\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma)}{\frac{1}{\Phi_1} \log_{\beta}(\alpha N + \gamma)} \\
-% 		=&1. 
-% 	\end{align*}
-% \end{proof}
+\begin{lemma}
+	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le M\}}{\card\{\mathbb{S}_{1}(b) \le M\}} = 1$.
+\end{lemma}
+For simple systems, there is
 \begin{corollary}
-	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{n}(a) \le N\}}{\card\{\mathbb{S}_{n}(b) \le N\}} > 0$.
+	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{n}(a) \le M\}}{\card\{\mathbb{S}_{n}(b) \le M\}} > 0$.
 \end{corollary}
 
 % From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{S}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{S}(b)\cap\mathbb{S}(1) = \varnothing$, that means the logarithm density of $\mathbb{S}(b)$ will be $0$. Since $\mathbb{S}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
 
 % In other words, if we can find a such homomorphic density and prove the density of $\mathbb{S}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture.
 % At the same time, we have to say, for general simple Collatz system instead of just $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
-
-In this section, we will only disscuss the simple Collatz system.
 
 % From \cref{thm:count-function-from-dirichlet-series} we have
 % \begin{corollary}
@@ -62,9 +54,5 @@ In this section, we will only disscuss the simple Collatz system.
 % 		&= \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}\frac{D(\cor\mathbb{S}_{n}(b);s)}{1- \beta^{s\Phi_1}}\cdot\frac{x^{s}}{s}\rmd{s}.
 % 	\end{align*}
 % \end{proof}
-
-\begin{lemma}
-	$\card\{ \mathbb{S}_{1}(a) \le \beta^{M} \} = \frac{1}{\Phi_1}(M - \lfloor\log_{\beta}S(0;a)\rfloor - 1)$.
-\end{lemma}
 
 TODO.

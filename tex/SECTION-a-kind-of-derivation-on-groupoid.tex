@@ -38,7 +38,7 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
 \begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]~\label{def:quasi-derivation-on-groupoid}
     Given $\mathcal{A}, \mathcal{B}\in\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$.
     There's another function $\mathfrak{F}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
-    \[ \mathfrak{F}(a+b) = \mathcal{A}(a)\cdot\mathfrak{B}(b) + \mathfrak{B}(a)\cdot\mathcal{B}(b) \]
+    \[ \mathfrak{F}(a+b) = \mathcal{A}(a)\cdot\mathfrak{F}(b) + \mathfrak{F}(a)\cdot\mathcal{B}(b) \]
     called the forward ($\mathcal{A}$, $\mathcal{B}$)-derivation.
     And function $\mathfrak{B}: \mathbb{G} \to \mathbb{R}$
     \[ \mathfrak{B}(a+b) = \mathcal{A}(b)\cdot\mathfrak{B}(a) + \mathfrak{B}(b)\cdot\mathcal{B}(a) \]
@@ -116,7 +116,7 @@ This theorem also holds on those continuous system.
     \[ \mathfrak{U}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\cdot\mathcal{G}[x,b]\cdot(f(x) - g(x))\rmd x. \]
     We can verify that  $\mathfrak{U}\in \partial_{*}(\mathcal{F}, \mathcal{G})$. Its kernel is $f(x)\rmd x - g(x)\rmd x$.
 
-    Now let $F(x) = \int_{a}^{x}f(x)\rmd x$ and $G(x) = - \int_{x}^{b}g(x)\rmd x$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
+    Now let $F(x) = \int_{a}^{x}f(t)\rmd d$ and $G(x) = - \int_{x}^{b}g(t)\rmd t$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
     \begin{align}~\label{equ:better-kernel}
         \mathfrak{U}[a, b] &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\rmd x \nonumber \\
         &= \int_{a}^{b}\exp(F(x)-G(x))\rmd(F(x) - G(x)) \nonumber \\
@@ -141,7 +141,7 @@ are the $\sigma$-varied derivation and $\tau$-varied derivation. Define
     \delta_{\sigma}\mathfrak{U} &= \mathcal{C}\mathfrak{U} - \mathcal{C}(a)\cdot\mathfrak{U},\\
     \delta_{\tau}\mathfrak{U} &= \mathfrak{U}\mathcal{C} - \mathfrak{U}\cdot \mathcal{C}(a).
 \end{align*}
-are the $\sigma$-varities of the derivation and $\tau$-varities of the derivation.
+are the $\sigma$-variation of the derivation and $\tau$-variation of the derivation.
 \end{definition}
 \begin{proposition}
     \begin{align*}
@@ -195,9 +195,9 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
     \end{align*}
 \end{proof}
 \begin{theorem}~\label{thm:derivation-periodic-rule}
-    Suppose $\mathbb{R}$ is an integral ring. Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Finally suppose $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
+    Suppose $\mathbb{R}$ is an integral domain. Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Finally suppose $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
     \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
-    holds for all $i\ge 0$ equivalents to $r_t =r_0$ and $\forall i \le t$, there is
+    holds for all $i\ge 0$ equivalents to $r_t =r_0$ and $\forall i < t$, there is
     \[ \mathcal{A}(a_{i+1}^{i})\cdot r_{i+1} - r_i\cdot\mathcal{B}(a_{i+1}^{i}) = \mathfrak{U}(a_{i+1}^{i}). \]
 \end{theorem}
 \begin{proof}

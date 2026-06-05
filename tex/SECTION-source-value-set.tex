@@ -14,7 +14,7 @@ Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{S}_0(B) = B$. 
     $\mathbb{S}(B) = \bigcup_{n = 0}^{\infty}\mathbb{S}_{n}(B)$
 \end{proposition}
 \begin{proposition}~\label{prop:source-set-include}
-    If $a\rightsquigarrow b$, $\mathbb{S}(a) \subset \mathbb{S}(b)$.
+    If $a\overset{n}{\rightsquigarrow} b$, $\mathbb{S}(a) \subset \mathbb{S}(b)$ and $\mathbb{S}_{k}(a) \subset \mathbb{S}_{k+n}(b)$.
 \end{proposition}
 \begin{proposition}~\label{prop:source-set-disjoint}
     If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{S}(a) \cap \mathbb{S}(b) = \varnothing$.
@@ -80,7 +80,7 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
     From \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $A_{k+1}\in\mathbb{N}$, thus $A_{k+1}\in\mathbb{S}_{n+1}(b)$. \newline
     On the other hand, $\forall a\in\mathbb{S}_{n+1}(b)$, we have
     \[\beta^{\val(a;1) - \chr a_1}\cor a_1 = \alpha a + \gamma. \]
-    We have $\val(a;1) - \chr a_1 \ge 0$. If not, then $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So $\val(a;1) - \chr a_1 \ge 0$. And from \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $\Phi_1\mid (\val(a;1) - \chr a_1)$. Denote $k = (\val(a;1) - \chr a_1)/\Phi_1$, then since $a_1\in\mathbb{S}_{n}(b)$ by definition, we have $a = \frac{1}{\alpha}\cdot\beta^{k\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
+    We have $\val(a;1) - \chr a_1 \ge 0$. If not, then $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So $\val(a;1) - \chr a_1 \ge 0$. And from \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $\Phi_1\mid (\val(a;1) - \chr a_1)$. Denote $k = (\val(a;1) - \chr a_1)/\Phi_1$, since $a_1\in\mathbb{S}_{n}(b)$ by definition, then we have $a = \frac{1}{\alpha}\cdot\beta^{k\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
     In conclusion, the theorem holds for $\mathbb{S}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
 \end{proof}
 \begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-ker-set}

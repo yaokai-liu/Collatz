@@ -5,26 +5,29 @@ Although the periodicity of reduce vectors constitutes a significant result, we 
 
 To deal with this, we have to introduce two operators.
 \begin{definition}~\label{def:collatz-character-and-collatz-kernel}
-Given $b \in\widehat{\mathbb{N}}_\beta$, define
-\[ \chr b = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}b-\gamma) \text{ and } \beta\nmid(\beta^{v}b-\gamma)/\alpha \} \]
-called the Collatz character of $b$. If the set is empty, we say $b$ is a primitive source and define $\chr b = \infty$.
-If $b$ is not primitive source, we define
-\[ \cor b = \beta^{\chr b}b \]
-as the source core of $b$.
-Given $B \subset \widehat{\mathbb{N}}_\beta$, we denote
+Given $a \in\widehat{\mathbb{N}}_\beta$, define
+\[ \chr a = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}a-\gamma) \text{ and } \beta\nmid(\beta^{v}a-\gamma)/\alpha \} \]
+called the Collatz character of $a$. If the set is empty, we say $a$ is a primitive source and define $\chr a = \infty$.
+If $a$ is not primitive source, we define
+\[ \cor a = \beta^{\chr a}a \]
+as the source core of $a$.
+Given $A \subset \widehat{\mathbb{N}}_\beta$, we denote
 \begin{align*}
-    \chr B &= \{ \chr b \mid b\in B - \mathbb{S}\}, \\
-    \cor B &= \{ \cor b \mid b\in B - \mathbb{S}\}.
+    \chr A &= \{ \chr a \mid a\in A - \mathbb{S}\}, \\
+    \cor A &= \{ \cor a \mid a\in A - \mathbb{S}\}.
 \end{align*}
 \end{definition}
 \begin{definition}
 We define
-\[\mathbb{S}(B) = B\cup\bigcup_{b\in B}\{ a\in \widehat{\mathbb{N}}_{\beta} \mid a\rightsquigarrow b \}\]
-as all numbers that will fall into to $B$.
-When $B = \{b\}$, that's $B$ contains only one number, we also denote it as $\mathbb{S}(b)$.
+\[\mathbb{S}(A) = A\cup\bigcup_{a\in A}\{ b\in \widehat{\mathbb{N}}_{\beta} \mid b\rightsquigarrow a \}\]
+as all numbers that will fall into to $A$.
+When $A = \{a\}$, that's $A$ contains only one number, we also denote it as $\mathbb{S}(a)$.
 \end{definition}
 \begin{proposition}
-    $\cor b\equiv \gamma \pmod{\alpha}$.
+    If $a$ is reversible modulo $\alpha$, then $\chr a = \log_{\beta, \alpha}(a^{-1}\cdot \gamma)$.
+\end{proposition}
+\begin{proposition}
+    $\cor a\equiv \gamma \pmod{\alpha}$.
 \end{proposition}
 And according properties of the discrete logarithm, we have
 \begin{proposition}~\label{prop:chr-le-ord}
@@ -44,11 +47,11 @@ And according properties of the discrete logarithm, we have
 \end{proof}
 \begin{definition}
     We denote $\overline{\Gamma} = \Gamma \cup\{\infty\}$.
-    And we define $\mathbb{S}(b)_{i} = \{ a\rightsquigarrow b \mid \chr a = i \}$, $\mathbb{S}_{i} = \{ b\in\widehat{\mathbb{N}}_{\beta} \mid \chr b = i \}$.
+    And we define $\mathbb{S}(a)_{i} = \{ b\rightsquigarrow a \mid \chr b = i \}$, $\mathbb{S}_{i} = \{ a\in\widehat{\mathbb{N}}_{\beta} \mid \chr a = i \}$.
 \end{definition}
 With these, we have
 \begin{proposition}
-    $\mathbb{S}(b) = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}(b)_{i}$. $\widehat{\mathbb{N}}_{\beta} = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}_{i}$.
+    $\mathbb{S}(a) = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}(a)_{i}$. $\widehat{\mathbb{N}}_{\beta} = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}_{i}$.
 \end{proposition}
 Actually, $\mathbb{S}_{\infty}$ is exactly the set of all primitive sources. And we have
 \begin{proposition}~\label{prop:chr-are-periodic}
@@ -64,7 +67,7 @@ Furthermore, from \cref{cor:modulo-alpha-of-f_1}, we have
         &1, &&\alpha\mid b, \\
         &\infty, &&\alpha\nmid b.
     \end{aligned}\right.$\newline
-    And thus $\mathbb{S}_{\infty} = \{b \in \widehat{\mathbb{N}}_\beta: a\nmid b\}$.
+    And thus $\mathbb{S}_{\infty} = \{b \in \widehat{\mathbb{N}}_\beta: \alpha\nmid b\}$.
     But if $\alpha \nmid \gamma$, then $\forall b\in\alpha\widehat{\mathbb{N}}_\beta$, $b \in \mathbb{S}_{\infty}$.
 \end{proposition}
 

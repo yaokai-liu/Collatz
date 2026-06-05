@@ -1,27 +1,30 @@
 % !TEX root = main.tex
 \section{A Dynamical View on Power Difference Problem and ABC conjecture}~\label{sec:a-dynamical-view-on-power-difference-problem}
 
-In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. If we make the exponent of $\alpha$ is also a accumulation of a reduce sequence, then we have
+In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. Given a sequence, we also have its Cauchy production
+\begin{definition}[Cauchy production]
+	Given a sequences $\{a_k\}\subset \mathbb{Z}^{*}$. Define $\mathcal{A}_{n}^{m} = \prod_{k=m}^{n-1} a_k$ as its Cauchy production.
+\end{definition}
+\begin{example}
+	Given $\alpha \in \mathbb{N}_{\ge2}$ are coprime. Given two sequences $\{a_k\}_{k=1}^{n} \subset\mathbb{N}$, then we have a Cauchy production $\mathcal{A}_{n}^{m} = \alpha^{\sum_{k=m}^{n-1}a_k}$.
+\end{example}
 \begin{theorem}~\label{thm:power-diff-system-exists}
-	Given $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime.\newline
-	Given two sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n}\subset\mathbb{N}$ and $a\in \mathbb{Z}^{*}$, then $\exists \{\gamma_k\}_{k=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}^{*}$, such that
-	\[ b\cdot\beta^{\mathcal{B}_n} - a\cdot\alpha^{\mathcal{A}_n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k. \]
+	Given two sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n}\subset\mathbb{N}_{\ge1}$, we have their production $\mathcal{A}$ and $\mathcal{B}$. Given $r\in \mathbb{Z}^{*}$, then $\exists \{\gamma_k\}_{k=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}^{*}$, such that
+	\[ s\cdot\mathcal{B}_n - r\cdot\mathcal{A}_n = \sum_{k=0}^{n-1}\mathcal{B}_k\mathcal{A}_{n-1}^{k}\gamma_k. \]
 	We call these systems as general power-difference system.
 \end{theorem}
 \begin{proof}
 	Similar to \cref{theorem:inductive-formula}. Just let $\gamma_k$ and $a_k$ satisfy
-	\[ a_k\cdot\beta^{\mathcal{B}_k^{k-1}} = a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k, \]
-	Then let $b = a_n$, the theorem holds.
+	\[ r_{k+1}\cdot b_{k} = r_{k}\cdot a_k + \gamma_k, \]
+	and let $s = r_n$, the theorem holds.
 \end{proof}
+
+Also, we denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$. We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$. 
 \begin{remark}
 	Notice that the system in \cref{thm:power-diff-system-exists} is built from reduce sequence, thus we have no result like $\beta \nmid b$ and $\beta\nmid \mathfrak{U}_n$.
 \end{remark}
-\begin{remark}
-	We denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ in \cref{thm:power-diff-system-exists}.
-	We have $\mathfrak{U}\in\partial_{*}(\beta^{\mathcal{B}_{*}}, \alpha^{\mathcal{A}_{*}})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$.
-\end{remark}
 \begin{theorem}~\label{thm:power-diff-to-dynamical-system}
-	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n} \subset \mathbb{N}$ and $\{r_k\}_{k=1}^{n}, \{\gamma_k\}_{k=1}^{n} \subset\mathbb{Z}^{*}$, such that whenever $A = \sum_{k=0}^{n-1}a_k$ and $B = \sum_{k=0}^{n-1}b_k$, the divisibility condition $C \mid \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$ holds. This also equivalents to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
+	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n} \subset \mathbb{N}$ and $\{r_k\}_{k=1}^{n}, \{\gamma_k\}_{k=1}^{n} \subset\mathbb{Z}^{*}$, such that whenever $A = \sum_{k=0}^{n-1}a_k$ and $B = \sum_{k=0}^{n-1}b_k$, there is $C \cdot r_0 = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$, which also equivalents to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
 	\begin{equation}~\label{equ:equation-system-of-power-diff-to-dynamical-system}
 		\left\{\begin{aligned}
 		&\beta^{b_{0}}\cdot r_{1} - \alpha^{a_{0}} \cdot r_{0} = \gamma_{0},\\
@@ -34,15 +37,15 @@ In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is alw
 \end{theorem}
 \begin{proof}
 	$\Longrightarrow$: We can always partition $A$, $B$ at first, thus we suppose the sequences $\{a_k\}, \{b_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we always have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_n \ne r_0$, then let $r_n \cdot \beta^{B} - r_0 \cdot \alpha^{A} = \mathfrak{U}$. With this we have $(r_n - r_0)\cdot \beta^{B} = \mathfrak{U} - r_0\cdot C$. Now let
-	\[ \gamma'_k = \gamma_k - (r_n - r_0)\cdot \beta^{B} / \beta^{\mathcal{B}_{n-1}} = \gamma_k -  (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}}. \]
-	From \cref{thm:power-diff-system-exists} we can derive $r'_t$ with $\gamma'_k$ by
+	\[ \gamma'_n = \gamma_n - (r_n - r_0)\cdot \beta^{B} / \beta^{\mathcal{B}_{n-1}} = \gamma_n -  (r_n - r_0)\cdot \beta^{b_{n-1}}. \]
+	From \cref{thm:power-diff-system-exists}, we can derive $r'_n$ with $\gamma'_n$ by
 	\begin{align*}
-		r'_t\cdot\beta^{\mathcal{B}_k^{k-1}} &= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma'_k \\
-		&= a\cdot\alpha^{\mathcal{A}_{k}^{k-1}} + \gamma_k - (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}} \\
-		&= r_n \cdot\beta^{\mathcal{B}_k^{k-1}} - (r_n - r_0)\cdot \beta^{\mathcal{B}_{n}^{n-1}} \\
-		&= r_0 \cdot \beta^{\mathcal{B}_k^{k-1}},
+		r'_n\cdot\beta^{b_{n-1}} &= a\cdot\alpha^{a_{n-1}} + \gamma'_n \\
+		&= a\cdot\alpha^{a_{n-1}} + \gamma_n - (r_n - r_0)\cdot \beta^{b_{n-1}} \\
+		&= r_n \cdot\beta^{b_{n-1}} - (r_n - r_0)\cdot \beta^{b_{n-1}} \\
+		&= r_0 \cdot \beta^{b_{n-1}},
 	\end{align*}
-	which means we find a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_n = r_0$. 
+	which means we found a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_n = r_0$.
 	\newline
 	$\Longleftarrow$: Trivial from \cref{thm:derivation-periodic-rule}.
 \end{proof}
@@ -65,10 +68,7 @@ Actually, if $a_{j} = b_{j} = 0$. Then from $\beta^{b_{j}}\cdot r_{j+1} - \alpha
 		&\gamma_{k+1}, && j+1 < k < n-1.
 	\end{aligned}\right.
 \end{align*}
-We build a same system of equations for $\{u_k\}, \{v_k\}, \{r_k\}, \{\eta_k\}$ like \cref{equ:equation-system-of-power-diff-to-dynamical-system}, and $u_j, v_j$ are not both $0$. Repeat this operation, we can replace all $a_{j} = b_{j} = 0$, that's why we can always suppose $a_k$, $b_k$ not both $0$.
-\begin{remark}
-	We observe that if \cref{equ:equation-system-of-power-diff-to-dynamical-system} exists for a given $N$, then similar systems of equations also exist for all $n$ that $0 < n \le N$.
-\end{remark}
+We build a same system of equations for $\{u_k\}, \{v_k\}, \{r_k\}, \{\eta_k\}$ like \cref{equ:equation-system-of-power-diff-to-dynamical-system}, and $u_j, v_j$ are not both $0$. Repeat this operation, we can replace all $a_{j} = b_{j} = 0$, that's why we can always suppose $a_k$, $b_k$ not both $0$. From this operation, we can also find that if \cref{equ:equation-system-of-power-diff-to-dynamical-system} exists for a given $N$, then similar systems of equations also exist for all $n$ that $0 < n \le N$.
 
 \cref{thm:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
 Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{thm:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
@@ -78,7 +78,7 @@ These top branches encompass all the cycles within the system—cycles that corr
 Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}, alternatively, we have
 \begin{theorem}~\label{thm:arithmetic-decomposition-to-dynamical-system}
 	For given $\mathcal{P}, \mathcal{Q}, \mathcal{S} \in \mathbb{Z}$ that $\mathcal{Q} - \mathcal{P} = \mathcal{S}$.\newline
-	When $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$, there are $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $n$ such that $\mathcal{S} \mid \sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k$. In this condition, we have
+	When $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$, there are $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $n$ such that $\mathcal{S}\cdot r_0 = \sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k$. In this condition, we have
 	\begin{equation}~\label{equ:equation-system-of-power-diff-to-dynamical-system}
 		\left\{\begin{aligned}
 		&q_{0}\cdot r_{1} - p_{0} \cdot r_{0} = \gamma_{0},\\
@@ -89,8 +89,88 @@ Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
 	\end{aligned}\right.
 	\end{equation}
 \end{theorem}
-\cref{thm:arithmetic-decomposition-to-dynamical-system} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. And this, in turn, compels us to investigate the number-theoretic properties of $\gamma_k$.
+\cref{thm:arithmetic-decomposition-to-dynamical-system} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. And this also compels us to investigate the number-theoretic properties of $\gamma_k$.
 
-A good thought is consider $\bm{s} = (r_0, \cdots, r_{n-1}, \gamma_0, \cdots, \gamma_{n-1}) \in\mathbb{Z}^{2n}$ or $\bm{r} = (r_k + \rmi \gamma_k)\in\mathbb{Z}[i]^{n}$.
+Both \cref{thm:power-diff-to-dynamical-system} and \cref{thm:arithmetic-decomposition-to-dynamical-system} prompt us to investigate $\gamma_k$, the exact differential forms associated with such discrete dynamical systems. Naturally, these quantities are interrelated with the $r_k$, and thus they should be considered in tandem. A fruitful approach is to examine the vector $(r_0, \cdots, r_{n-1}, \gamma_0, \cdots, \gamma_{n-1}) \in\mathbb{Z}^{2n}$, or the sequence of complex numbers $(r_k + \rmi \gamma_k)\in\mathbb{Z}[i]^{n}$.
 
 TODO.
+\newpage
+Given $f(x) = k\prod_{i=0}^{m}(x - r_i)^{n_i}$. We have $f' = k\sum_{i=1}^{m}\frac{n_i f}{x - r_i}$.
+Define $\rad f = \rad f = \prod_{i=1}^{m}(x - r_i)$. Since we have
+\[ \frac{f'}{f} = \sum_{i=1}^{m}\frac{n_i}{x - r_i} = \frac{1}{\rad f}\sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i} \]
+Denote $\rad' f = \sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i}$. Then we have
+\[ f'\cdot \rad f = f\cdot \rad'f. \]
+Notice that $\rad' f \ne (\rad f)'$. Actually, $(\rad f)' = \sum_{i=1}^{m}\frac{\rad f}{x - r_i}$ because the multiplicity of each root of $\rad f$ is $1$.
+
+To prove Mason-Stothers theorem, we define $W(f, g) = g'f - f'g$ is the Wronskian determinat. Consider $W(f, g)\cdot\rad(fg)$, we have 
+\begin{align*}
+	W(f, g)\rad(fg) &= (g'f - f'g)\cdot\rad(fg)\\
+	&= g'f\cdot\rad g\cdot\rad f - gf'\cdot\rad f\cdot\rad g \\
+	&= g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g \\
+	&= \left[g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g\right] \\
+	&= \left[\rad'g\cdot \rad f - \rad'f\cdot \rad g\right]\cdot fg.
+\end{align*}
+Which means $fg \mid W(f, g)\rad(fg)$.
+For $f + g = h$ that $\gcd(f, g) = 1$, we have $W(f, g) = W(f, h) = W(h, g)$. Thus we have $fh \mid W(f, h)\rad(fh) = W(f, g)\rad(fh)$.
+Sum up, we have $fgh \mid W(f, g)\rad(fgh)$. Thus $\deg(fgh) \le \deg\left[W(f, g)\rad(fgh)\right]$, which equivalents to
+\[ \deg f + \deg g + \deg h \le \deg W(f, g) + \deg \rad(fgh). \]
+Since $\deg W(f, g) = \deg (g'f - f'g) \le \deg f + \deg g - 1$, we have
+\[ \deg h \le \deg \rad(fgh) - 1. \]
+Or more likely, we have
+\begin{theorem}[Mason-Stothers]
+	$\max\{ \deg f, \deg g, \deg h \} \le \deg \rad(fgh) - 1$.
+\end{theorem}
+Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
+
+\begin{definition}
+	Suppose $\mathcal{C} = R(\mathbb{K})/\mathbb{K}$ is a category of integral domain modulo a algebrical closed $\mathbb{K}$ that characteristic is $0$. We have $\rad \in \mathrm{Mor}(\mathcal{C})$ and $\deg: \mathrm{Obj}(\mathcal{C})\to \mathbb{N}\cup\{-\infty\}$ and $\partial, \overline{\partial}: \mathcal{C} \to \mathcal{C}$, they satisfy:
+	\begin{itemize}
+		\item[1.] $\rad(f^{2}) = \rad{f}$.
+		\item[2.] $\forall f, g \in\mathrm{Obj}(\mathcal{C})$ such that $\gcd(f, g) = 1$, there is $\rad f \ne \rad g$ and $\rad (fg) = \rad(f)\rad(g)$.
+		\item[3.] $\deg(c) = 0 \Longleftrightarrow c = 1$ and $\deg(c) = -\infty \Longleftrightarrow c = 0$.
+		\item[3.] $\deg (fg) = \deg(f) + \deg(g)$.
+		\item[4.] $\partial(f\cdot g) = f\cdot\partial{g} + g\cdot\partial{f}$ and $\overline{\partial}(f \cdot g) = f\cdot\overline{\partial}{g} - g\cdot\overline{\partial}{f}.$
+		\item[5.] $\rad \overset{\partial}{\mapsto} \partial\!\rad$ and $\rad \overset{\overline{\partial}}{\mapsto} \overline{\partial}\!\rad$. And we have
+		\begin{align*}
+			\partial f \cdot \rad f &= f \cdot \partial\!\rad f, \\
+			\overline{\partial} f \cdot \rad f &= f \cdot \overline{\partial}\!\rad f.
+		\end{align*}
+	\end{itemize}
+\end{definition}
+With this we have
+\begin{proposition}
+	$\partial(f^{n}) = nf^{n-1}\partial f$ and $\overline{\partial}(f^{n}) = (n\fmod 2)\cdot f^{n-1}\overline{\partial}f$.
+\end{proposition}
+\begin{proposition}
+	$\frac{\overline{\partial}^{2}(f^{n})}{\overline{\partial}f^{2}} = \frac{\overline{\partial}}{\overline{\partial}f}\frac{\overline{\partial}(f^{n})}{\overline{\partial}f} = 0$.
+\end{proposition}
+\begin{proposition}
+	Suppose $f = \prod_{i=1}^{m}f_{i}^{n_i}$. Then we have
+	\begin{align*}
+		\partial \simeq \sum_{i=1}^{m}\frac{n_i\partial{f_i}}{f_i}, \quad \overline{\partial} \simeq \sum_{i=1}^{m}\frac{\overline{\partial}{f_i}}{f_i}(n_i\fmod 2),
+	\end{align*}
+	and $\rad f = \prod_{i=1}^{m}f_{i}$, $\deg f = \sum_{i=1}^{m}n_i\deg f_{i}$.
+\end{proposition}
+\begin{proposition}
+	$\deg \rad f \le \deg f$.
+\end{proposition}
+\begin{proposition}
+	If $\gcd(f, g) = 1$, then
+	\begin{align*}
+		\partial\!\rad(fg) &= \rad f\cdot \partial\!\rad g + \rad g\cdot \partial\!\rad f, \\
+		\overline{\partial}\!\rad(fg) &= \rad f\cdot \overline{\partial}\!\rad g - \rad g\cdot \overline{\partial}\!\rad f.
+	\end{align*}
+	And thus we also have
+	\begin{align*}
+		\partial(fg)\cdot \rad(fg) &= fg \cdot \partial\!\rad(fg), \\
+		\overline{\partial}(fg)\cdot \rad(fg) &= fg \cdot \overline{\partial}\!\rad(fg).
+	\end{align*}
+\end{proposition}
+
+We have no result like Mason-Stothers theorem, because $\overline{\partial}(f + g)$ may no longer equal to $\overline{\partial}f + \overline{\partial}g$.
+However, we still expect $\overline{\partial}(f + g)$ will not be too far from $\overline{\partial}f + \overline{\partial}g$.
+\begin{definition}
+	Define $\delta\partial = \partial(f + g) - \partial f - \partial g$ and $\delta\overline{\partial} = \overline{\partial}(f + g) - \overline{\partial}f - \overline{\partial}g$.
+\end{definition}
+
+In practice, we want $\vert\delta\overline{\partial}\vert$ to be as small as possible; this ensures that our inequality is as tight as possible. Furthermore, we generally need only consider derivations on inseparable elements, since derivations on other elements are automatically generated by those on inseparable elements, in accordance with our axioms.
