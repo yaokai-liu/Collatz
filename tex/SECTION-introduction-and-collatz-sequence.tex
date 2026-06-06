@@ -12,7 +12,7 @@ The conjecture is, for all $a_0 \in \mathbb{N}$, there's $k \ge 0$, that $a_{k} 
 \end{conjecture}
 
 First, for all $k$, there is $m \ge 0$ such that $3a_{k}+1 \equiv 0 \pmod{2^{m}}$.
-We may wander the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
+We may wonder the maximum value of $m$ which depends on $a_k$, what the $a_k$ depends on $a$ and $k$.
 Let's define the symbol $\val(a;k+1) = \val_{2}(3a_{k}+1)$ as count of factor $2$ in $3a_{k}+1$, where $a$ is the initial number given, and $k$ runs in $\mathbb{N}$.
 With this we can redefine the sequence with
 \[ a_{k + 1} = \frac{3a_{k}+1}{2^{\val(a;k+1)}} = \rel_{2}(3a_{k}+1), \]
@@ -49,7 +49,7 @@ In fact, this definition is precisely the generalization of the Syracuse functio
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
     Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
 \end{definition}
-Normally, we will always lowercase latter like $u$, $v$, $w$, $\cdots$ to represent elements of some sequences or vectors.
+Normally, we will always lowercase letters like $u$, $v$, $w$, $\cdots$ to represent elements of some sequences or vectors.
 \begin{proposition}
     $\forall n \ge k \ge m$ there is $\mathcal{V}_n^m = \mathcal{V}_n^{k} + \mathcal{V}_k^{m}$.
 \end{proposition}
