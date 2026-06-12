@@ -31,8 +31,8 @@ def F_trans(pre_reduce, adds: dict):
 
 if __name__ == '__main__':
     # pre_reduce = pre_reduce_from_num(12345, 3, 10)
-    pre_reduce = [8] # 131
-    N = collatz_preitem(1, pre_reduce)
+    pre_reduce = [1, 3] # 131
+    N = collatz_preitem(11, pre_reduce)
     print(N)
     # new_Ns = []
     # for k in range(len(pre_reduce)):

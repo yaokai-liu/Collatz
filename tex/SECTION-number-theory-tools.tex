@@ -68,7 +68,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
     $\Log_{a,b}(x^{-1}) = -\Log_{a,b}x$.
 \end{proposition}
 \begin{definition}~\label{def:generated-subgroup}
-    We define $G(a;b) = \{ a^{x} \mid 0 \le x < \ord_{b}(a) \}$ as the generated subgroup of $a$ modulo $b$.
+    We define $(a;b) = \{ a^{x} \mid 0 \le x < \ord_{b}(a) \}$ as the generated subgroup of $a$ modulo $b$.
 \end{definition}
 \begin{definition}
     Given $A\subset \mathbb{Z}$ and $a\in \mathbb{N}$. We define
@@ -79,10 +79,10 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
     $G(a^{-1};b)/b = G(a;b)/b$.
 \end{proposition}
 \begin{proposition}
-    $G(a;b)/b \le (\mathbb{Z}/b)^{*}$ by multiplication.
+    $(a;b)/b \le (\mathbb{Z}/b)^{*}$ by multiplication.
 \end{proposition}
 \begin{proof}
-    $1 = a^{0} \in G(a;b)$. $a^{-x} \equiv a^{\ord_{b} a - x} \pmod{b}$ and $a^{\ord_{b} a - x}\in G(a;b)$. $a^{x} \cdot a^{y} = a^{x + y} \equiv a^{(x + y) \fmod\ord_{b}a} \pmod{b}$ and $a^{(x + y) \fmod\ord_{b}a}\in G(a;b)$. Thus $G(a;b) \le (\mathbb{Z}/b)^{*}$.
+    $a^{x} \cdot a^{y} = a^{x + y} \equiv a^{(x + y) \fmod\ord_{b}a} \pmod{b}$ and $a^{(x + y) \fmod\ord_{b}a}\in (a;b)$. Besides, $a^{-x} \equiv a^{\ord_{b} a - x} \pmod{b}$ and $a^{\ord_{b} a - x}\in (a;b)/b$. 
 \end{proof}
 \begin{definition}~\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
     Define $\pow(a\mid b) = a^{\val_{a}b}$ as the maximum power of $a$ in $b$. 

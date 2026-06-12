@@ -1,10 +1,10 @@
 % !TEX root = main.tex
-\section{Collatz Character and Collatz Kernel}~\label{sec:collatz-character-and-collatz-kernel}
+\section{Collatz Character and Collatz Core}~\label{sec:collatz-character-and-collatz-core}
 
 Although the periodicity of reduce vectors constitutes a significant result, we cannot stop there. As we learned in the previous section, not all reduce vectors lead to positive integers; indeed, many reduce vectors eventually resolve into fractions as the depth of the backtracking increases. Consequently, we are more interested in determining the conditions under which a number can be traced back to an integer, as well as the distribution of the resulting values.
 
 To deal with this, we have to introduce two operators.
-\begin{definition}~\label{def:collatz-character-and-collatz-kernel}
+\begin{definition}~\label{def:collatz-character-and-collatz-core}
 Given $a \in\widehat{\mathbb{N}}_\beta$, define
 \[ \chr a = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}a-\gamma) \text{ and } \beta\nmid(\beta^{v}a-\gamma)/\alpha \} \]
 called the Collatz character of $a$. If the set is empty, we say $a$ is a primitive source and define $\chr a = \infty$.
@@ -34,9 +34,9 @@ And according properties of the discrete logarithm, we have
     If $\chr a < \infty$, $\chr a \le \ord_{\alpha}(\beta)$.
 \end{proposition}
 \begin{proposition}~\label{prop:collatz-character-finite-generated}
-    Denote $\Gamma = [\gamma G(\beta;\alpha)]/\alpha$. We ahve
+    Denote $\Gamma = [\gamma (\beta;\alpha)]/\alpha$. We ahve
     \[ \chr a <\infty \Longleftrightarrow a\fmod \alpha \in \Gamma. \]
-    Here $G(\beta; \alpha)$ follows \cref{def:generated-subgroup}.
+    Here $(\beta; \alpha)$ follows \cref{def:generated-subgroup}.
 \end{proposition}
 \begin{proof}
     If $\chr a <\infty$, we can consider $\cor a$. Let $v = \ord_{\alpha}\beta - \chr a$,  we have

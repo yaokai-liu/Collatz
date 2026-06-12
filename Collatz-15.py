@@ -2,14 +2,21 @@
 from NumberTheoryTools import *
 
 def A_B_derivation(A, B):
-    cal_A = 1
-    cal_B = alpha ** sum(B[:-1])
+    cal_A = alpha ** sum(B[:-1])
+    cal_B = 1
     frak_U = 0
+    R_A = []
+    R_B = []
     for i in range (0, len(A)):
         frak_U += cal_A * cal_B
-        cal_A *= alpha**(A[i])
-        cal_B //= alpha**(B[i])
-    return frak_U
+        a, b = alpha**(A[i]), beta**(B[i])
+        cal_A //= a
+        cal_B *= b
+        _, r_a, r_b = extended_gcd(a, b)
+        print(_)
+        R_A.append(r_a)
+        R_B.append(r_b)
+    return frak_U, R_A, R_B
 
 alpha, beta, gamma = 5, 2, 1
 
@@ -67,11 +74,12 @@ def solve_pow_dif(m, n, c):
 
 
 if __name__ == '__main__':
-    m, n, c = 13, 4, 1
+    series_a = [1, 2, 3, 4]
+    series_b = [1, 2, 1, 1]
+    m = sum(series_a)
+    n = sum(series_b)
     d = beta**m - alpha**n
-    print(d)
-    for r in solve_pow_dif(m, n, c):
-        U, A, B = r
-        l = Fraction(c*U, d)
-        if l.is_integer():
-            print(l, U, A, B)
+    D, A, B = A_B_derivation(series_a, series_b)
+    print(d, D, D % d == 0)
+    print(A, B)
+

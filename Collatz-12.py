@@ -11,19 +11,19 @@ def Psi(alpha, beta, gamma):
     def psi(p):
         return maxpow(p, gamma * (2 ** delta)) * maxpow(p, beta ** (ord(p, beta)) - 1)
 
-    return prod(Fraction(1, psi(p)) for p in prime_factors_of(alpha))
+    return prod(Fraction(1, psi(p)) for p in prime_factors_of(alpha)[0])
 
 
 def Phi(k):
     fac = int((alpha ** k) * Psi(alpha, beta, gamma))
-    primes = prime_factors_of(Fraction(alpha ** k, gamma))
+    primes = prime_factors_of(Fraction(alpha ** k, gamma))[0]
     orders = [ord(p, beta) for p in primes]
     return fac * LCM(orders)
 
 
 def IntPhi(k):
     fac = int((alpha ** k) * Psi(alpha, beta, gamma))
-    primes = prime_factors_of(Fraction(alpha ** k, gamma))
+    primes = prime_factors_of(Fraction(alpha ** k, gamma))[0]
     orders = [ord(p, beta) for p in primes]
     return (fac * LCM(orders)).numerator
 
