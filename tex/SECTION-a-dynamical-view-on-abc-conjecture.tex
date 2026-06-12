@@ -1,5 +1,5 @@
 % !TEX root = main.tex
-\section{A Dynamical View on ABC conjecture}~\label{sec:a-dynamical-view-on-abc-conjecture}
+\section{A Dynamical View on ABC conjecture}\label{sec:a-dynamical-view-on-abc-conjecture}
 
 In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. Given a sequence, we also have its Cauchy production
 \begin{definition}[Cauchy production]
@@ -8,7 +8,7 @@ In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is alw
 \begin{example}
 	Given $\alpha \in \mathbb{N}_{\ge2}$ are coprime. Given two sequences $\{a_k\}_{k=1}^{n} \subset\mathbb{N}$, then we have a Cauchy production $\mathcal{A}_{n}^{m} = \alpha^{\sum_{k=m}^{n-1}a_k}$.
 \end{example}
-\begin{theorem}~\label{thm:power-diff-system-exists}
+\begin{theorem}\label{thm:power-diff-system-exists}
 	Given two sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n}\subset\mathbb{N}_{\ge1}$, we have their production $\mathcal{A}$ and $\mathcal{B}$. Given $r\in \mathbb{Z}^{*}$, then $\exists \{\gamma_k\}_{k=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}^{*}$, such that
 	\[ s\cdot\mathcal{B}_n - r\cdot\mathcal{A}_n = \sum_{k=0}^{n-1}\mathcal{B}_k\mathcal{A}_{n-1}^{k}\gamma_k. \]
 	We call these systems as general power-difference system.
@@ -25,10 +25,10 @@ Also, we denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\mathcal{B}_k\mathcal{A}_{n
 % % \end{remark}
 
 Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}, alternatively, we have
-\begin{theorem}~\label{thm:arithmetic-decomposition-to-dynamical-system}
+\begin{theorem}\label{thm:arithmetic-decomposition-to-dynamical-system}
 	For given $\mathcal{P}, \mathcal{Q}, \mathcal{S} \in \mathbb{N}$ that $\mathcal{Q} - \mathcal{P} = \mathcal{S}$.\newline
 	When $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$, there are $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $n$ such that $\mathcal{S}\cdot r_0 = \sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k$. In this condition, we have
-	\begin{equation}~\label{equ:equation-system-of-arithmetic-to-dynamical-system}
+	\begin{equation}\label{equ:equation-system-of-arithmetic-to-dynamical-system}
 		\left\{\begin{aligned}
 		&q_{0}\cdot r_{1} - p_{0} \cdot r_{0} = \gamma_{0},\\
 		&q_{1}\cdot r_{2} - p_{1} \cdot r_{1} = \gamma_{1},\\
@@ -39,7 +39,7 @@ Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
 	\end{equation}
 \end{theorem}
 \begin{proof}
-	$\Longrightarrow$: We can always partition $\mathcal{P}$, $\mathcal{Q}$ at first, thus we suppose the sequences $\{p_k\}, \{q_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we always have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_n \ne r_0$, then let $r_n \cdot \mathcal{Q} - r_0 \cdot \mathcal{P} = \mathfrak{U}$. With this we have $(r_n - r_0)\cdot \mathcal{Q} = \mathfrak{U} - r_0\cdot \mathcal{S}$. Now let
+	$\Longrightarrow$: We can always partition $\mathcal{P}$, $\mathcal{Q}$ at first, thus we suppose the sequences $\{p_k\}, \{q_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_n \ne r_0$, then let $r_n \cdot \mathcal{Q} - r_0 \cdot \mathcal{P} = \mathfrak{U}$. With this we have $(r_n - r_0)\cdot \mathcal{Q} = \mathfrak{U} - r_0\cdot \mathcal{S}$. Now let
 	\[ \gamma'_n = \gamma_n - (r_n - r_0)\cdot \mathcal{Q} / \mathcal{Q}_{n-1} = \gamma_n -  (r_n - r_0)\cdot q_{n-1}. \]
 	From \cref{thm:power-diff-system-exists}, we can derive $r'_n$ with $\gamma'_n$ by
 	\begin{align*}
@@ -82,9 +82,9 @@ We build a same system of equations for $\{u_k\}, \{v_k\}, \{r_k\}, \{\eta_k\}$ 
 
 % Suppose $p_k$ and $q_k$ are both prime numbers or $1$.
 
-\begin{corollary}~\label{cor:power-diff-to-dynamical-system}
+\begin{corollary}\label{cor:power-diff-to-dynamical-system}
 	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n} \subset \mathbb{N}$ and $\{r_k\}_{k=1}^{n}, \{\gamma_k\}_{k=1}^{n} \subset\mathbb{Z}^{*}$, such that whenever $A = \sum_{k=0}^{n-1}a_k$ and $B = \sum_{k=0}^{n-1}b_k$, there is $C \cdot r_0 = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$, which also equivalents to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
-	\begin{equation}~\label{equ:equation-system-of-power-diff-to-dynamical-system}
+	\begin{equation}\label{equ:equation-system-of-power-diff-to-dynamical-system}
 		\left\{\begin{aligned}
 		&\beta^{b_{0}}\cdot r_{1} - \alpha^{a_{0}} \cdot r_{0} = \gamma_{0},\\
 		&\beta^{b_{1}}\cdot r_{2} - \alpha^{a_{1}} \cdot r_{1} = \gamma_{1},\\
@@ -132,7 +132,7 @@ Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\
 % \end{theorem}
 % Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
 
-\begin{definition}~\label{def:der-rad-rings}
+\begin{definition}\label{def:der-rad-rings}
 	Suppose $\mathcal{C} = R(\mathbb{K})/\mathbb{K}$ is a category of integral domain modulo the algebrical closed $\mathbb{K}$ characteristic $0$. We require $\rad \in \mathrm{Mor}(\mathcal{C})$ and $\partial, \overline{\partial}: \mathcal{C} \to \mathcal{C}$, they satisfy:
 	\begin{itemize}
 		\item[1.] $\rad(f^{2}) = \rad{f}$ and $(\rad f) \mid f$. We denote $f^{\sharp} = f/\rad f$.
@@ -161,7 +161,7 @@ Denote $\widehat{n} = (-1)^{\mathfrak{p}}(n\fmod 2)$, here $\mathfrak{p}(i,j)$ i
 % \begin{proof}
 	
 % \end{proof}
-\begin{proposition}~\label{prop:operator-are-separable}
+\begin{proposition}\label{prop:operator-are-separable}
 	Suppose $f = \prod_{i=1}^{m}f_{i}^{n_i}$ that $f_i\ne 1, 0$.  We have
 	\begin{align*}
 		\partial f &= \sum_{i=1}^{m}\frac{f}{f_i}n_i\partial{f_i}, & \partial\!\rad f &= \sum_{i=1}^{m}\frac{\rad f}{f_i}n_i\partial\!\rad{f_i}.
@@ -193,7 +193,7 @@ Therefore, we denote that
 \end{align*}
 Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\delta\overline{\partial}(s + t) = \delta\overline{\partial}(f + g)$.
 Similar with Mason-Stothers theorem, we have
-\begin{proposition}
+\begin{proposition}\label{prop:fgh-mid-lcm-rad}
 	If $f + g = h$ and $\gcd(f, g) = 1$, then we have
 	\[ fgh\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\delta\overline{\partial}(f + g)\right\}\cdot\rad(fgh). \right. \]
 	And thus
@@ -226,7 +226,9 @@ Additionally, denote
 Here, we do not require $\mathcal{K}(f, g) \in \mathrm{Obj}(\mathcal{C})$, but it should be the natural localization domain of the rings.
 For polynomials, the $\mathcal{K}(f, g) = \frac{f'}{f} - \frac{g'}{g}$. However, for natural numbers, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(a, b)$ represent for.
 
-Since the classical arithmetic derivation that $\partial(a) = a\sum_{\Pi(\mathbb{P}\mid a)}\frac{n_i}{p_i}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
+We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that Proposition 1 is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that Proposition 1 not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand.
+
+Since the classical arithmetic derivation that $\partial(a) = a\sum_{p\in\mathbb{P}}^{p\mid a}\frac{\val_{p}(a)}{p}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
 Equivalents to the ABC conjecture, we have
 \begin{conjecture}
 	$\forall \varepsilon > 0$, $\exists K_{\varepsilon} > 0$, such that $\forall a, b, c\in\mathbb{N}_{\ge 1}$ that $\gcd(a, b, c) = 1$ and $a + b = c$, there is $\frac{\mathcal{K}(a, b)}{\mathcal{M}(a, b)} = \frac{c}{\rad(abc)} \le K_{\varepsilon}\cdot \rad(abc)^{\varepsilon}$.

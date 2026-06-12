@@ -64,13 +64,13 @@ For ease of presentation, unless otherwise stated, we use lowercase letters with
 \begin{remark} $\forall n \ge 0$,
 \[a_{n} \le a \cdot 3^{n} \cdot 2^{-n} + \sum_{i=0}^{n-1}2^{i-n} \cdot 3^{n-i-1}. \]
 \end{remark}
-\begin{theorem}[Consistency]~\label{theorem:consistency}
+\begin{theorem}[Consistency]\label{theorem:consistency}
 If there is two odd number $a, b$, that $a = b$, then $\forall m > 0$, 
 there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
 \end{theorem}
 \begin{proof} Trivial. \end{proof}
 \begin{remark} If $a_0 = 1$, then $a_k \equiv 1$ and $\CollatzReduce{a}{k} \equiv 2$ thus $\mathcal{A}_k = 2k$. \end{remark}
-\begin{theorem}[Co-consistency]~\label{theorem:co-consistency}
+\begin{theorem}[Co-consistency]\label{theorem:co-consistency}
     If there is two odd number $a, b$ that $\forall  m \le n$, $\mathcal{A}_m = \mathcal{B}_m$, then $2^{\mathcal{A}_n} \mid (a - b)$ and $3^{n} \mid (a_n - b_n)$, vice versa.
 \end{theorem}
 \begin{proof} Trivial. \end{proof}
@@ -81,7 +81,7 @@ there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
         \item[2)] $\forall m, n$, $a_n \ne a_m$ that there is an absolute ascent chain in $\left\{a_k\right\}_{k=0}^{\infty}$.
     \end{itemize}
 \end{corollary}
-\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
+\begin{theorem}[Collatz Series's Inductive Formula]\label{theorem:inductive-formula}
 Given an odd number $a$, we have
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \]
 \end{theorem}

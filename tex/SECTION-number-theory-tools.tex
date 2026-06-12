@@ -3,7 +3,7 @@
 To analysis the relationship between the reduces and the items, we introduced some notations from number theory.
 
 Since we used a lot of $a\mid b$ and $a\nmid b$ but they are not in $\mathbb{Z}$, at first, we have to clarify the definition of divisibility.
-\begin{definition}~\label{def:extend-divisibility}
+\begin{definition}\label{def:extend-divisibility}
 Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they are irreducible, define $\frac{p_1}{q_1}\mid \frac{p_2}{q_2}$ as $\exists t \in \mathbb{Z}_{\ne0}$ such that $t\cdot \frac{p_1}{q_1} = p_2$. If not, we say $\frac{p_1}{q_1}\nmid \frac{p_2}{q_2}$. Of course we stipulate that $\forall \frac{p_1}{q_1} \in \mathbb{Q}[X]$, $\frac{p_1}{q_1}\mid 0$. For $\mathbb{N}$, we treat as that $q = 1$.
 \end{definition}
 \begin{proposition}
@@ -13,7 +13,7 @@ Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they 
     If $a \mid c$ and $b \mid c$, and $\gcd(a, b) = 1$, then $ ab \mid c$.
 \end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
-\begin{definition}~\label{def:order-under-modulo}
+\begin{definition}\label{def:order-under-modulo}
     Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
     \[\ord_{a}b = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
     called the discrete order of $b$ modulo $a$.
@@ -24,7 +24,10 @@ Below are number theory tools we introduced in this paper and their propositions
 \begin{proposition}
     If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
-\begin{definition}~\label{def:log-under-modulo}
+\begin{proposition}\label{prop:power-order-mod}
+    $b^{a^{n-1}\ord_{a} b} - 1 \equiv 0 \pmod{\alpha^{n}}$.
+\end{proposition}
+\begin{definition}\label{def:log-under-modulo}
 Given $x\in \mathbb{N}_{>1}$.
 If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_{b}a$, then we denote $\log_{a, b}x = y$.
 If there not exists a such $y$, we will always regard $\log_{a, b}x = \infty$.
@@ -50,7 +53,7 @@ If there not exists a such $y$, we will always regard $\log_{a, b}x = \infty$.
 \begin{proposition}
     Suppose $\log_{a,b}x < \infty$, then $\log_{a, b}(x^{-1}) = \ord_{b}a - \log_{a,b}x$.
 \end{proposition}
-\begin{definition}~\label{def:log-set-under-modulo}
+\begin{definition}\label{def:log-set-under-modulo}
 If $\log_{a, b}x < \infty$, then we denote that
 \begin{align*}
     \Log_{a, b}x &= \ord_b(a)\mathbb{Z} + \log_{a, b}x, \\
@@ -67,7 +70,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \begin{proposition}
     $\Log_{a,b}(x^{-1}) = -\Log_{a,b}x$.
 \end{proposition}
-\begin{definition}~\label{def:generated-subgroup}
+\begin{definition}\label{def:generated-subgroup}
     We define $(a;b) = \{ a^{x} \mid 0 \le x < \ord_{b}(a) \}$ as the generated subgroup of $a$ modulo $b$.
 \end{definition}
 \begin{definition}
@@ -84,69 +87,69 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \begin{proof}
     $a^{x} \cdot a^{y} = a^{x + y} \equiv a^{(x + y) \fmod\ord_{b}a} \pmod{b}$ and $a^{(x + y) \fmod\ord_{b}a}\in (a;b)$. Besides, $a^{-x} \equiv a^{\ord_{b} a - x} \pmod{b}$ and $a^{\ord_{b} a - x}\in (a;b)/b$. 
 \end{proof}
-\begin{definition}~\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
+\begin{definition}\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
     Define $\pow(a\mid b) = a^{\val_{a}b}$ as the maximum power of $a$ in $b$. 
     And we define $\rel_{a}b = \frac{b}{\pow(a\mid b)}$ called the remainder part of $b$ with respect to power of $a$.
 \end{definition}
 \begin{proposition}
     If $c \mid a$ and $a \mid b$, then $\val_{c}b \ge \val_{c}a \cdot \val_{a}b$.
 \end{proposition}
-\begin{definition}~\label{def:radical}
+\begin{definition}\label{def:radical}
     Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Pi(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$.
 \end{definition}
-\begin{definition}~\label{def:filtered-radical-powers}
+\begin{definition}\label{def:filtered-radical-powers}
     Define $\raf_{a}b = \prod_{p \in \Pi(\mathbb{P}\mid a)}\pow(p\mid b)$ as the filtered radical power of $b$ with respect to $a$. And we also call it the $a$-filtered radical powers of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
     And same like to the $\rel$,  we define $\ram_{a}b = \frac{b}{\raf_{a}b}$ called the remainder part of $b$ with respect to radical $a$-part.
 \end{definition}
 \begin{proposition}
     $\rad a = \prod_{p \in \Pi(\mathbb{P}\mid a)}p$
 \end{proposition}
-\begin{proposition}~\label{prop:self-containment}
+\begin{proposition}\label{prop:self-containment}
     $\raf_{a}b \mid b$.
 \end{proposition}
 \begin{proposition}
     $\raf_{a}a = a$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-idempotency}
+\begin{proposition}\label{prop:raf-idempotency}
     $\raf_{a}\raf_{a}b = \raf_{a}b$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-completely-multiplicative}
+\begin{proposition}\label{prop:raf-completely-multiplicative}
     $\raf_{a}(b_1b_2) = \raf_{a}b_1\cdot\raf_{a}b_2$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-inclusion-exclusion-principle}
+\begin{proposition}\label{prop:raf-inclusion-exclusion-principle}
     $\raf_{a_1 a_2}b = \frac{\raf_{a_1}b \cdot \raf_{a_2}b}{\raf_{\gcd(a_1, a_2)}b}$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-power-homogeneity}
+\begin{proposition}\label{prop:raf-power-homogeneity}
     $\raf_{a}(b^n) = (\raf_{a}b)^{n}$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-index-monotonicity}
+\begin{proposition}\label{prop:raf-index-monotonicity}
     $a_1 \mid a_2 \implies \raf_{a_1}b \mid \raf_{a_2}b$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-valuation-monotonicity}
+\begin{proposition}\label{prop:raf-valuation-monotonicity}
     $\val_{p}b_1 \le \val_{p}b_2 \Longleftrightarrow \raf_{p}b_1 \mid \raf_{p}b_2$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-radical-invariance}
+\begin{proposition}\label{prop:raf-radical-invariance}
     $\rad a_1 = \rad a_2 \implies \raf_{a_1}b = \raf_{a_2}b$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-gcd-distributivity}
+\begin{proposition}\label{prop:raf-gcd-distributivity}
     $\raf_{a}\gcd(b_1, b_2) = \gcd(\raf_{a}b_1, \raf_{a}b_2)$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-lcm-distributivity}
+\begin{proposition}\label{prop:raf-lcm-distributivity}
     $\raf_{a}\lcm(b_1, b_2) = \lcm(\raf_{a}b_1, \raf_{a}b_2)$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-limit-power-gcd-raf-equvalent}
+\begin{proposition}\label{prop:raf-limit-power-gcd-raf-equvalent}
     $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}b$.
 \end{proposition}
 \begin{proposition}
       $\log \raf_{a}b = \sum_{p\in\mathbb{P}}^{p \mid a} \val_{p}b \log p$
 \end{proposition}
-\begin{proposition}~\label{prop:rem-coprimality}
+\begin{proposition}\label{prop:rem-coprimality}
     $\gcd(\ram_{a}b, a) = 1$.
 \end{proposition}
-\begin{proposition}~\label{prop:raf-ord-non-self-divisibility}
+\begin{proposition}\label{prop:raf-ord-non-self-divisibility}
     If $p \in \mathbb{P}$, $p\nmid b$, then $\raf_{p}\ord_{p}b = 1$.
 \end{proposition}
-\begin{theorem}~\label{thm:lte-radical-theorem}
+\begin{theorem}\label{thm:lte-radical-theorem}
     If $p \in \mathbb{P}$ and $p\mid (b - 1)$, then
     \[\raf_{p}(b^{n} - 1) = \left\{ \begin{aligned}
         &\raf_{p}(b - 1) \cdot \raf_{p}n, & p > 2, \\
@@ -177,7 +180,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 %     If $A\otimes B$ is uniqe decomposed, then we have
 %     \[ D(A \otimes B; s) = D(A;s)\cdot D(B;s). \]
 % \end{proposition}
-% \begin{theorem}~\label{thm:count-function-from-dirichlet-series}
+% \begin{theorem}\label{thm:count-function-from-dirichlet-series}
 %     For large enough $c > 0$, we have
 %     \[ \widetilde{\pi}(A;x) = \frac{1}{2\pi\rmi}\int_{c-\rmi\infty}^{c+\rmi\infty}D(A;s)\frac{x^{s}}{s}\rmd{s}. \]
 % \end{theorem}

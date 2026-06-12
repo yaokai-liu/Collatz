@@ -2,7 +2,7 @@
 \section{The Basic Formula of Collatz Sequence}\label{sec:the-basic-formula-of-collatz-sequence}
 
 With the definition of Collatz complement, we can easily find that the equation in \cref{equation:collatz-inductioon-3-2-1} also hold with all general Collatz sequences:
-\begin{theorem}~\label{theorem:inductive-formula}
+\begin{theorem}\label{theorem:inductive-formula}
 $\forall a \in \widehat{\mathbb{N}}_{{\beta}}$, $\forall k \in \mathbb{N}$ we have
 \[ a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_{k}. \]
 \end{theorem}
@@ -29,17 +29,17 @@ It is very important and fundamental, and we will see later that all types of Co
 $\forall m, n \ge 0$ we have
 \[ a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = a_{m} \cdot\alpha^{n} + \gamma\cdot\mathfrak{A}_{n+m}^{m}. \]
 \end{corollary}
-\begin{corollary}~\label{corollary:inductive-formula-with-reduced}
+\begin{corollary}\label{corollary:inductive-formula-with-reduced}
     $a_{n+m} \cdot \beta^{\mathcal{A}_{n+m}^{m}} = \alpha^{n}\cdot\left(a_m + \frac{\gamma}{\alpha}\cdot\alpha^{m}\cdot\mathfrak{a}_{n+m}^{m}\right)$.
 \end{corollary}
-\begin{corollary}~\label{cor:beta-nmid-collatz-complement}
+\begin{corollary}\label{cor:beta-nmid-collatz-complement}
 Given $a\in\widehat{\mathbb{N}}_\beta$, if $\mathfrak{A}$ is of $a$, then $\forall m\ne n$, we have $\beta \nmid \mathfrak{A}_n^m$.
 \end{corollary}
-\begin{corollary}~\label{corollary:congerunce-with-collatz-complement}
+\begin{corollary}\label{corollary:congerunce-with-collatz-complement}
 If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_k = - \frac{\gamma}{\alpha^k}\cdot\mathfrak{A}_k \pmod{\beta^{\mathcal{A}_k}}$.
 \end{corollary}
 % \begin{proof} Trivial with \cref{corollary:inductive-formula-with-reduced}. \end{proof}
-\begin{corollary}[Co-uniqueness]~\label{cor:co-uniqueness}
+\begin{corollary}[Co-uniqueness]\label{cor:co-uniqueness}
     If there are two numbers $a, b \in \widehat{\mathbb{N}}_{{\beta}}$ such that $\exists n \ge 0$, $\forall m \le n$, there is $\mathcal{A}_m = \mathcal{B}_m$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
 \end{corollary}
 \begin{proof}
@@ -65,7 +65,7 @@ If $\mathcal{A}_k > 0$, then $a \equiv - \frac{\gamma}{\alpha}\cdot\mathfrak{a}_
 
 It seems like we can introduce the Diophantine equation of $\mathfrak{A}_k$ now, but before that, we have to make sure the $\mathcal{A}_k$ will not finally increased by $0$, i.e.\ fall into those numbers cannot be reduced.
 Though we have a clear evidence that $(\alpha, \beta, \gamma) = (3, 2, 1)$ guarantee that there exists at least one triple such that $\mathcal{A}_k \ge n$, we can't say all the triples required in \cref{definition:collatz-sequence} retain this property.
-\begin{definition}~\label{def:elements-reduce-m-val-by-n-step}
+\begin{definition}\label{def:elements-reduce-m-val-by-n-step}
 Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
 \[ [m\mid n] = \{a \in \widehat{\mathbb{N}}_{\beta} \mid \mathcal{A}_{n-1} = 0 \text{ and } \mathcal{A}_n \ge m \}. \]
 \end{definition}
@@ -114,10 +114,10 @@ When $m = 0$, the $[0\mid n] = \widehat{\mathbb{N}}_{\beta}$.
     \[ \beta^{m}\ \left\vert\ a \cdot \alpha^{n} + \gamma  \sum_{i = 0}^{n-1}\alpha^i \right. = a_n\cdot \beta^{\mathcal{A}_n}, \]
     which means $\mathcal{A}_n \ge m$. Thus $a\in [m \mid n]$.
 \end{proof}
-\begin{proposition}~\label{prop:classes-equiv-congruence}
+\begin{proposition}\label{prop:classes-equiv-congruence}
     $a \in [m\mid n] \Longleftrightarrow a\equiv -\frac{\gamma}{\alpha}\cdot\sum_{i=0}^{n-1}\alpha^{-i} \pmod{\beta^{m}}$.
 \end{proposition}
-\begin{theorem}~\label{thm:avaliable-in-finity-step}
+\begin{theorem}\label{thm:avaliable-in-finity-step}
     $\exists P \in \mathbb{N}_{\ge1}$, such that if there is $[m\mid n + P]\ne\varnothing$, then we have $[m\mid n + P] = [m\mid n]$.
 \end{theorem}
 \begin{proof}
@@ -162,7 +162,7 @@ Compared to the above, we may not need to consider the number of dry-run steps b
     $a \in \overline{[1]} \Longrightarrow \alpha \cdot a + \gamma \in \overline{[1]}$.
     If $\alpha \mid (a - \gamma)$, then we have $a \in \overline{[1]} \Longrightarrow \frac{a - \gamma}{\alpha} \in \overline{[1]}$.
 \end{proposition}
-\begin{theorem}~\label{theorem:requirements-of-avaliablity}
+\begin{theorem}\label{theorem:requirements-of-avaliablity}
     $\lim_{k\to\infty} \mathcal{A}_k = \infty\Longleftrightarrow\forall k\in \mathbb{N}, a_k \in [1]$.
 \end{theorem}
 \begin{proof}

@@ -6,7 +6,7 @@ Keeping $\alpha, \beta, \gamma \in \mathbb{N}$, instead of restricting the initi
 In this situation, the \cref{theorem:inductive-formula} still holds, so do those corollaries of the theorem.
 More than that, we can get a Collatz sequence by given the reduces.
 
-\begin{theorem}~\label{theorem:any-cycle}
+\begin{theorem}\label{theorem:any-cycle}
     Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, if $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there exists only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}$ is a cycle that $\val(a;k) = v_{k\fmod n}$.
 \end{theorem}
 \begin{proof}%[Proof of \cref{theorem:any-cycle}]
@@ -33,7 +33,7 @@ But not all Collatz reduce is a pure cycle.
 In fact, most of  what may eventually enter a cycle have a chaotic beginning.
 Even there may exist some Collatz sequence will not fall into any cycle.
 For these two kinds of Collatz reduces, we have
-\begin{theorem}~\label{theorem:any-presequence}
+\begin{theorem}\label{theorem:any-presequence}
     Given $\{v_{i}\}_{i=1}^{n}$ that $n < \infty$, and $b \in \widehat{\mathbb{Q}}_\beta[b]$.
     If $\forall i>j\ge1, \beta \nmid \mathfrak{A}_i^{j}$, then there is only one Collatz sequence in $\widehat{\mathbb{Q}}_{{\beta}}[b]$ that $\val(a;i) = v_{i}$ and $a_n = b$.
 \end{theorem}
@@ -100,7 +100,7 @@ This implies that the Collatz reduces is the more fundamental aspect of this pro
 % \end{proposition}
 % It is easy to verify that those propositions of Collatz accumulation and complement still holds.
 % And with these definitions, we have
-% \begin{theorem}~\label{theorem:final-inductive-formula}
+% \begin{theorem}\label{theorem:final-inductive-formula}
 % Given $a \in \widehat{\mathbb{Q}}_{{\beta}}$ and $\{v_{i}\}_{i=-\infty}^{\infty} \subset \mathbb{N}$ that extends from the Collatz reduces of $a$ and $\forall i, j \in \mathbb{Z}$, there is $\beta \nmid \mathfrak{A}_{i}^{j}$.
 % Let $a_0 = a$, then $\forall m, n \in \mathbb{Z}$, there still is
 % \[ a_n \cdot \beta^{\mathcal{A}_{n}^{m}} = a_m \cdot\alpha^{n-m} + \gamma\cdot\mathfrak{A}_{n}^{m}. \]

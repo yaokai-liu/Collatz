@@ -6,7 +6,7 @@ We will introduce a new kind of form to subsume those properties above. It's the
 
 Let $\mathbb{G}(+, G)$ be a groupoid and $\mathbb{R}(+, \cdot, R)$ be a ring.
 With these, we can define groupoid homomorphisms and their derivations from $\mathbb{G}$ to $\mathbb{R}$.
-\begin{definition}[Cauchy homomorphism]
+\begin{definition}
     Function $\mathcal{A}: \mathbb{G} \to \mathbb{R}$ is called a groupoid homomorphism, if $\forall a, b \in \mathbb{G}$ that $a + b \in \mathbb{G}$, there is $\mathcal{A}(a+b) = \mathcal{A}(a) \cdot \mathcal{A}(b)$.
 \end{definition}
 If $\forall b \in \mathbb{G}$, there is $\mathcal{A}(b) = 0$, we called that $\mathcal{A}$ is a zero groupoid homomorphism, and denote $\mathcal{A} = 0$.
@@ -21,21 +21,21 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
     Denote $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ as the set of all groupoid homomorphisms on $\mathbb{R}$, then $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ is a group by
     \[ (\mathcal{A}\cdot\mathcal{B})(a) = \mathcal{A}(a)\cdot\mathcal{B}(a). \]
 \end{proposition}
-\begin{example}~\label{exa:power-to-cauchy-homo}
+\begin{example}\label{exa:power-to-cauchy-homo}
     Given number $\alpha$ and a sequence $\{a_i\}$, we have
     \begin{align*}
         \alpha^{\sum_{k=i}^{j-1}a_k}&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
         [i, j) &\mapsto \alpha^{\sum_{k=i}^{j}a_k}.
     \end{align*}
 \end{example}
-\begin{example}~\label{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
+\begin{example}\label{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
     Given a number $a\in\mathbb{N}_{\ge1}$, from Fundamental Theorem of Arithmetic, we have $a = \prod_{i=1}^{n} p_i$. Then we have
     \begin{align*}
         \prod_{k=i}^{j-1}p_k&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
         [i, j) &\mapsto \prod_{k=i}^{j-1}p_k.
     \end{align*}
 \end{example}
-\begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]~\label{def:quasi-derivation-on-groupoid}
+\begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]\label{def:quasi-derivation-on-groupoid}
     Given $\mathcal{A}, \mathcal{B}\in\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$.
     There's another function $\mathfrak{F}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
     \[ \mathfrak{F}(a+b) = \mathcal{A}(a)\cdot\mathfrak{F}(b) + \mathfrak{F}(a)\cdot\mathcal{B}(b) \]
@@ -109,7 +109,7 @@ Specially, For the kernel independent ($\mathcal{A}$, $\mathcal{B}$)-derivation,
     \[ \mathfrak{U}(c) = \gamma \cdot\sum_{p \in \mathbb{P}(a)}\mathcal{A}(a\backslash p)\cdot\mathcal{B}(p/a). \]
 \end{corollary}
 This theorem also holds on those continuous system.
-\begin{example}~\label{exa:continous-situation-with-exact-differential}
+\begin{example}\label{exa:continous-situation-with-exact-differential}
     All closed interval compose a groupoid
     \[G = \left\{[a, b] \text{ : $[a, b]$ is closed interval on real number field $R$}\right\}.\]
     We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\rmd x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\rmd x}$ are both in $\mathrm{Cauchy}(G, R)$. Define
@@ -117,7 +117,7 @@ This theorem also holds on those continuous system.
     We can verify that  $\mathfrak{U}\in \partial_{*}(\mathcal{F}, \mathcal{G})$. Its kernel is $f(x)\rmd x - g(x)\rmd x$.
 
     Now let $F(x) = \int_{a}^{x}f(t)\rmd d$ and $G(x) = - \int_{x}^{b}g(t)\rmd t$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
-    \begin{align}~\label{equ:better-kernel}
+    \begin{align}\label{equ:better-kernel}
         \mathfrak{U}[a, b] &= \int_{a}^{b}\exp(F(x)-G(x))\cdot(f(x) - g(x))\rmd x \nonumber \\
         &= \int_{a}^{b}\exp(F(x)-G(x))\rmd(F(x) - G(x)) \nonumber \\
         &= \frac{\exp F(b)}{\exp G(b)} - \frac{\exp F(a)}{\exp G(a)} \nonumber\\
@@ -125,12 +125,12 @@ This theorem also holds on those continuous system.
     \end{align}
     which is also a difference of powers.
 \end{example}
-\begin{example}~\label{exa:continous-situation-with-kernel-independent}
+\begin{example}\label{exa:continous-situation-with-kernel-independent}
     Also using the groupoid and functions. Define
     \[ \mathfrak{V}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\mathcal{G}[x,b]\rmd x. \]
     Then $\mathfrak{V} \in \partial(\mathcal{F}, \mathcal{G})$. Its kernel is exactly $\rmd x$. However,we can not get a simple result like \cref{equ:better-kernel}. But  from \cref{theorem:inductive-formula} we still speculate that it can be expressed as the difference of two powers with some coefficients.
 \end{example}
-\begin{definition}[varied derivation and varities of derivation]~\label{def:varied-derivation-and-varities-of-derivation}
+\begin{definition}[varied derivation and varities of derivation]\label{def:varied-derivation-and-varities-of-derivation}
 Define
 \begin{align*}
     \mathcal{C}\mathfrak{U} &= \sum_{c \in \mathbb{T}(a)}(\mathcal{C}\cdot\mathcal{A})(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a),\\
@@ -162,7 +162,7 @@ For mapping $F:\mathbb{G} \to \mathbb{R}$.
 If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t}) = F(a_i)$, then we say $F$ is $t$-periodic on $a$.
 \end{definition}
 \begin{definition}
-    Denote all $t$-periodic Cauchy homomorphisms on $a$ as $\mathrm{O}_{t}(\mathbb{P}(a),\mathbb{R})$.
+    Denote all $t$-periodic Cauchy homomorphisms as $\mathrm{O}_{t}(\mathbb{P}(a),\mathbb{R})$.
     And all derivations with $t$-periodic kernel denote as $\partial_{t}(\mathbb{P}(a),\mathbb{R})$.
 \end{definition}
 \begin{proposition}
@@ -183,7 +183,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
         &= \mathcal{A}(a_{i+t}^{i}).
     \end{align*}
 \end{proof}
-\begin{proposition}~\label{prop:cycles-derive-cycle}
+\begin{proposition}\label{prop:cycles-derive-cycle}
     Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
 \end{proposition}
 \begin{proof}
@@ -194,7 +194,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
         &= \mathfrak{U}(a_{i}^{j}).
     \end{align*}
 \end{proof}
-\begin{theorem}~\label{thm:derivation-periodic-rule}
+\begin{theorem}\label{thm:derivation-periodic-rule}
     Suppose $\mathbb{R}$ is an integral domain. Suppose $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$ and $\mathfrak{U}\in\partial_{t}(\mathbb{P}(a), \mathbb{R})$. Finally suppose $\mathcal{A}(a_{i+t}^{i}) \ne \mathcal{B}(a_{i+t}^{i})$. Given $\{r_{i}\}\subset\mathbb{R}$, we have
     \[ r_i\cdot \left[\mathcal{A}(a_{i+t}^{i}) - \mathcal{B}(a_{i+t}^{i})\right] = \mathfrak{U}(a_{i+t}^{i}) \]
     holds for all $i\ge 0$ equivalents to $r_t =r_0$ and $\forall i < t$, there is

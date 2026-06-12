@@ -3,10 +3,18 @@
 
 Now let's consider how to decompose the reduced vector. We might initially expect the existence of a minimum reduced vector, and then apply \cref{cor:single-vary-rule} to adjust it to approximate the target vector. We might consider the Collatz character set to be the most suitable choice, such that:
 \[ \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n) + \text{ an adjusted vector}. \]
-However, not all character vectors are valid. For example, for $5$ in the (3,2,1) system, since $f_{n}((1);5) = 3$ no longer has source values, we cannot write a two-dimensional character vector for $5$. To make it a strictly valid formula, we might need to introduce some special elements that do not exist in reality to modify the definition of the Collatz features of these original sources, or expand our vision to a larger domain, such as $\mathbb{Q}$. However, we do not intend to delve into this issue here. We have provided another way to work around this problem, but in this section, we will always assume that all systems are simple.
+Actually, for $a = f_{n}(\bm{a})$, denote $\chr \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n)$,
+with this, immidiately, we have
+\begin{theorem}
+    If $\bm{b} = \bm{a} + \alpha\Phi_k\bm{e}_k$, then $\chr \bm{b} = \chr \bm{a}$.
+\end{theorem}
+\begin{proof}
+    Of course, $\forall i \ge k$, we have $b_k = a_k$ and thus $\wchr b_i = \wchr a_i$. \newline
+    Consider $i < k$. We have $a_i = f_{n-i}(\bm{a}_{i-1:n})$. Thus $b_i = f_{n_i}(\bm{b}_{i-1:n})$. Since $i < k$, then $\bm{b}_{i-1:n} = \bm{a}_{i-1:n} + \alpha\Phi_k\bm{e}_k$. Then from \cref{prop:simple-collatz-system-periodic}, we have $b_i \equiv a_i \pmod{\alpha}$. Thus from \cref{prop:chr-are-periodic}, we have $\chr a_i = \chr b_i$. Then we proved this proposition.
+\end{proof}
 
-For convenience, according to \cref{thm:layers-of-reduce-space-and-source-value-set}, we denote
-\begin{definition}~\label{def:chr-vector}
+However, not all character vectors are valid. For example, for $5$ in the (3,2,1) system, since $f_{n}((1);5) = 3$ no longer has source values, we cannot write a two-dimensional character vector for $5$. To make it a strictly valid formula, we might need to introduce some special elements that do not exist in reality to modify the definition of the Collatz features of these original sources, or expand our vision to a larger domain, such as $\mathbb{Q}$. However, we do not intend to delve into this issue here. We will provide another way to work around this problem, but in this section, we will always assume that all systems are simple. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we define
+\begin{definition}\label{def:chr-vector}
     Suppose $a\not\in\mathbb{S}_{\infty}$. If $\mathbb{S}_1(a) \not\subset \mathbb{S}_{\infty}$, then define
     \[ \wchr a = \min_{k\in\mathbb{N}}\{\chr a + k\Phi_1 \mid S(k;a)\in\mathbb{N} - \mathbb{S}_{\infty}\}. \]
     Also we define $\wcor a = \beta^{\wchr a}a$.
@@ -31,21 +39,24 @@ For convenience, according to \cref{thm:layers-of-reduce-space-and-source-value-
 \end{definition}
 Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do not need trace it back any more.
 \begin{proposition}
-    Suppose $\gcd(\gamma, \alpha) = 1$. If $\bm{b} = \bm{a} + \Phi_k\bm{e}_k$, then $\wchr \bm{b} = \wchr \bm{a}$.
-\end{proposition}
-\begin{proof}
-    Since $\gcd(\gamma, \alpha) = 1$, then $\Phi_k = \alpha^{k-1} \Phi_1$. TODO.
-\end{proof}
-\begin{proposition}
     For simple systems, we have $\Phi_1\mid (\bm{a} - \wchr\bm{a})$.
 \end{proposition}
-\begin{definition}~\label{def:simp-vector}
+\begin{definition}\label{def:simp-vector}
 Define $\simp\bm{a} = \frac{1}{\Phi_1}(\bm{a} - \wchr\bm{a})$
 called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number $a$, then the $i$-th component of it we also denote $\simp a_i$.
 \end{definition}
-\begin{proposition}~\label{prop:rewritten-collatz-rule}
+\begin{proposition}\label{prop:rewritten-collatz-rule}
     If $i > 1$, then $\beta^{\Phi_1\cdot\simp a_i}\cdot \wcor a_{i} = \alpha \cdot a_{i-1} + \gamma$. And if $i = 1$, then $\beta^{\Phi_1\cdot\simp a_1}\cdot \cor a_{1} = \alpha \cdot a + \gamma$.
 \end{proposition}
+% \begin{proposition}
+%     Suppose $\alpha \mid \gamma$. If $\simp a_1 = 0$, we have
+%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv\beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.\pmod{\alpha} \]
+% \end{proposition}
+% \begin{proof}
+%     From \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
+%     \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) = \frac{1}{\alpha}\cdot \beta^{k}\cdot\cor a - \frac{\gamma}{\alpha} \equiv \beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}. \pmod{\alpha} \]
+% \end{proof}
+
 \begin{theorem}
     Suppose $k_i$ is the exponents of $\Phi$ in \cref{thm:f_n-by-F-and-Phi}, then we have
     \[ \simp\bm{a} = (k_1, k_2, \cdots, k_n) - \bm{\delta}. \]

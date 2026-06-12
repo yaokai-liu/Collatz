@@ -37,3 +37,4 @@
 *.pdf
 __pycache__
 out
+tmp

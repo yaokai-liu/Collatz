@@ -2,7 +2,7 @@
 \section{Source Value Set}\label{sec:source-value-set}
 
 Now let's from the definition of source value, derive two kinds of sets.
-\begin{definition}~\label{def:source-value-set}
+\begin{definition}\label{def:source-value-set}
 Given a basic target value set $B \subset \widehat{\mathbb{N}}_{{\beta}}$. Denote that
 \begin{align*}
     \mathbb{S}_n(B) &= \bigcup_{b\in B}\left\{ f_n(\bm{v};b) \mid \bm{v} \in \mathbb{V}_n(b) \right\},\\
@@ -13,43 +13,43 @@ Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{S}_0(B) = B$. 
 \begin{proposition}
     $\mathbb{S}(B) = \bigcup_{n = 0}^{\infty}\mathbb{S}_{n}(B)$
 \end{proposition}
-\begin{proposition}~\label{prop:source-set-include}
+\begin{proposition}\label{prop:source-set-include}
     If $a\overset{n}{\rightsquigarrow} b$, $\mathbb{S}(a) \subset \mathbb{S}(b)$ and $\mathbb{S}_{k}(a) \subset \mathbb{S}_{k+n}(b)$.
 \end{proposition}
-\begin{proposition}~\label{prop:source-set-disjoint}
+\begin{proposition}\label{prop:source-set-disjoint}
     If $a \not\rightsquigarrow b$ and $b \not\rightsquigarrow a$, $\mathbb{S}(a) \cap \mathbb{S}(b) = \varnothing$.
 \end{proposition}
-\begin{proposition}~\label{prop:non-cycle-layer-independent}
+\begin{proposition}\label{prop:non-cycle-layer-independent}
     If $b \not\rightsquigarrow b$, then $\forall n \ge 1$, $\mathbb{S}_{n}(b) \cap \bigcup_{k = 0}^{n-1}\mathbb{S}_{k}(b) = \varnothing$.
 \end{proposition}
 \begin{proof}
     If $\exists m \le n$, $\mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
 \end{proof}
-\begin{proposition}~\label{prop:cycle-layer-included}
+\begin{proposition}\label{prop:cycle-layer-included}
 If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{S}_{kt}(b)$, and hence $\mathbb{S}_{kt}(b)\subset \mathbb{S}_{(k+1)\cdot t}(b)$.
 \end{proposition}
-From \cref{cor:modulo-alpha-of-f_1}, we still have
+From \cref{prop:modulo-alpha-of-f_1}, we still have
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}_{\infty}$, we have $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$.
 \end{proposition}
-\begin{proposition}~\label{prop:gcd-1-derive-not-all-primitive}
+\begin{proposition}\label{prop:gcd-1-derive-not-all-primitive}
     Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$. And hence $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$ and $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne\varnothing$.
 \end{proposition}
 \begin{proof}
     We prove $n=1$ at first.\newline
     Suppose $a \in\mathbb{S}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-    From \cref{cor:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha = \mathbb{Z}/\alpha$.\newline
+    From \cref{prop:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha = \mathbb{Z}/\alpha$.\newline
     Now consider any layer $n > 1$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$.
 \end{proof}
-\begin{proposition}~\label{prop:all-primitive-derive-gcd-ge-1}
+\begin{proposition}\label{prop:all-primitive-derive-gcd-ge-1}
     If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$, then $\gcd(\alpha, \nabla_1) > 1$.
 \end{proposition}
-\begin{proposition}~\label{prop:have-primitive-derive-all-primitive}
+\begin{proposition}\label{prop:have-primitive-derive-all-primitive}
     Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne \varnothing$, then $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proposition}
 \begin{proof}
     Suppose $f_{1}(\bm{a}) \in\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty}$.
-    From \cref{cor:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
+    From \cref{prop:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
     \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}_{\infty}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proof}
@@ -58,9 +58,9 @@ Actually, we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$ and deriv
 But since we are calculating the source value, the positive direction of the vector's dimensions is from the source value to the target value.
 Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimensional vector, we should add the extra components to the beginning of the vector, rather than to the end.
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
-\begin{theorem}~\label{thm:layers-of-reduce-space-and-source-value-set}
+\begin{theorem}\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
-        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}(\beta^{\Phi_1} - 1) \right\vert k\in\mathbb{N}\right\} \\
+        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \nabla_1 \right\vert k\in\mathbb{N}\right\} \\
         &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
         \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\}.
     \end{align*}
@@ -71,7 +71,7 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
     \begin{align*}
         A_{k+1} &= f_{1}(((k+1)\Phi_1 + \chr a);b) \\
         &= f_{1}((\Phi_1 + (k\Phi_1 + \chr a));b) \\
-        &= \beta^{\Phi_1} A_{k} + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1) \\
+        &= \beta^{\Phi_1} A_{k} + \nabla_1 \\
         &= \beta^{(k+1)\Phi_1} A_{0} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
@@ -83,10 +83,10 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
     We have $\val(a;1) - \chr a_1 \ge 0$. If not, then $\chr a_1$ is not the minimal valuation, or $\beta\mid(\beta^{\val(a;1)}a_1 - \gamma)/\alpha = a$. That's contradictory. So $\val(a;1) - \chr a_1 \ge 0$. And from \cref{thm:the-periodic-rule-of-reduce-sequence}, we have $\Phi_1\mid (\val(a;1) - \chr a_1)$. Denote $k = (\val(a;1) - \chr a_1)/\Phi_1$, since $a_1\in\mathbb{S}_{n}(b)$ by definition, then we have $a = \frac{1}{\alpha}\cdot\beta^{k\Phi_1}\cdot\cor a_1 - \frac{\gamma}{\alpha}$ in the set of the right side.\newline
     In conclusion, the theorem holds for $\mathbb{S}_{n + 1}(b)$. We can also verify from the above derivation that the conclusion regarding $\mathbb{V}_{n+1}(b)$ also holds.
 \end{proof}
-\begin{corollary}~\label{cor:source-value-set-equivlants-its-pre-ker-set}
+\begin{corollary}\label{cor:source-value-set-equivlants-its-pre-ker-set}
     $\alpha\mathbb{S}_{n+1}(b) + \gamma = \mathbb{B}\otimes\cor\mathbb{S}_{n}(b)$. The decomposition is uniqe.
 \end{corollary}
-\begin{example}~\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
+\begin{example}\label{coro:layers-of-reduce-space-and-source-value-set-on-3-2-1}
     Suppose $(\alpha, \beta, \gamma) = (3,2,1)$.
     \begin{align*}
         \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{A_0 = (\cor a  - 1)/3, A_{k+1} = 4f_{k} + 1 \mid k\in\mathbb{N}\right\} \\
@@ -95,7 +95,7 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
     \end{align*}
 \end{example}
 With this, we have
-\begin{conjecture}~\label{conj:source-value-of-1-cover-all-odd-numbers}
+\begin{conjecture}\label{conj:source-value-of-1-cover-all-odd-numbers}
     $\bigcup_{n=0}^{\infty}\mathbb{S}_n(1) = \lim_{n\to\infty}\mathbb{S}_n(1) = \widehat{\mathbb{N}}_{{2}}$.
 \end{conjecture}
 We can verify it equivalents to the classic Collatz problem.
@@ -111,7 +111,7 @@ Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:l
 Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
 And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
 
-\begin{theorem}~\label{thm:infinite-layers}
+\begin{theorem}\label{thm:infinite-layers}
 	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
 \end{theorem}
 \begin{proof}
@@ -119,9 +119,9 @@ And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same cl
 	If $b \not\rightsquigarrow b$. Since $b\not\in\mathbb{S}_{\infty}$, from \cref{prop:gcd-1-derive-not-all-primitive}, we have $\mathbb{S}_{N}(b) \not\subset \mathbb{S}_{\infty}$. That means $\mathbb{S}_{N + 1}(b) \ne \varnothing$.
 	From \cref{prop:non-cycle-layer-independent}, $\forall N \ge 0$ there is
 	\[\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \supset \mathbb{S}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) = \mathbb{S}_{N+1}(b) \ne \varnothing.\]
-	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{S}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)\in\mathbb{S}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{S}(a)$ can not be covered within finity layers, thus the $\mathbb{S}(b) \supset \mathbb{S}(a)$ also can't be covered within finity layers.
+	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{S}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \nabla_1\in\mathbb{S}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{S}(a)$ can not be covered within finity layers, thus the $\mathbb{S}(b) \supset \mathbb{S}(a)$ also can't be covered within finity layers.
 \end{proof}
-\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture through any method of case analysis by number's patterns, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
+\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture by any method of case analysis by number's patterns, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
 
 Finally, let us introduce two notations to provide a perspective on a single source value and reinterpret the theorem \cref{thm:layers-of-reduce-space-and-source-value-set}.
 \begin{definition}
@@ -130,9 +130,22 @@ Finally, let us introduce two notations to provide a perspective on a single sou
 \begin{proposition}
     $S(k + 1; b) > S(k; b)$.
 \end{proposition}
+\begin{proposition}\label{prop:congrunce-transform}
+    If $b = a + m\cdot \alpha$, then we have
+    \[ S(k; b) = S(k; a) + m\cdot\beta^{\chr a + k\Phi_1}. \]
+\end{proposition}
+% \begin{proof}
+%     \begin{align*}
+%         S(k; b) &= \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor b - \frac{\gamma}{\alpha} \\
+%         &= \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\beta^{\chr b} b - \frac{\gamma}{\alpha} \\
+%         &= \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\beta^{\chr a} (a + m\cdot \alpha) - \frac{\gamma}{\alpha} \\
+%         &= \frac{1}{\alpha}\beta^{k\Phi_1}\cdot\beta^{\chr a} a - \frac{\gamma}{\alpha} +  m\beta^{k\Phi_1}\cdot\beta^{\chr a} \\
+%         &= S(k; a) + m\cdot\beta^{\chr a + k\Phi_1}
+%     \end{align*}
+% \end{proof}
 \begin{definition}
     Define $F: \mathbb{S}_n(b)\to\mathbb{S}_{n+1}(b)$ that $F(a) = S(0; a)$ and define $\Phi: \mathbb{S}_1(a)\to \mathbb{S}_1(a)$ that $\Phi(S(m;a)) = S(m + 1;a)$.
 \end{definition}
-\begin{theorem}~\label{thm:f_n-by-F-and-Phi}
+\begin{theorem}\label{thm:f_n-by-F-and-Phi}
     $\forall f_{n}(\bm{a};b)\in\mathbb{S}(b)$, we have $f_{n}(\bm{a};b) = \Phi^{k_{1}}F\Phi^{k_{2}}\cdots F\Phi^{k_{n}}F(b)$.
 \end{theorem}

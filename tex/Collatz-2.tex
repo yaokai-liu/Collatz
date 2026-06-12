@@ -65,17 +65,17 @@
 	\[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - m - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-m-i-1}. \]
 	Also I will omit the superscript $m$ when $m = 0$.
 \end{definition}
-\begin{proposition}[Consistency]~\label{proposition:consistency}
+\begin{proposition}[Consistency]\label{proposition:consistency}
 With the same arguments $(\alpha, \beta, \gamma)$, if there are two numbers $a, b \in \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$, that $a = b$, then $\forall m > 0$, 
 there is $a_m = b_m$ and $\mathcal{A}_m = \mathcal{B}_m$.
 \end{proposition}
 \begin{proof} Trivial. \end{proof}
-\begin{theorem}[Collatz Series's Inductive Formula]~\label{theorem:inductive-formula}
+\begin{theorem}[Collatz Series's Inductive Formula]\label{theorem:inductive-formula}
 Given an odd number $a$, we have
 \[ a_k \cdot \beta^{\mathcal{A}_k} = a \cdot\alpha^k + \gamma\cdot\mathfrak{A}_k. \]
 \end{theorem}
 \begin{proof} TODO \end{proof}
-\begin{proposition}[Co-consistency]~\label{proposition:co-consistency}
+\begin{proposition}[Co-consistency]\label{proposition:co-consistency}
     With the same arguments $(\alpha, \beta, \gamma)$, if there are two numbers $a, b \in \ModSupportSet{\mathbb{N}}{\beta\mathbb{N}}$ that $\forall m \le n$, $\mathcal{A}_m = \mathcal{B}_m$, and $\gcd(\alpha, \beta) = 1$, then $\beta^{\mathcal{A}_n} \mid (a - b)$ and $\alpha^{n} \mid (a_n - b_n)$.
 \end{proposition}
 \begin{proof} Trivial. \end{proof}
@@ -94,7 +94,7 @@ for all $m,n \ge 0$,
     \[a_{k\cdot t+s} = a_s,\quad \mathcal{A}_{k\cdot t + s} = \mathcal{A}_{s}.\]
 \end{remark}
 \begin{proof} TODO \end{proof}
-\begin{remark}[Multistability]~\label{remark:multistability}
+\begin{remark}[Multistability]\label{remark:multistability}
 	If there exist a subseries that $\lim_{n\to\infty} \frac{\mathcal{A}_n}{n} = \mu$, let $\eta = \frac{\beta^\mu}{\alpha}$, then for the subseries, we have
     \[\mathfrak{A}_n = \left\{\begin{aligned}
     & \alpha^{n - 1} \cdot \frac{1 - \eta^n}{1 - \eta}, &\eta \ne 1, \\

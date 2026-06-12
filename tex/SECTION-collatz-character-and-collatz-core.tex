@@ -1,10 +1,10 @@
 % !TEX root = main.tex
-\section{Collatz Character and Collatz Core}~\label{sec:collatz-character-and-collatz-core}
+\section{Collatz Character and Collatz Core}\label{sec:collatz-character-and-collatz-core}
 
 Although the periodicity of reduce vectors constitutes a significant result, we cannot stop there. As we learned in the previous section, not all reduce vectors lead to positive integers; indeed, many reduce vectors eventually resolve into fractions as the depth of the backtracking increases. Consequently, we are more interested in determining the conditions under which a number can be traced back to an integer, as well as the distribution of the resulting values.
 
 To deal with this, we have to introduce two operators.
-\begin{definition}~\label{def:collatz-character-and-collatz-core}
+\begin{definition}\label{def:collatz-character-and-collatz-core}
 Given $a \in\widehat{\mathbb{N}}_\beta$, define
 \[ \chr a = \min\{v\in\mathbb{N}: \alpha\mid(\beta^{v}a-\gamma) \text{ and } \beta\nmid(\beta^{v}a-\gamma)/\alpha \} \]
 called the Collatz character of $a$. If the set is empty, we say $a$ is a primitive source and define $\chr a = \infty$.
@@ -30,10 +30,10 @@ When $A = \{a\}$, that's $A$ contains only one number, we also denote it as $\ma
     $\cor a\equiv \gamma \pmod{\alpha}$.
 \end{proposition}
 And according properties of the discrete logarithm, we have
-\begin{proposition}~\label{prop:chr-le-ord}
+\begin{proposition}\label{prop:chr-le-ord}
     If $\chr a < \infty$, $\chr a \le \ord_{\alpha}(\beta)$.
 \end{proposition}
-\begin{proposition}~\label{prop:collatz-character-finite-generated}
+\begin{proposition}\label{prop:collatz-character-finite-generated}
     Denote $\Gamma = [\gamma (\beta;\alpha)]/\alpha$. We ahve
     \[ \chr a <\infty \Longleftrightarrow a\fmod \alpha \in \Gamma. \]
     Here $(\beta; \alpha)$ follows \cref{def:generated-subgroup}.
@@ -54,14 +54,14 @@ With these, we have
     $\mathbb{S}(a) = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}(a)_{i}$. $\widehat{\mathbb{N}}_{\beta} = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}_{i}$.
 \end{proposition}
 Actually, $\mathbb{S}_{\infty}$ is exactly the set of all primitive sources. And we have
-\begin{proposition}~\label{prop:chr-are-periodic}
+\begin{proposition}\label{prop:chr-are-periodic}
     If $i = \chr a$, then $\mathbb{S}_{i} = \{ b\in\widehat{\mathbb{N}}_{\beta} \mid b \equiv a \pmod{\alpha} \}$.
 \end{proposition}
 And hence we also denote $\mathbb{S}[a] = \mathbb{S}_i$. We have
 \begin{proposition}
     $\chr \mathbb{S}[a] = \{\chr a\}$.
 \end{proposition}
-Furthermore, from \cref{cor:modulo-alpha-of-f_1}, we have
+Furthermore, from \cref{prop:modulo-alpha-of-f_1}, we have
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\Phi_1 = 1$, and then $\chr b = \left\{\begin{aligned}
         &1, &&\alpha\mid b, \\
@@ -86,6 +86,6 @@ Immidiately, we have
 \begin{proposition}
     $\mathbb{S}_{\infty} = \tilde{\mathbb{S}}_{\infty} \cup \hat{\mathbb{S}}_{\infty}$.
 \end{proposition}
-\begin{proposition}~\label{prop:primitive-source-of-simple-collatz-system}
+\begin{proposition}\label{prop:primitive-source-of-simple-collatz-system}
     If $\alpha\in\mathbb{P}$ and $\alpha\nmid\gamma$, then $\tilde{\mathbb{S}}_{\infty} = \varnothing$ and $\hat{\mathbb{S}}_{\infty} = \alpha\mathbb{N}_{\ge 1}$.
 \end{proposition}

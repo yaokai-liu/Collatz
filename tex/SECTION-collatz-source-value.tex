@@ -1,7 +1,7 @@
 % !TEX root = main.tex
 \section{Collatz Source Value}\label{sec:collatz-source-value}
 Now we are going to explore the trace back value according to \cref{sec:extend-the-basic-formula}.
-\begin{definition}~\label{def:source-value-function}
+\begin{definition}\label{def:source-value-function}
 From \cref{theorem:any-presequence}, with the same arguments $\alpha$, $\beta$ and $\gamma$, and target value $b\in \widehat{\mathbb{Q}}_{{\beta}}[b]$, for any finite vector $\bm{v} = (v_{1}, v_{2}, \cdots, v_{n}) \in \mathbb{N}^{n}$, we can derive a sequence $\{v_i\}_{i=1}^{n}$ and its accmulation $\mathcal{A}$. With this we can also derive Collatz complement $\mathfrak{V}$ and reduced Collatz complement $\mathfrak{v}$ by arguments $(\alpha, \beta, \gamma)$. And then we have a function $f_n : \mathbb{N}^{n} \to \mathbb{Q}$, that defined as
 \[ f_{n}(\bm{v};b) = b \cdot \frac{\beta^{\mathcal{V}_{n}}}{\alpha^{n}} - \frac{\gamma}{\alpha}\cdot \mathfrak{v}_{n} \in \widehat{\mathbb{Q}}_{{\beta}}[b] \]
 is called the source value from $b$ by $\bm{v}$. In the absence of ambiguity, we denote $f_{n}(\bm{v}) = f_{n}(\bm{v};b)$.
@@ -25,11 +25,11 @@ With these we have
 \begin{proposition}
     $f_{n}(\bm{v}) = \frac{\beta^{v_{1}}}{\alpha}\left(\frac{\beta^{v_{2}}}{\alpha}\left(\cdots \left(\frac{\beta^{v_{n}}}{\alpha}\cdot b - \frac{\gamma}{\alpha}\right)\cdots\right)- \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}$.
 \end{proposition}
-\begin{proposition}~\label{prop:condition-of-source-value-le-N}
+\begin{proposition}\label{prop:condition-of-source-value-le-N}
     Given $N > 0$, $f_{n}(\bm{v}) \le N \Longleftrightarrow \frac{\alpha^{n}\cdot N + \gamma\cdot\mathfrak{V}_{n}}{a\cdot \beta^{\mathcal{V}_{n}}} \ge 1$.
 \end{proposition}
 We denote $Z_{n}(N;\bm{v}) = \frac{\alpha^{n}\cdot N + \gamma\cdot\mathfrak{V}_{n}}{a\cdot \beta^{\mathcal{V}_{n}}}$, and we will see, it will play very import role in \cref{sec:distribution-of-source-value-set}.
-\begin{theorem}~\label{thm:vary-rule}
+\begin{theorem}\label{thm:vary-rule}
 Given $\Delta\bm{v} \in \mathbb{Z}^{n}$, view it as a $n$-length Collatz reduce sequence. Then we have
 \[ f_{n}(\bm{v} + \Delta\bm{v}) = \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha^{n}} \cdot \nabla\cdot\mathfrak{V}_{n} = \beta^{\Delta\mathcal{V}_{n}}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha} \cdot \nabla\cdot\mathfrak{v}_{n}. \]
 Here
@@ -70,7 +70,7 @@ Though $\Delta\bm{v} \in \mathbb{Z}^{n}$, we still require $\bm{v} + \Delta\bm{v
 
 \cref{thm:vary-rule} offers a very important insight.
 That is, when $f_{n}(\bm{v})\overset{n}{\rightsquigarrow} b$ and $f_{n}(\bm{v} + \Delta\bm{v}) \overset{n}{\rightsquigarrow} b$, starting from a certain bit $m$ and $m + \Delta\mathcal{V}_n$, the $\beta$-carrying terms of these two numbers satisfy a certain relationship. Mathematically, that's
-\begin{corollary}~\label{cor:high-order-bits-sync}
+\begin{corollary}\label{cor:high-order-bits-sync}
     Suppose $f_{n}(\bm{v}) = \sum_{k=s}^{\infty}x_k\beta^{k}$ and $f_{n}(\bm{v} + \Delta\bm{v}) = \sum_{k=s}^{\infty}x'_k\beta^{k}$, $s\in\mathbb{Z}$. If $\alpha^{n} \mid \gamma\cdot\nabla\cdot\mathfrak{V}_{n}$, then $\exists m \in \mathbb{Z}: m \ge s$, such that
     \[ \sum_{k=0}^{\infty}x'_{k + m}\beta^{k} = \sum_{k=0}^{\infty}x_{k + m - \Delta\mathcal{V}_n}\beta^{k} + \delta, \]
     where the $\delta\in\{0, 1\}$. Vice versa.
@@ -103,7 +103,7 @@ And the $\beta^{\Delta\mathcal{V}_{n}}$ determinate the shift count, it also wil
 Even though, we cannot determine the source value of the integer solely based on $\nabla\cdot\mathfrak{V}_{n}\in\mathbb{N}$ without the requirement of $f_{n}(\bm{v})\in\mathbb{N}$. And Even though we have $f_{n}(\bm{v})\in\mathbb{N}$, the demonstrates that solving the problem solely through analysis of $\nabla\cdot\mathfrak{V}$ is too difficult. Therefore, we must find another way to work around it.
 
 Now let's revisit \cref{thm:vary-rule}. Analyzing the full $\Delta\bm{v}$ is too complex. If there exists a vector $\Delta\bm{v}$ with only one non-zero component, i.e., $\Delta{\bm{v}} = s\bm{e}_{k}$, such that $\bm{v} + \Delta\bm{v} = \bm{v}+s\bm{e}_{k}$, where $\bm{e}_k$ is the $k$-th $n$-dim unit vector, then the analysis becomes much simpler. With this we have
-\begin{corollary}~\label{cor:single-vary-rule}
+\begin{corollary}\label{cor:single-vary-rule}
 $f_{n}(\bm{v}+s\bm{e}_{k}) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1)$.
 \end{corollary}
 \begin{corollary}
@@ -113,7 +113,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     If $f_{n}(\bm{v}) = \frac{q}{\alpha^{m}}$, then $f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}$ only when $s$ holds
     \[ \beta^{s}\cdot q\cdot \alpha^{k} + (\beta^{s} - 1) \cdot \mathfrak{V}_{k}\cdot \alpha^{m} \equiv 0. \pmod{\alpha^{m+k}} \]
 \end{corollary}
-\begin{theorem}[The Periodic Rule of Reduce Sequence]~\label{thm:the-periodic-rule-of-reduce-sequence}
+\begin{theorem}[The Periodic Rule of Reduce Sequence]\label{thm:the-periodic-rule-of-reduce-sequence}
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
     \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s. \]
     Here the basic adjust function is defined as
@@ -160,10 +160,10 @@ From the proof, we can deduce that
 \begin{corollary}
     $\forall s \in\mathbb{N}$, we have $\alpha^{k} \mid \gamma\cdot(\beta^{s\cdot\Phi_k} - 1)$.
 \end{corollary}
-\begin{corollary}~\label{cor:alpha-times-between-Phis}
+\begin{corollary}\label{cor:alpha-times-between-Phis}
     $\forall i \ge j \ge 0$, we have $\Phi_j \mid \Phi_i$ and $\Phi_i \mid \alpha^{i-j} \Phi_j$.
 \end{corollary}
-\begin{example}~\label{exm:sequence-of-Phi}
+\begin{example}\label{exm:sequence-of-Phi}
     Suppose $\alpha\in\mathbb{P}$ and $\val_{\alpha}(\gamma) = k$, then we have
     \[ \{\Phi_i\}_{i=1}^{n} = \{\underbrace{1, 1, \cdots, 1}_{k \text{ count}}, \Phi_{k+1}, \alpha\Phi_{k+1}, \alpha^{2}\Phi_{k+1}, \cdots, \alpha^{n-k-1}\Phi_{k+1}\}. \]
 \end{example}
@@ -187,23 +187,7 @@ From the proof, we can deduce that
 \begin{example}
     $\Psi(5,2,1) = \frac{1}{5}$, and $\Phi(5, 2, 1; k) = 4 \cdot 5^{k - 1}$.
 \end{example}
-
-We can observe that if $\Delta\bm{v}$ is only $1$-dimensional, then $\nabla\cdot\mathfrak{V}_1$ and $\nabla\cdot\mathfrak{v}_1$ do not depend on $\bm{v}$ in \cref{thm:vary-rule}; they depend only on $\Delta\bm{v}$. Therefore, if $\Delta\bm{v} = (s\Phi_1)$, we can always perform variational analysis with an integer number of hops. Thus, we can consider the minimum number of hops, $\frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1$, and denote it as
-\[ \nabla_1 = \frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1 = \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1). \]
-We can find it will play a crucial role in later sections.
-\begin{definition}
-    If $\alpha\in\mathbb{P}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_1$, then we say the Collatz system is simple or primitive.
-\end{definition}
-We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. And simple Collatz systems will be the main objects to analyze.
-\begin{proposition}
-    For simple Collatz system, we have \begin{align*}
-        &\Psi(\alpha, \beta, \gamma) = \frac{1}{\raf_{\alpha}(\beta^{\ord_{\alpha}\beta} - 1)}, \\
-        &\Phi(\alpha, \beta, \gamma; k) = \ord_{\alpha}\beta \cdot \frac{\alpha^{k}}{\raf_{\alpha}(\beta^{\ord_{\alpha}\beta} - 1)}.
-    \end{align*}
-    And we have $\Phi_k = \ord_{p}q \cdot p^{k-m}$, here $m = \val_{\alpha}(\beta^{\ord_{\alpha}\beta} - 1)$.
-\end{proposition}
-
-\begin{corollary}~\label{cor:remainder-after-change-reduce-vector-modulo-alpha}
+\begin{corollary}\label{cor:remainder-after-change-reduce-vector-modulo-alpha}
     Suppose $\gcd(\alpha,\gamma) = 1$.
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then $\forall s\in \mathbb{N}$, we have
     \[ f_{n}(\bm{v}+s\Phi_{k}\bm{e}_k) \equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). \pmod{\alpha} \]
@@ -216,21 +200,41 @@ We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ i
         &\equiv f_{n}(\bm{v}) +  \frac{\gamma}{\alpha^{k}}\cdot\left(\beta^{s\Phi_k} - 1\right). &&\pmod{\alpha}
     \end{align*}
 \end{proof}
-\begin{corollary}~\label{cor:modulo-alpha-of-f_1}
+
+From \cref{cor:single-vary-rule}, we can observe that if $\Delta\bm{v}$ is only $1$-dimensional, then $\nabla\cdot\mathfrak{V}_1$ and $\nabla\cdot\mathfrak{v}_1$ do not depend on $\bm{v}$ in \cref{thm:vary-rule}; they depend only on $\Delta\bm{v}$. Therefore, if $\Delta\bm{v} = (s\Phi_1)$, we can always perform variational analysis with an integer number of hops. Thus, we can consider the minimum number of hops, $\frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1$.
+\begin{definition}
+We denote $\nabla_1 = \frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1 = \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)$, called it basic filling unit of the system.
+\end{definition}
+\begin{proposition}\label{prop:modulo-alpha-of-f_1}
     From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we have
     \[f_{n}(\bm{a} + s\Phi_1\bm{e}_1) \equiv s\nabla_1 + f_{n}(\bm{a}).\pmod{\alpha}\]
-\end{corollary}
+\end{proposition}
+\begin{definition}
+    If $\alpha\in\mathbb{P}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_1$, then we say the Collatz system is simple or primitive.
+\end{definition}
+\begin{proposition}
+    For simple Collatz system, we have \begin{align*}
+        &\Psi(\alpha, \beta, \gamma) = \frac{1}{\raf_{\alpha}(\beta^{\ord_{\alpha}\beta} - 1)} = \frac{1}{\alpha}, \\
+        &\Phi(\alpha, \beta, \gamma; k) = \ord_{\alpha}\beta\cdot\Psi(\alpha, \beta, \gamma)\cdot\alpha^{k} = \ord_{\alpha}\beta\cdot\alpha^{k-1}.
+    \end{align*}
+\end{proposition}
+\begin{proposition}\label{prop:simple-collatz-system-periodic}
+    For simple Collatz system, we have
+    \[ f_{n}(\bm{a} + s\Phi_k\bm{e}_k) \equiv f_{n}(\bm{a}).\pmod{\alpha} \]
+\end{proposition}
+\begin{proof}
+    For simple Collatz system, we have $\Phi_k = \alpha^{k-1} \ord_{\alpha}\beta$.
+    Then from \cref{cor:remainder-after-change-reduce-vector-modulo-alpha} and \cref{prop:power-order-mod}, we have
+    \begin{align*}
+        f_{n}(\bm{a} + \alpha\Phi_k\bm{e}_k) &\equiv f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{k}}\cdot(\beta^{\alpha\Phi_k} - 1) &&\pmod{\alpha}\\
+        &\equiv f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{k}}\cdot(\beta^{\alpha^{k}\ord_{\alpha}\beta} - 1) &&\pmod{\alpha} \\
+        &\equiv f_{n}(\bm{a}) + \gamma\cdot\alpha &&\pmod{\alpha}\\
+        &\equiv f_{n}(\bm{a}). &&\pmod{\alpha}
+    \end{align*}
+\end{proof}
+We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. And simple Collatz systems will be the main objects to analyze.
+
 Back to \cref{thm:the-periodic-rule-of-reduce-sequence}. In fact, it presents the variaty of $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.
 Furthermore, this conclusion can be easily generalized to the study of the periodic properties of linear or fractional dynamical systems in other algebraic fields, simply by replacing the prime factors with ideals and the LCM with the least common ideal, while the form remains essentially unchanged.
 However, such generalizations are beyond the scope of this paper, which will continue to focus on Collatz sequences.
-
-Finally, for some kind of systems that are not simple, we also have
-\begin{proposition}
-    Suppose $\alpha \mid \gamma$. If $\simp a_1 = 0$, we have
-    \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) \equiv\beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}.\pmod{\alpha} \]
-\end{proposition}
-\begin{proof}
-    From \cref{exm:sequence-of-Phi}, $\Phi_1 = 1$, thus we have
-    \[ f_{n}(\bm{a} + k\Phi_1\bm{e}_1) = \frac{1}{\alpha}\cdot \beta^{k}\cdot\cor a - \frac{\gamma}{\alpha} \equiv \beta^{k}\left(f_{n}(\bm{a}) + \frac{\gamma}{\alpha}\right) - \frac{\gamma}{\alpha}. \pmod{\alpha} \]
-\end{proof}

@@ -1,7 +1,7 @@
 % !TEX root = main.tex
 \section{Introduction and Collatz Sequence}\label{sec:introduction-and-collatz-sequence} % (fold)
 Our story starts from the $3n + 1$ Conjecture, hereinafter referred to as the Collatz conjecture, which is defined as follows:
-\begin{conjecture}[Collatz Conjecture]~\label{conjecture:original-conjecture}
+\begin{conjecture}[Collatz Conjecture]\label{conjecture:original-conjecture}
 Given a number $a_0 = a \in \mathbb{N}$, we have the modulor arithmetic notation
 \[a_{k+1} = \left\{\begin{aligned}
     &a_{k}/2, &a_{k}\equiv 0\pmod{2}, \\
@@ -29,13 +29,13 @@ We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the
 So it is the time to explore what the arguments of these equations has a stability solution.
 
 At first we define an auxiliary notation:
-\begin{definition}~\label{def:exclude-beta-times}
+\begin{definition}\label{def:exclude-beta-times}
     For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
 \end{definition}
 Here the divisibility follows \cref{def:extend-divisibility}, and any divisibility appearing in this text follows this definition.
 With these we have
-\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]~\label{definition:collatz-sequence}
-    Given arguments $\alpha, \beta\in \mathbb{N}_{\ge2}$ and $\gamma \in\mathbb{N}_{\ge 1}$ that $\gcd(\beta, \alpha\gamma) = 1$.\newline
+\begin{definition}[Collatz Sequence and Collatz Reduce Sequence]\label{definition:collatz-sequence}
+    Given numbers $\alpha, \beta\in \mathbb{N}_{\ge2}$ and $\gamma \in\mathbb{N}_{\ge 1}$ that $\gcd(\beta, \alpha\gamma) = 1$.\newline
     For number $a \in \widehat{\mathbb{N}}_{{\beta}}$, define the sequence $\left\{a_{k}\right\}_{k = 0}^{\infty} \subset \widehat{\mathbb{N}}_{{\beta}}$ named Collatz sequence and $\{\val(a;k)\}_{k=0}^{\infty}\subset\mathbb{N}$ named Collatz reduce sequence with
     \begin{align*}
         &a_0=a, \\
@@ -45,7 +45,7 @@ With these we have
     \end{align*}
 \end{definition}
 In fact, this definition is precisely the generalization of the Syracuse function\cite{wikipediaCollatzConjecture} to arbitrary arguments. 
-\begin{definition}~\label{def:collatz-accumulation}
+\begin{definition}\label{def:collatz-accumulation}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms. $\forall m, n \in \mathbb{N}$ that $n \ge m$, denote $\mathcal{V}_{n}^{m} = \sum_{i=m}^{n-1}v_{i}$ named accumulation from $m$ to $n$.
     Specially when $m = 0$, we omit the superscript, that $\mathcal{V}_n = \mathcal{V}_n^{0}$.
 \end{definition}
@@ -56,7 +56,7 @@ Normally, we will always lowercase letters like $u$, $v$, $w$, $\cdots$ to repre
 
 Given a number $a \in \widehat{\mathbb{N}}_{{\beta}}$, we can derive a Collatz sequence $\left\{a_{k}\right\}_{k = 0}^{\infty}$ and Collatz reduce sequence $\{\val(a;k)\}_{k=0}^{\infty}$. For the Collatz reduce sequence, we can define its accumulation, and we call it Collatz accumulation $\mathcal{A}$.
 And to avoid repeating the explanation each time, unless otherwise specified, we will use the uppercase calligraphic font to represent the Collatz accumulation of the corresponding letters by default.
-\begin{proposition}[Uniqueness]~\label{proposition:uniqueness}
+\begin{proposition}[Uniqueness]\label{proposition:uniqueness}
 If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\val(a;k) = \val(b;k)$ and $\mathcal{A}_k = \mathcal{B}_k$.
 \end{proposition}
 \begin{proof}
@@ -80,14 +80,13 @@ If $a = b$, then $\forall k \in \mathbb{N}$, there is $a_k = b_k$ and $\val(a;k)
     Sum up, we proved this proposition.
 \end{proof}
 \begin{proposition}
-    If $\exists t > 0$ that $a_{t} = a_0 = a$, 
-    then $\forall k > 0$, and $s = 1, 2, 3, \cdots, t$, there are
+    If $\exists t > 0$ that $a_{t} = a_0 = a$, then $\forall k > 0$ and $s \le t$, there are
     $a_{kt+s} = a_s$ and $\mathcal{A}_{kt + s}^{kt} = \mathcal{A}_{s}$.
 \end{proposition}
-\begin{proposition}~\label{proposition:trivial-periodic-sequence}
+\begin{proposition}\label{proposition:trivial-periodic-sequence}
     If there is $\Delta \in \mathbb{N}_{\ge1}$ holds $(\beta^{\Delta} - \alpha) \mid \gamma$, then let $a_0 = \frac{\gamma}{\beta^{\Delta} - \alpha}$, we have $\forall k \in \mathbb{N}$, $a_k = a_0$ and $A_k = k\cdot \Delta$.
 \end{proposition}
-\begin{proposition}~\label{proposition:equivalent-between-collatz-conjecture-and-our-definition}
+\begin{proposition}\label{proposition:equivalent-between-collatz-conjecture-and-our-definition}
 Let arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$.
 For all odd number $a$, let $a'_{i_k}$ be the $k$-th odd number in \cref{conjecture:original-conjecture} and $a_k$ be the $k$-th element of Collatz sequence of $a$, then $\forall k \in \mathbb{N}$,  we have $a_{k} = a'_{i_{k}}$.
 \end{proposition}
@@ -113,13 +112,13 @@ Because for even numbers, we can easily figure out that every even number will r
 In that situation, the proposition holds as well.
 With this proposition, we can describe the Collatz Conjecture with the Collatz sequence:
 
-\begin{conjecture}[Rewritten Collatz Conjecture]~\label{definition:rewritten-conjecture}
-With arguments $(\alpha, \beta, \gamma) = (3, 2, 1)$,
+\begin{conjecture}[Rewritten Collatz Conjecture]\label{definition:rewritten-conjecture}
+With $(\alpha, \beta, \gamma) = (3, 2, 1)$,
 for any odd number $a \in \widehat{\mathbb{N}}_{2}$, it's Collatz sequence will finally reach to $1$.
 \end{conjecture}
 
 This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define a notation to represent them:
-\begin{definition}~\label{definition:collatz-complement}
+\begin{definition}\label{definition:collatz-complement}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms, we have $\mathcal{A}_{n}^{m}$. Now we define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
     And define $\mathfrak{a}_n^{m}$ called reduced Collatz complement of $a$ at $n$ relative to $m$ with
@@ -131,14 +130,14 @@ If $\{v_{i}\}$ is the Collatz reduces of a number, to avoid repeating the explan
 In that case, we also say that $\mathfrak{A}$ and $\mathfrak{a}$ are of number $a$.
 
 For the Collatz complement, we have two basic propositions:
-\begin{proposition}~\label{proposition:collatz-complement-basic-prop1}
+\begin{proposition}\label{proposition:collatz-complement-basic-prop1}
 $\mathfrak{A}_{n}^{n} = 0$, and $\mathfrak{A}_{n+1}^{n} = 1$.
 And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n}}$.
 \end{proposition}
 % \begin{proposition}
 %     $\mathfrak{A}_{n+1} = \alpha \cdot \mathfrak{A}_{n} + \beta^{\mathcal{A}_n}$. And $\mathfrak{a}_{n+1} = \mathfrak{a}_{n} + \frac{\beta^{\mathcal{A}_n}}{\alpha^{n}}$.
 % \end{proposition}
-\begin{proposition}~\label{proposition:collatz-complement-basic-prop2}
+\begin{proposition}\label{proposition:collatz-complement-basic-prop2}
     $\forall n \ge k \ge m$, we have
     \begin{align*}
         \mathfrak{A}_n^{m} &= \beta^{\mathcal{A}_k^{m}}\cdot\mathfrak{A}_n^{k} + \mathfrak{A}_k^m\cdot\alpha^{n-k}, \\
@@ -163,10 +162,10 @@ Actually, we can formally define the Collatz complement only from \cref{proposit
 More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
 
 According to \cref{proposition:uniqueness} and \cref{cor:co-uniqueness}, we have
-\begin{proposition}[Uniqueness]~\label{proposition:uniquess-of-Collatz-complement}
+\begin{proposition}[Uniqueness]\label{proposition:uniquess-of-Collatz-complement}
     Given $\mathfrak{V}$ for $\{v_i\}$ and $\mathfrak{U}$ for $\{u_i\}$. If $\forall i\ge 0$, there is $v_i = u_i$, then $\forall n \ge m \ge 0$, there are $\mathfrak{V}_n^{m} = \mathfrak{U}_n^{m}$ and $\mathfrak{v}_n^{m} = \mathfrak{u}_n^{m}$.
 \end{proposition}
-\begin{proposition}~\label{prop:complement-equiv-1-when-modulo}
+\begin{proposition}\label{prop:complement-equiv-1-when-modulo}
     Suppose $m\ne n$, we have $\mathfrak{V}_n^{m} \equiv 1 \pmod{\alpha}$. And if $v_{1} \ne 0$, then we also have $\mathfrak{V}_n^{m} \equiv 1 \pmod{\beta}$.
 \end{proposition}
 Now we are ready to explore the properties of Collatz sequences.
