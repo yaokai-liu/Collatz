@@ -1,12 +1,16 @@
 import math
 from math import prod, gcd, lcm, inf
 from fractions import Fraction
+import atexit
 import json
 
-with open("primes.json", mode="r") as f:
-    pairs = json.load(f)
-    PRIMES = list(pairs.values())
+PRIMES = []
+with open("primes.txt", mode="r") as f:
+    lines = f.readlines()
+    PRIMES += [int(line.strip()) for line in lines]
 def generate_primes_below(a):
+    global PRIMES
+    NEW_PRIMES = list()
     need_sort = False
     for i in range(PRIMES[-1] + 2, int(a) + 100, 2):
         if i in PRIMES: continue
@@ -17,10 +21,11 @@ def generate_primes_below(a):
                 break
         if is_prime:
             need_sort = True
-            PRIMES.append(i)
-    if need_sort: PRIMES.sort()
-    count = int(a / math.log(a, math.e))
-    while PRIMES[count] < a: count += 1
+            NEW_PRIMES.append(i)
+    if need_sort: NEW_PRIMES.sort()
+    PRIMES += NEW_PRIMES
+    count = int((a + math.sqrt(a)) / math.log(a, math.e))
+    while PRIMES[count] < a and count < len(PRIMES): count += 1
     return count + 1
 
 def val(a, b):
@@ -53,7 +58,6 @@ def LCM(array):
     for a in array:
         l = lcm(l, a)
     return l
-
 
 def rad(a):
     return prod(prime_factors_of(a)[0])

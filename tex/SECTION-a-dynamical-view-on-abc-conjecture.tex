@@ -133,24 +133,25 @@ Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\
 % Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
 
 \begin{definition}\label{def:der-rad-rings}
-	Suppose $\mathcal{C} = R(\mathbb{K})/\mathbb{K}$ is a category of integral domain modulo the algebrical closed $\mathbb{K}$ characteristic $0$. We require $\rad \in \mathrm{Mor}(\mathcal{C})$ and $\partial, \overline{\partial}: \mathcal{C} \to \mathcal{C}$, they satisfy:
-	\begin{itemize}
-		\item[1.] $\rad(f^{2}) = \rad{f}$ and $(\rad f) \mid f$. We denote $f^{\sharp} = f/\rad f$.
-		\item[2.] $\rad (f\cdot g)\cdot\rad\gcd(f, g) = \rad(f)\cdot\rad(g)$.
-		\item[3.] $\gcd(\rad f, \rad g) = \rad\gcd(f, g)$.
-		\item[4.] $\partial a = 0 \Longleftrightarrow a = 1$.
-		\item[5.] $\partial(f\cdot g) = f\cdot\partial{g} + g\cdot\partial{f}$ and $\overline{\partial}(f \cdot g) = f\cdot\overline{\partial}{g} - g\cdot\overline{\partial}{f}$.
-		\item[6.] $\rad \overset{\partial}{\mapsto} \partial\!\rad$ and $\rad \overset{\overline{\partial}}{\mapsto} \overline{\partial}\!\rad$ such that
+	Suppose $R_1 = R(\mathbb{K})/\mathbb{K}$ is an integral domain modulo its algebrical closed $\mathbb{K}$ characteristic $0$. We require $\rad: R_1 \to R_1$ and $\partial, \overline{\partial}: R_1 \to R_1$, they satisfy:
+	\begin{enumerate}
+		\item $\rad(f^{2}) = \rad{f}$ and $(\rad f) \mid f$. We denote $f^{\sharp} = f/\rad f$.
+		\item $\rad (f\cdot g)\cdot\rad\gcd(f, g) = \rad(f)\cdot\rad(g)$.
+		\item $\gcd(\rad f, \rad g) = \rad\gcd(f, g)$.
+		\item $\partial a = 0 \Longleftrightarrow a = \pm 1$ and $\overline{\partial} a = 0 \Longleftrightarrow a = \pm 1$.
+		\item $\partial (-f) = -\partial f$ and $\overline{\partial} (-f) = -\overline{\partial} f$.
+		% \item $\partial h = \{\partial(f\cdot g) \mid f\cdot g = h \}$ and $\overline{\partial} h = \{ \overline{\partial}(f \cdot g) \mid f\cdot g = h \}$. 
+		\item $\partial(f\cdot g) = f\cdot\partial{g} + g\cdot\partial{f}$ and $\overline{\partial}(f \cdot g) = f\cdot\overline{\partial}{g} - g\cdot\overline{\partial}{f}$.
+		\item $\rad \overset{\partial}{\mapsto} \partial\!\rad$ and $\rad \overset{\overline{\partial}}{\mapsto} \overline{\partial}\!\rad$ such that
 		\begin{align*}
 			\partial f \cdot \rad f &= f \cdot \partial\!\rad f, \\
 			\overline{\partial} f \cdot \rad f &= f \cdot \overline{\partial}\!\rad f.
 		\end{align*}
-	\end{itemize}
+	\end{enumerate}
 \end{definition}
 \begin{remark}
 	In $\partial(f\cdot g)$, the dot ($\cdot$) represent the ring multiplication. However, in $\overline{\partial}(f\cdot g)$, the dot ($\cdot$) is no longer ring multiplication but merely a separator to consistency in form with $\partial$. Even though, we still using $\partial(fg)$ and $\overline{\partial}(fg)$, they still represent $\partial(f\cdot g)$ and $\overline{\partial}(f\cdot g)$. Actually, $\overline{\partial}$ is the abstraction of Wronskian determinant.
 \end{remark}
-With this we have
 \begin{proposition}
 	$\overline{\partial}(f\cdot\overline{\partial}(g\cdot h)) + \overline{\partial}(g\cdot\overline{\partial}(h\cdot f)) + \overline{\partial}(h\cdot\overline{\partial}(f\cdot g)) = 0$.
 \end{proposition}
@@ -158,9 +159,6 @@ Denote $\widehat{n} = (-1)^{\mathfrak{p}}(n\fmod 2)$, here $\mathfrak{p}(i,j)$ i
 \begin{proposition}
 	$\partial(f^{n}) = nf^{n-1}\partial f$ and $\overline{\partial}(f^{n}) = \widehat{n}f^{n-1}\overline{\partial}f$.
 \end{proposition}
-% \begin{proof}
-	
-% \end{proof}
 \begin{proposition}\label{prop:operator-are-separable}
 	Suppose $f = \prod_{i=1}^{m}f_{i}^{n_i}$ that $f_i\ne 1, 0$.  We have
 	\begin{align*}
@@ -188,16 +186,16 @@ Generally, we have $\partial\!\rad f \ne \partial(\rad f)$ and $\overline{\parti
 Since there is no $\overline{\partial}(f + g) = \overline{\partial}f + \overline{\partial}g$ in our axioms, we cannot obtain a conclusion analogous to the Mason-Stothers theorem. However, we still expect these deviations not to be too significant.
 Therefore, we denote that
 \begin{align*}
-	\delta\partial(f + g) &= \partial(f + g) - \partial f - \partial g,\\
-	\delta\overline{\partial}(f + g) &= \overline{\partial}(f + g) - \overline{\partial}f - \overline{\partial}g.
+	\delta(f + g) &= \partial(f + g) - \partial f - \partial g,\\
+	\overline{\delta}(f + g) &= \overline{\partial}(f + g) - \overline{\partial}f - \overline{\partial}g.
 \end{align*}
-Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\delta\overline{\partial}(s + t) = \delta\overline{\partial}(f + g)$.
+Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\overline{\delta}(s + t) = \overline{\delta}(f + g)$. But we still require $\overline{\partial}(s + t) = \overline{\partial}(f + g)$, and in this formula, ($+$) is the ring addition.
 Similar with Mason-Stothers theorem, we have
 \begin{proposition}\label{prop:fgh-mid-lcm-rad}
-	If $f + g = h$ and $\gcd(f, g) = 1$, then we have
-	\[ fgh\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\delta\overline{\partial}(f + g)\right\}\cdot\rad(fgh). \right. \]
+	If $f + g = h$, then we have
+	\[ fgh\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\}\cdot\rad(fgh). \right. \]
 	And thus
-	\[ f^{\sharp}g^{\sharp}h^{\sharp}\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\delta\overline{\partial}(f + g)\right\} \right. \]
+	\[ f^{\sharp}g^{\sharp}h^{\sharp}\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\} \right. \]
 \end{proposition}
 \begin{proof}
 	At first, we have
@@ -208,27 +206,27 @@ Similar with Mason-Stothers theorem, we have
 	Thus $fgh \left\vert\ \lcm(\overline{\partial}(fg), \overline{\partial}(fh))\cdot\rad(fgh)\right.$. And we have
 	\begin{align*}
 		\overline{\partial}(fh) &= f\overline{\partial}(h) - h\overline{\partial}(f) \\
-		&= f\delta\overline{\partial}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
-		&= \overline{\partial}(fg) + f\delta\overline{\partial}(f + g).
+		&= f\cdot\overline{\delta}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
+		&= \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g).
 	\end{align*}
 	With this we proved this proposition.
 \end{proof}
-This proposition indicates that $\delta\overline{\partial}(f + g)$ cannot be chaotically random; it is strictly controlled by $f^{\sharp}g^{\sharp}h^{\sharp}$.
-In practice, we want $\vert\delta\overline{\partial}(f + g)\vert$ to be as small as possible; this ensures that our inequality is as tight as possible.
+This proposition indicates that $\overline{\delta}(f + g)$ cannot be chaotically random; it is strictly controlled by $f^{\sharp}g^{\sharp}h^{\sharp}$.
+In practice, we want $\vert\overline{\delta}(f + g)\vert$ to be as small as possible; this ensures that our inequality is as tight as possible.
 From \cref{prop:operator-are-separable}, we can only consider derivations on those inseparable elements, since derivations on other elements can be automatically generated by those on inseparable elements, in accordance with our axioms.
 
 With this proposition, we denote
-\[ \mathcal{L}(f, g) = \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\delta\overline{\partial}(f + g)\right\}. \]
+\[ \mathcal{L}(f, g) = \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\}. \]
 Additionally, denote
 \begin{align*}
-	\mathcal{M}(f, g) &= \frac{\mathcal{L}(f,g)}{f^{\sharp}g^{\sharp}h^{\sharp}} \in \mathrm{Obj}(\mathcal{C}), &\mathcal{K}(f, g) &= \frac{\mathcal{L}(f,g)}{f\cdot g} = \frac{h^{\sharp}\cdot\mathcal{M}(f,g)}{\rad(f\cdot g)}.
+	\mathcal{M}(f, g) &= \frac{\mathcal{L}(f,g)}{f^{\sharp}g^{\sharp}h^{\sharp}} \in R_1, &\mathcal{K}(f, g) &= \frac{\mathcal{L}(f,g)}{f\cdot g} = \frac{h^{\sharp}\cdot\mathcal{M}(f,g)}{\rad(f\cdot g)}.
 \end{align*}
-Here, we do not require $\mathcal{K}(f, g) \in \mathrm{Obj}(\mathcal{C})$, but it should be the natural localization domain of the rings.
-For polynomials, the $\mathcal{K}(f, g) = \frac{f'}{f} - \frac{g'}{g}$. However, for natural numbers, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(a, b)$ represent for.
+Here we do not require $\mathcal{K}(f, g)$ be an element of $R_1$, but it should be the natural localization domain of $R_1$.
+For polynomials, the $\mathcal{K}(f, g) = \frac{f'}{f} - \frac{g'}{g}$. However, for natural numbers, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(f, g)$ represent for.
 
-We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that Proposition 1 is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that Proposition 1 not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand.
+We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that \cref{prop:fgh-mid-lcm-rad} is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that \cref{prop:fgh-mid-lcm-rad} not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand. And we believe that $\mathcal{M}(f, g)$ encapsulates all the mysteries of factorization over integral domains.
 
-Since the classical arithmetic derivation that $\partial(a) = a\sum_{p\in\mathbb{P}}^{p\mid a}\frac{\val_{p}(a)}{p}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
+We can verify the classical arithmetic derivation that $\partial(a) = a\sum_{p\in\mathbb{P}}^{p\mid a}\frac{\val_{p} a}{p}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
 Equivalents to the ABC conjecture, we have
 \begin{conjecture}
 	$\forall \varepsilon > 0$, $\exists K_{\varepsilon} > 0$, such that $\forall a, b, c\in\mathbb{N}_{\ge 1}$ that $\gcd(a, b, c) = 1$ and $a + b = c$, there is $\frac{\mathcal{K}(a, b)}{\mathcal{M}(a, b)} = \frac{c}{\rad(abc)} \le K_{\varepsilon}\cdot \rad(abc)^{\varepsilon}$.

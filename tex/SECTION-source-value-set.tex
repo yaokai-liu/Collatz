@@ -25,32 +25,44 @@ Specially, we define $\mathbb{V}_0(B) = \varnothing$ and $\mathbb{S}_0(B) = B$. 
 \begin{proof}
     If $\exists m \le n$, $\mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b) \ne \varnothing$, $\exists a \in \mathbb{S}_{m}(b) \cap \mathbb{S}_{n}(b)$ such that $a \rightsquigarrow a$. Notice that $a \rightsquigarrow b$, thus $b\rightsquigarrow b$. That's a confliction with $b \not\rightsquigarrow b$.
 \end{proof}
-\begin{proposition}\label{prop:cycle-layer-included}
-If $b \rightsquigarrow b$ in a cycle that period $t$, then $\forall k\ge 0$, $b \in \mathbb{S}_{kt}(b)$, and hence $\mathbb{S}_{kt}(b)\subset \mathbb{S}_{(k+1)\cdot t}(b)$.
+\begin{proposition}
+    If $b \not\rightsquigarrow b$, then $\forall r, s\in\mathbb{S}_{n}(b)$, we have $r \not\rightsquigarrow s \not\rightsquigarrow r$.
 \end{proposition}
-From \cref{prop:modulo-alpha-of-f_1}, we still have
+\begin{proposition}\label{prop:cycle-layer-included}
+If $b\overset{t}{\rightsquigarrow} b$, then $\forall k\ge 0$, $b \in \mathbb{S}_{kt}(b)$, and hence $\mathbb{S}_{kt}(b)\subset \mathbb{S}_{(k+1)\cdot t}(b)$.
+\end{proposition}
+\begin{definition}
+    Suppose $b\overset{t}{\rightsquigarrow} b$ and $t$ is the minimal step. Define $\overline{\mathbb{S}}_{0}(b) = \{ b_{k} \mid 0 \le k < t \}$ and $\forall n\ge 1$, $\overline{\mathbb{S}}_{n}(b) = \left(\bigcup_{k=0}^{t-1}\mathbb{S}_n(b_k)\right)$ called the $n$-th layer closure source value set of loop that contains $b$, we call $t$ is the length of the loop.
+\end{definition}
+Of course, for those $b$ that $t = 0$, we have $\overline{\mathbb{S}}_{n}(b) = \mathbb{S}_{n}(b)$.
+\begin{proposition}
+    Define $\Delta\overline{\mathbb{S}}_{n}(b) = \overline{\mathbb{S}}_{n}(b) - \overline{\mathbb{S}}_{n-1}(b)$. Given $k$ that $1 < k \le t$. $\forall s \in \Delta\overline{\mathbb{S}}_{n}(b)$, there is $b \not\rightsquigarrow s$, but $s \overset{1}{\rightsquigarrow} b_k \overset{t-k}{\rightsquigarrow} b$. Given $r, s\in \Delta\overline{\mathbb{S}}_{n}(b)$ that $r \ne s$, we have $r \not\rightsquigarrow s \not\rightsquigarrow r$. 
+\end{proposition}
+These $\Delta\overline{\mathbb{S}}_{n}(b)$ behave exactly like those source value of a non-loop target. In fact, we have $\Delta\overline{\mathbb{S}}_{n}(b) = \overline{\mathbb{S}}_{n}(b) = \mathbb{S}_{n}(b)$ if $b\not\rightsquigarrow b$.
+
+From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we still have
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\forall b\not\in\mathbb{S}_{\infty}$, we have $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$.
 \end{proposition}
 \begin{proposition}\label{prop:gcd-1-derive-not-all-primitive}
-    Suppose $\gcd(\alpha, \nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$. And hence $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$ and $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne\varnothing$.
+    Suppose $\gcd(\alpha, \gamma\nabla_1) = 1$. Then $\forall b\not\in\mathbb{S}_{\infty}$, $\forall n\ge 1$, we have $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$. And hence $\mathbb{S}_{1}(b) \not\subset \mathbb{S}_{\infty}$ and $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne\varnothing$.
 \end{proposition}
 \begin{proof}
     We prove $n=1$ at first.\newline
     Suppose $a \in\mathbb{S}_{1}(b) \cap \mathbb{S}$, and its reduce vector is $\bm{a}$.
-    From \cref{prop:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha = \mathbb{Z}/\alpha$.\newline
+    From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, $\forall k\in\mathbb{Z}$ that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, there is $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \pmod{\alpha}$ runs all remainders modulo $\alpha$. Thus $\mathbb{S}_{1}(b)/\alpha = \mathbb{Z}/\alpha$.\newline
     Now consider any layer $n > 1$. Since any $n$-step source value is just a $1$-step source value of a $n-1$-step source value. Thus they follow the conclusion of $n=1$. Thus we proved $\mathbb{S}_{n}(b)/\alpha = \mathbb{Z}/\alpha$.
 \end{proof}
 \begin{proposition}\label{prop:all-primitive-derive-gcd-ge-1}
     If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$, then $\gcd(\alpha, \nabla_1) > 1$.
 \end{proposition}
 \begin{proposition}\label{prop:have-primitive-derive-all-primitive}
-    Suppose $\alpha\mid \nabla_1$. If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne \varnothing$, then $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
+    Suppose $\gcd(\alpha, \gamma) = 1$ and $\alpha\mid\nabla_1$. If $\exists b\not\in\mathbb{S}_{\infty}$ such that $\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty} \ne \varnothing$, then $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proposition}
 \begin{proof}
     Suppose $f_{1}(\bm{a}) \in\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty}$.
-    From \cref{prop:modulo-alpha-of-f_1}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
-    \[ f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
+    From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
+    \[ f_{1}(\bm{a} + k\gamma\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
     Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}_{\infty}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proof}
 
@@ -60,7 +72,7 @@ Therefore, if we want to obtain an $(n+1)$-dimensional vector from an $n$-dimens
 Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied anyway.
 \begin{theorem}\label{thm:layers-of-reduce-space-and-source-value-set}
     \begin{align*}
-        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \nabla_1 \right\vert k\in\mathbb{N}\right\} \\
+        \mathbb{S}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left. A_0 = \frac{\cor a  - \gamma}{\alpha}, A_{k+1} = \beta^{\Phi_1} A_{k} + \gamma\nabla_1 \right\vert k\in\mathbb{N}\right\} \\
         &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{\left.\frac{1}{\alpha}\beta^{k\Phi_1}\cdot\cor a - \frac{\gamma}{\alpha}\right\vert k\in \mathbb{N}\right\},\\
         \mathbb{V}_{n+1}(b) &= \bigcup_{a\in \mathbb{S}_{n}(b) - \mathbb{S}_{\infty}} \left\{ (k\Phi_1 +  \chr a, \bm{v}) \mid  k\in \mathbb{N}, f_{n}(\bm{v};b) = a\right\}.
     \end{align*}
@@ -71,7 +83,7 @@ Of course, the condition of $\nabla\cdot\mathfrak{V}_{n}$ should be satisfied an
     \begin{align*}
         A_{k+1} &= f_{1}(((k+1)\Phi_1 + \chr a);b) \\
         &= f_{1}((\Phi_1 + (k\Phi_1 + \chr a));b) \\
-        &= \beta^{\Phi_1} A_{k} + \nabla_1 \\
+        &= \beta^{\Phi_1} A_{k} + \gamma\nabla_1 \\
         &= \beta^{(k+1)\Phi_1} A_{0} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a - \gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot(\beta^{(k+1)\Phi_1} - 1) \\
         &= \beta^{(k+1)\Phi_1}\cdot \frac{\cor a}{\alpha} - \beta^{(k+1)\Phi_1}\cdot\frac{\gamma}{\alpha} + \frac{\gamma}{\alpha}\cdot\beta^{(k+1)\Phi_1} - \frac{\gamma}{\alpha} \\
@@ -112,7 +124,7 @@ Note that both numbers also have their own source value sets, which implies some
 And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
 
 \begin{theorem}\label{thm:infinite-layers}
-	Suppose $\alpha^{2}\mid (\beta^{\Phi_1} - 1)$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
+	Suppose $\alpha \nmid \nabla_1$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
 \end{theorem}
 \begin{proof}
 	Divide into two situations:\newline

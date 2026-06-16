@@ -1,5 +1,3 @@
-from random import randint
-
 from NumberTheoryTools import *
 from itertools import permutations, product
 
@@ -39,20 +37,24 @@ def dual_partial(a):
     return result
 
 if __name__ == '__main__':
-    # a, b = randint(1, 1000), randint(1, 1000)
-    a, b = 3, 125
-    print(f"a = {a}, b = {b}, a + b = {a + b}")
-    rad_a, rad_b, rad_c = rad(a), rad(b), rad(a + b)
+    # a, b = 3, 4
+    a, b = 2, (3**10)*109
+    # a, b = 3, 125
+    c, d = a + b, a * b
+    print(f"a = {a}, b = {b}, a + b = {c}, a * b = {d}")
+    rad_a, rad_b, rad_c = rad(a), rad(b), rad(c)
+    sharps = a * b * c // (rad_a * rad_b * rad_c)
     print(f"rad a = {rad_a}, rad b = {rad_b}, rad(a + b) = {rad_c}")
+    print(f"rad(abc) = {rad_a*rad_b*rad_c}, a#b#c# = {sharps}")
     print("#"*100)
-    S, T = dual_partial(a), dual_partial(b)
-    U, V = dual_partial(a * b), dual_partial(a + b)
-    for s, t, u, v in product(S, T, U, V):
-        print(f"dualP a = {s}, dualP b = {t}, dualP(a * b) = {u}, dualP(a + b) = {v}, deltaP = {v - s - t}")
-        L = lcm(u, u + s * (v - s - t))
-        M = Fraction(L * rad_a * rad_b * rad_c, a * b * (a + b))
-        K = Fraction(L, a * b)
+    S, T, U = dual_partial(a), dual_partial(b), dual_partial(c)
+    for s, t, u in product(S, T, U):
+        delta = u - s - t
+        v = t * a - s * b
+        print(f"dualP a = {s}, dualP b = {t}, dualP(a * b) = {v}, dualP(a + b) = {u}, deltaP = {delta}")
+        L = lcm(v, v + a * delta)
+        M = Fraction(L, sharps)
+        K = Fraction(L, d)
         print(f"L(a, b) = {L}, K(a, b) = {K}, M(a, b) = {M}")
         print(f"K(a, b) / M(a, b) = {Fraction(K, M)}")
-        print(f"{Fraction(K, M) / ((a + b) / (rad_a * rad_b * rad_c))}")
         print("="*100)

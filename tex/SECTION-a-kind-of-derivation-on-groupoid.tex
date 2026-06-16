@@ -37,10 +37,9 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
 \end{example}
 \begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]\label{def:quasi-derivation-on-groupoid}
     Given $\mathcal{A}, \mathcal{B}\in\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$.
-    There's another function $\mathfrak{F}: \mathbb{G} \to \mathbb{R}$ such that $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, then
+    Functions $\mathfrak{F}, \mathfrak{B}: \mathbb{G} \to \mathbb{R}$ such that 1. $\mathfrak{F}(0) = 0, \mathfrak{B}(0) = 0$;  2. $\forall a, b \in \mathbb{G}$, if $a + b \in \mathbb{G}$, we have
     \[ \mathfrak{F}(a+b) = \mathcal{A}(a)\cdot\mathfrak{F}(b) + \mathfrak{F}(a)\cdot\mathcal{B}(b) \]
-    called the forward ($\mathcal{A}$, $\mathcal{B}$)-derivation.
-    And function $\mathfrak{B}: \mathbb{G} \to \mathbb{R}$
+    called the forward ($\mathcal{A}$, $\mathcal{B}$)-derivation; and
     \[ \mathfrak{B}(a+b) = \mathcal{A}(b)\cdot\mathfrak{B}(a) + \mathfrak{B}(b)\cdot\mathcal{B}(a) \]
     called the backward ($\mathcal{A}$, $\mathcal{B}$)-derivation.
 \end{definition}
@@ -50,9 +49,6 @@ Denote $\partial_{R}(\mathcal{A}, \mathcal{B})$ as the set of all right ($\mathc
 If the left or right is not matter, i.e. $\mathbb{R}$ is commutative, we just denote them $\partial_{*}(\mathcal{A}, \mathcal{B})$.
 Our discussion of ($\mathcal{A}$, $\mathcal{B}$)-derivations will base on $\mathbb{R}$ is commutative.
 Given $\mathfrak{U} \in \partial_{*}(\mathcal{A}, \mathcal{B})$, we have
-\begin{proposition}
-    $\mathfrak{U}(0) = 0$.
-\end{proposition}
 \begin{proposition}
     $\mathcal{A}(a)\cdot\mathfrak{U}(-a) + \mathfrak{U}(a)\cdot\mathcal{B}(-a) = 0$.
 \end{proposition}
@@ -87,8 +83,8 @@ And we denote $\mathbb{P}(\mathbb{G}) = \{ p \in\mathbb{G} \mid p \text{ is inse
             = &\mathcal{A}(a \backslash c + c)\cdot\mathfrak{U}(c/a) + \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a) \\
             &+ \mathfrak{U}(a \backslash c)\cdot\mathcal{B}(c + c/a) \\
             = &\mathcal{A}(a \backslash c + c)\cdot\sum_{d \in \mathbb{T}(c/a)}\mathcal{A}((c/a)\backslash d)\cdot\mathfrak{U}(d)\cdot\mathcal{B}(d/(c/a)) \\
-              &+ \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a)  \\
-              &+\sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}((a\backslash c)\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/(a\backslash c))\cdot\mathcal{B}(c + c/a)
+            &+ \mathcal{A}(a \backslash c)\cdot\mathfrak{U}(c)\cdot\mathcal{B}(c/a)  \\
+            &+\sum_{e \in \mathbb{T}(a \backslash c)}\mathcal{A}((a\backslash c)\backslash e)\cdot\mathfrak{U}(e)\cdot\mathcal{B}(e/(a\backslash c))\cdot\mathcal{B}(c + c/a)
     \end{align*}
     Notice that \begin{align*}
         &a \backslash c + c + (c/a)\backslash d = a - (d + d/(c/a)) = a\backslash d,\\

@@ -8,7 +8,7 @@ is called the source value from $b$ by $\bm{v}$. In the absence of ambiguity, we
 \end{definition}
 
 And to describe the iterative properties of Collatz sequences, we denote $a \overset{k}{\rightsquigarrow} b$ if there exists $k$ such that $a_k = b$.
-If it $k$ doesn't matter, we denote $a \rightsquigarrow b$. Notice that we always suppose the step count of $a \rightsquigarrow b$ will never be $0$. If we need to represent $a_0 = b$, we will denote it precisely as $a \overset{0}{\rightsquigarrow} b$.
+If it $k$ doesn't matter, we denote $a \rightsquigarrow b$. Notice that we always suppose the step count of $a \rightsquigarrow b$ will never be $0$. If we need to represent $a_0 = b$, we will denote it precisely as $a \overset{0}{\rightsquigarrow} b$. We say $a \not\rightsquigarrow b$, means there is not $n > 0$, such that $a \overset{n}{\rightsquigarrow} b$.
 With these we have
 \begin{proposition}
     $f_{n}(\bm{v}) \overset{n}{\rightsquigarrow} b$.
@@ -117,11 +117,12 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     If $f_{n}(\bm{v}) \in \mathbb{N}$, then we have
     \[f_{n}(\bm{v}+s\bm{e}_{k}) \in \mathbb{N}\Longleftrightarrow \Phi(\alpha,\beta,\gamma; k) \mid s. \]
     Here the basic adjust function is defined as
-    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\cdot\Psi(\alpha,\beta,\gamma), \]
-    and the auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
+    \[ \Phi(\alpha, \beta, \gamma; k) = \alpha^{k}\cdot \widetilde{\rord_{\alpha}\beta}\cdot\Psi(\alpha,\beta,\gamma). \]
+    The tilde radical order item is $\widetilde{\rord_{\alpha}\beta} = \rord_{\alpha}\beta$ if $\alpha^{k} \nmid \gamma$ else $1$.
+    The auxiliary function $\Psi_{\alpha}(\beta)$ is defined as
     \[ \Psi(\alpha,\beta,\gamma) = \prod_{p\in\mathbb{P}}^{p \mid \alpha}\frac{1}{\pow(p\mid\gamma\cdot2^{\delta})\cdot\pow(p\mid\beta^{\ord_{p}\beta} - 1)},
     \]
-    and $\delta = \val_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$.
+    and $\delta = \val_2(\beta + 1) - 1$ if $2 \mid \alpha$ else $0$ .
 \end{theorem}
 \begin{proof}
     From \cref{cor:single-vary-rule}, we have
@@ -133,7 +134,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     When $\alpha^{k} \nmid \gamma$.
     By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
-    Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent (LTE) Lemma, consequently, the inequality becomes
+    Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent Lemma, consequently, the inequality becomes
     \[ k\cdot\val_{p}\alpha \le \val_{p}\gamma + \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \val_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
     Here $\delta_2(\beta) = \val_2(\beta + 1) - 1$ if $p = 2$ else $0$.
     Rearranging for $\val_{p}\left(\frac{s}{\ord_{p}\beta}\right)$, we obtain
@@ -147,9 +148,13 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     Notice that $\pow(p\mid\ord_{p}\beta) = 1$， thus we have
     \[ \left. \frac{\pow(p\mid\alpha)^{k}}{\pow(p\mid\gamma\cdot2^{\delta})\cdot\pow(p\mid\beta^{\ord_{p}\beta} - 1)}\ \right\vert\ s. \]
     Besides, we've assumed $\ord_{p}\beta \mid s$. Aggregate these all $p$ conditions, it follows
-    \[ \left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s. \]
-    Consider when $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\}\ \right\vert\ s$. So we let
-    \[ \left.\lcm_{p\mid (\alpha^{k}/\pow(\alpha\mid\gamma))}^{p\in\mathbb{P}}\{\ord_{p}\beta\}\ \right\vert\ s, \]
+    \[ \left.\lcm_{p\in\mathbb{P}}^{p\mid \alpha}\{\ord_{p}\beta\} = \rord_{\alpha}\beta\ \right\vert\ s. \]
+    When $\alpha^{k}\mid \gamma$, of course we do not need $\ord_{p}(\beta) \mid s$, thus not need $\rord_{\alpha}\beta\mid s$.
+    So we let
+    \[ \widetilde{\rord_{\alpha}\beta} = \left\{\begin{aligned}
+        &\rord_{\alpha}\beta, && \alpha^{k}\nmid \gamma, \\
+        &1, && \alpha^{k}\mid \gamma,
+    \end{aligned}\right. \]
     which contains both conditions of $\alpha^{k}\mid \gamma$ or $\alpha^{k}\nmid \gamma$.
     Finally, sum up, we have $\Phi(\alpha,\beta,\gamma;k) \mid s$.
 \end{proof}
@@ -170,7 +175,7 @@ From the proof, we can deduce that
 \begin{example}
     Suppose $q \in\widehat{\mathbb{N}}_{2}$ that $q > 1$, then we have \begin{align*}
         &\Psi(q, 2, 1) = \prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)}, \\
-        &\Phi(q, 2, 1; k) = q^{k}\cdot\prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)} \cdot \underset{p\in\Pi(\mathbb{P}\mid q)}{\lcm}\{\ord_{p}2\}.
+        &\Phi(q, 2, 1; k) = q^{k}\cdot\prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)} \cdot \lcm_{p\in\mathbb{P}}^{p\mid q}\{\ord_{p}2\}.
     \end{align*}
     They correspond to the case of $qn+1$ reduced by $2$ explored in Santos's paper \cite{santos2021collatzgeneralproblemqn1}.
 \end{example}
@@ -203,14 +208,8 @@ From the proof, we can deduce that
 
 From \cref{cor:single-vary-rule}, we can observe that if $\Delta\bm{v}$ is only $1$-dimensional, then $\nabla\cdot\mathfrak{V}_1$ and $\nabla\cdot\mathfrak{v}_1$ do not depend on $\bm{v}$ in \cref{thm:vary-rule}; they depend only on $\Delta\bm{v}$. Therefore, if $\Delta\bm{v} = (s\Phi_1)$, we can always perform variational analysis with an integer number of hops. Thus, we can consider the minimum number of hops, $\frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1$.
 \begin{definition}
-We denote $\nabla_1 = \frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1 = \frac{\gamma}{\alpha}\cdot(\beta^{\Phi_1} - 1)$, called it basic filling unit of the system.
-\end{definition}
-\begin{proposition}\label{prop:modulo-alpha-of-f_1}
-    From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we have
-    \[f_{n}(\bm{a} + s\Phi_1\bm{e}_1) \equiv s\nabla_1 + f_{n}(\bm{a}).\pmod{\alpha}\]
-\end{proposition}
-\begin{definition}
-    If $\alpha\in\mathbb{P}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_1$, then we say the Collatz system is simple or primitive.
+We denote $\nabla_1 = \frac{\nabla\cdot\mathfrak{v}_1}{\alpha} = \frac{\beta^{\Phi_1} - 1}{\alpha}$. It's a broad form of the Fermat quotient.
+If $\alpha\in\mathbb{P}_{\ge 2}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_1$, then we say the Collatz system is simple or primitive.
 \end{definition}
 \begin{proposition}
     For simple Collatz system, we have \begin{align*}
@@ -218,21 +217,29 @@ We denote $\nabla_1 = \frac{\gamma}{\alpha}\cdot\nabla\cdot\mathfrak{v}_1 = \fra
         &\Phi(\alpha, \beta, \gamma; k) = \ord_{\alpha}\beta\cdot\Psi(\alpha, \beta, \gamma)\cdot\alpha^{k} = \ord_{\alpha}\beta\cdot\alpha^{k-1}.
     \end{align*}
 \end{proposition}
-\begin{proposition}\label{prop:simple-collatz-system-periodic}
+We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. And simple Collatz systems will be the main objects to analyze.
+\begin{theorem}\label{thm:simple-collatz-system-mod-eq-plus-s-gamma-nabla_1}
     For simple Collatz system, we have
-    \[ f_{n}(\bm{a} + s\Phi_k\bm{e}_k) \equiv f_{n}(\bm{a}).\pmod{\alpha} \]
-\end{proposition}
+    \[ f_{n}(\bm{a} + s\Phi_k\bm{e}_k) \equiv f_{n}(\bm{a}) + s\gamma\nabla_1.\pmod{\alpha} \]
+\end{theorem}
 \begin{proof}
-    For simple Collatz system, we have $\Phi_k = \alpha^{k-1} \ord_{\alpha}\beta$.
-    Then from \cref{cor:remainder-after-change-reduce-vector-modulo-alpha} and \cref{prop:power-order-mod}, we have
+    For simple Collatz system, we have $\alpha^{k} \mid (\beta^{\Phi_k} - 1)$. Then
     \begin{align*}
-        f_{n}(\bm{a} + \alpha\Phi_k\bm{e}_k) &\equiv f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{k}}\cdot(\beta^{\alpha\Phi_k} - 1) &&\pmod{\alpha}\\
-        &\equiv f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{k}}\cdot(\beta^{\alpha^{k}\ord_{\alpha}\beta} - 1) &&\pmod{\alpha} \\
-        &\equiv f_{n}(\bm{a}) + \gamma\cdot\alpha &&\pmod{\alpha}\\
-        &\equiv f_{n}(\bm{a}). &&\pmod{\alpha}
+        \frac{\beta^{\Phi_k} - 1}{\alpha^{k}} &= \frac{1}{\alpha^{k}}((\beta^{\Phi_1})^{\alpha^{k-1}} - 1) && \\
+        &= \frac{1}{\alpha^{k}}((1 + \alpha\nabla_1)^{\alpha^{k-1}} - 1) && \\
+        &= \frac{1}{\alpha^{k}}\sum_{i=1}^{\alpha^{k-1}}\binom{\alpha^{k-1}}{i} \alpha^{i}\nabla_1^{i} && \\
+        &= \nabla_1 + \frac{1}{\alpha^{k}}\sum_{i=2}^{\alpha^{k-1}}\binom{\alpha^{k-1}}{i} \alpha^{i}\nabla_1^{i} && \\
+        &\equiv \nabla_1.  &&\pmod{\alpha}
+    \end{align*}
+    Then from \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we have
+    \begin{align*}
+        f_{n}(\bm{a} + s\Phi_k\bm{e}_k) &\equiv f_{n}(\bm{a}) + \frac{\gamma}{\alpha^{k}}\cdot(\beta^{s\Phi_k} - 1) &&\pmod{\alpha}\\
+        &\equiv f_{n}(\bm{a}) + \gamma\frac{\beta^{\Phi_k} - 1}{\alpha^{k}}\cdot\sum_{i=0}^{s-1}\beta^{i\Phi_k} &&\pmod{\alpha} \\
+        % &\equiv f_{n}(\bm{a}) + \gamma\cdot(\nabla_1 + \alpha\mathcal{O}(1))\sum_{i=0}^{s-1}(\alpha^{k}(\nabla_1 + \alpha\mathcal{O}(1)) + 1)^{i} &&\pmod{\alpha} \\
+        &\equiv f_{n}(\bm{a}) + \gamma\cdot\nabla_1\cdot\sum_{i=0}^{s-1} 1^{i} &&\pmod{\alpha} \\
+        &\equiv f_{n}(\bm{a}) + s\gamma\nabla_1. &&\pmod{\alpha}
     \end{align*}
 \end{proof}
-We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. And simple Collatz systems will be the main objects to analyze.
 
 Back to \cref{thm:the-periodic-rule-of-reduce-sequence}. In fact, it presents the variaty of $s$ that preserve integers, which do not depend on the original reduced sequence $\bm{v}$, but only on the position $k$.
 Therefore, we can classify these reduced sequences into different equivalence classes.

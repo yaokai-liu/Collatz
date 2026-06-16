@@ -20,8 +20,12 @@
 \cref{thm:finite-layers-le-M} Tell us that we can explore how $H$ increase with $M$ and the density of $\mathbb{S}(b)$ to predic how many top branches in this system. From result in \cref{sec:collatz-character-and-collatz-core}, we can resolve the $H$ and calculate how many source values less than $M$.
 
 \begin{lemma}
-	$\card\{ \mathbb{S}_{1}(a) \le \beta^{M} \} = \frac{1}{\Phi_1}(M - \lfloor\log_{\beta}S(0;a)\rfloor - 1)$.
+	$\card\{ \mathbb{S}_{1}(a) < M \} = \left\lfloor \frac{1}{\Phi_1}\log_{\beta}\frac{\alpha M + \gamma}{\cor a} \right\rfloor$. Of course, we need $\frac{\alpha M + \gamma}{\cor a} > 1$.
 \end{lemma}
+% \begin{lemma}
+% 	let $H(a; M) = \min\{n\in\mathbb{N}  \mid \{\mathbb{S}_{n}(a) \le M \} = \varnothing \}$, then for simple system, we have
+% 	\[ \lfloor\frac{1}{\Phi_1}\log_{\beta}(\alpha^{2} M + \alpha\gamma + \gamma)\rfloor - 2 \le H(a; M) \le \lfloor\frac{1}{\Phi_1}\log_{\beta}(\alpha^{2} M + \alpha\gamma + \gamma)\rfloor - 1 \]
+% \end{lemma}
 \begin{lemma}
 	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le M\}}{\card\{\mathbb{S}_{1}(b) \le M\}} = 1$.
 \end{lemma}

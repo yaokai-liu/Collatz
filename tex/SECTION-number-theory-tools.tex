@@ -14,7 +14,7 @@ Given two numbers $\frac{p_1}{q_1}, \frac{p_2}{q_2} \in \mathbb{Q}[X]$ and they 
 \end{proposition}
 Below are number theory tools we introduced in this paper and their propositions.
 \begin{definition}\label{def:order-under-modulo}
-    Given two number $a, b\in \mathbb{N}_{_{>1}}$ and $\gcd(a, b) = 1$, denote
+    Given two number $a, b\in \mathbb{N}_{_{>1}}$ that $\gcd(a, b) = 1$, denote
     \[\ord_{a}b = \min_{x \in \mathbb{N}_{_{\ge 1}}}\left\{b^{x} \equiv 1 \pmod{a} \right\}\]
     called the discrete order of $b$ modulo $a$.
 \end{definition}
@@ -25,8 +25,15 @@ Below are number theory tools we introduced in this paper and their propositions
     If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
 \begin{proposition}\label{prop:power-order-mod}
-    $b^{a^{n-1}\ord_{a} b} - 1 \equiv 0 \pmod{\alpha^{n}}$.
+    $\frac{b^{sa\ord_{a} b} - 1}{a} \equiv s\cdot\frac{b^{\ord_{a} b} - 1}{a} \pmod{a}$.
 \end{proposition}
+\begin{proof}
+    let $q = \frac{b^{\ord_{a} b} - 1}{a}$, we have $b^{\ord_{a} b} = 1 + qa$. Then we have
+    \[ \frac{b^{s\ord_{a} b} - 1}{a} = \frac{b^{\ord_{a} b} - 1}{a}\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k} = q\cdot\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k}. \]
+    Since $b^{\ord_{a} b} \equiv 1 \pmod{a}$, thus $\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k}\equiv s \pmod{a}$. Hence, we have
+    \[ \frac{b^{s\ord_{a} b} - 1}{a} \equiv s\cdot q. \pmod{a} \]
+\end{proof}
+Actually, we have $\frac{b^{s\ord_{a} b} - 1}{a}\equiv s\cdot q. \pmod{q^{2}a}$, but we don't need such the strong conclusion.
 \begin{definition}\label{def:log-under-modulo}
 Given $x\in \mathbb{N}_{>1}$.
 If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_{b}a$, then we denote $\log_{a, b}x = y$.
@@ -89,7 +96,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 \end{proof}
 \begin{definition}\label{def:power-and-power-count}Define $\val_{a}b = \max_{n \in \mathbb{N}}\{n: a^n \mid b\}$ as the exponent of maximum power of $a$ in $b$ on $a$.
     Define $\pow(a\mid b) = a^{\val_{a}b}$ as the maximum power of $a$ in $b$. 
-    And we define $\rel_{a}b = \frac{b}{\pow(a\mid b)}$ called the remainder part of $b$ with respect to power of $a$.
+    And we define $\rel(a\mid b) = \frac{b}{\pow(a\mid b)}$ called the remainder part of $b$ with respect to power of $a$.
 \end{definition}
 \begin{proposition}
     If $c \mid a$ and $a \mid b$, then $\val_{c}b \ge \val_{c}a \cdot \val_{a}b$.
@@ -141,7 +148,7 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
     $\lim_{n\to\infty}\gcd(a^{n}, b) = \raf_{a}b$.
 \end{proposition}
 \begin{proposition}
-      $\log \raf_{a}b = \sum_{p\in\mathbb{P}}^{p \mid a} \val_{p}b \log p$
+    $\log \raf_{a}b = \sum_{p\in\mathbb{P}}^{p \mid a} \val_{p}b \log p$
 \end{proposition}
 \begin{proposition}\label{prop:rem-coprimality}
     $\gcd(\ram_{a}b, a) = 1$.
@@ -156,6 +163,11 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
         &\raf_{2}(b - 1) \cdot \raf_{2}n + \raf_{2}(b + 1) - 1, & p = 2.
     \end{aligned} \right.\]
 \end{theorem}
+
+\begin{definition}
+    $\rord_{a} b = \lcm_{p\in\mathbb{P}}^{p\mid a} \{\ord_{p} b\}$ be the radical order.
+\end{definition}
+
 % Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$ from analytic number theory. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.
 % \begin{definition}
 %     Define $\pi(A;x) = \card\{ A \le x \}$ that $x\in\mathbb{R}_{>1}$. And we define the Perron form
