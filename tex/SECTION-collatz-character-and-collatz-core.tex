@@ -33,18 +33,21 @@ And according properties of the discrete logarithm, we have
 \begin{proposition}\label{prop:chr-le-ord}
     If $\chr a < \infty$, $\chr a \le \ord_{\alpha}(\beta)$.
 \end{proposition}
-\begin{proposition}\label{prop:collatz-character-finite-generated}
+\begin{theorem}\label{thm:collatz-character-finite-generated}
     Denote $\Gamma = [\gamma (\beta;\alpha)]/\alpha$. We ahve
     \[ \chr a <\infty \Longleftrightarrow a\fmod \alpha \in \Gamma. \]
     Here $(\beta; \alpha)$ follows \cref{def:generated-subgroup}.
-\end{proposition}
+\end{theorem}
 \begin{proof}
     If $\chr a <\infty$, we can consider $\cor a$. Let $v = \ord_{\alpha}\beta - \chr a$,  we have
     \[ \cor a = \beta^{\chr a}a \equiv\beta^{\ord_{\alpha}\beta - v}a \equiv \beta^{-v}a \equiv\gamma. \pmod{\alpha} \]
-    Thus $a\equiv \gamma\cdot\beta^{v} \pmod{\alpha}$ and $v\le \ord_{\alpha}\beta$. Thus $a\in[\gamma G(\beta; \alpha)]/\alpha$.
+    Thus $a\equiv \gamma\cdot\beta^{v} \pmod{\alpha}$ and $v\le \ord_{\alpha}\beta$. Thus $a\in[\gamma (\beta; \alpha)]/\alpha$.
 
-    If $a\in[\gamma G(\beta; \alpha)]/\alpha$, then $\exists v\le \ord_{\alpha}\beta$, such that $a\equiv \gamma\cdot\beta^{v} \pmod{\alpha}$. Then let $u = \ord_{\alpha}\beta - v \le \ord_{\alpha}\beta$, we have $\beta^{u}a\equiv\gamma \pmod{\alpha}$, which equivalents to $\alpha \mid (\beta^{u}a-\gamma)$. If $u > 0$, then $\beta\nmid(\beta^{u}a-\gamma)$, since $\gcd(\beta, \alpha) = 1$, thus we have $\beta\nmid (\beta^{u}a-\gamma)/\alpha$. If $\beta\mid(\beta^{u}a-\gamma)$, since $\gcd(\beta, \gamma) = 1$, we have $u = 0$. Thus $a-\gamma \equiv 0 \pmod{\alpha}$. Then we have $\beta\nmid (\beta^{\ord_{\alpha}\beta}a-\gamma) \equiv a-\gamma \equiv 0 \pmod{\alpha}$. Anyway, $\chr a\le \ord_{\alpha}\beta < \infty$.
+    If $a\in[\gamma (\beta; \alpha)]/\alpha$, then $\exists v\le \ord_{\alpha}\beta$, such that $a\equiv \gamma\cdot\beta^{v} \pmod{\alpha}$. Then let $u = \ord_{\alpha}\beta - v \le \ord_{\alpha}\beta$, we have $\beta^{u}a\equiv\gamma \pmod{\alpha}$, which equivalents to $\alpha \mid (\beta^{u}a-\gamma)$. If $u > 0$, then $\beta\nmid(\beta^{u}a-\gamma)$, since $\gcd(\beta, \alpha) = 1$, thus we have $\beta\nmid (\beta^{u}a-\gamma)/\alpha$. If $\beta\mid(\beta^{u}a-\gamma)$, since $\gcd(\beta, \gamma) = 1$, we have $u = 0$. Thus $a-\gamma \equiv 0 \pmod{\alpha}$. Then we have $\beta\nmid (\beta^{\ord_{\alpha}\beta}a-\gamma) \equiv a-\gamma \equiv 0 \pmod{\alpha}$. Anyway, $\chr a\le \ord_{\alpha}\beta < \infty$.
 \end{proof}
+\begin{corollary}\label{cor:chr-are-periodic}
+    $\chr a = \chr b \Longleftrightarrow b \equiv a \pmod{\alpha}$.
+\end{corollary}
 \begin{definition}
     We denote $\overline{\Gamma} = \Gamma \cup\{\infty\}$.
     And we define $\mathbb{S}(a)_{i} = \{ b\rightsquigarrow a \mid \chr b = i \}$, $\mathbb{S}_{i} = \{ a\in\widehat{\mathbb{N}}_{\beta} \mid \chr a = i \}$.
@@ -54,14 +57,6 @@ With these, we have
     $\mathbb{S}(a) = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}(a)_{i}$. $\widehat{\mathbb{N}}_{\beta} = \bigcup_{i\in\overline{\Gamma}}\mathbb{S}_{i}$.
 \end{proposition}
 Actually, $\mathbb{S}_{\infty}$ is exactly the set of all primitive sources. And we have
-\begin{proposition}\label{prop:chr-are-periodic}
-    If $i = \chr a$, then $\mathbb{S}_{i} = \{ b\in\widehat{\mathbb{N}}_{\beta} \mid b \equiv a \pmod{\alpha} \}$.
-\end{proposition}
-And hence we also denote $\mathbb{S}[a] = \mathbb{S}_i$. We have
-\begin{proposition}
-    $\chr \mathbb{S}[a] = \{\chr a\}$.
-\end{proposition}
-Furthermore, we have
 \begin{proposition}
     If $\alpha \mid \gamma$, then $\Phi_1 = 1$, and then $\chr b = \left\{\begin{aligned}
         &1, &&\alpha\mid b, \\

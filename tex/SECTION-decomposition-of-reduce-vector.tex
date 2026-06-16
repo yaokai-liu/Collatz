@@ -10,7 +10,7 @@ with this, immidiately, we have
 \end{theorem}
 \begin{proof}
     Of course, $\forall i \ge k$, we have $b_i = a_i$ and thus $\chr b_i = \chr a_i$. \newline
-    Consider $i < k$. We have $a_i = f_{n-i}(\bm{a}_{i-1:n})$. Thus $b_i = f_{n_i}(\bm{b}_{i-1:n})$. Since $i < k$, then $\bm{b}_{i-1:n} = \bm{a}_{i-1:n} + \alpha\Phi_k\bm{e}_k$. Then from \cref{thm:simple-collatz-system-mod-eq-plus-s-gamma-nabla_1}, we have $b_i \equiv a_i \pmod{\alpha}$. Thus from \cref{prop:chr-are-periodic}, we have $\chr a_i = \chr b_i$. Then we proved this proposition.
+    Consider $i < k$. We have $a_i = f_{n-i}(\bm{a}_{i-1:n})$. Thus $b_i = f_{n_i}(\bm{b}_{i-1:n})$. Since $i < k$, then $\bm{b}_{i-1:n} = \bm{a}_{i-1:n} + \alpha\Phi_k\bm{e}_k$. Then from \cref{thm:simple-collatz-system-mod-eq-plus-s-gamma-nabla_1}, we have $b_i \equiv a_i \pmod{\alpha}$. Thus from \cref{cor:chr-are-periodic}, we have $\chr a_i = \chr b_i$. Then we proved this proposition.
 \end{proof}
 
 However, not all character vectors are valid. For example, for $5$ in the (3,2,1) system, since $f_{n}((1);5) = 3$ no longer has source values, we cannot write a two-dimensional character vector for $5$. To make it a strictly valid formula, we might need to introduce some special elements that do not exist in reality to modify the definition of the Collatz features of these original sources, or expand our vision to a larger domain, such as $\mathbb{Q}$. However, we do not intend to delve into this issue here. We will provide another way to work around this problem, but in this section, we will always assume that all systems are simple. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we define

@@ -63,7 +63,7 @@ From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, we still have
     Suppose $f_{1}(\bm{a}) \in\mathbb{S}_{1}(b) \cap \mathbb{S}_{\infty}$.
     From \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}, $\forall k\in\mathbb{Z}$ such that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) > 0$, we have
     \[ f_{1}(\bm{a} + k\gamma\Phi_1\bm{e}_1) \equiv k\nabla_1 + f_{1}(\bm{a}) \equiv f_{1}(\bm{a})  \pmod{\alpha} \]
-    Thus from \cref{prop:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}_{\infty}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
+    Thus from \cref{cor:chr-are-periodic}, $f_{1}(\bm{a} + k\Phi_1\bm{e}_1) \in \mathbb{S}_{\infty}$. Notice that $f_{1}(\bm{a} + k\Phi_1\bm{e}_1)$ runs all $\mathbb{S}_{1}(b)$, thus $\mathbb{S}_{1}(b) \subset \mathbb{S}_{\infty}$.
 \end{proof}
 
 Actually, we can derive $\mathbb{V}_{n+1}(b)$ from $\mathbb{V}_{n}(b)$ and derive $\mathbb{S}_{n+1}(b)$ from $\mathbb{S}_{n}(b)$.
@@ -115,16 +115,15 @@ We can verify it equivalents to the classic Collatz problem.
 \cref{thm:layers-of-reduce-space-and-source-value-set} provides a very important insight: the source values of a number are not entirely chaotic; they can be precisely categorized into different levels.
 However, although we have provided expressions for $\mathbb{V}_{n+1}(b)$ and $\mathbb{S}_{n+1}(b)$, they are still complex and difficult to use.
 They are merely another equivalent expression of the original problem and are hard to use for finding counter examples.
-That's because they are still based on $\mathbb{S}_{n}(b)$, and therefore still require recursively representing all the first $n$ $\mathbb{S}$s to represent the $(n+1)$-th. To solve this problem, we will try to decompose the reduce vectors in \cref{sec:decomposition-of-reduce-vector} and provide an other view on them source value set.
+That's because they are still based on $\mathbb{S}_{n}(b)$, and therefore still require recursively representing all the first $n$ $\mathbb{S}$s to represent the $(n+1)$-th. To solve this problem, we will try to decompose the reduce vectors in \cref{sec:decomposition-of-reduce-vector} and provide an other view on them.
 
-We can observe that as the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{S}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
+We can observe that with the dimension $n$ increases, $\mathbb{V}_{n}(b)$ becomes increasingly "sparse," as the terminal components—those lying between two integers—increment in multiples of $\Phi_{n}$. However, this represents merely a local perspective focused on a single value within a single hierarchical level. In reality—given that numerous numbers have already been situated within lower-dimensional spaces, and that the original source itself constrains the expansion of dimensions—the actual number of elements within the set $\mathbb{S}_{n}(b)$ undergoes an exponential expansion; this phenomenon is dictated by the recursive construction described in \cref{thm:layers-of-reduce-space-and-source-value-set}, which exactly is because it's "complex and difficult to use".
 
 Looking back at \cref{thm:the-periodic-rule-of-reduce-sequence} from \cref{thm:layers-of-reduce-space-and-source-value-set}, we can finally understand that when $\Phi_k$ adjusts the reduction sequence, we are actually changing one number in $\mathbb{S}_{n-k}(b)$ to another, while keeping the beginning and subsequent parts of the reduction sequence unchanged. It also explains the role of $\gamma$. It shows that $\gamma$ doesn't participate much in the construction of the source value set, but it determines the size of the jump steps. Although we might find it seems that only $\Phi_1$ participates in the construction of the source value set, in reality, all $\Phi(k)$ are power of $\alpha$ multiplied by $\Phi(1)$. Therefore, $\Phi_k$ not only represents the construction of the source value set but also tells us about the cyclic structure of the source value set in the form of factors of $\alpha$.
-Note that both numbers also have their own source value sets, which implies some homomorphisms between these two source value sets.
-And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same class and their $\val$ are linear recurrenced.
 
+We may wary about if there's only finite layers could be traced back, but
 \begin{theorem}\label{thm:infinite-layers}
-	Suppose $\alpha \nmid \nabla_1$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
+	Suppose $\gcd(\alpha, \gamma\nabla_1) = 1$. For $b\not\in\mathbb{S}_{\infty}$, we have $\forall N > 0$, there is $\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \ne \varnothing$.
 \end{theorem}
 \begin{proof}
 	Divide into two situations:\newline
@@ -133,7 +132,8 @@ And the two theorems reveal that elements of $\mathbb{S}_{1}(b)$ is in a same cl
 	\[\mathbb{S}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) \supset \mathbb{S}_{N+1}(b) - \bigcup_{n=0}^{N}\mathbb{S}_{n}(b) = \mathbb{S}_{N+1}(b) \ne \varnothing.\]
 	If $b \rightsquigarrow b$. Suppose it's a $t$-period cycle, then $b \in\mathbb{S}_{t}(b)$. From \cref{thm:layers-of-reduce-space-and-source-value-set}, we can just pick $a = \beta^{\Phi_1}\cdot b + \nabla_1\in\mathbb{S}_{t}(b)$, we have $a \rightsquigarrow b \not\rightsquigarrow a$. From previous discussion, $\mathbb{S}(a)$ can not be covered within finity layers, thus the $\mathbb{S}(b) \supset \mathbb{S}(a)$ also can't be covered within finity layers.
 \end{proof}
-\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture by any method of case analysis by number's patterns, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
+
+\cref{thm:infinite-layers} demonstrates that we can never resolve the Collatz conjecture by any method of case analysis by number's patterns, especially remainders modulo some specially numbers, even if we partition the problem into various infinite sets. It's because different layers are in defferent patterns. Though we can tell a lot of patterns, and for any given layer, we can also explore its pattern, that's not enough at all.
 
 Finally, let us introduce two notations to provide a perspective on a single source value and reinterpret the theorem \cref{thm:layers-of-reduce-space-and-source-value-set}.
 \begin{definition}
