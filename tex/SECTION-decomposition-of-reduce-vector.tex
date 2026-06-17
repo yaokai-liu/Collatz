@@ -5,7 +5,7 @@ Now let's consider how to decompose the reduced vector. We might initially expec
 \[ \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n) + \text{ an adjusted vector}. \]
 Actually, for $a = f_{n}(\bm{a})$, denote $\chr \bm{a} = (\chr a_1, \chr a_2, \cdots, \chr a_n)$,
 with this, immidiately, we have
-\begin{theorem}
+\begin{theorem}\label{thm:chr-not-change-with-adjust-of-alpha-Phi-k}
     For sumiple system, if $\bm{b} = \bm{a} + \alpha\Phi_k\bm{e}_k$, then $\chr \bm{b} = \chr \bm{a}$.
 \end{theorem}
 \begin{proof}
@@ -35,9 +35,9 @@ However, not all character vectors are valid. For example, for $5$ in the (3,2,1
     and then we can naturally derive the definitions of $\wchr\mathcal{A}$, $\wchr\mathfrak{A}$, and $\wchr\mathfrak{a}$. We call them are adjusted.
     Finally, we define
     \[ \Chr_{n}(b) = \{ \wchr \bm{v} \mid f_{n}(\wchr\bm{v}; b) \in\mathbb{N} \} \]
-    as the set of adjusted character reduce vectors.
+    as the set of adjusted character reduce vectors. Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do not need trace it back any more.
 \end{definition}
-Notice that the first component of $\wchr\bm{a}$ is not adjusted. Because we do not need trace it back any more.
+
 \begin{proposition}
     For simple systems, we have $\Phi_1\mid (\bm{a} - \wchr\bm{a})$.
 \end{proposition}
@@ -50,15 +50,15 @@ called the simplified reduce vector. If $\bm{a}$ is the reduce vector of number 
 \end{proposition}
 
 \begin{theorem}
-    Suppose $k_i$ is the exponents of $\Phi$ in \cref{thm:f_n-by-F-and-Phi}, then we have
-    \[ \simp\bm{a} = (k_1, k_2, \cdots, k_n) - \bm{\delta}. \]
-    Here $\bm{\delta} = (\delta_{i})\in\{0, 1\}^{n}$.
+    Given a redude vectors $\bm{v}$ that $f_{n}(\bm{v}) \in \mathbb{N}$, then $\forall \Delta\bm{v}\in \mathbb{N}^{n}$, $\exists \bm{u}$ that $f_{n}(\bm{u}) \in \mathbb{N}$, such that $\simp\bm{u} = \simp\bm{v} + \Delta\bm{v} + \bm{\delta}$. Here $\bm{\delta}\in\{0, 1\}^{n}$.
 \end{theorem}
-
-Let us examine the $\wchr\bm{a}$ of $a$. We observe that while it depends on $a$, it is insensitive to the adjustments given in \cref{thm:the-periodic-rule-of-reduce-sequence} of the reduced vector; it means that in a given Collatz system, it reflects the common characteristics of the source values of this series of $a$. However, we must point out that for a broader adjustment, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds, $\Phi_k$ is not always divisible by $\Phi_1 \cdot \simp a_i$. In other words, these growths of $\simp a_i$ do not conform to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" changes the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), adjustments other than those given in \cref{thm:the-periodic-rule-of-reduce-sequence} will alter the character vectors. Therefore, considering the effect of the adjustment operation on $\wchr\bm{a}$ is crucial for us.
-
-\begin{theorem}
+\begin{proof}
+    TODO.
+\end{proof}
+\begin{corollary}
     Given $\bm{a}\in\mathbb{V}_{n}(b)$. If $\forall\bm{v}\in\mathbb{V}_{n}(b)$ there is $f_{n}(\bm{v};b) \ge f_{n}(\bm{a};b)$, then we have $\bm{a} \in \Chr_{n}({b})$.
-\end{theorem}
+\end{corollary}
+
+Let us examine the $\wchr\bm{a}$ of $a$. \cref{thm:chr-not-change-with-adjust-of-alpha-Phi-k} tell us that while it depends on $a$, it is insensitive to the adjustments of times of $\alpha\Phi_k$; it means that in a given Collatz system, it reflects the common characteristics of the source values of this series of $a$. However, we must point out that for a broader adjustment, although $\Phi_1 \mid (\bm{a} - \wchr\bm{a})$ holds, $\Phi_k$ is not always divisible by $\Phi_1 \cdot \simp a_i$. In other words, these growths of $\simp a_i$ do not conform to the pattern revealed by \cref{cor:alpha-times-between-Phis}. Since the "adjustment operation" changes the remainder of the source value (see \cref{cor:remainder-after-change-reduce-vector-modulo-alpha}), adjustments other than those given in \cref{thm:chr-not-change-with-adjust-of-alpha-Phi-k} will alter the character vectors. Therefore, considering the effect of the adjustment operation on $\wchr\bm{a}$ is crucial for us.
 
 TODO.
