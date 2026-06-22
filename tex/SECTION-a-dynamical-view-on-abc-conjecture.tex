@@ -1,104 +1,58 @@
 % !TEX root = main.tex
 \section{A Dynamical View on ABC conjecture}\label{sec:a-dynamical-view-on-abc-conjecture}
 
-In \cref{theorem:inductive-formula}, we can find the exponent of $\alpha$ is always $n$ wihle exponent of $\beta$ is variable with reduce sequence. Given a sequence, we also have its Cauchy production
-\begin{definition}[Cauchy production]
-	Given a sequences $\{a_k\}\subset \mathbb{Z}^{*}$. Define $\mathcal{A}_{n}^{m} = \prod_{k=m}^{n-1} a_k$ as its Cauchy production.
+\begin{definition}\label{def:factorization-matrix}
+	For given $\mathcal{P}, \mathcal{Q} \in \mathbb{N}$. For arbitrary factorization $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$ that $p_k, q_k \in \mathbb{N}_{\ge 1}$, define
+\[ \bm{M} = \begin{pmatrix}
+	p_{0} & -q_0 & 0 & \cdots & 0 \\
+	0 & p_1 & -q_1 & \cdots & 0 \\
+	\vdots & \vdots & \vdots & & \vdots \\
+	-q_{n-1} & 0 & 0 & \cdots & p_{n-1}
+\end{pmatrix} \]
+be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
+% $\bm{p} = (p_0, p_1, \cdots, p_{n-1})$ and $\bm{q} = (q_0, q_1, \cdots, q_{n-1})$.
 \end{definition}
-\begin{example}
-	Given $\alpha \in \mathbb{N}_{\ge2}$ are coprime. Given two sequences $\{a_k\}_{k=1}^{n} \subset\mathbb{N}$, then we have a Cauchy production $\mathcal{A}_{n}^{m} = \alpha^{\sum_{k=m}^{n-1}a_k}$.
-\end{example}
-\begin{theorem}\label{thm:power-diff-system-exists}
-	Given two sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n}\subset\mathbb{N}_{\ge1}$, we have their production $\mathcal{A}$ and $\mathcal{B}$. Given $r\in \mathbb{Z}^{*}$, then $\exists \{\gamma_k\}_{k=1}^{n}\subset\mathbb{Z}^{*}$ and $b \in\mathbb{Z}^{*}$, such that
-	\[ s\cdot\mathcal{B}_n - r\cdot\mathcal{A}_n = \sum_{k=0}^{n-1}\mathcal{B}_k\mathcal{A}_{n-1}^{k}\gamma_k. \]
-	We call these systems as general power-difference system.
-\end{theorem}
-\begin{proof}
-	Similar to \cref{theorem:inductive-formula}. Just let $\gamma_k$ and $a_k$ satisfy
-	\[ r_{k+1}\cdot b_{k} = r_{k}\cdot a_k + \gamma_k, \]
-	and let $s = r_n$, the theorem holds.
-\end{proof}
-
-Also, we denote $ \mathfrak{U}_{n} = \sum_{k=0}^{n-1}\mathcal{B}_k\mathcal{A}_{n-1}^{k}\gamma_k$. We have $\mathfrak{U}\in\partial_{*}(\mathcal{B}_{*}, \mathcal{A}_{*})$ follows conclusions in \cref{sec:a-kind-of-derivation-on-groupoid} and its kernel is exactly $\gamma_{k}$. 
-% \begin{remark}
-% 	Notice that the system in \cref{thm:power-diff-system-exists} is built from reduce sequence, thus we have no result like $\beta \nmid b$ and $\beta\nmid \mathfrak{U}_n$. And we can't ensure $r_k > 0$ or $\gamma_k > 0$ any more.
-% % \end{remark}
-
-Not only these. From \cref{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}, alternatively, we have
-\begin{theorem}\label{thm:arithmetic-decomposition-to-dynamical-system}
-	For given $\mathcal{P}, \mathcal{Q}, \mathcal{S} \in \mathbb{N}$ that $\mathcal{Q} - \mathcal{P} = \mathcal{S}$.\newline
-	When $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$, there are $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$ of length $n$ such that $\mathcal{S}\cdot r_0 = \sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k$. In this condition, we have
-	\begin{equation}\label{equ:equation-system-of-arithmetic-to-dynamical-system}
-		\left\{\begin{aligned}
-		&q_{0}\cdot r_{1} - p_{0} \cdot r_{0} = \gamma_{0},\\
-		&q_{1}\cdot r_{2} - p_{1} \cdot r_{1} = \gamma_{1},\\
-		% &q_{2}\cdot r_{3} - p_{2} \cdot r_{2} = \gamma_{2},\\
-		&\cdots \\
-		&q_{n-1}\cdot r_{0} - p_{n-1} \cdot r_{n-1} = \gamma_{n-1}.
-	\end{aligned}\right.
-	\end{equation}
-\end{theorem}
-\begin{proof}
-	$\Longrightarrow$: We can always partition $\mathcal{P}$, $\mathcal{Q}$ at first, thus we suppose the sequences $\{p_k\}, \{q_k\}$ are already exists. From \cref{thm:power-diff-system-exists}, we have a such  $\{r_k\}, \{\gamma_k\} \subset\mathbb{Z}^{*}$. If for given $r_0 > 0$, there's $r_n \ne r_0$, then let $r_n \cdot \mathcal{Q} - r_0 \cdot \mathcal{P} = \mathfrak{U}$. With this we have $(r_n - r_0)\cdot \mathcal{Q} = \mathfrak{U} - r_0\cdot \mathcal{S}$. Now let
-	\[ \gamma'_n = \gamma_n - (r_n - r_0)\cdot \mathcal{Q} / \mathcal{Q}_{n-1} = \gamma_n -  (r_n - r_0)\cdot q_{n-1}. \]
-	From \cref{thm:power-diff-system-exists}, we can derive $r'_n$ with $\gamma'_n$ by
-	\begin{align*}
-		r'_n\cdot q_{n-1} &= a\cdot p_{n-1} + \gamma'_n \\
-		&= a\cdot p_{n-1} + \gamma_n - (r_n - r_0)\cdot q_{n-1} \\
-		&= r_n \cdot q_{n-1} - (r_n - r_0)\cdot q_{n-1} \\
-		&= r_0 \cdot q_{n-1},
-	\end{align*}
-	which means we found a new $\{\gamma'_k\}$ and $\{r_k\}$ such that $r'_n = r_0$.
-	\newline
-	$\Longleftarrow$: Trivial from \cref{thm:derivation-periodic-rule}.
-\end{proof}
-\begin{remark}
-	we can always suppose $\gcd(\gamma_0, \gamma_1, \cdots, \gamma_{n-1}) = 1$. And suppose $\forall k < n$, $p_k$, $q_k$ not both $1$.
-\end{remark}
-Actually, if $a_{j} = b_{j} = 0$. Then from $q_{j}\cdot r_{j+1} - p_{j} \cdot r_{j} = r_{j+1} - r_{j} = \gamma_{j}$ we have $q_{j+1}\cdot r_{j+2} - p_{j+1} \cdot r_{i} = \gamma_{j+1} + p_{j+1}\gamma_{i}$. Then let
-\begin{align*}
-	u_k &= \left\{\begin{aligned}
-		&a_{k},  &&k < j, \\
-		&a_{k+1}, && j < k < n-1,
-	\end{aligned}\right.\\
-	v_k &= \left\{\begin{aligned}
-		&b_{k},  &&k < j, \\
-		&b_{k+1}, && j < k < n-1,
-	\end{aligned}\right.\\
-	\eta_k &= \left\{\begin{aligned}
-		&\gamma_{k},  &&k < j, \\
-		&\gamma_{j+1} + p_{j+1}\gamma_{j}, && k = j+1, \\
-		&\gamma_{k+1}, && j+1 < k < n-1.
-	\end{aligned}\right.
-\end{align*}
-We build a same system of equations for $\{u_k\}, \{v_k\}, \{r_k\}, \{\eta_k\}$ like \cref{equ:equation-system-of-arithmetic-to-dynamical-system}, and $u_j, v_j$ are not both $0$. Repeat this operation, we can replace all $p_{j} = q_{j} = 1$, that's why we can always suppose $p_k$, $q_k$ not both $1$. From this operation, we can also find that if \cref{equ:equation-system-of-arithmetic-to-dynamical-system} exists for a given $N$, then similar systems of equations also exist for all $n$ that $0 < n \le N$.
-
-\cref{thm:arithmetic-decomposition-to-dynamical-system} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. Actually, with this theorem, we have
+\begin{proposition}\label{prop:det-factorization-matrix-is-diff}
+	Let $\mathcal{S} = \mathcal{P} - \mathcal{Q}$, we have $\det \bm{M} = (-1)^{n}\cdot\mathcal{S}$.
+\end{proposition}
+\cref{prop:det-factorization-matrix-is-diff} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. Actually, with this theorem, we have
 \begin{conjecture}[rewitten ABC conjecture]
-	$\forall \varepsilon \ge 0$, there exist only finite triple $(\mathcal{P}, \mathcal{Q})$ such that
-	\[ \rad\left(\frac{1}{r_0}\sum_{k=0}^{n-1}\mathcal{Q}_k\mathcal{P}_{n-1}^{k}\gamma_k\right) < \frac{\mathcal{Q}^{1-\varepsilon}}{\rad(\mathcal{P}\mathcal{Q})} = \frac{\mathcal{Q}^{\sharp-\varepsilon}}{\rad\mathcal{P}}. \]
-	Here $\mathcal{Q}^{\sharp} = \mathcal{Q} / \rad\mathcal{Q}$.
+	$\forall \varepsilon > 0$, there exist only finite coprime pair $(\mathcal{P}, \mathcal{Q}) \in \mathbb{N}_{\ge 1}^{2}$ such that
+	\[ \rad\vert\det\bm{M}\vert < \frac{\mathcal{P}^{1-\varepsilon}}{\rad(\mathcal{Q}\mathcal{P})} = \frac{\mathcal{P}^{\sharp-\varepsilon}}{\rad\mathcal{Q}}. \]
+	Here $\mathcal{P}^{\sharp} = \mathcal{P} / \rad\mathcal{P}$.
 \end{conjecture}
+\begin{proposition}
+	Let $\bm{\gamma} = \bm{M}\bm{r}$, there is or $\exists k < n$ such that $q_k \le p_k + 1$, or $\norm{\bm{\gamma}}_{\infty} > 1$.
+\end{proposition}
+\begin{proof}
+	If not, i.e. $\forall k < n$, $q_k \ge p_k + 2$ and $\norm{\bm{\gamma}}_{\infty} = 1$. Then we have $\norm{\bm{\gamma}}_{\infty} = 1$, then $\abs{\gamma_k} = 1$. From $p_k \cdot r_k = q_k\cdot r_{k+1} + \gamma_k$, we have $p_k \cdot \abs{r_k} = q_k \cdot \abs{r_{k+1}} - \abs{\gamma_k} = q_k \cdot \abs{r_{k+1}} - 1$. Since $q_k \ge p_k + 2$, then $p_k \cdot \abs{r_k} \ge p_k \cdot \abs{r_{k+1}} + 2 \abs{r_{k+1}} - \abs{\gamma_k} \ge p_k \cdot \abs{r_{k+1}} + 1$. Thus we have $\abs{r_k} \ge \abs{r_{k+1}}$. Thus we have $\abs{r_k} \ge \abs{r_{k+n}} = \abs{r_k}$, which is paradoxical. 
+\end{proof}
+\begin{proposition}\label{prop:power-diff-to-dynamical-system}
+	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\bm{a}, \bm{b} \in \mathbb{N}^{n}$ such that when $p_k = \beta^{b_k}$, $q_k = \alpha^{a_k}$, there is $\abs{\det\bm{M}} = C$.
+\end{proposition}
+\begin{proposition}\label{prop:collatz-cycle-system} 
+	For $p_k$ be the power of number $2$ and $q_k = 3$, the classic Collatz has a non-trivial cycle equivalents to $\forall n \ge 1$, $\forall \bm{r} \in \mathbb{Z}^{n} - \{(1, 1, \cdots, 1)\}$ there is $\bm{M}\bm{r} \ne (1, 1, \cdots, 1)$.
+\end{proposition}
+% \cref{prop:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
+% Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{prop:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
+% We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system. These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation.
+% Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
 
-\cref{thm:arithmetic-decomposition-to-dynamical-system} prompt us to investigate $\gamma_k$, the exact differential forms associated with such discrete dynamical systems. Naturally, these quantities are interrelated with the $r_k$, and thus they should be considered as well. However, we don't know yet what them represent in number theory.
-
-\begin{corollary}\label{cor:power-diff-to-dynamical-system}
-	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\{a_k\}_{k=1}^{n}, \{b_k\}_{k=1}^{n} \subset \mathbb{N}$ and $\{r_k\}_{k=1}^{n}, \{\gamma_k\}_{k=1}^{n} \subset\mathbb{Z}^{*}$, such that whenever $A = \sum_{k=0}^{n-1}a_k$ and $B = \sum_{k=0}^{n-1}b_k$, there is $C \cdot r_0 = \sum_{k=0}^{n-1}\beta^{\mathcal{B}_k}\alpha^{\mathcal{A}_{n-1}^{k}}\gamma_k$, which also equivalents to the sequences $\{a_k\}, \{b_k\}, \{r_k\}, \{\gamma_k\}$ satisfying the following system of equations:
-	\begin{equation}\label{equ:equation-system-of-power-diff-to-dynamical-system}
-		\left\{\begin{aligned}
-		&\beta^{b_{0}}\cdot r_{1} - \alpha^{a_{0}} \cdot r_{0} = \gamma_{0},\\
-		&\beta^{b_{1}}\cdot r_{2} - \alpha^{a_{1}} \cdot r_{1} = \gamma_{1},\\
-		% &\beta^{\mathcal{B}_{3}^{2}}\cdot r_{3} - \alpha^{\mathcal{A}_{n-1}^{2}} \cdot r_{2} = \gamma_{2},\\
-		&\cdots \\
-		&\beta^{b_{n-1}}\cdot r_{0} - \alpha^{a_{n-1}} \cdot r_{n-1} = \gamma_{n-1}.
-	\end{aligned}\right.
-	\end{equation}
-\end{corollary}
-
-\cref{cor:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
-Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{cor:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
-We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system. These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation.
-Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential form; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
+Since $\bm{M}$ is an integer coefficient matrix, consider it's Simith normal form, unfortunately, for this kind of matrix, the Simith normal form will be $\diag(1, 1, \cdots, (-1)^{n}\mathcal{S})$, which can't get anly new factorization information from it. Thus we have
+\begin{definition}
+	Given $\bm{M}\in \mathbb{Z}^{n\times n}$ that $\det\bm{M} \ne 0$. Define factorization form is $\mathcal{L}(M) = \diag(m_0, m_1, \cdots, m_{n-1})$ such that $\forall p\in\mathbb{P}$, there is
+	\[ \val_{p}m_k = \left\lfloor\frac{\val_{p}\abs{\det\bm{M}}}{n}\right\rfloor + \left\{\begin{aligned}
+		& 0, && k \le n - (\val_{p}\abs{\det\bm{M}} \mod{n}), \\
+		& 1, && k > n - (\val_{p}\abs{\det\bm{M}} \mod{n}).
+	\end{aligned}\right. \]
+	Of course, $\mathcal{L}(M)$ be a kind of Simith normal form. Since $\mathcal{S} = \abs{\det\bm{M}}$, we also denote it as $\mathcal{L}(\mathcal{S})$.
+\end{definition}
+\begin{proposition}
+	$\rad\mathcal{S} = \abs{m_{n-1}}$ and $\mathcal{L}(\mathcal{S}^{\sharp}) = \begin{pmatrix}
+	0 & 0 \\
+	\bm{I} & 0 \\
+\end{pmatrix}\mathcal{L}(\mathcal{S}) + \diag(1, 0, \cdots, 0)$.
+\end{proposition}
 
 % TODO.
 
@@ -153,7 +107,7 @@ Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\
 \begin{proposition}
 	$\overline{\partial}(f\cdot\overline{\partial}(g\cdot h)) + \overline{\partial}(g\cdot\overline{\partial}(h\cdot f)) + \overline{\partial}(h\cdot\overline{\partial}(f\cdot g)) = 0$.
 \end{proposition}
-Denote $\widehat{n} = (-1)^{\mathfrak{p}}(n\fmod 2)$, here $\mathfrak{p}(i,j)$ is the character of path that $i + j = n$. With this we have
+Denote $\widehat{n} = (-1)^{\mathfrak{p}}(n\fmod 2)$, here $\mathfrak{p}(i,j)$ is the character of path $\mathfrak{p}$ that $i + j = n$. With this we have
 \begin{proposition}
 	$\partial(f^{n}) = nf^{n-1}\partial f$ and $\overline{\partial}(f^{n}) = \widehat{n}f^{n-1}\overline{\partial}f$.
 \end{proposition}
@@ -195,20 +149,20 @@ Similar with Mason-Stothers theorem, we have
 	And thus
 	\[ f^{\sharp}g^{\sharp}h^{\sharp}\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\} \right. \]
 \end{proposition}
-\begin{proof}
-	At first, we have
-	\begin{align*}
-		\overline{\partial}(fg) \cdot \rad(fg) &= fg \cdot \overline{\partial}\!\rad(fg), \\
-		\overline{\partial}(fh) \cdot \rad(fh) &= fh \cdot \overline{\partial}\!\rad(fh).
-	\end{align*}
-	Thus $fgh \left\vert\ \lcm(\overline{\partial}(fg), \overline{\partial}(fh))\cdot\rad(fgh)\right.$. And we have
-	\begin{align*}
-		\overline{\partial}(fh) &= f\overline{\partial}(h) - h\overline{\partial}(f) \\
-		&= f\cdot\overline{\delta}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
-		&= \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g).
-	\end{align*}
-	With this we proved this proposition.
-\end{proof}
+% \begin{proof}
+% 	At first, we have
+% 	\begin{align*}
+% 		\overline{\partial}(fg) \cdot \rad(fg) &= fg \cdot \overline{\partial}\!\rad(fg), \\
+% 		\overline{\partial}(fh) \cdot \rad(fh) &= fh \cdot \overline{\partial}\!\rad(fh).
+% 	\end{align*}
+% 	Thus $fgh \left\vert\ \lcm(\overline{\partial}(fg), \overline{\partial}(fh))\cdot\rad(fgh)\right.$. And we have
+% 	\begin{align*}
+% 		\overline{\partial}(fh) &= f\overline{\partial}(h) - h\overline{\partial}(f) \\
+% 		&= f\cdot\overline{\delta}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
+% 		&= \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g).
+% 	\end{align*}
+% 	With this we proved this proposition.
+% \end{proof}
 This proposition indicates that $\overline{\delta}(f + g)$ cannot be chaotically random; it is strictly controlled by $f^{\sharp}g^{\sharp}h^{\sharp}$.
 In practice, we want $\vert\overline{\delta}(f + g)\vert$ to be as small as possible; this ensures that our inequality is as tight as possible.
 From \cref{prop:operator-are-separable}, we can only consider derivations on those inseparable elements, since derivations on other elements can be automatically generated by those on inseparable elements, in accordance with our axioms.
@@ -222,7 +176,7 @@ Additionally, denote
 Here we do not require $\mathcal{K}(f, g)$ be an element of $R_1$, but it should be the natural localization domain of $R_1$.
 For polynomials, the $\mathcal{K}(f, g) = \frac{f'}{f} - \frac{g'}{g}$. However, for natural numbers, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(f, g)$ represent for.
 
-We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that \cref{prop:fgh-mid-lcm-rad} is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that \cref{prop:fgh-mid-lcm-rad} not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand. similar with $\gamma_k$ in \cref{thm:arithmetic-decomposition-to-dynamical-system}, we can't tell what $\mathcal{M}(f, g)$ means for integral domains, but we believe that $\mathcal{M}(f, g)$ encapsulates all the mysteries of factorization over integral domains.
+We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that \cref{prop:fgh-mid-lcm-rad} is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that \cref{prop:fgh-mid-lcm-rad} not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand. We can't tell what $\mathcal{M}(f, g)$ means for integral domains, but we believe that $\mathcal{M}(f, g)$ encapsulates all the mysteries of factorization over integral domains.
 
 We can verify the classical arithmetic derivation that $\partial(a) = a\sum_{p\in\mathbb{P}}^{p\mid a}\frac{\val_{p} a}{p}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
 Equivalents to the ABC conjecture, we have

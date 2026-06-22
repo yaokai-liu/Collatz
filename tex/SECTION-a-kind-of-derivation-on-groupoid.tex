@@ -24,15 +24,13 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
 \begin{example}\label{exa:power-to-cauchy-homo}
     Given number $\alpha$ and a sequence $\{a_i\}$, we have
     \begin{align*}
-        \alpha^{\sum_{k=i}^{j-1}a_k}&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
-        [i, j) &\mapsto \alpha^{\sum_{k=i}^{j}a_k}.
+        \alpha^{\sum_{k=i}^{j-1}a_k}&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), & [i, j) &\mapsto \alpha^{\sum_{k=i}^{j}a_k}.
     \end{align*}
 \end{example}
 \begin{example}\label{exa:fundamental-theorem-of-arithmetic-to-cauchy-homo}
     Given a number $a\in\mathbb{N}_{\ge1}$, from Fundamental Theorem of Arithmetic, we have $a = \prod_{i=1}^{n} p_i$. Then we have
     \begin{align*}
-        \prod_{k=i}^{j-1}p_k&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), \\
-        [i, j) &\mapsto \prod_{k=i}^{j-1}p_k.
+        \prod_{k=i}^{j-1}p_k&\in \mathrm{Cauchy}(\mathbb{Z}\times \mathbb{Z}, \mathbb{Z}), & [i, j) &\mapsto \prod_{k=i}^{j-1}p_k.
     \end{align*}
 \end{example}
 \begin{definition}[($\mathcal{A}$, $\mathcal{B}$)-derivation]\label{def:quasi-derivation-on-groupoid}
