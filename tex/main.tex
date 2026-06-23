@@ -1,7 +1,8 @@
 \documentclass[a4paper,12pt]{article}
 % \usepackage{arxiv}
 \usepackage{xeCJK}
-\usepackage[left=0.5cm,right=0.5cm, top=1.0cm, bottom=1.5cm]{geometry}
+% \usepackage[left=0.5cm,right=0.5cm, top=1.0cm, bottom=1.5cm]{geometry}
+\usepackage[left=2.0cm,right=2.0cm, top=2.0cm, bottom=2.0cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,stackrel,nccmath,bm,mathtools}
 \usepackage{color,xcolor}
 \usepackage{fontspec}
@@ -92,13 +93,18 @@
 \author{Yaokai Liu
 \href{mailto:yaokai.liu@foxmail.com}{{\texttt{yaokai.liu@foxmail.com}}}}
 \begin{document}
-% \maketitle
-% \begin{abstract}
-% This paper investigates the algebraic and dynamical properties of generalized Collatz systems governed by $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$. We identify periodic characteristics within the reduction sequences and construct a hierarchical model for the corresponding sets of source values. Furthermore, we demonstrate that the algebraic structures inherent in these sets exhibit extreme rigidity; this result establishes a proportional relationship among the densities of these source-value sets. Leveraging these, we classify the distribution patterns of source values for a class of simple generalized Collatz systems, thereby offering measure-theoretic insights into them. Finally, we formalize the Collatz system as a quasi derivation defined over a groupoid structure. This formalization reveals intrinsic connections between generalized Collatz systems and classical problems such as the Power Difference Problem and the ABC conjecture, thereby providing a dynamical systems and algebraic topology perspective on the two famous questions.
-% \end{abstract}
-% \newpage
-% \tableofcontents
-% \newpage
+\maketitle
+\begin{abstract}
+This paper investigates the algebraic and dynamical properties of generalized Collatz systems governed by $a_{k+1}\cdot\beta^{\val(a;k+1)} = \alpha\cdot a_{k} + \gamma$.
+We identify periodic characteristics within the reduction sequences and construct a hierarchical model for the corresponding sets of source values.
+Furthermore, we demonstrate that the algebraic structures inherent in these sets exhibit extreme rigidity; this result establishes a proportional relationship among the densities of these source-value sets.
+% Leveraging these, we classify the distribution patterns of source values for a class of simple generalized Collatz systems, thereby offering measure-theoretic insights into them.
+Finally, we formalize the Collatz system as a quasi derivation defined over a groupoid structure.
+This formalization reveals intrinsic connections between generalized Collatz systems and classical problems such as  the ABC conjecture and the Power Difference Problem, thereby providing a dynamical systems and algebraic topology perspective on the two famous questions.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
 \input{nomenclature}
 \printnomenclature[10em]
 \newpage
@@ -113,7 +119,7 @@
 \input{SECTION-a-dynamical-view-on-abc-conjecture}
 
 \appendix
-\include{SECTION-misc-notations}
+% \include{SECTION-misc-notations}
 \include{SECTION-number-theory-tools}
 \include{SECTION-a-kind-of-derivation-on-groupoid}
 

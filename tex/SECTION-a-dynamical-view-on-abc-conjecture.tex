@@ -13,28 +13,21 @@ be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
 % $\bm{p} = (p_0, p_1, \cdots, p_{n-1})$ and $\bm{q} = (q_0, q_1, \cdots, q_{n-1})$.
 \end{definition}
 \begin{proposition}\label{prop:det-factorization-matrix-is-diff}
-	Let $\mathcal{S} = \mathcal{P} - \mathcal{Q}$, we have $\mathcal{S} = \det \bm{M}$.
+	$\det\bm{M} = \mathcal{P} - \mathcal{Q}$.
 \end{proposition}
-\cref{prop:det-factorization-matrix-is-diff} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. Actually, with this theorem, we have
-\begin{conjecture}[rewitten ABC conjecture]
+\begin{example}[rewitten ABC conjecture]\label{exa:rewitten-abc-conjecture}
 	$\forall \varepsilon > 0$, there exist only finite coprime pair $(\mathcal{P}, \mathcal{Q}) \in \mathbb{N}_{\ge 1}^{2}$ such that
 	\[ \rad\vert\det\bm{M}\vert < \frac{\mathcal{P}^{1-\varepsilon}}{\rad(\mathcal{Q}\mathcal{P})} = \frac{\mathcal{P}^{\sharp-\varepsilon}}{\rad\mathcal{Q}}. \]
 	Here $\mathcal{P}^{\sharp} = \mathcal{P} / \rad\mathcal{P}$.
-\end{conjecture}
-\begin{proposition}
-	Let $\bm{\gamma} = \bm{M}\bm{r}$, there is or $\exists k < n$ such that $q_k \le p_k + 1$, or $\norm{\bm{\gamma}}_{\infty} > 1$.
-\end{proposition}
-\begin{proof}
-	If not, i.e. $\forall k < n$, $q_k \ge p_k + 2$ and $\norm{\bm{\gamma}}_{\infty} = 1$. Then we have $\norm{\bm{\gamma}}_{\infty} = 1$, then $\abs{\gamma_k} = 1$. From $p_k \cdot r_k = q_k\cdot r_{k+1} + \gamma_k$, we have $p_k \cdot \abs{r_k} = q_k \cdot \abs{r_{k+1}} - \abs{\gamma_k} = q_k \cdot \abs{r_{k+1}} - 1$. Since $q_k \ge p_k + 2$, then $p_k \cdot \abs{r_k} \ge p_k \cdot \abs{r_{k+1}} + 2 \abs{r_{k+1}} - \abs{\gamma_k} \ge p_k \cdot \abs{r_{k+1}} + 1$. Thus we have $\abs{r_k} \ge \abs{r_{k+1}}$. Thus we have $\abs{r_k} \ge \abs{r_{k+n}} = \abs{r_k}$, which is paradoxical. 
-\end{proof}
-\begin{proposition}\label{prop:power-diff-to-dynamical-system}
-	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and sequences $\bm{a}, \bm{b} \in \mathbb{N}^{n}$ such that when $p_k = \beta^{b_k}$, $q_k = \alpha^{a_k}$, there is $\abs{\det\bm{M}} = C$.
-\end{proposition}
-\begin{proposition}\label{prop:collatz-cycle-system} 
-	For $p_k$ be the power of number $2$ and $q_k = 3$, the classic Collatz has a non-trivial cycle equivalents to $\forall n \ge 1$, $\forall \bm{r} \in \mathbb{Z}^{n} - \{(1, 1, \cdots, 1)\}$ there is $\bm{M}\bm{r} \ne (1, 1, \cdots, 1)$.
-\end{proposition}
-% \cref{prop:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
-% Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{prop:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
+\end{example}
+\begin{example}\label{exa:power-diff-to-dynamical-system}
+	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and $\bm{a}, \bm{b} \in \mathbb{N}^{n}$ such that when $p_k = \beta^{b_k}$, $q_k = \alpha^{a_k}$, there is $\abs{\det\bm{M}} = C$.
+\end{example}
+\begin{example}\label{exa:collatz-cycle-system} 
+	For $p_k$ be the power of number $2$ and $q_k = 3$, the classic Collatz system has a non-trivial cycle if and only if $\forall n \ge 1$, $\forall \bm{r} \in \mathbb{Z}^{n} - \{(1, 1, \cdots, 1)\}$ there is $\bm{M}\bm{r} \ne (1, 1, \cdots, 1)$.
+\end{example}
+% \cref{exa:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
+% Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{exa:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
 % We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system. These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation.
 % Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
 
@@ -57,7 +50,7 @@ Since $\bm{M}$ is an integer coefficient matrix, consider it's Smith normal form
 For given $(\mathcal{P}, \mathcal{Q})$, we can always find a $n\ge\nu(\mathcal{S})$ such that $p_k, q_k \in\overline{\mathbb{P}} = \mathbb{P}\cup\{1\}$.
 
 % TODO.
-\newpage
+% \newpage
 
 % Given $f(x) = k\prod_{i=0}^{m}(x - r_i)^{n_i}$. We have $f' = k\sum_{i=1}^{m}\frac{n_i f}{x - r_i}$.
 % Define $\rad f = \prod_{i=1}^{m}(x - r_i)$. Since we have
@@ -143,7 +136,7 @@ Therefore, we denote that
 	\delta(f + g) &= \partial(f + g) - \partial f - \partial g,\\
 	\overline{\delta}(f + g) &= \overline{\partial}(f + g) - \overline{\partial}f - \overline{\partial}g.
 \end{align*}
-Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\overline{\delta}(s + t) = \overline{\delta}(f + g)$. But we still require $\overline{\partial}(s + t) = \overline{\partial}(f + g)$, and in this formula, ($+$) is the ring addition.
+Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\overline{\delta}(s + t) = \overline{\delta}(f + g)$. But we still require $\overline{\partial}(s + t) = \overline{\partial}(f + g)$, and here ($+$) is the ring addition.
 Similar with Mason-Stothers theorem, we have
 \begin{proposition}\label{prop:fgh-mid-lcm-rad}
 	If $f + g = h$ and $\gcd(f, g, h) = 1$, then we have

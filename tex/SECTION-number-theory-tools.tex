@@ -25,15 +25,8 @@ Below are number theory tools we introduced in this paper and their propositions
     If $c \mid a$, then $\ord_{c}b \mid \ord_{a}b$.
 \end{proposition}
 \begin{proposition}\label{prop:power-order-mod}
-    $\frac{b^{sa\ord_{a} b} - 1}{a} \equiv s\cdot\frac{b^{\ord_{a} b} - 1}{a} \pmod{a}$.
+    $\frac{b^{s\ord_{a} b} - 1}{b^{\ord_{a} b} - 1} \equiv s \pmod{a}$.
 \end{proposition}
-\begin{proof}
-    let $q = \frac{b^{\ord_{a} b} - 1}{a}$, we have $b^{\ord_{a} b} = 1 + qa$. Then we have
-    \[ \frac{b^{s\ord_{a} b} - 1}{a} = \frac{b^{\ord_{a} b} - 1}{a}\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k} = q\cdot\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k}. \]
-    Since $b^{\ord_{a} b} \equiv 1 \pmod{a}$, thus $\sum_{k=0}^{s-1}(b^{\ord_{a} b})^{k}\equiv s \pmod{a}$. Hence, we have
-    \[ \frac{b^{s\ord_{a} b} - 1}{a} \equiv s\cdot q. \pmod{a} \]
-\end{proof}
-Actually, we have $\frac{b^{s\ord_{a} b} - 1}{a}\equiv s\cdot q. \pmod{q^{2}a}$, but we don't need such the strong conclusion.
 \begin{definition}\label{def:log-under-modulo}
 Given $x\in \mathbb{N}_{>1}$.
 If there exists $y \in \mathbb{N}_{_{\ge 1}}$ such that \[a^y \equiv x \pmod{b}\] and $y \le \ord_{b}a$, then we denote $\log_{a, b}x = y$.
