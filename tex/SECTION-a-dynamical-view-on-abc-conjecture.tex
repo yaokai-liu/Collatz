@@ -13,7 +13,7 @@ be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
 % $\bm{p} = (p_0, p_1, \cdots, p_{n-1})$ and $\bm{q} = (q_0, q_1, \cdots, q_{n-1})$.
 \end{definition}
 \begin{proposition}\label{prop:det-factorization-matrix-is-diff}
-	Let $\mathcal{S} = \mathcal{P} - \mathcal{Q}$, we have $\det \bm{M} = (-1)^{n}\cdot\mathcal{S}$.
+	Let $\mathcal{S} = \mathcal{P} - \mathcal{Q}$, we have $\mathcal{S} = \det \bm{M}$.
 \end{proposition}
 \cref{prop:det-factorization-matrix-is-diff} reveals the connection between $\mathcal{S}$ and the factors of $\mathcal{P}$ and $\mathcal{Q}$ in the equation $\mathcal{P} + \mathcal{S} = \mathcal{Q}$; this bears a close relationship to the ABC conjecture. Actually, with this theorem, we have
 \begin{conjecture}[rewitten ABC conjecture]
@@ -38,25 +38,27 @@ be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
 % We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system. These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation.
 % Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
 
-Since $\bm{M}$ is an integer coefficient matrix, consider it's Simith normal form, unfortunately, for this kind of matrix, the Simith normal form will be $\diag(1, 1, \cdots, (-1)^{n}\mathcal{S})$, which can't get anly new factorization information from it. Thus we have
+Since $\bm{M}$ is an integer coefficient matrix, consider it's Smith normal form, unfortunately, for this kind of matrix, the Smith normal form will be $\diag(1, 1, \cdots, \mathcal{S})$, which can't get anly new factorization information from it. Thus we have
 \begin{definition}
-	Given $\bm{M}\in \mathbb{Z}^{n\times n}$ that $\det\bm{M} \ne 0$. Define factorization form is $\mathcal{L}(M) = \diag(m_0, m_1, \cdots, m_{n-1})$ such that $\forall p\in\mathbb{P}$, there is
+	Given $\bm{M}\in \mathbb{Z}^{n\times n}$ that $\det\bm{M} \ne 0$, we have $\det\bm{M} \in\mathbb{Z}^{*}$. Define factorization form is $\mathcal{L}(M) = \diag(m_0, m_1, \cdots, m_{n-1})$ such that $\forall p\in\mathbb{P}$, there is
 	\[ \val_{p}m_k = \left\lfloor\frac{\val_{p}\abs{\det\bm{M}}}{n}\right\rfloor + \left\{\begin{aligned}
 		& 0, && k \le n - (\val_{p}\abs{\det\bm{M}} \mod{n}), \\
 		& 1, && k > n - (\val_{p}\abs{\det\bm{M}} \mod{n}).
 	\end{aligned}\right. \]
-	Of course, $\mathcal{L}(M)$ be a kind of Simith normal form. Since $\mathcal{S} = \abs{\det\bm{M}}$, we also denote it as $\mathcal{L}(\mathcal{S})$.
+	Of course, $\mathcal{L}(M)$ be a kind of Smith normal form. Since $\mathcal{S} = \abs{\det\bm{M}}$, we also denote it as $\mathcal{L}(\mathcal{S})$.
 \end{definition}
 \begin{proposition}
-	$\rad\mathcal{S} = \abs{m_{n-1}}$ and $\mathcal{L}(\mathcal{S}^{\sharp}) = \begin{pmatrix}
-	0 & 0 \\
-	\bm{I} & 0 \\
-\end{pmatrix}\mathcal{L}(\mathcal{S}) + \diag(1, 0, \cdots, 0)$.
+	When $n \ge \nu(\abs{\det\bm{M}})$, we have $\rad\mathcal{S} = \abs{m_{n-1}}$ and 
+	\[ \mathcal{L}(\mathcal{S}^{\sharp}) = \begin{pmatrix}
+		0 & 0 \\
+		\bm{I} & 0 \\
+	\end{pmatrix}\mathcal{L}(\mathcal{S}) + \diag(1, 0, \cdots, 0). \]
 \end{proposition}
+For given $(\mathcal{P}, \mathcal{Q})$, we can always find a $n\ge\nu(\mathcal{S})$ such that $p_k, q_k \in\overline{\mathbb{P}} = \mathbb{P}\cup\{1\}$.
 
 % TODO.
+\newpage
 
-% \newpage
 % Given $f(x) = k\prod_{i=0}^{m}(x - r_i)^{n_i}$. We have $f' = k\sum_{i=1}^{m}\frac{n_i f}{x - r_i}$.
 % Define $\rad f = \prod_{i=1}^{m}(x - r_i)$. Since we have
 % \[ \frac{f'}{f} = \sum_{i=1}^{m}\frac{n_i}{x - r_i} = \frac{1}{\rad f}\sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i} \]
@@ -85,7 +87,7 @@ Since $\bm{M}$ is an integer coefficient matrix, consider it's Simith normal for
 % Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
 
 \begin{definition}\label{def:der-rad-rings}
-	Suppose $R_1 = R(\mathbb{K})/\mathbb{K}$ is an integral domain modulo its algebrical closed $\mathbb{K}$ characteristic $0$. We require $\rad: R_1 \to R_1$ and $\partial, \overline{\partial}: R_1 \to R_1$, they satisfy:
+	Suppose $R_1 = R(\mathbb{K})/\mathbb{K}$ is an integral domain modulo all of its reversible elements. We require $\rad: R_1 \to R_1$ and $\partial, \overline{\partial}: R_1 \to R_1$, they satisfy:
 	\begin{enumerate}
 		\item $\rad(f^{2}) = \rad{f}$ and $(\rad f) \mid f$. We denote $f^{\sharp} = f/\rad f$.
 		\item $\rad (f\cdot g)\cdot\rad\gcd(f, g) = \rad(f)\cdot\rad(g)$.
@@ -144,25 +146,25 @@ Therefore, we denote that
 Of course, here ($+$) also means separator instead of ring addition. That means even $s + t  = f + g$, we may have no $\overline{\delta}(s + t) = \overline{\delta}(f + g)$. But we still require $\overline{\partial}(s + t) = \overline{\partial}(f + g)$, and in this formula, ($+$) is the ring addition.
 Similar with Mason-Stothers theorem, we have
 \begin{proposition}\label{prop:fgh-mid-lcm-rad}
-	If $f + g = h$, then we have
+	If $f + g = h$ and $\gcd(f, g, h) = 1$, then we have
 	\[ fgh\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\}\cdot\rad(fgh). \right. \]
 	And thus
 	\[ f^{\sharp}g^{\sharp}h^{\sharp}\ \left\vert\ \lcm\left\{\overline{\partial}(fg), \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g)\right\} \right. \]
 \end{proposition}
-% \begin{proof}
-% 	At first, we have
-% 	\begin{align*}
-% 		\overline{\partial}(fg) \cdot \rad(fg) &= fg \cdot \overline{\partial}\!\rad(fg), \\
-% 		\overline{\partial}(fh) \cdot \rad(fh) &= fh \cdot \overline{\partial}\!\rad(fh).
-% 	\end{align*}
-% 	Thus $fgh \left\vert\ \lcm(\overline{\partial}(fg), \overline{\partial}(fh))\cdot\rad(fgh)\right.$. And we have
-% 	\begin{align*}
-% 		\overline{\partial}(fh) &= f\overline{\partial}(h) - h\overline{\partial}(f) \\
-% 		&= f\cdot\overline{\delta}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
-% 		&= \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g).
-% 	\end{align*}
-% 	With this we proved this proposition.
-% \end{proof}
+\begin{proof}
+	At first, we have
+	\begin{align*}
+		\overline{\partial}(fg) \cdot \rad(fg) &= fg \cdot \overline{\partial}\!\rad(fg), \\
+		\overline{\partial}(fh) \cdot \rad(fh) &= fh \cdot \overline{\partial}\!\rad(fh).
+	\end{align*}
+	Thus $fgh \left\vert\ \lcm(\overline{\partial}(fg), \overline{\partial}(fh))\cdot\rad(fgh)\right.$. And we have
+	\begin{align*}
+		\overline{\partial}(fh) &= f\overline{\partial}(h) - h\overline{\partial}(f) \\
+		&= f\cdot\overline{\delta}(f + g) + f\overline{\partial}(f) + f\overline{\partial}(g) - f\overline{\partial}(f) - g\overline{\partial}(f) \\
+		&= \overline{\partial}(fg) + f\cdot\overline{\delta}(f + g).
+	\end{align*}
+	With this we proved this proposition.
+\end{proof}
 This proposition indicates that $\overline{\delta}(f + g)$ cannot be chaotically random; it is strictly controlled by $f^{\sharp}g^{\sharp}h^{\sharp}$.
 In practice, we want $\vert\overline{\delta}(f + g)\vert$ to be as small as possible; this ensures that our inequality is as tight as possible.
 From \cref{prop:operator-are-separable}, we can only consider derivations on those inseparable elements, since derivations on other elements can be automatically generated by those on inseparable elements, in accordance with our axioms.
@@ -173,13 +175,14 @@ Additionally, denote
 \begin{align*}
 	\mathcal{M}(f, g) &= \frac{\mathcal{L}(f,g)}{f^{\sharp}g^{\sharp}h^{\sharp}} \in R_1, &\mathcal{K}(f, g) &= \frac{\mathcal{L}(f,g)}{f\cdot g} = \frac{h^{\sharp}\cdot\mathcal{M}(f,g)}{\rad(f\cdot g)}.
 \end{align*}
-Here we do not require $\mathcal{K}(f, g)$ be an element of $R_1$, but it should be the natural localization domain of $R_1$.
-For polynomials, the $\mathcal{K}(f, g) = \frac{f'}{f} - \frac{g'}{g}$. However, for natural numbers, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(f, g)$ represent for.
+Here we do not require $\mathcal{K}(f, g)$ be an element of $R_1$, but it should be the natural localization domain of $R_1$. However, we don't know yet what the $\mathcal{K}(f, g)$ and $\mathcal{M}(f, g)$ represent for.
 
 We have to say, here $\overline{\partial}(h)$ is not necessarily equal to $f\overline{\partial}g - g\overline{\partial}f$. In fact, $\overline{\partial}(h)$ should be viewed as a set rather than a single value. While we can always guarantee that $f\overline{\partial}g - g\overline{\partial}f \subset \overline{\partial} h$, this does not imply equality between the two. Unlike the case of integers or certain integral domains—where $h$ possesses a unique factorization—with the operator $\overline{\partial}$, both the granularity of the factorization and the order of the resulting factors affect the final outcome. However, this does not imply that the concept is ill-defined or that \cref{prop:fgh-mid-lcm-rad} is absurd. Indeed, when we ensure $f + g = h$, the variation in factorization results affects only $\mathcal{M}(f, g)$; this actually suggests that \cref{prop:fgh-mid-lcm-rad} not only holds but also reflects a profound property of factorization in integral domains that we do not yet fully understand. We can't tell what $\mathcal{M}(f, g)$ means for integral domains, but we believe that $\mathcal{M}(f, g)$ encapsulates all the mysteries of factorization over integral domains.
 
 We can verify the classical arithmetic derivation that $\partial(a) = a\sum_{p\in\mathbb{P}}^{p\mid a}\frac{\val_{p} a}{p}$ with initial $\overline{\partial}(1) = \partial(1) = 0$ and $\overline{\partial}(p) = \partial(p) = 1$ exactly follows the axioms in \cref{def:der-rad-rings}.
-Equivalents to the ABC conjecture, we have
+
+Equivalents to the ABC conjecture, from our definition, we have
 \begin{conjecture}
-	$\forall \varepsilon > 0$, $\exists K_{\varepsilon} > 0$, such that $\forall a, b, c\in\mathbb{N}_{\ge 1}$ that $\gcd(a, b, c) = 1$ and $a + b = c$, there is $\frac{\mathcal{K}(a, b)}{\mathcal{M}(a, b)} = \frac{c}{\rad(abc)} \le K_{\varepsilon}\cdot \rad(abc)^{\varepsilon}$.
+	$\forall \varepsilon > 0$, $\exists K_{\varepsilon} > 0$, such that $\forall a, b, c\in\mathbb{N}_{\ge 1}$ that $\gcd(a, b, c) = 1$ and $a + b = c$, there is
+	\[ \frac{\mathcal{K}(a, b)}{\mathcal{M}(a, b)} = \frac{c}{\rad(abc)} \le K_{\varepsilon}\cdot \rad(abc)^{\varepsilon}. \]
 \end{conjecture}

@@ -102,14 +102,14 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
     If $c \mid a$ and $a \mid b$, then $\val_{c}b \ge \val_{c}a \cdot \val_{a}b$.
 \end{proposition}
 \begin{definition}\label{def:radical}
-    Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Pi(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$.
+    Define $\rad a = \prod_{p \in \mathbb{P}}^{p \mid a}p$ as the radical of $a$. Given $S\subset\mathbb{N}$, define $\Omega(S\mid a) = \{p \in S: p \mid a\}$ as all factors of $a$ in $S$. If $S = \mathcal{P}$, we call $\Omega(\mathbb{P}\mid a)$ radical set of $a$.
 \end{definition}
 \begin{definition}\label{def:filtered-radical-powers}
-    Define $\raf_{a}b = \prod_{p \in \Pi(\mathbb{P}\mid a)}\pow(p\mid b)$ as the filtered radical power of $b$ with respect to $a$. And we also call it the $a$-filtered radical powers of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
+    Define $\raf_{a}b = \prod_{p \in \Omega(\mathbb{P}\mid a)}\pow(p\mid b)$ as the filtered radical power of $b$ with respect to $a$. And we also call it the $a$-filtered radical powers of $b$ or the radical $a$-part of $b$. Specially, we define $\raf_{1}b = 1$.
     And same like to the $\rel$,  we define $\ram_{a}b = \frac{b}{\raf_{a}b}$ called the remainder part of $b$ with respect to radical $a$-part.
 \end{definition}
 \begin{proposition}
-    $\rad a = \prod_{p \in \Pi(\mathbb{P}\mid a)}p$
+    $\rad a = \prod_{p \in \Omega(\mathbb{P}\mid a)}p$
 \end{proposition}
 \begin{proposition}\label{prop:self-containment}
     $\raf_{a}b \mid b$.
@@ -166,6 +166,10 @@ Without special state, we will always suppose the $x > 1$ in $\log_{a, b}x$ and 
 
 \begin{definition}\label{def:radicable-order}
     $\rord_{a} b = \lcm_{p\in\mathbb{P}}^{p\mid a} \{\ord_{p} b\}$ be the radicable order.
+\end{definition}
+
+\begin{definition}\label{def:radical-height-and-width}
+    Given $a \in \mathbb{N}_{\ge 1}$. Denote $\nu(a) = \max\{ \val_{p} a \mid p\in\mathbb{P}\}$ and $\omega(a) = \card\Omega(\mathbb{P}\mid a)$ called the radical height and the radical width of $a$.
 \end{definition}
 
 % Now let's introduce a kind of count function on infinite subsets of $\mathbb{N}$ from analytic number theory. Given $A \subset N$ that $\card{A} = \infty$ and $\forall a\in A$, $a > 1$.

@@ -132,7 +132,7 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
     When $\alpha^{k} \nmid \gamma$.
-    By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \Pi(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \Omega(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
     Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent Lemma, consequently, the inequality becomes
     \[ k\cdot\val_{p}\alpha \le \val_{p}\gamma + \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \val_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]
@@ -174,8 +174,8 @@ From the proof, we can deduce that
 \end{example}
 \begin{example}
     Suppose $q \in\widehat{\mathbb{N}}_{2}$ that $q > 1$, then we have \begin{align*}
-        &\Psi(q, 2, 1) = \prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)}, \\
-        &\Phi(q, 2, 1; k) = q^{k}\cdot\prod_{p\in\Pi(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)} \cdot \lcm_{p\in\mathbb{P}}^{p\mid q}\{\ord_{p}2\}.
+        &\Psi(q, 2, 1) = \prod_{p\in\Omega(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)}, \\
+        &\Phi(q, 2, 1; k) = q^{k}\cdot\prod_{p\in\Omega(\mathbb{P}\mid q)}\frac{1}{\raf_{p}(2^{\ord_{p}2} - 1)} \cdot \lcm_{p\in\mathbb{P}}^{p\mid q}\{\ord_{p}2\}.
     \end{align*}
     They correspond to the case of $qn+1$ reduced by $2$ explored in Santos's paper \cite{santos2021collatzgeneralproblemqn1}.
 \end{example}
@@ -207,11 +207,11 @@ From the proof, we can deduce that
 \end{proof}
 
 From \cref{cor:single-vary-rule} and \cref{cor:alpha-k-mid-adjustment}, we can observe that when $\Delta\bm{v} = \Phi_k\bm{e}_k$, the $\nabla\cdot\mathfrak{V}_{k}$ and $\nabla\cdot\mathfrak{v}_{k}$ depend on $\frac{1}{\alpha^{k}}\cdot(\beta^{\Phi_k} - 1)$.
-\begin{definition}
-we denote $\nabla_{k} = \frac{\beta^{\Phi_k} - 1}{\alpha^{k}}$ called the basic adjust complement.
+\begin{definition}\label{def:basic-fill-part-of-adjustment}
+we denote $\nabla_{k} = \frac{\beta^{\Phi_k} - 1}{\alpha^{k}}$ called the basic fill part of adjustment.
 \end{definition}
 Similar with Collatz complements, here we don't consider put $\gamma$ into $\nabla_{k}$. Actually, when $k = 1$, it's a kind of broad Fermat quotient, hence, in some sense, we can named them Collatz quotients, too.
-\begin{definition}\label{def:basic-fill part-of-adjustment}
+\begin{definition}
 If $\alpha\in\mathbb{P}_{\ge 2}$, $\alpha\nmid\gamma$ and $\alpha\nmid \nabla_{1}$, then we say the Collatz system is simple or primitive.
 \end{definition}
 We can verify that classic Collatz problem $(\alpha, \beta, \gamma) = (3,2,1)$ is a simple Collatz system. And simple Collatz systems will be the main objects to analyze.
