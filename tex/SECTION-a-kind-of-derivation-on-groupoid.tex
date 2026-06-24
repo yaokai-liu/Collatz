@@ -18,8 +18,7 @@ Otherwise, we say $\mathcal{A} \ne 0$. And unless otherwise specified, all homom
     This proposition requires the ring $\mathbb{R}$ at least is a division ring. But if our result does not involve the inverse elements of $\mathbb{G}$, we don't need to a division ring. Most conclusions in this section don't need $\mathbb{R}$ be a division ring. 
 \end{remark}
 \begin{proposition}
-    Denote $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ as the set of all groupoid homomorphisms on $\mathbb{R}$, then $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ is a group by
-    \[ (\mathcal{A}\cdot\mathcal{B})(a) = \mathcal{A}(a)\cdot\mathcal{B}(a). \]
+    Denote $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ as the set of all groupoid homomorphisms on $\mathbb{R}$, then $\mathrm{Cauchy}(\mathbb{G},\mathbb{R})$ is a group by $(\mathcal{A}\cdot\mathcal{B})(a) = \mathcal{A}(a)\cdot\mathcal{B}(a)$.
 \end{proposition}
 \begin{example}\label{exa:power-to-cauchy-homo}
     Given number $\alpha$ and a sequence $\{a_i\}$, we have
@@ -106,8 +105,7 @@ This theorem also holds on those continuous system.
 \begin{example}\label{exa:continous-situation-with-exact-differential}
     All closed interval compose a groupoid
     \[G = \left\{[a, b] \text{ : $[a, b]$ is closed interval on real number field $R$}\right\}.\]
-    We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\rmd x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\rmd x}$ are both in $\mathrm{Cauchy}(G, R)$. Define
-    \[ \mathfrak{U}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\cdot\mathcal{G}[x,b]\cdot(f(x) - g(x))\rmd x. \]
+    We have $\mathcal{F}[a, b] = \exp{\int_{a}^{b}f(x)\rmd x}$ and $\mathcal{G}[a, b] = \exp{\int_{a}^{b}g(x)\rmd x}$ are both in $\mathrm{Cauchy}(G, R)$. Define $\mathfrak{U}[a, b] = \int_{a}^{b}\mathcal{F}[a, x]\cdot\mathcal{G}[x,b]\cdot(f(x) - g(x))\rmd x$.
     We can verify that  $\mathfrak{U}\in \partial_{*}(\mathcal{F}, \mathcal{G})$. Its kernel is $f(x)\rmd x - g(x)\rmd x$.
 
     Now let $F(x) = \int_{a}^{x}f(t)\rmd d$ and $G(x) = - \int_{x}^{b}g(t)\rmd t$. We can derive that $F'(x) = f(x)$ and $G'(x) = g(x)$. With these, we have
@@ -178,7 +176,7 @@ If $\exists t\in I$ such that $\forall a_i\in \mathbb{P}(a)$, there is $F(a_{i+t
     \end{align*}
 \end{proof}
 \begin{proposition}\label{prop:cycles-derive-cycle}
-    Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
+    Given $a\in\mathbb{G}$. If $\mathcal{A}, \mathcal{B} \in \mathrm{O}_{t}(\mathbb{P}(a), \mathbb{R})$, then $\forall \mathfrak{U} \in \partial_{t}(\mathbb{P}(a), \mathbb{R})$, we always have $\mathfrak{U}(a_{i+t}^{j+t}) = \mathfrak{U}(a_{i}^{j})$.
 \end{proposition}
 \begin{proof}
     \begin{align*}

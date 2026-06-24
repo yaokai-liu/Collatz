@@ -129,10 +129,10 @@ $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k} = \frac{f_{n}(\bm{v}+s\bm{e}_{k}) - 
     \[ f_{n}(\bm{v}+s\bm{e}_{k}) = \beta^{s}\cdot f_{n}(\bm{v}) + \frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1). \]
     Since $\beta^{s}\cdot f_{n}(\bm{v}) \in \mathbb{N}$, then $\frac{\gamma}{\alpha}\cdot\mathfrak{v}_{k}\cdot(\beta^{s} - 1) \in \mathbb{N}$, that equivalents
     \[\alpha^{k} \mid \gamma\cdot\mathfrak{V}_{k}\cdot(\beta^{s} - 1).\]
-    Since $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
+    From \cref{prop:complement-coprime-with-alpha-and-beta}, we have $\gcd(\alpha, \mathfrak{V}_{k}) = 1$, the divisibility condition simplifies to
     \[\alpha^{k} \mid \gamma\cdot(\beta^{s} - 1).\]
     When $\alpha^{k} \nmid \gamma$.
-    By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \Omega(\mathbb{P} \mid \alpha)} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
+    By the fundamental theorem of arithmetic, we can derive that $\alpha = \prod_{p \in \mathbb{P}}^{p \mid \alpha} \raf_{p}\alpha$. Thus, the global condition is equivalent to a set of local conditions for each prime $p \mid \alpha$ we have
     \[ (\raf_{p}\alpha)^{k} \mid \gamma\cdot(\beta^{s} - 1). \]
     Notice that $p \mid (\beta^{\ord_{p}\beta} - 1)$, apply the Lifting The Exponent Lemma, consequently, the inequality becomes
     \[ k\cdot\val_{p}\alpha \le \val_{p}\gamma + \val_{p}\left(\frac{s}{\ord_{p}\beta}\right) + \val_{p}(\beta^{\ord_{p}\beta} - 1) + \delta_2(\beta). \]

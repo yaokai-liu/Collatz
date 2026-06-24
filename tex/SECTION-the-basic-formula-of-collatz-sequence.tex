@@ -80,11 +80,7 @@ Given $m,n \in \mathbb{N}$ and $n \ge 1$, define
     $\forall a\in [m \mid n]$, we have $\forall i \le n - 1$, $\mathcal{A}_i = 0$, thus $\forall 0 < k \le n$, we have
     \[ \mathfrak{A}_k = \sum_{i=0}^{k-1}\beta^{\mathcal{A}_i}\cdot\alpha^{n-i-1} = \sum_{i=0}^{k-1}\alpha^{i} = \frac{\alpha^{k} - 1}{\alpha - 1}. \]
     Since $n \ge \ord_{\beta(\alpha - 1)}(\alpha)$, then $\exists k \le n$ such that $k = \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have
-    \begin{align*}
-        \mathfrak{A}_k &= \frac{\alpha^{t \cdot \ord_{\beta(\alpha - 1)}(\alpha)} - 1}{\alpha - 1} &&\\
-        &\equiv \frac{t\cdot\beta(\alpha - 1) + 1 - 1}{\alpha - 1} &&\pmod{\beta}\\
-        &\equiv 0. &&\pmod{\beta}
-    \end{align*}
+    \[ \mathfrak{A}_k = \frac{\alpha^{t \cdot \ord_{\beta(\alpha - 1)}(\alpha)} - 1}{\alpha - 1} \equiv \frac{t\cdot\beta(\alpha - 1) + 1 - 1}{\alpha - 1} \equiv 0. \pmod{\beta} \]
     It conflict with \cref{cor:beta-nmid-collatz-complement}. Thus $[m\mid n] = \varnothing$.
 \end{proof}
 That means we can just consider $n < \ord_{\beta(\alpha - 1)}(\alpha)$. With this we have

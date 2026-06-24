@@ -1,83 +1,30 @@
-% !TEX root = main.tex
-\section{A Dynamical View on ABC conjecture}\label{sec:a-dynamical-view-on-abc-conjecture}
 
-\begin{definition}\label{def:factorization-matrix}
-	For given $\mathcal{P}, \mathcal{Q} \in \mathbb{N}$. For arbitrary factorization $\mathcal{P} = \prod_{k=0}^{n-1}p_k$ and $\mathcal{Q} = \prod_{k=0}^{n-1}q_k$ that $p_k, q_k \in \mathbb{N}_{\ge 1}$, define
-\[ \bm{M} = \begin{pmatrix}
-	p_{0} & -q_0 & 0 & \cdots & 0 \\
-	0 & p_1 & -q_1 & \cdots & 0 \\
-	\vdots & \vdots & \vdots & & \vdots \\
-	-q_{n-1} & 0 & 0 & \cdots & p_{n-1}
-\end{pmatrix} \]
-be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
-% $\bm{p} = (p_0, p_1, \cdots, p_{n-1})$ and $\bm{q} = (q_0, q_1, \cdots, q_{n-1})$.
-\end{definition}
-\begin{proposition}\label{prop:det-factorization-matrix-is-diff}
-	$\det\bm{M} = \mathcal{P} - \mathcal{Q}$.
-\end{proposition}
-\begin{example}[rewitten ABC conjecture]\label{exa:rewitten-abc-conjecture}
-	$\forall \varepsilon > 0$, there exist only finite coprime pair $(\mathcal{P}, \mathcal{Q}) \in \mathbb{N}_{\ge 1}^{2}$ such that
-	\[ \rad\vert\det\bm{M}\vert < \frac{\mathcal{P}^{1-\varepsilon}}{\rad(\mathcal{Q}\mathcal{P})} = \frac{\mathcal{P}^{\sharp-\varepsilon}}{\rad\mathcal{Q}}. \]
-	Here $\mathcal{P}^{\sharp} = \mathcal{P} / \rad\mathcal{P}$.
-\end{example}
-\begin{example}\label{exa:power-diff-to-dynamical-system}
-	Suppose $\alpha, \beta \in \mathbb{N}_{\ge2}$ are coprime. For given $C \in \mathbb{Z}$, the equation $\beta^{B} - \alpha^{A} = C$ possesses an integer solution $A, B$ if and only if $\exists n \in \mathbb{N}$ and $\bm{a}, \bm{b} \in \mathbb{N}^{n}$ such that when $p_k = \beta^{b_k}$, $q_k = \alpha^{a_k}$, there is $\abs{\det\bm{M}} = C$.
-\end{example}
-\begin{example}\label{exa:collatz-cycle-system} 
-	For $p_k$ be the power of number $2$ and $q_k = 3$, the classic Collatz system has a non-trivial cycle if and only if $\forall n \ge 1$, $\forall \bm{r} \in \mathbb{Z}^{n} - \{(1, 1, \cdots, 1)\}$ there is $\bm{M}\bm{r} \ne (1, 1, \cdots, 1)$.
-\end{example}
-% \cref{exa:power-diff-to-dynamical-system} posits a perspective: given a constant $C$, we can derive solutions $A$ and $B$ by searching for partitions of the exponents.
-% Indeed, as established by the analysis in the preceding sections, every equation of the form presented in \cref{exa:power-diff-to-dynamical-system} corresponds to a specific "top branch" of a certain $t$-periodic power-difference dynamical system.
-% We can employ the methods outlined in \cref{sec:distribution-of-source-value-set} to enumerate the number of such top branches contained within this system. These top branches encompass all the cycles within the system—cycles that correspond precisely to the solutions of the aforementioned power-difference equation.
-% Since as defined in \cref{sec:a-kind-of-derivation-on-groupoid}, the specific $\gamma_k$ values we seek constitute a discrete, exact differential; this fact avoids Conway's limitation and allows us to draw inspiration from the principles of homology theory to analyze the number-theoretic properties that these $\gamma_k$ values must satisfy.
+Given $f(x) = k\prod_{i=0}^{m}(x - r_i)^{n_i}$. We have $f' = k\sum_{i=1}^{m}\frac{n_i f}{x - r_i}$.
+Define $\rad f = \prod_{i=1}^{m}(x - r_i)$. Since we have
+\[ \frac{f'}{f} = \sum_{i=1}^{m}\frac{n_i}{x - r_i} = \frac{1}{\rad f}\sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i} \]
+Denote $\rad' f = \sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i}$. Then we have
+\[ f'\cdot \rad f = f\cdot \rad'f. \]
+Notice that $\rad' f \ne (\rad f)'$. Actually, $(\rad f)' = \sum_{i=1}^{m}\frac{\rad f}{x - r_i}$ because the multiplicity of each root of $\rad f$ is $1$.
 
-Since $\bm{M}$ is an integer coefficient matrix, consider it's Smith normal form, unfortunately, for this kind of matrix, the Smith normal form will be $\diag(1, 1, \cdots, \mathcal{S})$, which can't get anly new factorization information from it. Thus we have
-\begin{definition}
-	Given $\bm{M}\in \mathbb{Z}^{n\times n}$ that $\det\bm{M} \ne 0$, we have $\det\bm{M} \in\mathbb{Z}^{*}$. Define factorization form is $\mathcal{L}(M) = \diag(m_0, m_1, \cdots, m_{n-1})$ such that $\forall p\in\mathbb{P}$, there is
-	\[ \val_{p}m_k = \left\lfloor\frac{\val_{p}\abs{\det\bm{M}}}{n}\right\rfloor + \left\{\begin{aligned}
-		& 0, && k \le n - (\val_{p}\abs{\det\bm{M}} \mod{n}), \\
-		& 1, && k > n - (\val_{p}\abs{\det\bm{M}} \mod{n}).
-	\end{aligned}\right. \]
-	Of course, $\mathcal{L}(M)$ be a kind of Smith normal form. Since $\mathcal{S} = \abs{\det\bm{M}}$, we also denote it as $\mathcal{L}(\mathcal{S})$.
-\end{definition}
-\begin{proposition}
-	When $n \ge \nu(\abs{\det\bm{M}})$, we have $\rad\mathcal{S} = \abs{m_{n-1}}$ and 
-	\[ \mathcal{L}(\mathcal{S}^{\sharp}) = \begin{pmatrix}
-		0 & 0 \\
-		\bm{I} & 0 \\
-	\end{pmatrix}\mathcal{L}(\mathcal{S}) + \diag(1, 0, \cdots, 0). \]
-\end{proposition}
-For given $(\mathcal{P}, \mathcal{Q})$, we can always find a $n\ge\nu(\mathcal{S})$ such that $p_k, q_k \in\overline{\mathbb{P}} = \mathbb{P}\cup\{1\}$.
-
-% TODO.
-% \newpage
-
-% Given $f(x) = k\prod_{i=0}^{m}(x - r_i)^{n_i}$. We have $f' = k\sum_{i=1}^{m}\frac{n_i f}{x - r_i}$.
-% Define $\rad f = \prod_{i=1}^{m}(x - r_i)$. Since we have
-% \[ \frac{f'}{f} = \sum_{i=1}^{m}\frac{n_i}{x - r_i} = \frac{1}{\rad f}\sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i} \]
-% Denote $\rad' f = \sum_{i=1}^{m}\frac{n_i\rad f}{x - r_i}$. Then we have
-% \[ f'\cdot \rad f = f\cdot \rad'f. \]
-% Notice that $\rad' f \ne (\rad f)'$. Actually, $(\rad f)' = \sum_{i=1}^{m}\frac{\rad f}{x - r_i}$ because the multiplicity of each root of $\rad f$ is $1$.
-
-% To prove Mason-Stothers theorem, we define $W(f, g) = g'f - f'g$ is the Wronskian determinant. Consider $W(f, g)\cdot\rad(fg)$, we have 
-% \begin{align*}
-% 	W(f, g)\cdot\rad(fg) &= (g'f - f'g)\cdot\rad(fg)\\
-% 	&= g'f\cdot\rad g\cdot\rad f - gf'\cdot\rad f\cdot\rad g \\
-% 	&= g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g \\
-% 	&= \left[g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g\right] \\
-% 	&= \left[\rad'g\cdot \rad f - \rad'f\cdot \rad g\right]\cdot fg.
-% \end{align*}
-% Which means $fg \mid W(f, g)\rad(fg)$.
-% For $f + g = h$ that $\gcd(f, g) = 1$, we have $W(f, g) = W(f, h) = W(h, g)$. Thus we have $fh \mid W(f, h)\rad(fh) = W(f, g)\rad(fh)$.
-% Sum up, we have $fgh \mid W(f, g)\rad(fgh)$. Thus $\deg(fgh) \le \deg\left[W(f, g)\rad(fgh)\right]$, which equivalents to
-% \[ \deg f + \deg g + \deg h \le \deg W(f, g) + \deg \rad(fgh). \]
-% Since $\deg W(f, g) = \deg (g'f - f'g) \le \deg f + \deg g - 1$, we have
-% \[ \deg h \le \deg \rad(fgh) - 1. \]
-% Or more likely, we have
-% \begin{theorem}[Mason-Stothers]
-% 	$\max\{ \deg f, \deg g, \deg h \} \le \deg \rad(fgh) - 1$.
-% \end{theorem}
-% Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
+To prove Mason-Stothers theorem, we define $W(f, g) = g'f - f'g$ is the Wronskian determinant. Consider $W(f, g)\cdot\rad(fg)$, we have 
+\begin{align*}
+	W(f, g)\cdot\rad(fg) &= (g'f - f'g)\cdot\rad(fg)\\
+	&= g'f\cdot\rad g\cdot\rad f - gf'\cdot\rad f\cdot\rad g \\
+	&= g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g \\
+	&= \left[g\rad'g\cdot f\rad f - f\rad'f\cdot g\rad g\right] \\
+	&= \left[\rad'g\cdot \rad f - \rad'f\cdot \rad g\right]\cdot fg.
+\end{align*}
+Which means $fg \mid W(f, g)\rad(fg)$.
+For $f + g = h$ that $\gcd(f, g) = 1$, we have $W(f, g) = W(f, h) = W(h, g)$. Thus we have $fh \mid W(f, h)\rad(fh) = W(f, g)\rad(fh)$.
+Sum up, we have $fgh \mid W(f, g)\rad(fgh)$. Thus $\deg(fgh) \le \deg\left[W(f, g)\rad(fgh)\right]$, which equivalents to
+\[ \deg f + \deg g + \deg h \le \deg W(f, g) + \deg \rad(fgh). \]
+Since $\deg W(f, g) = \deg (g'f - f'g) \le \deg f + \deg g - 1$, we have
+\[ \deg h \le \deg \rad(fgh) - 1. \]
+Or more likely, we have
+\begin{theorem}[Mason-Stothers]
+	$\max\{ \deg f, \deg g, \deg h \} \le \deg \rad(fgh) - 1$.
+\end{theorem}
+Notice that for a polynomial $f$, the $\deg f$ represents the number of its roots in an algebraically closed field, counting multiplicities. Thus, this theorem provides a limitation on the multiplicities of the polynomial's roots.
 
 \begin{definition}\label{def:der-rad-rings}
 	Suppose $R_1 = R(\mathbb{K})/\mathbb{K}$ is an integral domain modulo all of its reversible elements. We require $\rad: R_1 \to R_1$ and $\partial, \overline{\partial}: R_1 \to R_1$, they satisfy:

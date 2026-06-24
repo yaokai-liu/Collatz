@@ -20,7 +20,6 @@ which ensures the $a_k$ always be odd.
 With the definition $\mathcal{A}_{k} = \sum_{j=0}^{k-1}\val(a;j+1)$, we have
 \[ a_k \cdot 2^{\mathcal{A}_k} = a \cdot 3 ^ k + \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{k-i-1}. \label{equation:collatz-inductioon-3-2-1}\]
 It means $a \equiv -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} \pmod{2^{\mathcal{A}_k}}$.
-
 Notice that $a$ is a positive finite number but $2^{\mathcal{A}_k}$ increase to infinite, that means $\sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i}$ should be a finite odd times of $3^{-1}$ under the modulo, which convergences to $1/3$ in $\mathbb{Z}_2$.
 And this congruence equation system has one obvious solution: $a = 1$, that $\mathcal{A}_k = 2k$, holds
 \[ -3^{-1} \cdot \sum_{i = 0}^{k - 1}2^{\mathcal{A}_i}\cdot3^{-i} = - 3^{-k}\cdot 4^k + 1 \equiv 1 \pmod{2^{2k} = 4^{k}}, \]
@@ -28,7 +27,6 @@ follows the Collatz conjecture.
 We can see that each number generates a sequence $\mathcal{A}_{k}$ such that the above congruence equation holds.
 So it is the time to explore what the arguments of these equations has a stability solution.
 
-At first we define an auxiliary notation:
 \begin{definition}\label{def:exclude-beta-times}
     For the number field $\mathbb{K}$ ($\mathbb{N}$, $\mathbb{Q}$, or $p$-adic integer $\mathbb{Z}_{p}$), we denote that $\widehat{\mathbb{K}}_{{\beta}} = \{a \in\mathbb{K} \mid \beta \nmid a\}$.
 \end{definition}
@@ -117,7 +115,7 @@ With $(\alpha, \beta, \gamma) = (3, 2, 1)$,
 for any odd number $a \in \widehat{\mathbb{N}}_{2}$, it's Collatz sequence will finally reach to $1$.
 \end{conjecture}
 
-This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define a notation to represent them:
+This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\mathcal{A}_i}\cdot \alpha^{k-i-1}$. We first define some notations to represent them:
 \begin{definition}\label{definition:collatz-complement}
     Given a sequence of number $\{v_{i}\}\subset\mathbb{N}$, finite or infinite terms, we have $\mathcal{A}_{n}^{m}$. Now we define $\mathfrak{A}_n^{m}$ called Collatz complement of $\{v_{i}\}$ at $n$ relative to $m$ with
     \[ \mathfrak{A}_n^{m} = \sum_{i = m}^{n - 1}\beta^{\mathcal{A}_i^{m}}\cdot\alpha^{n-i-1} \in \mathbb{N}. \]
@@ -128,8 +126,7 @@ This article involves many terms like $\textstyle \sum_{i = 0}^{k - 1}\beta^{\ma
 
 If $\{v_{i}\}$ is the Collatz reduces of a number, to avoid repeating the explanation each time, without further explanation, we will use the same letter of the Collatz accumulation but uppercase fraktur font to represent Collatz complement, and the same letter but lowercase fraktur font to represent reduced Collatz complement.
 In that case, we also say that $\mathfrak{A}$ and $\mathfrak{a}$ are of number $a$.
-
-For the Collatz complement, we have two basic propositions:
+For Collatz complements, we have two basic propositions:
 \begin{proposition}\label{proposition:collatz-complement-basic-prop1}
 $\mathfrak{A}_{n}^{n} = 0$, and $\mathfrak{A}_{n+1}^{n} = 1$.
 And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n}}$.
@@ -159,14 +156,12 @@ And $\mathfrak{a}_{n}^{n} = 0$, and $\mathfrak{a}_{n+1}^{n} = \frac{1}{\alpha^{n
 \end{proof}
 
 Actually, we can formally define the Collatz complement only from \cref{proposition:collatz-complement-basic-prop1} and \cref{proposition:collatz-complement-basic-prop2}.
-More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}).
-
-According to \cref{proposition:uniqueness} and \cref{cor:co-uniqueness}, we have
+More essentially, the two propositions are exactly the basic rules of a quasi $(\sigma, \tau)$-derivation of \cref{sec:a-kind-of-derivation-on-groupoid}, which in other words, the Collatz complement is a kind of $(\sigma, \tau)$-derivation on groupoid (\cref{def:quasi-derivation-on-groupoid}). Besides, we have
 \begin{proposition}[Uniqueness]\label{proposition:uniquess-of-Collatz-complement}
     Given $\mathfrak{V}$ for $\{v_i\}$ and $\mathfrak{U}$ for $\{u_i\}$. If $\forall i\ge 0$, there is $v_i = u_i$, then $\forall n \ge m \ge 0$, there are $\mathfrak{V}_n^{m} = \mathfrak{U}_n^{m}$ and $\mathfrak{v}_n^{m} = \mathfrak{u}_n^{m}$.
 \end{proposition}
-\begin{proposition}\label{prop:complement-equiv-1-when-modulo}
-    Suppose $m\ne n$, we have $\mathfrak{V}_n^{m} \equiv 1 \pmod{\alpha}$. And if $v_{1} \ne 0$, then we also have $\mathfrak{V}_n^{m} \equiv 1 \pmod{\beta}$.
+\begin{proposition}\label{prop:complement-coprime-with-alpha-and-beta}
+    Suppose $m\ne n$, we have $\mathfrak{V}_n^{m} \equiv \beta^{\mathcal{A}_{n-1}^{m}} \pmod{\alpha}$ and hence $\gcd(\alpha, \mathfrak{V}_n^{m}) = 1$. And if $v_{1} \ne 0$, then we also have $\mathfrak{V}_n^{m} \equiv \alpha^{n-m-1} \pmod{\beta}$ and hence $\gcd(\alpha, \mathfrak{V}_n^{m}) = 1$.
 \end{proposition}
 Now we are ready to explore the properties of Collatz sequences.
 But before that, I need to point out that there are many symbols in number theory.
