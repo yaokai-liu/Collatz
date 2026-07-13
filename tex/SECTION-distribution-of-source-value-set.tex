@@ -19,25 +19,24 @@
 \end{corollary}
 \cref{thm:finite-layers-le-M} Tell us that we can explore how $H$ increase with $M$ and the density of $\mathbb{S}(b)$ to predic how many top branches in this system. From result in \cref{sec:collatz-character-and-collatz-core}, we can resolve the $H$ and calculate how many source values less than $M$.
 
-\begin{lemma}
-	$\card\{ \mathbb{S}_{1}(a) < M \} = \left\lfloor \frac{1}{\Phi_1}\log_{\beta}\frac{\alpha M + \gamma}{\cor a} \right\rfloor$. Of course, we need $\frac{\alpha M + \gamma}{\cor a} > 1$.
-\end{lemma}
+% \begin{lemma}
+% 	$\card\{ \mathbb{S}_{1}(a) < M \} = \left\lfloor \frac{1}{\Phi_1}\log_{\beta}\frac{\alpha M + \gamma}{\cor a} \right\rfloor$. Of course, we need $\frac{\alpha M + \gamma}{\cor a} > 1$.
+% \end{lemma}
 % \begin{lemma}
 % 	let $H(a; M) = \min\{n\in\mathbb{N}  \mid \{\mathbb{S}_{n}(a) \le M \} = \varnothing \}$, then for simple system, we have
 % 	\[ \lfloor\frac{1}{\Phi_1}\log_{\beta}(\alpha^{2} M + \alpha\gamma + \gamma)\rfloor - 2 \le H(a; M) \le \lfloor\frac{1}{\Phi_1}\log_{\beta}(\alpha^{2} M + \alpha\gamma + \gamma)\rfloor - 1 \]
 % \end{lemma}
-\begin{lemma}
-	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le M\}}{\card\{\mathbb{S}_{1}(b) \le M\}} = 1$.
-\end{lemma}
-For simple systems, there is
-\begin{corollary}
-	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{n}(a) \le M\}}{\card\{\mathbb{S}_{n}(b) \le M\}} > 0$.
-\end{corollary}
+% \begin{lemma}
+% 	Given $a, b\in\widehat{\mathbb{N}}_{\beta} - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{1}(a) \le M\}}{\card\{\mathbb{S}_{1}(b) \le M\}} = 1$.
+% \end{lemma}
+% For simple systems, there is
+% \begin{corollary}
+% 	$\forall a, b \in \widehat{\mathbb{N}}_\beta - \mathbb{S}_{\infty}$, we have $\lim_{N\to\infty}\frac{\card\{\mathbb{S}_{n}(a) \le M\}}{\card\{\mathbb{S}_{n}(b) \le M\}} > 0$.
+% \end{corollary}
 
-% From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{S}(1)$ is $\frac{1}{2}$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{S}(b)\cap\mathbb{S}(1) = \varnothing$, that means the logarithm density of $\mathbb{S}(b)$ will be $0$. Since $\mathbb{S}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$. However, although Tao's results are classic and very close to the original conjecture, we cannot use them directly; instead, we must prove it really keeps the homomorphism at first.
-
-% In other words, if we can find a such homomorphic density and prove the density of $\mathbb{S}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture.
-% At the same time, we have to say, for general simple Collatz system instead of just $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
+From Tao's result\cite{tao2022orbitscollatzmapattain}, when $(\alpha, \beta, \gamma) = (3, 2, 1)$, we have the logarithm density of $\mathbb{S}(1)$ is $1/2$. Suppose there's another number $b$ that $b \not\rightsquigarrow 1$, from \cref{prop:source-set-disjoint} we have $\mathbb{S}(b)\cap\mathbb{S}(1) = \varnothing$, that means the logarithm density of $\mathbb{S}(b)$ will be $0$. Since \cref{thm:infinite-layers} tell us $\mathbb{S}(b)$ can't be covered by finity layers. Thus, if there a homomorphism that keeps the logarithm measure, or keeps the logarithm measure by layer count, then we can prove that $b$ will not exists. That means no one will not fall into cycle can escape from $1$.
+In other words, if we can find a such homomorphic density and prove the density of $\mathbb{S}(1)$ is almost $1/2$, we then prove \cref{conj:source-value-of-1-cover-all-odd-numbers}, which derives to the classic Collatz conjecture.
+At the same time, we have to say, for general simple Collatz system instead of just $(3,2,1)$, there may not be a conclusion like the classic conjecture, but we can still classify their source value sets.
 
 % From \cref{thm:count-function-from-dirichlet-series} we have
 % \begin{corollary}

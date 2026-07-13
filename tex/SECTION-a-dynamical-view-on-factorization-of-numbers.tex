@@ -13,11 +13,13 @@ be one of factorization difference matrix of pair $(\mathcal{P}, \mathcal{Q})$.
 % $\bm{p} = (p_0, p_1, \cdots, p_{n-1})$ and $\bm{q} = (q_0, q_1, \cdots, q_{n-1})$.
 \end{definition}
 \begin{proposition}\label{prop:det-factorization-matrix-is-diff}
-	$\det\bm{M} = \mathcal{P} - \mathcal{Q}$. And $\det(\lambda\bm{I} - \bm{M}) = \sum_{i=0}^{n}\sigma_{i}^{n}\lambda^{n-i} + (-1)^{n+1}\mathcal{Q}$. Here
+	$\det\bm{M} = \mathcal{P} - \mathcal{Q}$. And
+	\[ \det(\lambda\bm{I} - \bm{M}) = \prod_{k=0}^{n-1}(\lambda - p_k) + (-1)^{n+1}\mathcal{Q}  = \sum_{i=0}^{n}(-1)^{i}\sigma_{i}^{n}\lambda^{n-i} + (-1)^{n+1}\mathcal{Q} \]
+	Here
 	\[ \sigma_{i}^{n} = \sum_{0\le j_1 < j_2 < \cdots < j_i \le n-1} p_{j_1}p_{j_2}\cdots p_{j_i}. \]
 \end{proposition}
-\begin{example}[ABC conjecture]\label{exa:rewitten-abc-conjecture}
-	$\forall \varepsilon > 0$, there exist only finite coprime pair $(\mathcal{P}, \mathcal{Q}) \in \mathbb{N}_{\ge 1}^{2}$ such that
+\begin{example}\label{exa:rewitten-abc-conjecture}
+	ABC conjecture says $\forall \varepsilon > 0$, there exists only finite coprime pair $(\mathcal{P}, \mathcal{Q}) \in \mathbb{N}_{\ge 1}^{2}$ such that
 	\[ \rad\vert\det\bm{M}\vert < \frac{\mathcal{P}^{1-\varepsilon}}{\rad(\mathcal{Q}\mathcal{P})} = \frac{\mathcal{P}^{\sharp-\varepsilon}}{\rad\mathcal{Q}}. \]
 	Here $\mathcal{P}^{\sharp} = \mathcal{P} / \rad\mathcal{P}$.
 \end{example}
@@ -36,19 +38,14 @@ Since $\bm{M}$ is an integer coefficient matrix, consider it's Smith normal form
 \begin{definition}
 	Given $\bm{M}\in \mathbb{Z}^{n\times n}$ that $\det\bm{M} \ne 0$, we have $\det\bm{M} \in\mathbb{Z}^{*}$. Define factorization form is $\mathcal{L}(M) = \diag(m_0, m_1, \cdots, m_{n-1})$ such that $\forall p\in\mathbb{P}$, there is
 	\[ \val_{p}m_k = \left\lfloor\frac{\val_{p}\abs{\det\bm{M}}}{n}\right\rfloor + \left\{\begin{aligned}
-		& 0, && k \le n - (\val_{p}\abs{\det\bm{M}} \mod{n}), \\
-		& 1, && k > n - (\val_{p}\abs{\det\bm{M}} \mod{n}).
+		& 0, && k < n - (\val_{p}\abs{\det\bm{M}} \mod{n}), \\
+		& 1, && k \ge n - (\val_{p}\abs{\det\bm{M}} \mod{n}).
 	\end{aligned}\right. \]
 	Of course, $\mathcal{L}(M)$ be a kind of Smith normal form. Since $\mathcal{S} = \abs{\det\bm{M}}$, we also denote it as $\mathcal{L}(\mathcal{S})$.
 \end{definition}
 \begin{proposition}
-	When $n \ge \nu(\abs{\det\bm{M}})$, we have $\rad\mathcal{S} = \abs{m_{n-1}}$ and 
-	\[ \mathcal{L}(\mathcal{S}^{\sharp}) = \begin{pmatrix}
-		0 & 0 \\
-		\bm{I} & 0 \\
-	\end{pmatrix}\mathcal{L}(\mathcal{S}) + \diag(1, 0, \cdots, 0). \]
+	$n \nmid \val_{p}\mathcal{S} \Longleftrightarrow \val_{p}{m_{n-1}} - \val_{p}{m_{0}} = 1$.
 \end{proposition}
-For given $(\mathcal{P}, \mathcal{Q})$, we can always find a $n\ge\nu(\mathcal{S})$ such that $p_k, q_k \in\overline{\mathbb{P}} = \mathbb{P}\cup\{1\}$.
 
 % TODO.
 % \newpage
